@@ -19,7 +19,9 @@
                 <h1 class="text-xl font-bold">EPSP Berriane</h1>
                 <p class="text-xs opacity-75">Système de Rapport Médical</p>
             </div>
-            <div class="bg-white/20 p-2 rounded-full text-2xl">🏥</div>
+            <div class="bg-white p-1 rounded-full shadow-md w-14 h-14 flex items-center justify-center">
+                <img src="logo.png" alt="Logo EPSP Berriane" class="w-12 h-12 object-contain rounded-full">
+            </div>
         </div>
     </header>
 
@@ -67,18 +69,34 @@
                 </div>
 
                 <div class="bg-white p-6 rounded-3xl shadow-sm space-y-4 border-t-4 border-green-500">
-                    <h4 class="font-bold text-gray-700 mb-2">Indicateurs de Performance (%)</h4>
-                    <div>
-                        <label class="text-xs font-semibold text-gray-500">Taux d'utilisation de la file d'attente %</label>
-                        <input type="number" step="0.01" name="taux_file_attente" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none" required>
+                    <h4 class="font-bold text-gray-700 mb-1">Actes Numériques (Période 60 Jours)</h4>
+                    <p class="text-[10px] text-gray-400 mb-4 uppercase">Les taux de performance % seront calculés automatiquement.</p>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500">MIN PATIENTS/JOUR</label>
+                            <input type="number" id="min_pat" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none focus:ring-2 ring-green-100" required>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500">MAX PATIENTS/JOUR</label>
+                            <input type="number" id="max_pat" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none focus:ring-2 ring-green-100" required>
+                        </div>
                     </div>
+
                     <div>
-                        <label class="text-xs font-semibold text-gray-500">Taux d'utilisation ordonnance numérique %</label>
-                        <input type="number" step="0.01" name="taux_ord" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none" required>
+                        <label class="text-xs font-semibold text-gray-600">Patients passés en DEM (sur 60 Jours)</label>
+                        <input type="number" id="nbr_dem" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none focus:ring-2 ring-green-100" required>
                     </div>
-                    <div>
-                        <label class="text-xs font-semibold text-gray-500">Taux d'utilisation de DEM %</label>
-                        <input type="number" step="0.01" name="taux_dem" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none" required>
+
+                    <div class="grid grid-cols-2 gap-4 pt-2">
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500">ORDONNANCES NUM.</label>
+                            <input type="number" id="ord_num" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none focus:ring-2 ring-green-100" required>
+                        </div>
+                        <div>
+                            <label class="text-[10px] font-bold text-gray-500">TOTAL ORDONNANCES</label>
+                            <input type="number" id="ord_total" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none focus:ring-2 ring-green-100" required>
+                        </div>
                     </div>
                 </div>
 
@@ -95,18 +113,13 @@
     </footer>
 
     <script>
-        // --- Configuration ---
-        // Laissez vide si le HTML et le Worker sont sur le même domaine.
-        // Sinon, mettez l'URL de votre worker ex: const API_URL = "https://mon-worker.mon-compte.workers.dev";
         const API_URL = "https://orange.ferhathamza17.workers.dev"; 
 
-        // --- Sécurité Anti-F12 ---
         document.addEventListener('contextmenu', e => e.preventDefault());
         document.onkeydown = (e) => {
             if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) return false;
         };
 
-        // --- Logique métier ---
         async function login() {
             const code = document.getElementById('user-code').value;
             if(!code) return;
@@ -138,11 +151,38 @@
             e.preventDefault();
             const submitBtn = e.target.querySelector('button[type="submit"]');
             submitBtn.disabled = true;
-            submitBtn.innerText = "Envoi en cours...";
+            submitBtn.innerText = "Calcul et Envoi en cours...";
 
+            // 1. Récupération des données du formulaire de base
             const formData = new FormData(e.target);
             const body = Object.fromEntries(formData);
             body.code = document.getElementById('auth-token').value;
+
+            // 2. Calculs Mathématiques Automatiques
+            const min_pat = parseFloat(document.getElementById('min_pat').value) || 0;
+            const max_pat = parseFloat(document.getElementById('max_pat').value) || 0;
+            const nbr_dem = parseFloat(document.getElementById('nbr_dem').value) || 0;
+            const ord_num = parseFloat(document.getElementById('ord_num').value) || 0;
+            const ord_total = parseFloat(document.getElementById('ord_total').value) || 1; // Éviter division par zéro
+
+            // A) File d'attente
+            const moyen_jour = (max_pat + min_pat) / 2;
+            const expected_60_days = moyen_jour * 60;
+            let taux_file_attente = 0;
+            if (expected_60_days > 0) {
+                taux_file_attente = (nbr_dem / expected_60_days) * 100;
+            }
+
+            // B) Ordonnance numérique
+            let taux_ord = (ord_num / ord_total) * 100;
+
+            // C) Taux DEM global
+            let taux_dem = (taux_file_attente + taux_ord) / 2;
+
+            // Ajout des résultats au payload
+            body.taux_file_attente = taux_file_attente.toFixed(2);
+            body.taux_ord = taux_ord.toFixed(2);
+            body.taux_dem = taux_dem.toFixed(2);
 
             try {
                 const res = await fetch(API_URL + '/api/report', { 
@@ -152,7 +192,7 @@
                 });
                 
                 if(res.ok) {
-                    alert("Les données ont été enregistrées avec succès. Merci !");
+                    alert(`Statistiques enregistrées avec succès !\n\n--- Résultats Calculés ---\nTaux File d'attente : ${body.taux_file_attente}%\nTaux Ordonnance : ${body.taux_ord}%\nTaux DEM : ${body.taux_dem}%`);
                     location.reload();
                 } else {
                     alert("Erreur lors de l'enregistrement.");
