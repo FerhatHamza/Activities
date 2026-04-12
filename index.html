@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPSP Berriane - Saisie d'Activité</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Tajawal', sans-serif; background-color: #f0f4f8; }
+        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <header class="bg-blue-800 text-white p-6 shadow-xl rounded-b-[2.5rem]">
+        <div class="max-w-md mx-auto flex justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold">EPSP Berriane</h1>
+                <p class="text-xs opacity-75">Système de Rapport Médical</p>
+            </div>
+            <div class="bg-white/20 p-2 rounded-full text-2xl">🏥</div>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-md mx-auto w-full p-4">
+        <section id="auth-section" class="mt-10 glass p-8 rounded-3xl shadow-2xl border border-white">
+            <h2 class="text-2xl font-bold text-gray-800 text-center mb-2">Accès Sécurisé</h2>
+            <p class="text-gray-500 text-center text-sm mb-6">Entrez votre code d'accès unique</p>
+            <input type="password" id="user-code" class="w-full p-4 rounded-2xl border-2 border-blue-50 text-center text-2xl tracking-[1em] focus:border-blue-500 outline-none transition-all" placeholder="••••">
+            <button onclick="login()" class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-bold text-lg shadow-lg active:scale-95 transition-all">
+                Se Connecter
+            </button>
+        </section>
+
+        <section id="form-section" class="hidden space-y-4 py-6">
+            <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-2xl">
+                <h3 id="dr-name" class="font-bold text-blue-900 text-lg"></h3>
+                <p id="dr-role" class="text-xs text-blue-600 font-bold uppercase tracking-wider"></p>
+                <p id="dr-structure" class="text-sm text-blue-700 mt-1"></p>
+            </div>
+
+            <form id="main-form" class="space-y-4">
+                <input type="hidden" id="auth-token">
+                
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="bg-white p-4 rounded-2xl shadow-sm">
+                        <label class="block text-[10px] font-bold text-gray-400 mb-1">CONSULTATIONS</label>
+                        <input type="number" name="consultation" class="w-full text-xl font-bold outline-none border-b-2 border-transparent focus:border-blue-500" value="0">
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl shadow-sm">
+                        <label class="block text-[10px] font-bold text-gray-400 mb-1">HOSPITALISATION (6h max)</label>
+                        <input type="number" name="hospitalisation" class="w-full text-xl font-bold outline-none border-b-2 border-transparent focus:border-blue-500" value="0">
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl shadow-sm space-y-4">
+                    <h4 class="font-bold border-b pb-2 text-gray-700">Analyses & Radio</h4>
+                    <div>
+                        <label class="text-sm font-semibold text-gray-600">Laboratoire (Nb. d'actes)</label>
+                        <input type="number" name="labo" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none focus:ring-2 ring-blue-100" value="0">
+                    </div>
+                    <div>
+                        <label class="text-sm font-semibold text-gray-600">Radiologie (Nb. d'actes)</label>
+                        <input type="number" name="radio" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none focus:ring-2 ring-blue-100" value="0">
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-3xl shadow-sm space-y-4 border-t-4 border-green-500">
+                    <h4 class="font-bold text-gray-700 mb-2">Indicateurs de Performance (%)</h4>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Taux d'utilisation de la file d'attente %</label>
+                        <input type="number" step="0.01" name="taux_file_attente" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none" required>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Taux d'utilisation ordonnance numérique %</label>
+                        <input type="number" step="0.01" name="taux_ord" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none" required>
+                    </div>
+                    <div>
+                        <label class="text-xs font-semibold text-gray-500">Taux d'utilisation de DEM %</label>
+                        <input type="number" step="0.01" name="taux_dem" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none" required>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl font-bold shadow-xl transition-all text-lg">
+                    Envoyer les statistiques
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="p-6 text-center text-gray-400 text-xs mt-auto">
+        <p>Développé par <span class="font-bold text-gray-600 italic">Dev. Ing. Ferhat H.</span></p>
+        <p>&copy; Copyright EPSP Berriane</p>
+    </footer>
+
+    <script>
+        // --- Configuration ---
+        // Laissez vide si le HTML et le Worker sont sur le même domaine.
+        // Sinon, mettez l'URL de votre worker ex: const API_URL = "https://mon-worker.mon-compte.workers.dev";
+        const API_URL = ""; 
+
+        // --- Sécurité Anti-F12 ---
+        document.addEventListener('contextmenu', e => e.preventDefault());
+        document.onkeydown = (e) => {
+            if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && (e.keyCode == 73 || e.keyCode == 74 || e.keyCode == 67)) || (e.ctrlKey && e.keyCode == 85)) return false;
+        };
+
+        // --- Logique métier ---
+        async function login() {
+            const code = document.getElementById('user-code').value;
+            if(!code) return;
+
+            try {
+                const res = await fetch(API_URL + '/api/auth', { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify({ code }) 
+                });
+                const data = await res.json();
+                
+                if(data.success) {
+                    document.getElementById('auth-section').classList.add('hidden');
+                    document.getElementById('form-section').classList.remove('hidden');
+                    document.getElementById('dr-name').innerText = "Dr. " + data.user.name;
+                    document.getElementById('dr-role').innerText = data.user.role;
+                    document.getElementById('dr-structure').innerText = data.user.poly_name + " (" + data.user.poly_type + ")";
+                    document.getElementById('auth-token').value = code;
+                } else {
+                    alert("Code invalide ou introuvable !");
+                }
+            } catch (error) {
+                alert("Erreur de connexion au serveur.");
+            }
+        }
+
+        document.getElementById('main-form').onsubmit = async (e) => {
+            e.preventDefault();
+            const submitBtn = e.target.querySelector('button[type="submit"]');
+            submitBtn.disabled = true;
+            submitBtn.innerText = "Envoi en cours...";
+
+            const formData = new FormData(e.target);
+            const body = Object.fromEntries(formData);
+            body.code = document.getElementById('auth-token').value;
+
+            try {
+                const res = await fetch(API_URL + '/api/report', { 
+                    method: 'POST', 
+                    headers: {'Content-Type': 'application/json'},
+                    body: JSON.stringify(body) 
+                });
+                
+                if(res.ok) {
+                    alert("Les données ont été enregistrées avec succès. Merci !");
+                    location.reload();
+                } else {
+                    alert("Erreur lors de l'enregistrement.");
+                }
+            } catch (error) {
+                alert("Erreur réseau.");
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.innerText = "Envoyer les statistiques";
+            }
+        };
+    </script>
+</body>
+</html>
