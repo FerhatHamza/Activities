@@ -106,22 +106,23 @@
         <div class="bg-white p-4 md:p-6 rounded-2xl shadow mb-8">
             <h2 class="font-bold mb-4">Table d'Activité (Saisies récentes)</h2>
             <div class="overflow-x-auto pb-2">
-                <table class="w-full text-left text-xs min-w-[700px]">
+                <table class="w-full text-left text-xs min-w-[900px]">
                     <thead>
                         <tr class="bg-gray-100">
                             <th class="p-3 rounded-l-lg">Date / Heure</th>
                             <th class="p-3">Utilisateur</th>
                             <th class="p-3">Structure</th>
-                            <th class="p-3">Consult</th>
-                            <th class="p-3">Hosp(6h)</th>
-                            <th class="p-3 rounded-r-lg">Evac</th>
+                            <th class="p-3 text-center">Consult</th>
+                            <th class="p-3 text-center">Hosp(6h)</th>
+                            <th class="p-3 text-center">Evac</th>
+                            <th class="p-3 text-center">Labo</th>
+                            <th class="p-3 text-center rounded-r-lg">Radio</th>
                         </tr>
                     </thead>
                     <tbody id="activity-table"></tbody>
                 </table>
             </div>
         </div>
-    </div>
 
     <script>
         const API_URL = "https://orange.ferhathamza17.workers.dev"; 
@@ -132,11 +133,21 @@
             document.getElementById('stat-poly').innerHTML = polyOptions;
 
             const users = await (await fetch(API_URL + '/api/admin/users')).json();
-            document.getElementById('users-table').innerHTML = users.map(u => `<tr class="border-b hover:bg-gray-50 transition-colors"><td class="p-3">${u.name}</td><td class="p-3 font-mono font-bold">${u.code}</td><td class="p-3">${u.role}</td><td class="p-3">${u.poly_name}</td><td class="p-3"><button onclick="deleteUser(${u.id})" class="text-red-500 font-bold hover:underline">Supprimer</button></td></tr>`).join('');
-
+            document.getElementById('users-table').innerHTML = users.map(u => `<tr class="border-b hover:bg-gray-50 transition-colors"><td class="p-3">${u.name}</td><td class="p-3 font-mono font-bold">${u.code}</td><td class="p-3">${u.role}</td><td class="p-3">${u.poly_name}</td><td class="p-3"><button onclick="deleteUser(${u.id})" class="text-red-500 font-bold hover:underline">Supprimer</button></td></tr>`).join('');            
+            
             const act = await (await fetch(API_URL + '/api/admin/activity')).json();
-            document.getElementById('activity-table').innerHTML = act.map(a => `<tr class="border-b hover:bg-gray-50 transition-colors"><td class="p-3 text-gray-500">${a.created_at}</td><td class="p-3 font-bold">${a.name}</td><td class="p-3">${a.poly_name}</td><td class="p-3 text-center bg-blue-50">${a.consultation}</td><td class="p-3 text-center bg-green-50">${a.hosp_6h}</td><td class="p-3 text-center bg-red-50">${a.evacuations}</td></tr>`).join('');
-
+            document.getElementById('activity-table').innerHTML = act.map(a => `
+                <tr class="border-b hover:bg-gray-50 transition-colors">
+                    <td class="p-3 text-gray-500">${a.created_at}</td>
+                    <td class="p-3 font-bold">${a.name}</td>
+                    <td class="p-3">${a.poly_name}</td>
+                    <td class="p-3 text-center bg-blue-50">${a.consultation}</td>
+                    <td class="p-3 text-center bg-green-50">${a.hosp_6h}</td>
+                    <td class="p-3 text-center bg-red-50">${a.evacuations}</td>
+                    <td class="p-3 text-center bg-yellow-50 font-semibold text-yellow-700">${a.labo}</td>
+                    <td class="p-3 text-center bg-purple-50 font-semibold text-purple-700">${a.radio}</td>
+                </tr>
+            `).join('');
             loadStats();
         }
 
