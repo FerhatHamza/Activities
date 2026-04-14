@@ -2,123 +2,136 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administration - EPSP Berriane</title>
+    <title>Admin - EPSP Berriane</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <style>body { font-family: 'Tajawal', sans-serif; }</style>
 </head>
-<body class="bg-slate-100 p-6 font-['Tajawal']">
-
-    <div class="max-w-4xl mx-auto space-y-8">
+<body class="bg-slate-100 p-6">
+    <div class="max-w-6xl mx-auto space-y-8">
         <div class="flex justify-between items-end border-b-4 border-blue-600 pb-2">
             <h1 class="text-3xl font-bold text-blue-900">Tableau de Bord Administrateur</h1>
             <p class="text-sm font-bold text-gray-500">Dev. Ing. Ferhat H.</p>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl shadow-md border-l-4 border-indigo-500">
-            <h2 class="text-xl font-bold mb-4 text-indigo-900">1. Ajouter une Polyclinique</h2>
-            <div class="flex flex-wrap gap-4">
-                <input id="poly-name" placeholder="Nom (Ex: Polyclinique Bailich Mazouz)" class="flex-grow p-3 bg-gray-50 rounded-xl outline-none focus:ring-2 ring-indigo-200">
-                <select id="poly-type" class="p-3 bg-gray-50 rounded-xl outline-none">
-                    <option value="24/24h">Régime 24/24h</option>
-                    <option value="12/24h">Régime 12/24h</option>
-                </select>
-                <button onclick="addPoly()" class="bg-indigo-600 hover:bg-indigo-700 text-white px-8 rounded-xl font-bold transition-all">Créer la structure</button>
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-indigo-500">
+                <h2 class="font-bold text-indigo-900 mb-4">1. Ajouter Polyclinique</h2>
+                <div class="flex gap-2">
+                    <input id="poly-name" placeholder="Nom" class="w-full p-2 bg-gray-50 border rounded">
+                    <select id="poly-type" class="p-2 bg-gray-50 border rounded"><option value="24/24h">24/24h</option><option value="12/24h">12/24h</option></select>
+                    <button onclick="addPoly()" class="bg-indigo-600 text-white px-4 rounded font-bold">Créer</button>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-green-500">
+                <h2 class="font-bold text-green-900 mb-4">2. Affecter Personnel</h2>
+                <div class="grid grid-cols-2 gap-2 mb-2">
+                    <input id="user-name" placeholder="Nom Complet" class="p-2 border rounded">
+                    <div class="flex gap-1"><input id="user-code" placeholder="Code" class="w-full p-2 border rounded"><button onclick="document.getElementById('user-code').value = Math.floor(1000+Math.random()*9000)" class="bg-gray-200 px-2 rounded">Générer</button></div>
+                    <select id="select-poly" class="p-2 border rounded"></select>
+                    <select id="user-role" class="p-2 border rounded">
+                        <option value="Médecin Chef">Médecin Chef</option>
+                        <option value="Chef Laboratoire">Chef Laboratoire</option>
+                        <option value="Chef Radiologie">Chef Radiologie</option>
+                        <option value="Paramédical">Paramédical</option>
+                        <option value="Administrateur">Administrateur</option>
+                    </select>
+                </div>
+                <button onclick="addUser()" class="w-full bg-green-600 text-white py-2 rounded font-bold">Ajouter</button>
             </div>
         </div>
 
-        <div class="bg-white p-6 rounded-2xl shadow-md border-l-4 border-green-500">
-            <div class="flex justify-between items-center mb-4">
-                <h2 class="text-xl font-bold text-green-900">2. Affecter Personnel & Générer Codes</h2>
-                <button onclick="loadPolys()" class="text-sm bg-gray-100 px-3 py-1 rounded hover:bg-gray-200">Actualiser les structures</button>
+        <div class="bg-white p-6 rounded-2xl shadow">
+            <h2 class="font-bold mb-4">Liste des Utilisateurs</h2>
+            <table class="w-full text-left text-sm">
+                <thead><tr class="bg-gray-100"><th class="p-2">Nom</th><th class="p-2">Code</th><th class="p-2">Rôle</th><th class="p-2">Structure</th><th class="p-2">Action</th></tr></thead>
+                <tbody id="users-table"></tbody>
+            </table>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow border-l-4 border-orange-500">
+            <h2 class="font-bold text-orange-900 mb-4">3. Actes Numériques (Période 90 Jours)</h2>
+            <div class="flex gap-2 items-end mb-6">
+                <div class="flex-grow">
+                    <label class="text-xs">Polyclinique</label>
+                    <select id="stat-poly" class="w-full p-2 border rounded"></select>
+                </div>
+                <div class="w-20"><label class="text-xs">Min/Jr</label><input type="number" id="s_min" class="w-full p-2 border rounded"></div>
+                <div class="w-20"><label class="text-xs">Max/Jr</label><input type="number" id="s_max" class="w-full p-2 border rounded"></div>
+                <div class="w-24"><label class="text-xs">DEM (90j)</label><input type="number" id="s_dem" class="w-full p-2 border rounded"></div>
+                <div class="w-24"><label class="text-xs">Ord Num</label><input type="number" id="s_onum" class="w-full p-2 border rounded"></div>
+                <div class="w-24"><label class="text-xs">Ord Tot.</label><input type="number" id="s_otot" class="w-full p-2 border rounded"></div>
+                <button onclick="saveStats()" class="bg-orange-600 text-white px-6 py-2 rounded font-bold">Calculer & Sauver</button>
             </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label class="text-xs font-bold text-gray-500">NOM COMPLET</label>
-                    <input id="user-name" placeholder="Ex: ZAIDI Mokhtar" class="w-full p-3 bg-gray-50 rounded-xl outline-none focus:ring-2 ring-green-200 mt-1">
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-gray-500">CODE SECRET (Identifiant de connexion)</label>
-                    <div class="flex gap-2 mt-1">
-                        <input id="user-code" placeholder="Ex: 8492" class="w-full p-3 bg-gray-50 rounded-xl outline-none font-mono text-lg font-bold tracking-widest">
-                        <button onclick="generateCode()" class="bg-gray-200 px-4 rounded-xl font-bold hover:bg-gray-300">Générer</button>
-                    </div>
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-gray-500">STRUCTURE D'AFFECTATION</label>
-                    <select id="select-poly" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none">
-                        <option value="">Chargement...</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="text-xs font-bold text-gray-500">RÔLE / FONCTION</label>
-                    <select id="user-role" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none">
-                        <option value="Médecin Chef">Médecin Chef (Polyclinique)</option>
-                        <option value="Chef Laboratoire">Chef Laboratoire</option>
-                        <option value="Chef Radiologie">Chef Radiologie</option>
-                    </select>
-                </div>
-            </div>
-            <button onclick="addUser()" class="mt-6 w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-xl font-bold text-lg transition-all shadow-lg">
-                Enregistrer l'utilisateur
-            </button>
+
+            <table class="w-full text-center border-collapse">
+                <thead><tr class="bg-gray-100 border"><th class="p-2 border">Structure</th><th class="p-2 border">Taux File d'attente</th><th class="p-2 border">Taux Ordonnance</th><th class="p-2 border text-blue-600">Taux DEM</th></tr></thead>
+                <tbody id="stats-table"></tbody>
+            </table>
+        </div>
+
+        <div class="bg-white p-6 rounded-2xl shadow">
+            <h2 class="font-bold mb-4">Table d'Activité (Saisies récentes)</h2>
+            <table class="w-full text-left text-xs">
+                <thead><tr class="bg-gray-100"><th class="p-2">Date / Heure</th><th class="p-2">Utilisateur</th><th class="p-2">Structure</th><th class="p-2">Consult</th><th class="p-2">Hosp(6h)</th><th class="p-2">Evac</th></tr></thead>
+                <tbody id="activity-table"></tbody>
+            </table>
         </div>
     </div>
 
     <script>
-        // Mettre l'URL de votre worker ici si admin.html n'est pas hébergé au même endroit
-        const API_URL = "https://orange.ferhathamza17.workers.dev"; 
+const API_URL = "https://orange.ferhathamza17.workers.dev"; 
 
-        function generateCode() {
-            document.getElementById('user-code').value = Math.floor(1000 + Math.random() * 9000).toString();
+        async function loadData() {
+            const polys = await (await fetch(API_URL + '/api/admin/poly')).json();
+            const polyOptions = polys.map(p => `<option value="${p.id}">${p.nom}</option>`).join('');
+            document.getElementById('select-poly').innerHTML = polyOptions;
+            document.getElementById('stat-poly').innerHTML = polyOptions;
+
+            const users = await (await fetch(API_URL + '/api/admin/users')).json();
+            document.getElementById('users-table').innerHTML = users.map(u => `<tr class="border-b"><td class="p-2">${u.name}</td><td class="p-2 font-mono font-bold">${u.code}</td><td class="p-2">${u.role}</td><td class="p-2">${u.poly_name}</td><td class="p-2"><button onclick="deleteUser(${u.id})" class="text-red-500 font-bold hover:underline">Supprimer</button></td></tr>`).join('');
+
+            const act = await (await fetch(API_URL + '/api/admin/activity')).json();
+            document.getElementById('activity-table').innerHTML = act.map(a => `<tr class="border-b"><td class="p-2">${a.created_at}</td><td class="p-2">${a.name}</td><td class="p-2">${a.poly_name}</td><td class="p-2">${a.consultation}</td><td class="p-2">${a.hosp_6h}</td><td class="p-2">${a.evacuations}</td></tr>`).join('');
+
+            loadStats();
         }
 
-        async function loadPolys() {
-            const res = await fetch(API_URL + '/api/admin/poly');
-            const polys = await res.json();
-            const select = document.getElementById('select-poly');
-            select.innerHTML = polys.map(p => `<option value="${p.id}">${p.nom} (${p.type})</option>`).join('');
+        async function loadStats() {
+            const res = await (await fetch(API_URL + '/api/admin/stats')).json();
+            let html = res.stats.map(s => `<tr class="border-b"><td class="p-2 border">${s.nom}</td><td class="p-2 border">${s.file_attente}%</td><td class="p-2 border">${s.ordonnance}%</td><td class="p-2 border font-bold text-blue-600">${s.dem}%</td></tr>`).join('');
+            html += `<tr class="bg-gray-800 text-white font-bold"><td class="p-2 border">${res.total.nom}</td><td class="p-2 border">${res.total.file_attente}%</td><td class="p-2 border">${res.total.ordonnance}%</td><td class="p-2 border">${res.total.dem}%</td></tr>`;
+            document.getElementById('stats-table').innerHTML = html;
         }
 
         async function addPoly() {
-            const nom = document.getElementById('poly-name').value;
-            const type = document.getElementById('poly-type').value;
-            if(!nom) return alert("Le nom est requis");
-
-            await fetch(API_URL + '/api/admin/poly', {
-                method: 'POST', headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ nom, type })
-            });
-            alert("Structure ajoutée !");
-            document.getElementById('poly-name').value = '';
-            loadPolys();
+            await fetch(API_URL + '/api/admin/poly', { method: 'POST', body: JSON.stringify({ nom: document.getElementById('poly-name').value, type: document.getElementById('poly-type').value }) });
+            loadData();
         }
 
         async function addUser() {
-            const name = document.getElementById('user-name').value;
-            const code = document.getElementById('user-code').value;
-            const poly_id = document.getElementById('select-poly').value;
-            const role = document.getElementById('user-role').value;
-
-            if(!name || !code || !poly_id) return alert("Veuillez remplir tous les champs");
-
-            const res = await fetch(API_URL + '/api/admin/user', {
-                method: 'POST', headers: {'Content-Type': 'application/json'},
-                body: JSON.stringify({ name, code, poly_id, role })
-            });
-            
-            if(res.ok) {
-                alert(`Utilisateur enregistré !\nNom: ${name}\nCode: ${code}`);
-                document.getElementById('user-name').value = '';
-                document.getElementById('user-code').value = '';
-            } else {
-                alert("Erreur (Ce code existe peut-être déjà).");
-            }
+            await fetch(API_URL + '/api/admin/user', { method: 'POST', body: JSON.stringify({ name: document.getElementById('user-name').value, code: document.getElementById('user-code').value, poly_id: document.getElementById('select-poly').value, role: document.getElementById('user-role').value }) });
+            loadData();
         }
 
-        // Charger les polycliniques au démarrage
-        window.onload = loadPolys;
+        async function deleteUser(id) {
+            if(confirm("Supprimer cet utilisateur ?")) { await fetch(API_URL + '/api/admin/user/' + id, { method: 'DELETE' }); loadData(); }
+        }
+
+        async function saveStats() {
+            const body = {
+                poly_id: document.getElementById('stat-poly').value,
+                min_pat: document.getElementById('s_min').value || 0, max_pat: document.getElementById('s_max').value || 0,
+                nbr_dem: document.getElementById('s_dem').value || 0, ord_num: document.getElementById('s_onum').value || 0, ord_total: document.getElementById('s_otot').value || 0
+            };
+            await fetch(API_URL + '/api/admin/actes', { method: 'POST', body: JSON.stringify(body) });
+            loadStats();
+        }
+
+        window.onload = loadData;
     </script>
 </body>
 </html>
+
+        
