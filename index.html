@@ -3,103 +3,212 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPSP Berriane - Saisie d'Activité</title>
+    <title>EPSP Berriane - Espace Superviseur</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
-    <style> body { font-family: 'Tajawal', sans-serif; background-color: #f0f4f8; } .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); } </style>
+    <style> 
+        body { font-family: 'Tajawal', sans-serif; background-color: #f0f4f8; } 
+        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        .tab-active { border-bottom: 4px solid #2563eb; color: #1e3a8a; font-weight: bold; }
+        .tab-inactive { border-bottom: 4px solid transparent; color: #6b7280; }
+    </style>
 </head>
 <body class="min-h-screen flex flex-col">
     <header class="bg-blue-800 text-white p-6 shadow-xl rounded-b-[2.5rem]">
-        <div class="max-w-md mx-auto flex justify-between items-center">
+        <div class="max-w-xl mx-auto flex justify-between items-center">
             <div><h1 class="text-xl font-bold">EPSP Berriane</h1><p class="text-xs opacity-75">Système de Rapport Médical</p></div>
             <div class="bg-white p-1 rounded-full shadow-md w-14 h-14 flex items-center justify-center">
-                <img src="IMG_6185.jpeg" alt="Logo" class="w-12 h-12 object-contain rounded-full">
+                <img src="logo.png" alt="Logo" class="w-12 h-12 object-contain rounded-full">
             </div>
         </div>
     </header>
 
-    <main class="flex-grow max-w-md mx-auto w-full p-4">
+    <main class="flex-grow max-w-2xl mx-auto w-full p-4">
         <section id="auth-section" class="mt-10 glass p-8 rounded-3xl shadow-2xl">
             <h2 class="text-2xl font-bold text-gray-800 text-center mb-6">Accès Superviseur</h2>
             <input type="password" id="user-code" class="w-full p-4 rounded-2xl border-2 text-center text-2xl tracking-[1em] outline-none focus:border-blue-500" placeholder="••••">
             <button onclick="login()" class="w-full mt-6 bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-bold shadow-lg">Se Connecter</button>
         </section>
 
-        <section id="form-section" class="hidden space-y-4 py-6">
-            <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-2xl">
+        <section id="dashboard-section" class="hidden py-4">
+            <div class="bg-blue-50 border-l-4 border-blue-600 p-4 rounded-r-2xl mb-6">
                 <h3 id="dr-name" class="font-bold text-blue-900 text-lg"></h3>
                 <p id="dr-role" class="text-xs text-blue-600 font-bold uppercase"></p>
                 <p id="dr-structure" class="text-sm text-blue-700"></p>
+                <input type="hidden" id="auth-token">
             </div>
 
-            <form id="main-form" class="space-y-4">
-                <input type="hidden" id="auth-token">
+            <div class="flex border-b mb-6">
+                <button onclick="switchTab('activity')" id="tab-activity" class="flex-1 pb-3 tab-active transition-all">Saisie d'Activité</button>
+                <button onclick="switchTab('stats')" id="tab-stats" class="flex-1 pb-3 tab-inactive transition-all">Statistiques Quotidiennes</button>
+            </div>
+
+            <form id="form-activity" class="space-y-4" onsubmit="submitActivity(event)">
                 <div class="bg-white p-6 rounded-3xl shadow-sm space-y-4">
-                    <div>
-                        <label class="text-xs font-bold text-gray-500">Nbr. CONSULTATIONS</label>
-                        <input type="number" name="consultation" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none font-bold" value="0">
+                    <h4 class="font-bold border-b pb-2 text-gray-700">Indicateurs de base</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="text-[10px] font-bold text-gray-500">CONSULTATIONS</label><input type="number" name="consultation" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
+                        <div><label class="text-[10px] font-bold text-gray-500">HOSP. (6h max)</label><input type="number" name="hosp_6h" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
+                        <div><label class="text-[10px] font-bold text-gray-500">HOSPITALISATION</label><input type="number" name="hosp_normal" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
+                        <div><label class="text-[10px] font-bold text-gray-500">ÉVACUATIONS (1er trim)</label><input type="number" name="evacuations" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
+                        <div><label class="text-[10px] font-bold text-gray-500">LABORATOIRE (Actes)</label><input type="number" name="labo" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
+                        <div><label class="text-[10px] font-bold text-gray-500">RADIOLOGIE (Actes)</label><input type="number" name="radio" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
                     </div>
-                    <div>
-                        <label class="text-xs font-bold text-gray-500">Nbr. HOSPITALISATION (6h max)</label>
-                        <input type="number" name="hosp_6h" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none font-bold" value="0">
-                    </div>
-                    <div>
-                        <label class="text-xs font-bold text-gray-500">Nbr. HOSPITALISATION</label>
-                        <input type="number" name="hosp_normal" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none font-bold" value="0">
-                    </div>
-                    <div>
-                        <label class="text-xs font-bold text-gray-500">Nbr. D’évacuations (1er trimestre)</label>
-                        <input type="number" name="evacuations" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none font-bold" value="0">
-                    </div>
-                    <hr>
-                    <div>
-                        <label class="text-xs font-bold text-gray-500">Laboratoire (Nb. d'actes)</label>
-                        <input type="number" name="labo" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none font-bold" value="0">
-                    </div>
-                    <div>
-                        <label class="text-xs font-bold text-gray-500">Radiologie (Nb. d'actes)</label>
-                        <input type="number" name="radio" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none font-bold" value="0">
+                </div>
+                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl font-bold">Enregistrer l'activité</button>
+            </form>
+
+            <form id="form-stats" class="hidden space-y-4" onsubmit="submitStats(event)">
+                
+                <div id="stat-general" class="hidden bg-white p-6 rounded-3xl shadow-sm space-y-6">
+                    <h4 class="font-bold border-b pb-2 text-blue-800">Statistiques Générales</h4>
+                    
+                    <script>
+                        function createFHGrid(title, fields) {
+                            let html = `<div class="mb-4"><h5 class="text-sm font-bold text-gray-600 bg-gray-100 p-2 rounded">${title}</h5><div class="grid grid-cols-12 gap-2 mt-2 text-[10px] font-bold text-center text-gray-400 mb-1"><div class="col-span-6 text-left">Type</div><div class="col-span-3 text-pink-500">Femmes</div><div class="col-span-3 text-blue-500">Hommes</div></div>`;
+                            fields.forEach(f => {
+                                html += `<div class="grid grid-cols-12 gap-2 mb-2 items-center"><div class="col-span-6 text-xs font-semibold text-gray-700">${f.label}</div><div class="col-span-3"><input type="number" name="${f.id}_f" class="w-full p-2 bg-pink-50 border-pink-200 border rounded text-center" value="0"></div><div class="col-span-3"><input type="number" name="${f.id}_h" class="w-full p-2 bg-blue-50 border-blue-200 border rounded text-center" value="0"></div></div>`;
+                            });
+                            return html + `</div>`;
+                        }
+                    </script>
+                    
+                    <div id="gen-consult"></div>
+                    <div id="gen-labo"></div>
+                    <div id="gen-radio"></div>
+                    <div id="gen-stomato"></div>
+                </div>
+
+                <div id="stat-hemodialyse" class="hidden bg-white p-6 rounded-3xl shadow-sm space-y-4">
+                    <h4 class="font-bold border-b pb-2 text-purple-800">Statistiques Hémodialyse</h4>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div><label class="text-xs font-bold text-gray-500">Nbre de lits</label><input type="number" name="hemo_lits" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
+                        <div><label class="text-xs font-bold text-gray-500">Nbre de malades</label><input type="number" name="hemo_malades" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
+                        <div><label class="text-xs font-bold text-green-600">Reins fonctionnels</label><input type="number" name="hemo_reins_fonc" class="w-full p-3 bg-green-50 rounded-xl" value="0"></div>
+                        <div><label class="text-xs font-bold text-red-600">Reins non fonction.</label><input type="number" name="hemo_reins_non" class="w-full p-3 bg-red-50 rounded-xl" value="0"></div>
+                        <div><label class="text-xs font-bold text-gray-500">Nbre de séances</label><input type="number" name="hemo_seances" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
+                        <div><label class="text-xs font-bold text-gray-500">Nbre de consultations</label><input type="number" name="hemo_consult" class="w-full p-3 bg-gray-50 rounded-xl" value="0"></div>
                     </div>
                 </div>
 
-                <button type="submit" class="w-full bg-green-600 hover:bg-green-700 text-white py-4 rounded-2xl font-bold shadow-xl">Enregistrer les données</button>
+                <div id="stat-urgence" class="hidden bg-white p-6 rounded-3xl shadow-sm space-y-4">
+                    <h4 class="font-bold border-b pb-2 text-red-800">Statistiques Urgences</h4>
+                    <div class="mb-4">
+                        <label class="text-xs font-bold text-gray-500">Nbre de lits</label>
+                        <input type="number" name="urg_lits" class="w-full p-3 bg-gray-50 rounded-xl" value="0">
+                    </div>
+                    <div id="urg-grid"></div>
+                </div>
+
+                <div id="stat-parc" class="hidden bg-white p-6 rounded-3xl shadow-sm space-y-4">
+                    <h4 class="font-bold border-b pb-2 text-orange-800">Statistiques Parc Auto</h4>
+                    <div id="parc-grid"></div>
+                </div>
+
+                <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-bold shadow-xl">Enregistrer les Statistiques</button>
             </form>
         </section>
     </main>
 
-    <footer class="p-6 text-center text-gray-400 text-xs mt-auto">
-        <p>Développé par <span class="font-bold text-gray-600 italic">Dev. Ing. Ferhat H.</span> | &copy; EPSP Berriane</p>
-    </footer>
-
     <script>
-        const API_URL = "https://orange.ferhathamza17.workers.dev";
-        document.addEventListener('contextmenu', e => e.preventDefault());
+        const API_URL = "https://orange.ferhathamza17.workers.dev"; 
+        let userRole = "";
 
+        // Génération des grilles HTML via JavaScript pour garder le code propre
+        document.getElementById('gen-consult').innerHTML = createFHGrid('Consultations', [
+            {label: "Urgence", id: "c_urg"}, {label: "Médecine Générale", id: "c_gen"}, {label: "Médecine Spécialisée", id: "c_spec"}
+        ]);
+        document.getElementById('gen-labo').innerHTML = createFHGrid('Laboratoire (Actes)', [
+            {label: "Biochimie", id: "l_bio"}, {label: "Hémobiologie", id: "l_hemo"}, {label: "Immuno Sérologie", id: "l_imm"}, {label: "Microbiologie", id: "l_micro"}
+        ]);
+        document.getElementById('gen-radio').innerHTML = createFHGrid('Imagerie (Actes)', [
+            {label: "Radiologie", id: "r_rad"}, {label: "ECG", id: "r_ecg"}, {label: "Échographie", id: "r_echo"}
+        ]);
+        document.getElementById('gen-stomato').innerHTML = createFHGrid('Stomatologie', [
+            {label: "Consult. Stomatologie", id: "s_cons"}, {label: "Consult. Stomato-spécialisée", id: "s_spec"}, {label: "Soins", id: "s_soin"}, {label: "Extractions", id: "s_ext"}, {label: "Prothèses", id: "s_proth"}
+        ]);
+
+        document.getElementById('urg-grid').innerHTML = createFHGrid('Patients', [
+            {label: "Consultations", id: "u_cons"}, {label: "Mise en observation", id: "u_obs"}, {label: "Évacuations", id: "u_evac"}
+        ]);
+
+        let parcHtml = `<div class="grid grid-cols-12 gap-2 text-[10px] font-bold text-center text-gray-400 mb-2"><div class="col-span-6 text-left">Véhicule</div><div class="col-span-3 text-green-500">En Marche</div><div class="col-span-3 text-red-500">En Panne</div></div>`;
+        const vehicules = [
+            {l: "Ambulances", i: "v_amb"}, {l: "Véhicules de Liaison", i: "v_lia"}, {l: "Camions", i: "v_cam"}, 
+            {l: "Bus mini van", i: "v_bus"}, {l: "Clino-Mobiles", i: "v_cli"}, {l: "Véhicules de C.T.S", i: "v_cts"}, 
+            {l: "Camionette (Pick up)", i: "v_pic"}, {l: "Citroën fourgon C25", i: "v_c25"}
+        ];
+        vehicules.forEach(v => {
+            parcHtml += `<div class="grid grid-cols-12 gap-2 mb-2 items-center"><div class="col-span-6 text-xs font-semibold text-gray-700">${v.l}</div><div class="col-span-3"><input type="number" name="${v.i}_marche" class="w-full p-2 bg-green-50 border-green-200 border rounded text-center" value="0"></div><div class="col-span-3"><input type="number" name="${v.i}_panne" class="w-full p-2 bg-red-50 border-red-200 border rounded text-center" value="0"></div></div>`;
+        });
+        document.getElementById('parc-grid').innerHTML = parcHtml;
+
+
+        // Logique système
         async function login() {
             const code = document.getElementById('user-code').value;
             try {
                 const res = await fetch(API_URL + '/api/auth', { method: 'POST', body: JSON.stringify({ code }) });
                 const data = await res.json();
                 if(data.success) {
+                    userRole = data.user.role;
                     document.getElementById('auth-section').classList.add('hidden');
-                    document.getElementById('form-section').classList.remove('hidden');
+                    document.getElementById('dashboard-section').classList.remove('hidden');
                     document.getElementById('dr-name').innerText = data.user.name;
-                    document.getElementById('dr-role').innerText = data.user.role;
+                    document.getElementById('dr-role').innerText = userRole;
                     document.getElementById('dr-structure').innerText = data.user.poly_name;
                     document.getElementById('auth-token').value = code;
+
+                    // Afficher le bon formulaire de stats selon le rôle
+                    if(userRole === 'Chef Hémodialyse') document.getElementById('stat-hemodialyse').classList.remove('hidden');
+                    else if(userRole === 'Chef Urgence') document.getElementById('stat-urgence').classList.remove('hidden');
+                    else if(userRole === 'Chef Parc Auto') document.getElementById('stat-parc').classList.remove('hidden');
+                    else document.getElementById('stat-general').classList.remove('hidden');
+
                 } else alert("Code invalide !");
             } catch (e) { alert("Erreur réseau"); }
         }
 
-        document.getElementById('main-form').onsubmit = async (e) => {
+        function switchTab(tab) {
+            document.getElementById('tab-activity').className = tab === 'activity' ? 'flex-1 pb-3 tab-active transition-all' : 'flex-1 pb-3 tab-inactive transition-all';
+            document.getElementById('tab-stats').className = tab === 'stats' ? 'flex-1 pb-3 tab-active transition-all' : 'flex-1 pb-3 tab-inactive transition-all';
+            
+            document.getElementById('form-activity').classList.toggle('hidden', tab !== 'activity');
+            document.getElementById('form-stats').classList.toggle('hidden', tab !== 'stats');
+        }
+
+        // Soumission Activité (Ancien système)
+        async function submitActivity(e) {
             e.preventDefault();
-            const btn = e.target.querySelector('button'); btn.disabled = true; btn.innerText = "Envoi...";
             const body = Object.fromEntries(new FormData(e.target));
             body.code = document.getElementById('auth-token').value;
             const res = await fetch(API_URL + '/api/report', { method: 'POST', body: JSON.stringify(body) });
-            if(res.ok) { alert("Enregistré avec succès !"); location.reload(); }
-            else { alert("Erreur."); btn.disabled = false; btn.innerText = "Enregistrer"; }
-        };
+            if(res.ok) alert("Activité enregistrée avec succès !");
+            else alert("Erreur.");
+        }
+
+        // Soumission Statistiques Quotidiennes (Nouveau système)
+        async function submitStats(e) {
+            e.preventDefault();
+            const formData = new FormData(e.target);
+            const rawData = Object.fromEntries(formData);
+            
+            // Nettoyer les données (enlever les champs des sections cachées)
+            const cleanData = {};
+            for (const [key, value] of Object.entries(rawData)) {
+                if(value !== "") cleanData[key] = value;
+            }
+
+            const payload = {
+                code: document.getElementById('auth-token').value,
+                service_type: userRole,
+                data: cleanData
+            };
+
+            const res = await fetch(API_URL + '/api/stats', { method: 'POST', body: JSON.stringify(payload) });
+            if(res.ok) alert("Statistiques enregistrées avec succès !");
+            else alert("Erreur lors de l'enregistrement des statistiques.");
+        }
     </script>
 </body>
 </html>
