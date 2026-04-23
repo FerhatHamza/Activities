@@ -104,7 +104,54 @@
                     <h4 class="font-bold border-b pb-2 text-orange-800">Statistiques Parc Auto</h4>
                     <div id="parc-grid"></div>
                 </div>
+                
+                <div id="stat-it" class="hidden bg-white p-6 rounded-3xl shadow-sm space-y-4">
+                    <h4 class="font-bold border-b pb-2 text-teal-800">Rapport Service Informatique (IT)</h4>
+                    
+                    <div>
+                        <label class="text-xs font-bold text-gray-500">Polyclinique inspectée</label>
+                        <select name="it_poly_nom" id="it-poly-select" class="w-full p-3 bg-gray-50 rounded-xl mt-1 outline-none font-bold text-sm border focus:ring-2 focus:ring-teal-200">
+                            <option value="">Chargement...</option>
+                        </select>
+                    </div>
 
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="text-xs font-bold text-gray-500">Connexion au réseau</label>
+                            <select name="it_connexion" class="w-full p-3 bg-gray-50 rounded-xl mt-1 border">
+                                <option value="Totale">Totale</option>
+                                <option value="Partielle">Partielle</option>
+                                <option value="Non connectée">Non connectée</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-500">État du réseau</label>
+                            <select name="it_etat" class="w-full p-3 bg-gray-50 rounded-xl mt-1 border">
+                                <option value="En service">En service</option>
+                                <option value="Hors service">Hors service</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-500">Nombre de prises RJ45</label>
+                            <input type="number" name="it_rj45" class="w-full p-3 bg-gray-50 rounded-xl mt-1 border" value="0">
+                        </div>
+                        <div>
+                            <label class="text-xs font-bold text-gray-500">Nombre de Commutateurs</label>
+                            <input type="number" name="it_switch" class="w-full p-3 bg-gray-50 rounded-xl mt-1 border" value="0">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="text-xs font-bold text-gray-500">Mesures prises</label>
+                        <textarea name="it_mesures" rows="2" class="w-full p-3 bg-gray-50 rounded-xl mt-1 border resize-none"></textarea>
+                    </div>
+                    <div>
+                        <label class="text-xs font-bold text-gray-500">Remarque</label>
+                        <textarea name="it_remarques" rows="2" class="w-full p-3 bg-gray-50 rounded-xl mt-1 border resize-none"></textarea>
+                    </div>
+                </div>
+
+                
                 <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white py-4 rounded-2xl font-bold shadow-xl">Enregistrer les Statistiques</button>
             </form>
         </section>
@@ -175,6 +222,17 @@
             
             document.getElementById('form-activity').classList.toggle('hidden', tab !== 'activity');
             document.getElementById('form-stats').classList.toggle('hidden', tab !== 'stats');
+        }
+        
+        // Nouvelle fonction pour charger la liste des polycliniques depuis l'API
+        async function loadPolyclinicsForIT() {
+            try {
+                const res = await fetch(API_URL + '/api/admin/poly');
+                const polys = await res.json();
+                document.getElementById('it-poly-select').innerHTML = polys.map(p => `<option value="${p.nom}">${p.nom}</option>`).join('');
+            } catch (e) {
+                document.getElementById('it-poly-select').innerHTML = `<option value="">Erreur de chargement des structures</option>`;
+            }
         }
 
         // Soumission Activité (Ancien système)
