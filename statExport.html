@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPSP Berriane – Statistiques 2025 + Export PDF</title>
+    <!-- Tajawal font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'tajawal': ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        headerblue: '#003366',
+                        rowblue: '#e6f0ff',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- jsPDF + html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="font-tajawal bg-gray-50 text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-headerblue text-white py-4 shadow-lg flex items-center justify-between px-4 md:px-8">
+        <div class="text-center flex-1">
+            <h1 class="text-2xl md:text-3xl font-bold">EPSP de Berriane – Année 2025</h1>
+            <p class="text-sm opacity-80">République Algérienne Démocratique et Populaire – Ministère de la Santé</p>
+        </div>
+        <!-- Export PDF Button -->
+        <button id="exportPdfBtn" class="ml-4 bg-white text-headerblue font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-100 transition flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Export PDF
+        </button>
+    </header>
+
+    <!-- Tabs Navigation -->
+    <nav class="bg-white shadow-md sticky top-0 z-10">
+        <div class="container mx-auto px-4">
+            <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="tabMenu">
+                <li class="mr-2">
+                    <button class="tab-link inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-headerblue hover:border-headerblue active" data-tab="tab-infrastructures">
+                        🏥 Infrastructures
+                    </button>
+                </li>
+                <li class="mr-2">
+                    <button class="tab-link inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-headerblue hover:border-headerblue" data-tab="tab-ressources">
+                        👥 Ressources Humaines
+                    </button>
+                </li>
+                <li class="mr-2">
+                    <button class="tab-link inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-headerblue hover:border-headerblue" data-tab="tab-activites">
+                        📈 Activités
+                    </button>
+                </li>
+                <li class="mr-2">
+                    <button class="tab-link inline-block p-4 border-b-2 border-transparent rounded-t-lg hover:text-headerblue hover:border-headerblue" data-tab="tab-equipements">
+                        ⚙️ Équipements
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content (captured as PDF) -->
+    <main class="container mx-auto px-4 py-8" id="mainContent">
+        <!-- INFRASTRUCTURES TAB -->
+        <section id="tab-infrastructures" class="tab-content block">
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-2xl font-bold text-headerblue mb-6 border-b pb-2">Polycliniques et Centres de santé</h3>
+                <!-- Polycliniques -->
+                <h4 class="font-semibold text-lg mb-2">Polycliniques (Canevas n°2)</h4>
+                <div class="overflow-x-auto mb-6">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-headerblue text-white">
+                            <tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Polyclinique</th><th class="py-2 px-4 border">Lits Maternité</th><th class="py-2 px-4 border">Lits Urgence</th><th class="py-2 px-4 border">Lits Hémodialyse</th><th class="py-2 px-4 border">Lits Fonctionnels</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>Polyclinique 05 Juillet BALLOUH</td><td>0</td><td>11</td><td>12</td><td>23</td></tr>
+                            <tr><td></td><td>Polyclinique BAILICHE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td></td><td>Polyclinique VIEUX K'SAR</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr class="font-bold"><td colspan="2">Total</td><td>0</td><td>11</td><td>12</td><td>23</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Centres de santé -->
+                <h4 class="font-semibold text-lg mb-2">Centres de santé (Canevas n°3)</h4>
+                <div class="overflow-x-auto mb-6">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Centre de santé</th><th class="py-2 px-4 border">Lits</th></tr></thead>
+                        <tbody>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>Centre de santé ELMADAHG</td><td>0</td></tr>
+                            <tr><td></td><td>Centre de santé BABA SAAD</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td></td><td>Centre de santé CHEIKH AMEUR</td><td>0</td></tr>
+                            <tr><td></td><td>Centre de santé BELLE VUE</td><td>0</td></tr>
+                            <tr class="font-bold"><td colspan="2">Total</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Autres infrastructures -->
+                <h4 class="font-semibold text-lg mb-2">Autres infrastructures (Canevas n°4)</h4>
+                <div class="overflow-x-auto mb-6">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Type de structure</th><th class="py-2 px-4 border">Fonctionnel</th></tr></thead>
+                        <tbody>
+                            <tr class="bg-rowblue"><td>UDS</td><td>1</td></tr>
+                            <tr><td>UCTMR</td><td>1</td></tr>
+                            <tr class="bg-rowblue"><td>SEMEP</td><td>1</td></tr>
+                            <tr><td>MATERNITE</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Maison de diabétique</td><td>0</td></tr>
+                            <tr><td>CIST</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!-- Infrastructures réceptionnées -->
+                <h4 class="font-semibold text-lg mb-2">Infrastructures réceptionnées / mises en service (Canevas n°5)</h4>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Structure</th><th class="py-2 px-4 border">Lits Mat.</th><th class="py-2 px-4 border">Lits Urg.</th><th class="py-2 px-4 border">Lits Hém.</th><th class="py-2 px-4 border">Date</th></tr></thead>
+                        <tbody>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>Polyclinique BALLOUH</td><td>0</td><td>11</td><td>/</td><td>1998</td></tr>
+                            <tr><td></td><td>P/Bailiche Mazouz</td><td>/</td><td>/</td><td>12</td><td>2000</td></tr>
+                            <tr class="bg-rowblue"><td></td><td>P/Vieux K'sar</td><td>/</td><td>/</td><td>/</td><td>1988</td></tr>
+                            <tr><td></td><td>Salle de soins Baba Saad</td><td>/</td><td>/</td><td>/</td><td>1958</td></tr>
+                            <tr class="bg-rowblue"><td></td><td>Salle de soins Elmadagh</td><td>/</td><td>/</td><td>/</td><td>1989</td></tr>
+                            <tr><td></td><td>Salle de soins Chiekh Ameur</td><td>/</td><td>/</td><td>/</td><td>1999</td></tr>
+                            <tr class="bg-rowblue"><td></td><td>Salle de soins Belle Vue</td><td>/</td><td>/</td><td>/</td><td>2006</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESSOURCES HUMAINES TAB -->
+        <section id="tab-ressources" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-2xl font-bold text-headerblue mb-6 border-b pb-2">Personnel médical général</h3>
+                <div class="overflow-x-auto mb-8">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Type de personnel</th><th class="py-2 px-4 border">H</th><th class="py-2 px-4 border">F</th><th class="py-2 px-4 border">TOTAL</th></tr></thead>
+                        <tbody>
+                            <tr class="bg-rowblue"><td>Médecins généralistes</td><td>6</td><td>19</td><td>25</td></tr>
+                            <tr><td>Chirurgiens dentistes</td><td>3</td><td>7</td><td>10</td></tr>
+                            <tr class="bg-rowblue"><td>Pharmaciens</td><td>0</td><td>2</td><td>2</td></tr>
+                            <tr class="font-bold"><td>Total</td><td>9</td><td>28</td><td>37</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 class="text-2xl font-bold text-headerblue mb-6 border-b pb-2">Personnel paramédical (effectifs non nuls)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <!-- Infirmiers diplômés d'État -->
+                    <div>
+                        <h4 class="font-semibold text-lg mb-2">Infirmiers diplômés d'État</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Filière</th><th class="py-2 px-4 border">H</th><th class="py-2 px-4 border">F</th><th class="py-2 px-4 border">Total</th></tr></thead>
+                                <tbody>
+                                    <tr class="bg-rowblue"><td>Kinésithérapie</td><td>0</td><td>1</td><td>1</td></tr>
+                                    <tr><td>Sages femmes</td><td>0</td><td>5</td><td>5</td></tr>
+                                    <tr class="bg-rowblue"><td>Soins infirmiers généraux</td><td>11</td><td>6</td><td>17</td></tr>
+                                    <tr><td>Laborantin</td><td>3</td><td>3</td><td>6</td></tr>
+                                    <tr class="bg-rowblue"><td>Manipulateur en radiologie</td><td>5</td><td>3</td><td>8</td></tr>
+                                    <tr><td>Épidémiologie</td><td>2</td><td>3</td><td>5</td></tr>
+                                    <tr class="bg-rowblue"><td>Psychologue clinicienne</td><td>0</td><td>5</td><td>5</td></tr>
+                                    <tr class="font-bold"><td>TOTAL</td><td>21</td><td>26</td><td>47</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- Aides paramédicaux -->
+                    <div>
+                        <h4 class="font-semibold text-lg mb-2">Aides paramédicaux</h4>
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full bg-white border border-gray-200">
+                                <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Filière</th><th class="py-2 px-4 border">H</th><th class="py-2 px-4 border">F</th><th class="py-2 px-4 border">Total</th></tr></thead>
+                                <tbody>
+                                    <tr class="bg-rowblue"><td>Soins en puériculture</td><td>0</td><td>2</td><td>2</td></tr>
+                                    <tr><td>Soins infirmiers généraux</td><td>55</td><td>42</td><td>97</td></tr>
+                                    <tr class="bg-rowblue"><td>Autres</td><td>4</td><td>1</td><td>5</td></tr>
+                                    <tr class="font-bold"><td>TOTAL</td><td>59</td><td>45</td><td>104</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <canvas id="personnelChart" height="100"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACTIVITÉS TAB -->
+        <section id="tab-activites" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-2xl font-bold text-headerblue mb-6 border-b pb-2">Consultations</h3>
+                <div class="overflow-x-auto mb-6">
+                    <table class="min-w-full bg-white border border-gray-200 text-sm">
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-2 border">Structure</th><th class="py-2 px-2 border">Urgence</th><th class="py-2 px-2 border">Méd. Gén.</th><th class="py-2 px-2 border">Spécialisées</th></tr></thead>
+                        <tbody>
+                            <tr class="bg-rowblue"><td>POLYCLINIQUE 05 JUILLET</td><td>34 688</td><td>0</td><td>0</td></tr>
+                            <tr><td>SALLE DE SOINS EL CHIEKH AMEUR</td><td>0</td><td>4 225</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>SALLE DE SOINS BABA SAAD</td><td>0</td><td>2 408</td><td>0</td></tr>
+                            <tr><td>SALLE DE SOINS ELMADAGH</td><td>0</td><td>4 015</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>POLYCLINIQUE BAILICHE MAZOUZ</td><td>0</td><td>6 474</td><td>0</td></tr>
+                            <tr><td>POLYCLINIQUE VIEUX K'SAR</td><td>0</td><td>6 614</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>SALLE DE SOINS BELLE VUE</td><td>0</td><td>1 417</td><td>0</td></tr>
+                            <tr><td>UDS ABOU ELYAKADANE</td><td>0</td><td>3 786</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>UCTMR</td><td>0</td><td>4</td><td>0</td></tr>
+                            <tr class="font-bold"><td>TOTAL</td><td>34 688</td><td>28 943</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="w-full md:w-1/2 mx-auto">
+                    <canvas id="consultChart"></canvas>
+                </div>
+            </div>
+            <!-- Other activities cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <h4 class="font-bold text-headerblue mb-2">Services d'urgence</h4>
+                    <table class="w-full text-sm border">
+                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Lits</th><th class="p-1">Consult.</th><th class="p-1">Obs.</th><th class="p-1">Évac.</th></tr></thead>
+                        <tbody><tr class="bg-rowblue"><td>11</td><td>34 688</td><td>3 168</td><td>572</td></tr></tbody>
+                    </table>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <h4 class="font-bold text-headerblue mb-2">Laboratoire</h4>
+                    <table class="w-full text-sm border">
+                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Bioch.</th><th class="p-1">Hémobio.</th><th class="p-1">Microbio.</th><th class="p-1">Immuno.</th></tr></thead>
+                        <tbody><tr class="bg-rowblue"><td>40 485</td><td>67 436</td><td>130</td><td>5 975</td></tr></tbody>
+                    </table>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <h4 class="font-bold text-headerblue mb-2">Radiologie & Explorations</h4>
+                    <table class="w-full text-sm border">
+                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Actes Radio</th><th class="p-1">Échogr.</th><th class="p-1">ECG</th></tr></thead>
+                        <tbody><tr class="bg-rowblue"><td>8 006</td><td>0</td><td>454</td></tr></tbody>
+                    </table>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <h4 class="font-bold text-headerblue mb-2">Stomatologie</h4>
+                    <table class="w-full text-sm border">
+                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Fauteuils</th><th class="p-1">Cons. stom.</th><th class="p-1">Soins</th><th class="p-1">Extract.</th><th class="p-1">Proth.</th></tr></thead>
+                        <tbody><tr class="bg-rowblue"><td>6</td><td>1 527</td><td>616</td><td>3 004</td><td>0</td></tr></tbody>
+                    </table>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <h4 class="font-bold text-headerblue mb-2">Hémodialyse</h4>
+                    <table class="w-full text-sm border">
+                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Lits</th><th class="p-1">Reins fct.</th><th class="p-1">Malades</th><th class="p-1">Séances</th></tr></thead>
+                        <tbody><tr class="bg-rowblue"><td>12</td><td>23</td><td>32</td><td>4 847</td></tr></tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ÉQUIPEMENTS TAB -->
+        <section id="tab-equipements" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-2xl font-bold text-headerblue mb-4">Inventaire des appareils médicaux</h3>
+                <input type="text" id="equipmentSearch" placeholder="Rechercher un appareil..." class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-headerblue">
+                <div class="overflow-x-auto max-h-96 overflow-y-auto border border-gray-200 rounded-lg">
+                    <table class="min-w-full bg-white text-sm" id="equipmentTable">
+                        <thead class="bg-headerblue text-white sticky top-0">
+                            <tr><th class="py-2 px-4 border">N°</th><th class="py-2 px-4 border">Type d'appareil</th><th class="py-2 px-4 border">Marche</th><th class="py-2 px-4 border">En panne</th></tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- Parc automobile -->
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-2xl font-bold text-headerblue mb-4">Parc automobile</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Type de véhicule</th><th class="py-2 px-4 border">En marche</th><th class="py-2 px-4 border">En panne</th></tr></thead>
+                        <tbody>
+                            <tr class="bg-rowblue"><td>Ambulances</td><td>4</td><td>5</td></tr>
+                            <tr><td>Véhicules de liaison</td><td>2</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Camions</td><td>1</td><td>0</td></tr>
+                            <tr><td>Bus mini van (FAW)</td><td>0</td><td>1</td></tr>
+                            <tr class="bg-rowblue"><td>Clino-Mobiles</td><td>0</td><td>0</td></tr>
+                            <tr><td>Véhicules de C.T.S</td><td>0</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Camionnette (Pick up)</td><td>0</td><td>0</td></tr>
+                            <tr><td>Citroën fourgon C 25</td><td>0</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-headerblue text-white text-center py-4 text-sm">
+        EPSP Berriane – Sous-direction des services de santé – Bureau d’informatique – 2025
+    </footer>
+
+    <script>
+        // Tab functionality
+        document.querySelectorAll('.tab-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                document.querySelectorAll('.tab-link').forEach(l => l.classList.remove('text-headerblue', 'border-headerblue', 'active'));
+                document.querySelectorAll('.tab-content').forEach(tc => tc.classList.add('hidden'));
+                this.classList.add('text-headerblue', 'border-headerblue', 'active');
+                document.getElementById(this.dataset.tab).classList.remove('hidden');
+            });
+        });
+        document.querySelector('.tab-link[data-tab="tab-infrastructures"]').classList.add('text-headerblue', 'border-headerblue', 'active');
+
+        // Equipment data and filtering (only non-zero)
+        const equipmentData = [
+            { no:1, name:"Appareil de Radiographie Mobile", marche:0, panne:0 },
+            { no:2, name:"Appareil de radiographie mobile avec amplificateur de brillance", marche:0, panne:0 },
+            { no:3, name:"Appareil de radiographie fixe avec table télécommandée (grande salle)", marche:0, panne:0 },
+            { no:4, name:"Appareil de radiographie fixe avec table non télécommandée (grande salle)", marche:3, panne:0 },
+            { no:5, name:"Angiographie ophtalmologique", marche:0, panne:0 },
+            { no:6, name:"Appareil de radiographie spécialisé - Mamographe", marche:0, panne:0 },
+            { no:7, name:"Appareil de radiographie spécialisé - Craniographe", marche:0, panne:0 },
+            { no:8, name:"Appareil de radiographie spécialisé - Urologique", marche:0, panne:0 },
+            { no:9, name:"Appareil de radiographie spécialisé - Pulmonaire", marche:0, panne:0 },
+            { no:10, name:"Appareil de radiographie spécialisé - Dentaire", marche:0, panne:0 },
+            { no:11, name:"Échographe multi-disciplinaire", marche:0, panne:0 },
+            { no:12, name:"Échocardiographe", marche:2, panne:0 },
+            { no:13, name:"Échocardiographe - portatif", marche:0, panne:0 },
+            { no:14, name:"Développeuse de films - automatique", marche:0, panne:0 },
+            { no:15, name:"Développeuse de films - manuelle", marche:3, panne:0 },
+            { no:16, name:"Électroencéphalographie 16 plumes", marche:0, panne:0 },
+            { no:17, name:"Électroencéphalographie 8 plumes", marche:0, panne:0 },
+            { no:18, name:"Électromyographe (E.M.G)", marche:0, panne:0 },
+            { no:19, name:"Électrocardiogramme (E.C.G) - 6 Pistes", marche:0, panne:0 },
+            { no:20, name:"Électrocardiogramme (E.C.G) - 3 Pistes", marche:5, panne:0 },
+            { no:21, name:"Électrocardiogramme (E.C.G) - 1 Piste", marche:0, panne:0 },
+            { no:22, name:"Holter (Lecteur enregistreur)", marche:1, panne:0 },
+            { no:23, name:"Tensiomètre automatique", marche:0, panne:0 },
+            { no:24, name:"Spiromètre", marche:0, panne:0 },
+            { no:25, name:"Ensemble d'analyse de la fonction respiratoire", marche:0, panne:0 },
+            { no:26, name:"Cabine audiométrique", marche:0, panne:0 },
+            { no:27, name:"Audiomètre clinique", marche:0, panne:0 },
+            { no:28, name:"Audiomètre diagnostic", marche:0, panne:0 },
+            { no:29, name:"Audiomètre infantile", marche:0, panne:0 },
+            { no:30, name:"Impédancemètre", marche:0, panne:0 },
+            { no:31, name:"Ophtalmomètre", marche:0, panne:0 },
+            { no:32, name:"Biomicroscope occulaire / Lampe de fente", marche:0, panne:0 },
+            { no:33, name:"Réfracteur", marche:0, panne:0 },
+            { no:34, name:"Focomètre", marche:0, panne:0 },
+            { no:35, name:"Périmètre automatique", marche:0, panne:0 },
+            { no:36, name:"Ophtalmoscope électrique", marche:0, panne:0 },
+            { no:37, name:"Tonomètre de shiotz", marche:0, panne:0 },
+            { no:38, name:"Tonomètre à applanation", marche:0, panne:0 },
+            { no:39, name:"Valise de verre d'essai", marche:0, panne:0 },
+            { no:40, name:"Monture de verre d'essai pour adultes", marche:0, panne:0 },
+            { no:41, name:"Échelle d'acuité visuelle (L+) et (L-II)", marche:8, panne:0 },
+            { no:42, name:"Verre à trois (03) miroirs", marche:0, panne:0 },
+            { no:43, name:"Verre à un (01) miroir", marche:0, panne:0 },
+            { no:44, name:"Fibroscope œsogastroduodénal pour adultes", marche:0, panne:0 },
+            { no:45, name:"Fibroscope œsogastroduodénal pour enfants", marche:0, panne:0 },
+            { no:46, name:"Fibro-sigmoïdoscope pour adultes", marche:0, panne:0 },
+            { no:47, name:"Fibro-sigmoïdoscope pour enfants", marche:0, panne:0 },
+            { no:48, name:"Fibroscope nasale", marche:0, panne:0 },
+            { no:49, name:"Fibro-bronchoscope pour adultes", marche:0, panne:0 },
+            { no:50, name:"Fibro-bronchoscope pour enfants", marche:0, panne:0 },
+            { no:51, name:"Hystéroscope/Salpingographe", marche:0, panne:0 },
+            { no:52, name:"Cœlioscope", marche:0, panne:0 },
+            { no:53, name:"Colposcope", marche:0, panne:0 },
+            { no:54, name:"Pince à biopsie", marche:0, panne:0 },
+            { no:55, name:"Pince à extraction de corps étrangers", marche:0, panne:0 },
+            { no:56, name:"Balance d'analyse / Précision", marche:0, panne:0 },
+            { no:57, name:"Balance roberval avec poids", marche:0, panne:0 },
+            { no:58, name:"Bain marie universel", marche:1, panne:0 },
+            { no:59, name:"Bain marie de sérologie", marche:0, panne:0 },
+            { no:60, name:"Incubateur de tissus", marche:0, panne:0 },
+            { no:61, name:"Enceinte anaérobie", marche:0, panne:0 },
+            { no:62, name:"Étuve à paraffine", marche:0, panne:0 },
+            { no:63, name:"Étuve universelle", marche:0, panne:0 },
+            { no:64, name:"Étuve bactériologique 57°", marche:0, panne:0 },
+            { no:65, name:"Étuve bactériologique 37°", marche:3, panne:0 },
+            { no:66, name:"Étuve de séchage", marche:0, panne:0 },
+            { no:67, name:"Centrifugeuse de paillasse", marche:7, panne:0 },
+            { no:68, name:"Centrifugeuse réfrigérée", marche:0, panne:0 },
+            { no:69, name:"Centrifugeuse à hématocrite", marche:0, panne:0 },
+            { no:70, name:"Micro-centrifugeuse", marche:0, panne:0 },
+            { no:71, name:"Microscope binoculaire à lumière transmise", marche:4, panne:0 },
+            { no:72, name:"Microscope binoculaire à lumière polarisée", marche:0, panne:0 },
+            { no:73, name:"Microscope binoculaire à contraste de phase", marche:0, panne:0 },
+            { no:74, name:"Microscope à plusieurs têtes", marche:0, panne:0 },
+            { no:75, name:"Microscope binoculaire photonique", marche:0, panne:0 },
+            { no:76, name:"Microscope binoculaire fluoresconique", marche:0, panne:0 },
+            { no:77, name:"Micromètre pour microscopes / réticules gradués", marche:0, panne:0 },
+            { no:78, name:"Filtre de polarisation pour microscopes", marche:0, panne:0 },
+            { no:79, name:"Colorimètre / Coloration des lames", marche:0, panne:0 },
+            { no:80, name:"Lyophilisateur", marche:0, panne:0 },
+            { no:81, name:"Dessicateur", marche:0, panne:0 },
+            { no:82, name:"Analyseur de métabolites (1 à 3 paramètres)", marche:0, panne:0 },
+            { no:83, name:"Analyseur d'ions (photomètre à flamme)", marche:0, panne:0 },
+            { no:84, name:"pH-Mètre", marche:0, panne:0 },
+            { no:85, name:"Hémoglobinomètre", marche:0, panne:0 },
+            { no:86, name:"Co-Oxymètre", marche:0, panne:0 },
+            { no:87, name:"Appareil à Élysa", marche:0, panne:0 },
+            { no:88, name:"Spectrophotomètre", marche:6, panne:0 },
+            { no:89, name:"Chromatographie liquide", marche:0, panne:0 },
+            { no:90, name:"Spectrofluorimètre", marche:0, panne:0 },
+            { no:91, name:"Fluorimètre", marche:0, panne:0 },
+            { no:92, name:"Cuve générateur pour électrophorèse", marche:0, panne:0 },
+            { no:93, name:"Densitomètre pour électrophorèse", marche:0, panne:0 },
+            { no:94, name:"Automate de préparation / Distribution d'échantillons réactifs", marche:6, panne:2 },
+            { no:95, name:"Dilutateur", marche:0, panne:0 },
+            { no:96, name:"Agitateur de Kahn", marche:0, panne:0 },
+            { no:97, name:"Agitateur de Kline", marche:0, panne:0 },
+            { no:98, name:"Agitateur de vortex", marche:0, panne:0 },
+            { no:99, name:"Agitateur de flacons", marche:0, panne:0 },
+            { no:100, name:"Pompe péristaltique de labo", marche:0, panne:0 },
+            { no:101, name:"Dialyseur de laboratoire", marche:0, panne:0 },
+            { no:102, name:"Compteur d'échantillons (gamma)", marche:0, panne:0 },
+            { no:103, name:"Compteur d'échantillons (béta)", marche:0, panne:0 },
+            { no:104, name:"Analyseur par polarisation de fluorescence", marche:0, panne:0 },
+            { no:105, name:"Trombolastographe", marche:0, panne:0 },
+            { no:106, name:"Coagulomètre", marche:0, panne:0 },
+            { no:107, name:"Agrégomètre", marche:0, panne:0 },
+            { no:108, name:"Compte globules 16 touches", marche:0, panne:0 },
+            { no:109, name:"Compte globules à 8 touches", marche:0, panne:0 },
+            { no:110, name:"Compte globules à 5 touches", marche:0, panne:0 },
+            { no:111, name:"Compte globules à 3 touches", marche:0, panne:0 },
+            { no:112, name:"Compteur de colonie", marche:0, panne:0 },
+            { no:113, name:"Automate pour antibiogramme / identification", marche:0, panne:0 },
+            { no:114, name:"Osmomètre", marche:0, panne:0 },
+            { no:115, name:"Rhésuscope", marche:0, panne:0 },
+            { no:116, name:"Trompe à vide", marche:0, panne:0 },
+            { no:117, name:"Autoclave de laboratoire", marche:0, panne:0 },
+            { no:118, name:"Pompe à héparine", marche:0, panne:0 },
+            { no:119, name:"Lave pipettes", marche:0, panne:0 },
+            { no:120, name:"Sécheuse automatique de verre", marche:0, panne:0 },
+            { no:121, name:"Cellule de Benker", marche:0, panne:0 },
+            { no:122, name:"Plaque chauffante", marche:0, panne:0 },
+            { no:123, name:"Bec Bunsen", marche:0, panne:0 },
+            { no:124, name:"Minuterie", marche:0, panne:0 },
+            { no:125, name:"Chronomètre", marche:0, panne:0 },
+            { no:126, name:"Congélateur -80°C", marche:0, panne:0 },
+            { no:127, name:"Congélateur -70°C", marche:0, panne:0 },
+            { no:128, name:"Congélateur à azote liquide -170°C", marche:0, panne:0 },
+            { no:129, name:"Appareil d'anesthésie", marche:0, panne:0 }
+        ];
+
+        function renderEquipmentTable(filterText = '') {
+            const tbody = document.querySelector('#equipmentTable tbody');
+            tbody.innerHTML = '';
+            const filter = filterText.toLowerCase();
+            const filtered = equipmentData.filter(item => {
+                const nameMatch = item.name.toLowerCase().includes(filter);
+                const noMatch = item.no.toString().includes(filter);
+                return (nameMatch || noMatch) && (item.marche > 0 || item.panne > 0);
+            });
+            filtered.forEach((item, index) => {
+                const rowClass = index % 2 === 0 ? 'bg-rowblue' : '';
+                const row = `<tr class="${rowClass}">
+                    <td class="py-1 px-4 border">${item.no}</td>
+                    <td class="py-1 px-4 border">${item.name}</td>
+                    <td class="py-1 px-4 border text-center">${item.marche}</td>
+                    <td class="py-1 px-4 border text-center">${item.panne}</td>
+                </tr>`;
+                tbody.insertAdjacentHTML('beforeend', row);
+            });
+        }
+        renderEquipmentTable();
+        document.getElementById('equipmentSearch').addEventListener('input', e => renderEquipmentTable(e.target.value));
+
+        // Charts
+        window.addEventListener('DOMContentLoaded', () => {
+            const persCtx = document.getElementById('personnelChart');
+            if (persCtx) {
+                new Chart(persCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Méd. général', 'Dentistes', 'Pharmaciens', 'Infirmiers dipl.', 'Aides param.', 'Admin.', 'Techniques', 'Service'],
+                        datasets: [{ label: 'Effectif', data: [37, 10, 2, 47, 104, 42, 3, 78], backgroundColor: '#003366' }]
+                    },
+                    options: { responsive: true, plugins: { legend: { display: false } } }
+                });
+            }
+            const consultCtx = document.getElementById('consultChart');
+            if (consultCtx) {
+                new Chart(consultCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['05 Juillet (Urg)', 'Chiekh Ameur', 'Baba Saad', 'Elmadagh', 'Bailiche', 'Vieux Ksar', 'Belle Vue', 'UDS', 'UCTMR'],
+                        datasets: [
+                            { label: 'Urgence', data: [34688,0,0,0,0,0,0,0,0], backgroundColor: '#e74c3c' },
+                            { label: 'Méd. Générale', data: [0,4225,2408,4015,6474,6614,1417,3786,4], backgroundColor: '#3498db' }
+                        ]
+                    },
+                    options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true } } }
+                });
+            }
+        });
+
+        // ---------- PDF Export with jsPDF + html2canvas ----------
+        document.getElementById('exportPdfBtn').addEventListener('click', async () => {
+            const btn = document.getElementById('exportPdfBtn');
+            btn.disabled = true;
+            btn.innerText = 'Génération...';
+
+            // Capture the currently visible tab content (the whole main section)
+            const main = document.getElementById('mainContent');
+            // We need to capture only the visible tab, not hidden ones.
+            // We'll clone the visible tab content into a temporary container.
+            const visibleTab = document.querySelector('.tab-content:not(.hidden)');
+            if (!visibleTab) {
+                alert('Aucun contenu à exporter.');
+                btn.disabled = false;
+                btn.innerText = 'Export PDF';
+                return;
+            }
+            // Create a temporary div and set the same width as main content for proper rendering
+            const container = document.createElement('div');
+            container.style.width = main.offsetWidth + 'px';
+            container.style.padding = '20px';
+            container.style.fontFamily = 'Tajawal, sans-serif';
+            // Add a title similar to the header
+            const title = document.createElement('h2');
+            title.innerText = 'EPSP Berriane – Statistiques 2025';
+            title.style.color = '#003366';
+            title.style.marginBottom = '10px';
+            container.appendChild(title);
+            // Clone the visible tab content
+            const clone = visibleTab.cloneNode(true);
+            // Remove any hidden class/style from the clone and its children to ensure visibility in capture
+            clone.classList.remove('hidden');
+            clone.style.display = 'block';
+            clone.querySelectorAll('*').forEach(el => {
+                if (el.classList.contains('hidden')) el.classList.remove('hidden');
+            });
+            container.appendChild(clone);
+            document.body.appendChild(container);
+
+            try {
+                const canvas = await html2canvas(container, {
+                    scale: 2,
+                    useCORS: true,
+                    allowTaint: true,
+                    backgroundColor: '#ffffff'
+                });
+                const imgData = canvas.toDataURL('image/png');
+                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                const imgWidth = pdfWidth;
+                const imgHeight = canvas.height * imgWidth / canvas.width;
+                let heightLeft = imgHeight;
+                let position = 0;
+                pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pdfHeight;
+                while (heightLeft > 0) {
+                    position = heightLeft - imgHeight;
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pdfHeight;
+                }
+                pdf.save('EPSP_Berriane_2025.pdf');
+            } catch (error) {
+                console.error('PDF generation error:', error);
+                alert('Erreur lors de la génération du PDF.');
+            } finally {
+                document.body.removeChild(container);
+                btn.disabled = false;
+                btn.innerText = 'Export PDF';
+            }
+        });
+    </script>
+</body>
+</html>
