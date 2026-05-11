@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPSP Berriane 2025 – Présentation interactive</title>
+    <title>Bilan d'activité EPSP Berriane – 2025</title>
     <!-- Tajawal font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,30 +27,27 @@
     </script>
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
-    <!-- jsPDF + html2canvas -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
+        /* Center all table content */
+        .presentation-content td,
+        .presentation-content th {
+            text-align: center;
+            vertical-align: middle;
+        }
         .slide {
             transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
         }
     </style>
 </head>
 <body class="font-tajawal bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen flex flex-col items-center justify-center p-2">
-
     <!-- Main presentation container -->
-    <div class="relative w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden" style="height: 85vh; max-height: 900px;">
-        
-        <!-- Top bar with PDF export -->
-        <div class="absolute top-0 left-0 right-0 bg-headerblue text-white px-6 py-2 flex justify-between items-center z-20">
-            <span class="text-sm md:text-base font-medium">EPSP Berriane – Année 2025</span>
-            <button id="exportPdfBtn" class="bg-white text-headerblue font-semibold py-1 px-4 rounded-lg shadow hover:bg-gray-100 transition flex items-center gap-1 text-sm">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-                Rapport PDF
-            </button>
+    <div class="presentation-content relative w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden" style="height: 85vh; max-height: 900px;">
+        <!-- Top bar with title -->
+        <div class="absolute top-0 left-0 right-0 bg-headerblue text-white px-6 py-2 flex justify-center items-center z-20">
+            <span class="text-sm md:text-base font-medium">Bilan d’activité – EPSP Berriane – Année 2025</span>
         </div>
 
-        <!-- Slides wrapper (padding top for the bar) -->
+        <!-- Slides wrapper -->
         <div class="relative w-full h-full pt-12">
             <!-- Slide 0 : Titre -->
             <div class="slide absolute inset-0 flex flex-col items-center justify-center p-6 md:p-10 opacity-100 visible" id="slide-0">
@@ -58,13 +55,13 @@
                     <div class="text-headerblue mb-4">
                         <svg class="w-20 h-20 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.5 4.5 10 10 10s10-4.5 10-10V7l-10-5zm0 2.2l7 3.5v5.5c0 4-3.1 7.7-7 8.8-3.9-1.1-7-4.8-7-8.8V7.7l7-3.5z"/></svg>
                     </div>
-                    <h1 class="text-3xl md:text-5xl font-bold text-headerblue mb-2">Statistiques</h1>
-                    <h2 class="text-xl md:text-3xl font-light text-gray-600 mb-6">de l’Établissement Public de Santé de Proximité de Berriane</h2>
+                    <h1 class="text-3xl md:text-5xl font-bold text-headerblue mb-2">Bilan d’activité</h1>
+                    <h2 class="text-xl md:text-3xl font-light text-gray-600 mb-6">EPSP Berriane</h2>
                     <h3 class="text-lg md:text-2xl font-bold text-headerblue">Année 2025</h3>
                 </div>
             </div>
 
-            <!-- Slide 1 : Infrastructures Publiques (Polycliniques, Centres de santé) -->
+            <!-- Slide 1 : Infrastructures Publiques (Polycliniques & Centres) -->
             <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-1">
                 <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">🏥 Infrastructures Publiques – Polycliniques & Centres de santé</h3>
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm">
@@ -132,84 +129,104 @@
                 </div>
             </div>
 
-            <!-- Slide 3 : Ressources Humaines – Médical -->
+            <!-- Slide 3 : Personnel médical général + spécialistes -->
             <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-3">
-                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">👥 Personnel médical général</h3>
-                <table class="min-w-full bg-white border border-gray-200 text-sm">
-                    <thead class="bg-headerblue text-white"><tr><th class="py-1 px-4 border">Type de personnel</th><th class="py-1 px-4 border">H</th><th class="py-1 px-4 border">F</th><th class="py-1 px-4 border">Total</th></tr></thead>
-                    <tbody>
-                        <tr class="bg-rowblue"><td>Médecins généralistes</td><td>6</td><td>19</td><td>25</td></tr>
-                        <tr><td>Chirurgiens dentistes</td><td>3</td><td>7</td><td>10</td></tr>
-                        <tr class="bg-rowblue"><td>Pharmaciens</td><td>0</td><td>2</td><td>2</td></tr>
-                        <tr class="font-bold"><td>Total</td><td>9</td><td>28</td><td>37</td></tr>
-                    </tbody>
-                </table>
-                <p class="mt-4 text-red-600 font-medium">Médecins spécialistes (toutes spécialités) : Néant (0)</p>
-            </div>
-
-            <!-- Slide 4 : Personnel paramédical (non zero) -->
-            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-4">
-                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">👥 Personnel paramédical (effectifs > 0)</h3>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">👥 Personnel médical</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm">
                     <div>
-                        <h4 class="font-semibold text-lg text-headerblue">Infirmiers Diplômés d'État</h4>
+                        <h4 class="font-semibold text-lg text-headerblue">Médical général</h4>
                         <table class="min-w-full bg-white border border-gray-200">
-                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Filière</th><th class="py-1 px-2 border">H</th><th class="py-1 px-2 border">F</th><th class="py-1 px-2 border">Tot.</th></tr></thead>
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-4 border">Type</th><th class="py-1 px-4 border">H</th><th class="py-1 px-4 border">F</th><th class="py-1 px-4 border">Total</th></tr></thead>
                             <tbody>
-                                <tr class="bg-rowblue"><td>Kinésithérapie</td><td>0</td><td>1</td><td>1</td></tr>
-                                <tr><td>Sages femmes</td><td>0</td><td>5</td><td>5</td></tr>
-                                <tr class="bg-rowblue"><td>Soins infirmiers gén.</td><td>11</td><td>6</td><td>17</td></tr>
-                                <tr><td>Laborantin</td><td>3</td><td>3</td><td>6</td></tr>
-                                <tr class="bg-rowblue"><td>Manipulateur radio</td><td>5</td><td>3</td><td>8</td></tr>
-                                <tr><td>Épidémiologie</td><td>2</td><td>3</td><td>5</td></tr>
-                                <tr class="bg-rowblue"><td>Psychologue clinicienne</td><td>0</td><td>5</td><td>5</td></tr>
-                                <tr class="font-bold"><td>TOTAL IDE</td><td>21</td><td>26</td><td>47</td></tr>
+                                <tr class="bg-rowblue"><td>Médecins généralistes</td><td>6</td><td>19</td><td>25</td></tr>
+                                <tr><td>Chirurgiens dentistes</td><td>3</td><td>7</td><td>10</td></tr>
+                                <tr class="bg-rowblue"><td>Pharmaciens</td><td>0</td><td>2</td><td>2</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>9</td><td>28</td><td>37</td></tr>
                             </tbody>
                         </table>
                     </div>
                     <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Médecins spécialistes</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-4 border">Spécialité</th><th class="py-1 px-4 border">Effectif</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Médicales</td><td>0</td></tr>
+                                <tr><td>Chirurgicales</td><td>0</td></tr>
+                                <tr class="bg-rowblue"><td>Chirurgie dentaire</td><td>0</td></tr>
+                                <tr><td>Laboratoire</td><td>0</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 4 : Personnel paramédical (tous) -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-4">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">👥 Personnel paramédical</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Infirmiers Diplômés d’État (IDE)</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Filière</th><th class="py-1 px-2 border">H</th><th class="py-1 px-2 border">F</th><th class="py-1 px-2 border">Total</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Kinésithérapie</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr><td>Sages femmes</td><td>0</td><td>5</td><td>5</td></tr>
+                                <tr class="bg-rowblue"><td>Soins infirmiers généraux</td><td>11</td><td>6</td><td>17</td></tr>
+                                <tr><td>Laborantin</td><td>3</td><td>3</td><td>6</td></tr>
+                                <tr class="bg-rowblue"><td>Manipulateur en radiologie</td><td>5</td><td>3</td><td>8</td></tr>
+                                <tr><td>Épidémiologie</td><td>2</td><td>3</td><td>5</td></tr>
+                                <tr class="bg-rowblue"><td>Psychologue clinicienne</td><td>0</td><td>5</td><td>5</td></tr>
+                                <tr><td>Autres filières</td><td>0</td><td>0</td><td>0</td></tr>
+                                <tr class="font-bold"><td>Total IDE</td><td>21</td><td>26</td><td>47</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="mt-1 text-red-600 font-medium">Infirmiers Brevetés : 0 (néant)</p>
+                    </div>
+                    <div>
                         <h4 class="font-semibold text-lg text-headerblue">Aides Paramédicaux</h4>
                         <table class="min-w-full bg-white border border-gray-200">
-                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Filière</th><th class="py-1 px-2 border">H</th><th class="py-1 px-2 border">F</th><th class="py-1 px-2 border">Tot.</th></tr></thead>
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Filière</th><th class="py-1 px-2 border">H</th><th class="py-1 px-2 border">F</th><th class="py-1 px-2 border">Total</th></tr></thead>
                             <tbody>
-                                <tr class="bg-rowblue"><td>Soins puériculture</td><td>0</td><td>2</td><td>2</td></tr>
-                                <tr><td>Soins infirmiers gén.</td><td>55</td><td>42</td><td>97</td></tr>
+                                <tr class="bg-rowblue"><td>Soins en puériculture</td><td>0</td><td>2</td><td>2</td></tr>
+                                <tr><td>Soins infirmiers généraux</td><td>55</td><td>42</td><td>97</td></tr>
                                 <tr class="bg-rowblue"><td>Autres</td><td>4</td><td>1</td><td>5</td></tr>
-                                <tr class="font-bold"><td>TOTAL Aides</td><td>59</td><td>45</td><td>104</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>59</td><td>45</td><td>104</td></tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
                 <div class="mt-4 h-32 md:h-48">
-                    <canvas id="persChart1"></canvas>
+                    <canvas id="persChart"></canvas>
                 </div>
             </div>
 
-            <!-- Slide 5 : Personnel administratif, technique, service -->
+            <!-- Slide 5 : Personnel administratif, technique, de service -->
             <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-5">
                 <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">👥 Personnels administratif, technique et de service</h3>
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
                     <div>
-                        <h4 class="font-semibold text-headerblue">Administratif (extrait)</h4>
+                        <h4 class="font-semibold text-headerblue">Administratif</h4>
                         <table class="min-w-full bg-white border border-gray-200">
-                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-1">Grade</th><th class="py-1 px-1">H</th><th class="py-1 px-1">F</th><th class="py-1 px-1">Tot</th></tr></thead>
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-1">Grade/Fonction</th><th class="py-1 px-1">H</th><th class="py-1 px-1">F</th><th class="py-1 px-1">Tot</th></tr></thead>
                             <tbody>
                                 <tr class="bg-rowblue"><td>Administrateur principal</td><td>2</td><td>3</td><td>5</td></tr>
                                 <tr><td>Administrateur analyste</td><td>1</td><td>3</td><td>4</td></tr>
                                 <tr class="bg-rowblue"><td>Administrateur</td><td>5</td><td>2</td><td>7</td></tr>
                                 <tr><td>Aide administrateur</td><td>3</td><td>0</td><td>3</td></tr>
-                                <tr class="bg-rowblue"><td>Attaché d'admin. princ.</td><td>0</td><td>5</td><td>5</td></tr>
+                                <tr class="bg-rowblue"><td>Attaché d'admin. principal</td><td>0</td><td>5</td><td>5</td></tr>
                                 <tr><td>Attaché d'administration</td><td>1</td><td>1</td><td>2</td></tr>
                                 <tr class="bg-rowblue"><td>Agent d'administration</td><td>2</td><td>1</td><td>3</td></tr>
                                 <tr><td>Agent de bureau</td><td>0</td><td>2</td><td>2</td></tr>
                                 <tr class="bg-rowblue"><td>Secrétaire de direction</td><td>0</td><td>1</td><td>1</td></tr>
                                 <tr><td>Secrétaire</td><td>1</td><td>0</td><td>1</td></tr>
                                 <tr class="bg-rowblue"><td>Agent de saisie</td><td>0</td><td>1</td><td>1</td></tr>
-                                <tr><td>Comptable admin. princ.</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr><td>Comptable admin. principal</td><td>0</td><td>1</td><td>1</td></tr>
                                 <tr class="bg-rowblue"><td>Administrateur conseillé</td><td>1</td><td>0</td><td>1</td></tr>
-                                <tr><td>Assistant Archiviste Doc.</td><td>1</td><td>0</td><td>1</td></tr>
-                                <tr class="bg-rowblue"><td>Agent d'admin. princ.</td><td>4</td><td>1</td><td>5</td></tr>
-                                <tr class="font-bold"><td>TOTAL</td><td>21</td><td>21</td><td>42</td></tr>
+                                <tr><td>Assist. Archiviste Documental.</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>Agent d'admin. principal</td><td>4</td><td>1</td><td>5</td></tr>
+                                <tr><td>Autres (ASS, secrétaires princ.)</td><td>0</td><td>0</td><td>0</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>21</td><td>21</td><td>42</td></tr>
                             </tbody>
                         </table>
                     </div>
@@ -220,6 +237,7 @@
                             <tbody>
                                 <tr class="bg-rowblue"><td>Ingénieur d'état</td><td>1</td><td>0</td><td>1</td></tr>
                                 <tr><td>Adjoint technique</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr class="bg-rowblue"><td>Autres (ing., tech. sup., agent tech.)</td><td>0</td><td>0</td><td>0</td></tr>
                                 <tr class="font-bold"><td>Total</td><td>3</td><td>0</td><td>3</td></tr>
                             </tbody>
                         </table>
@@ -231,9 +249,9 @@
                             <tbody>
                                 <tr class="bg-rowblue"><td>OPHC</td><td>1</td><td>0</td><td>1</td></tr>
                                 <tr><td>OP1</td><td>2</td><td>0</td><td>2</td></tr>
-                                <tr class="bg-rowblue"><td>Cond. auto 1ère cat.</td><td>1</td><td>0</td><td>1</td></tr>
-                                <tr><td>Cond. auto 1er niv.</td><td>6</td><td>0</td><td>6</td></tr>
-                                <tr class="bg-rowblue"><td>Cond. auto 2ème niv.</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr class="bg-rowblue"><td>Conducteur auto 1ère cat.</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>Conducteur auto 1er niv.</td><td>6</td><td>0</td><td>6</td></tr>
+                                <tr class="bg-rowblue"><td>Conducteur auto 2ème niv.</td><td>2</td><td>0</td><td>2</td></tr>
                                 <tr><td>OP niveau 1</td><td>48</td><td>12</td><td>60</td></tr>
                                 <tr class="bg-rowblue"><td>OP niveau 3</td><td>2</td><td>0</td><td>2</td></tr>
                                 <tr><td>Agent de sécurité</td><td>3</td><td>0</td><td>3</td></tr>
@@ -250,18 +268,18 @@
                 <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">📈 Consultations</h3>
                 <div class="overflow-x-auto text-sm mb-4">
                     <table class="min-w-full bg-white border border-gray-200">
-                        <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Structure</th><th class="py-1 px-2 border">Urgences</th><th class="py-1 px-2 border">Méd. Générale</th><th class="py-1 px-2 border">Spécialisée</th></tr></thead>
+                        <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Structure</th><th class="py-1 px-2 border">Urgences</th><th class="py-1 px-2 border">Médecine Générale</th><th class="py-1 px-2 border">Spécialisée</th></tr></thead>
                         <tbody>
                             <tr class="bg-rowblue"><td>Poly. 05 Juillet</td><td>34 688</td><td>0</td><td>0</td></tr>
                             <tr><td>Salle Chiekh Ameur</td><td>0</td><td>4 225</td><td>0</td></tr>
                             <tr class="bg-rowblue"><td>Salle Baba Saad</td><td>0</td><td>2 408</td><td>0</td></tr>
                             <tr><td>Salle Elmadagh</td><td>0</td><td>4 015</td><td>0</td></tr>
-                            <tr class="bg-rowblue"><td>Poly. Bailiche</td><td>0</td><td>6 474</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Poly. Bailiche Mazouz</td><td>0</td><td>6 474</td><td>0</td></tr>
                             <tr><td>Poly. Vieux Ksar</td><td>0</td><td>6 614</td><td>0</td></tr>
                             <tr class="bg-rowblue"><td>Salle Belle Vue</td><td>0</td><td>1 417</td><td>0</td></tr>
                             <tr><td>UDS Abou Elyakadane</td><td>0</td><td>3 786</td><td>0</td></tr>
                             <tr class="bg-rowblue"><td>UCTMR</td><td>0</td><td>4</td><td>0</td></tr>
-                            <tr class="font-bold"><td>TOTAL</td><td>34 688</td><td>28 943</td><td>0</td></tr>
+                            <tr class="font-bold"><td>Total</td><td>34 688</td><td>28 943</td><td>0</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -270,56 +288,85 @@
                 </div>
             </div>
 
-            <!-- Slide 7 : Autres activités (Urgences, Labo, Radio, Stomato, Hémodialyse) -->
+            <!-- Slide 7 : Autres activités (Maternité, Urgences, Labo, Radio, Stomato, Hémodialyse) -->
             <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-7">
-                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">📈 Activités – Urgences, Laboratoire, Radiologie, Stomatologie, Hémodialyse</h3>
-                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">📈 Activités – Détail</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div class="bg-gray-50 p-3 rounded-lg shadow">
-                        <h4 class="font-bold text-headerblue">Maternité</h4><p>Néant (0)</p>
+                        <h4 class="font-bold text-headerblue">Maternité extra-hospitalière</h4>
+                        <p>Néant (0)</p>
                     </div>
                     <div class="bg-gray-50 p-3 rounded-lg shadow">
                         <h4 class="font-bold text-headerblue">Urgences</h4>
                         <p>Lits : 11 | Consult. : 34 688</p>
-                        <p>Obs. : 3 168 | Évac. : 572</p>
+                        <p>Mises en observation : 3 168 | Évacuations : 572</p>
                     </div>
                     <div class="bg-gray-50 p-3 rounded-lg shadow">
                         <h4 class="font-bold text-headerblue">Laboratoire</h4>
-                        <p>Bioch. : 40 485</p>
-                        <p>Hémobio. : 67 436</p>
-                        <p>Microbio. : 130 | Immuno. : 5 975</p>
+                        <table class="w-full mt-1 border text-xs">
+                            <thead class="bg-headerblue text-white"><tr><th>Labo</th><th>Bioch.</th><th>Hémobio.</th><th>Microbio.</th><th>Immuno.</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>05 Juillet</td><td>8 887</td><td>12 263</td><td>0</td><td>2 267</td></tr>
+                                <tr><td>Bailiche</td><td>12 786</td><td>20 954</td><td>116</td><td>2 078</td></tr>
+                                <tr class="bg-rowblue"><td>Vieux Ksar</td><td>18 812</td><td>34 219</td><td>14</td><td>1 630</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>40 485</td><td>67 436</td><td>130</td><td>5 975</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="bg-gray-50 p-3 rounded-lg shadow">
-                        <h4 class="font-bold text-headerblue">Radiologie</h4>
-                        <p>Actes radio : 8 006</p>
-                        <p>Échographies : 0</p>
-                        <p>ECG : 454</p>
+                        <h4 class="font-bold text-headerblue">Radiologie & Exploration</h4>
+                        <table class="w-full mt-1 border text-xs">
+                            <thead class="bg-headerblue text-white"><tr><th>Structure</th><th>Radio</th><th>Échog.</th><th>ECG</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>BALOUH</td><td>7 204</td><td>0</td><td>449</td></tr>
+                                <tr><td>Vieux Ksar</td><td>76</td><td>0</td><td>5</td></tr>
+                                <tr class="bg-rowblue"><td>Bailiche M.</td><td>726</td><td>0</td><td>0</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>8 006</td><td>0</td><td>454</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                     <div class="bg-gray-50 p-3 rounded-lg shadow">
                         <h4 class="font-bold text-headerblue">Stomatologie</h4>
-                        <p>Fauteuils : 6 | Consult. stom. : 1 527</p>
-                        <p>Soins : 616 | Extract. : 3 004</p>
+                        <table class="w-full mt-1 border text-xs">
+                            <thead class="bg-headerblue text-white"><tr><th>Structure</th><th>Faut. marche</th><th>Cons. stom.</th><th>Soins</th><th>Extract.</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Bailiche</td><td>1</td><td>317</td><td>159</td><td>690</td></tr>
+                                <tr><td>Vieux Ksar</td><td>1</td><td>464</td><td>191</td><td>889</td></tr>
+                                <tr class="bg-rowblue"><td>Baba Saad</td><td>1</td><td>67</td><td>27</td><td>129</td></tr>
+                                <tr><td>Chikh Ameur</td><td>1</td><td>217</td><td>211</td><td>557</td></tr>
+                                <tr class="bg-rowblue"><td>Haï Elmoud.</td><td>1</td><td>359</td><td>0</td><td>554</td></tr>
+                                <tr><td>Belle Vue</td><td>1</td><td>103</td><td>28</td><td>185</td></tr>
+                                <tr class="bg-rowblue"><td>UDS Abou</td><td>0</td><td>0</td><td>0</td><td>616</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>6</td><td>1 527</td><td>616</td><td>3 004</td></tr>
+                            </tbody>
+                        </table>
+                        <p class="mt-1">Total actes (consult+soins+extractions) : 5 147</p>
                     </div>
                     <div class="bg-gray-50 p-3 rounded-lg shadow">
                         <h4 class="font-bold text-headerblue">Hémodialyse</h4>
-                        <p>Lits : 12 | Reins fct : 23</p>
-                        <p>Malades : 32 | Séances : 4 847</p>
+                        <table class="w-full mt-1 border text-xs">
+                            <thead class="bg-headerblue text-white"><tr><th>Lits</th><th>Reins fct</th><th>Reins non fct</th><th>Malades</th><th>Séances</th><th>Consult.</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>12</td><td>23</td><td>1</td><td>32</td><td>4 847</td><td>4 847</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
 
-            <!-- Slide 8 : Équipements lourds + Parc auto -->
+            <!-- Slide 8 : Équipements lourds, Parc auto -->
             <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-8">
-                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">⚙️ Équipements</h3>
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">⚙️ Équipements lourds & Parc automobile</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
                     <div>
                         <h4 class="font-semibold text-lg text-headerblue">Équipements lourds</h4>
-                        <p class="text-red-600 font-medium">Aucun (IRM, Scanner, etc.) – Néant.</p>
-                        <p class="mt-2">Inventaire détaillé des 129 appareils médicaux disponible dans le rapport PDF intégral.</p>
+                        <p class="text-red-600 font-medium">Néant (aucun équipement)</p>
+                        <p class="mt-1">IRM, Scanner, Accélérateur linéaire, etc. : 0</p>
                     </div>
                     <div>
                         <h4 class="font-semibold text-lg text-headerblue">Parc automobile</h4>
                         <table class="min-w-full bg-white border border-gray-200">
-                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Véhicule</th><th class="py-1 px-2 border">Marche</th><th class="py-1 px-2 border">Panne</th></tr></thead>
+                            <thead class="bg-headerblue text-white"><tr><th>Véhicule</th><th>Marche</th><th>Panne</th></tr></thead>
                             <tbody>
                                 <tr class="bg-rowblue"><td>Ambulances</td><td>4</td><td>5</td></tr>
                                 <tr><td>Véhicules de liaison</td><td>2</td><td>0</td></tr>
@@ -335,11 +382,24 @@
                 </div>
             </div>
 
-            <!-- Slide 9 : Conclusion -->
-            <div class="slide absolute inset-0 flex flex-col items-center justify-center p-4 md:p-8 opacity-0 invisible" id="slide-9">
+            <!-- Slide 9 : Inventaire complet des appareils médicaux -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-9">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">⚙️ Inventaire complet des appareils médicaux</h3>
+                <div class="overflow-y-auto max-h-full border border-gray-200 rounded-lg">
+                    <table class="min-w-full bg-white text-xs">
+                        <thead class="bg-headerblue text-white sticky top-0 z-10">
+                            <tr><th class="py-1 px-2">N°</th><th class="py-1 px-2">Type d’appareil</th><th class="py-1 px-2">Marche</th><th class="py-1 px-2">En panne</th></tr>
+                        </thead>
+                        <tbody id="equipmentBody"></tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Slide 10 : Conclusion -->
+            <div class="slide absolute inset-0 flex flex-col items-center justify-center p-4 md:p-8 opacity-0 invisible" id="slide-10">
                 <h3 class="text-3xl font-bold text-headerblue mb-6">Conclusion</h3>
                 <p class="text-lg text-gray-700 max-w-2xl text-center">
-                    Ce rapport compile l’ensemble des données statistiques de l’EPSP de Berriane pour l’année 2025.
+                    Ce bilan compile l’ensemble des données statistiques de l’EPSP de Berriane pour l’année 2025.
                     Il servira de base à la planification et à l’amélioration continue de l’offre de soins.
                 </p>
                 <div class="mt-8 text-right w-full max-w-2xl">
@@ -470,156 +530,185 @@
             updateSlides();
             startAutoplay();
 
-            // Keyboard support
             document.addEventListener('keydown', (e) => {
                 if (e.key === 'ArrowRight') nextSlide();
                 if (e.key === 'ArrowLeft') prevSlide();
                 if (e.key === ' ') { e.preventDefault(); togglePause(); }
             });
 
-            // Render charts when specific slides become visible
-            const observer = new MutationObserver(() => {
-                const slide4 = document.getElementById('slide-4');
-                if (slide4 && slide4.classList.contains('opacity-100') && !window.persChartRendered) {
-                    window.persChartRendered = true;
-                    const ctx = document.getElementById('persChart1');
-                    if (ctx) {
-                        new Chart(ctx, {
-                            type: 'bar',
-                            data: {
-                                labels: ['Infirmiers dipl.', 'Aides param.', 'Méd. général', 'Admin.', 'Service', 'Dentistes', 'Pharmaciens', 'Techniques'],
-                                datasets: [{
-                                    label: 'Effectif',
-                                    data: [47, 104, 37, 42, 78, 10, 2, 3],
-                                    backgroundColor: '#003366'
-                                }]
-                            },
-                            options: { responsive: true, plugins: { legend: { display: false } } }
-                        });
-                    }
-                }
-                const slide6 = document.getElementById('slide-6');
-                if (slide6 && slide6.classList.contains('opacity-100') && !window.consultChartRendered) {
-                    window.consultChartRendered = true;
-                    const ctx2 = document.getElementById('consultChartSlide');
-                    if (ctx2) {
-                        new Chart(ctx2, {
-                            type: 'bar',
-                            data: {
-                                labels: ['05 Juillet (Urg)', 'Chiekh Ameur', 'Baba Saad', 'Elmadagh', 'Bailiche', 'Vieux Ksar', 'Belle Vue', 'UDS', 'UCTMR'],
-                                datasets: [
-                                    { label: 'Urgence', data: [34688,0,0,0,0,0,0,0,0], backgroundColor: '#e74c3c' },
-                                    { label: 'Méd. Générale', data: [0,4225,2408,4015,6474,6614,1417,3786,4], backgroundColor: '#3498db' }
-                                ]
-                            },
-                            options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true } } }
-                        });
-                    }
-                }
-            });
-            slides.forEach(slide => observer.observe(slide, { attributes: true, attributeFilter: ['class'] }));
+            // Render equipment list (all 129 items)
+            const equipmentData = [
+                { no:1, name:"Appareil de Radiographie Mobile", marche:0, panne:0 },
+                { no:2, name:"Appareil de radiographie mobile avec amplificateur de brillance", marche:0, panne:0 },
+                { no:3, name:"Appareil de radiographie fixe avec table télécommandée (grande salle)", marche:0, panne:0 },
+                { no:4, name:"Appareil de radiographie fixe avec table non télécommandée (grande salle)", marche:3, panne:0 },
+                { no:5, name:"Angiographie ophtalmologique", marche:0, panne:0 },
+                { no:6, name:"Appareil de radiographie spécialisé - Mamographe", marche:0, panne:0 },
+                { no:7, name:"Appareil de radiographie spécialisé - Craniographe", marche:0, panne:0 },
+                { no:8, name:"Appareil de radiographie spécialisé - Urologique", marche:0, panne:0 },
+                { no:9, name:"Appareil de radiographie spécialisé - Pulmonaire", marche:0, panne:0 },
+                { no:10, name:"Appareil de radiographie spécialisé - Dentaire", marche:0, panne:0 },
+                { no:11, name:"Échographe multi-disciplinaire", marche:0, panne:0 },
+                { no:12, name:"Échocardiographe", marche:2, panne:0 },
+                { no:13, name:"Échocardiographe - portatif", marche:0, panne:0 },
+                { no:14, name:"Développeuse de films - automatique", marche:0, panne:0 },
+                { no:15, name:"Développeuse de films - manuelle", marche:3, panne:0 },
+                { no:16, name:"Électroencéphalographe 16 plumes", marche:0, panne:0 },
+                { no:17, name:"Électroencéphalographe 8 plumes", marche:0, panne:0 },
+                { no:18, name:"Électromyographe (E.M.G)", marche:0, panne:0 },
+                { no:19, name:"Électrocardiogramme (E.C.G) - 6 Pistes", marche:0, panne:0 },
+                { no:20, name:"Électrocardiogramme (E.C.G) - 3 Pistes", marche:5, panne:0 },
+                { no:21, name:"Électrocardiogramme (E.C.G) - 1 Piste", marche:0, panne:0 },
+                { no:22, name:"Holter (Lecteur enregistreur)", marche:1, panne:0 },
+                { no:23, name:"Tensiomètre automatique", marche:0, panne:0 },
+                { no:24, name:"Spiromètre", marche:0, panne:0 },
+                { no:25, name:"Ensemble d'analyse de la fonction respiratoire", marche:0, panne:0 },
+                { no:26, name:"Cabine audiométrique", marche:0, panne:0 },
+                { no:27, name:"Audiomètre clinique", marche:0, panne:0 },
+                { no:28, name:"Audiomètre diagnostic", marche:0, panne:0 },
+                { no:29, name:"Audiomètre infantile", marche:0, panne:0 },
+                { no:30, name:"Impédancemètre", marche:0, panne:0 },
+                { no:31, name:"Ophtalmomètre", marche:0, panne:0 },
+                { no:32, name:"Biomicroscope oculaire / Lampe de fente", marche:0, panne:0 },
+                { no:33, name:"Réfracteur", marche:0, panne:0 },
+                { no:34, name:"Focomètre", marche:0, panne:0 },
+                { no:35, name:"Périmètre automatique", marche:0, panne:0 },
+                { no:36, name:"Ophtalmoscope électrique", marche:0, panne:0 },
+                { no:37, name:"Tonomètre de Schiotz", marche:0, panne:0 },
+                { no:38, name:"Tonomètre à applanation", marche:0, panne:0 },
+                { no:39, name:"Valise de verre d'essai", marche:0, panne:0 },
+                { no:40, name:"Monture de verre d'essai pour adultes", marche:0, panne:0 },
+                { no:41, name:"Échelle d'acuité visuelle (L+) et (L-II)", marche:8, panne:0 },
+                { no:42, name:"Verre à trois (03) miroirs", marche:0, panne:0 },
+                { no:43, name:"Verre à un (01) miroir", marche:0, panne:0 },
+                { no:44, name:"Fibroscope œsogastroduodénal pour adultes", marche:0, panne:0 },
+                { no:45, name:"Fibroscope œsogastroduodénal pour enfants", marche:0, panne:0 },
+                { no:46, name:"Fibro-sigmoïdoscope pour adultes", marche:0, panne:0 },
+                { no:47, name:"Fibro-sigmoïdoscope pour enfants", marche:0, panne:0 },
+                { no:48, name:"Fibroscope nasal", marche:0, panne:0 },
+                { no:49, name:"Fibro-bronchoscope pour adultes", marche:0, panne:0 },
+                { no:50, name:"Fibro-bronchoscope pour enfants", marche:0, panne:0 },
+                { no:51, name:"Hystéroscope / Salpingographe", marche:0, panne:0 },
+                { no:52, name:"Cœlioscope", marche:0, panne:0 },
+                { no:53, name:"Colposcope", marche:0, panne:0 },
+                { no:54, name:"Pince à biopsie", marche:0, panne:0 },
+                { no:55, name:"Pince à extraction de corps étrangers", marche:0, panne:0 },
+                { no:56, name:"Balance d'analyse / Précision", marche:0, panne:0 },
+                { no:57, name:"Balance Roberval avec poids", marche:0, panne:0 },
+                { no:58, name:"Bain-marie universel", marche:1, panne:0 },
+                { no:59, name:"Bain-marie de sérologie", marche:0, panne:0 },
+                { no:60, name:"Incubateur de tissus", marche:0, panne:0 },
+                { no:61, name:"Enceinte anaérobie", marche:0, panne:0 },
+                { no:62, name:"Étuve à paraffine", marche:0, panne:0 },
+                { no:63, name:"Étuve universelle", marche:0, panne:0 },
+                { no:64, name:"Étuve bactériologique 57°C", marche:0, panne:0 },
+                { no:65, name:"Étuve bactériologique 37°C", marche:3, panne:0 },
+                { no:66, name:"Étuve de séchage", marche:0, panne:0 },
+                { no:67, name:"Centrifugeuse de paillasse", marche:7, panne:0 },
+                { no:68, name:"Centrifugeuse réfrigérée", marche:0, panne:0 },
+                { no:69, name:"Centrifugeuse à hématocrite", marche:0, panne:0 },
+                { no:70, name:"Micro-centrifugeuse", marche:0, panne:0 },
+                { no:71, name:"Microscope binoculaire à lumière transmise", marche:4, panne:0 },
+                { no:72, name:"Microscope binoculaire à lumière polarisée", marche:0, panne:0 },
+                { no:73, name:"Microscope binoculaire à contraste de phase", marche:0, panne:0 },
+                { no:74, name:"Microscope à plusieurs têtes", marche:0, panne:0 },
+                { no:75, name:"Microscope binoculaire photonique", marche:0, panne:0 },
+                { no:76, name:"Microscope binoculaire à fluorescence", marche:0, panne:0 },
+                { no:77, name:"Micromètre pour microscopes / réticules gradués", marche:0, panne:0 },
+                { no:78, name:"Filtre de polarisation pour microscopes", marche:0, panne:0 },
+                { no:79, name:"Colorimètre / Coloration des lames", marche:0, panne:0 },
+                { no:80, name:"Lyophilisateur", marche:0, panne:0 },
+                { no:81, name:"Dessiccateur", marche:0, panne:0 },
+                { no:82, name:"Analyseur de métabolites (1 à 3 paramètres)", marche:0, panne:0 },
+                { no:83, name:"Analyseur d'ions (photomètre à flamme)", marche:0, panne:0 },
+                { no:84, name:"pH-mètre", marche:0, panne:0 },
+                { no:85, name:"Hémoglobinomètre", marche:0, panne:0 },
+                { no:86, name:"Co-oxymètre", marche:0, panne:0 },
+                { no:87, name:"Appareil à ELISA", marche:0, panne:0 },
+                { no:88, name:"Spectrophotomètre", marche:6, panne:0 },
+                { no:89, name:"Chromatographie liquide", marche:0, panne:0 },
+                { no:90, name:"Spectrofluorimètre", marche:0, panne:0 },
+                { no:91, name:"Fluorimètre", marche:0, panne:0 },
+                { no:92, name:"Cuve générateur pour électrophorèse", marche:0, panne:0 },
+                { no:93, name:"Densitomètre pour électrophorèse", marche:0, panne:0 },
+                { no:94, name:"Automate de préparation / Distribution d'échantillons réactifs", marche:6, panne:2 },
+                { no:95, name:"Diluteur", marche:0, panne:0 },
+                { no:96, name:"Agitateur de Kahn", marche:0, panne:0 },
+                { no:97, name:"Agitateur de Kline", marche:0, panne:0 },
+                { no:98, name:"Agitateur de vortex", marche:0, panne:0 },
+                { no:99, name:"Agitateur de flacons", marche:0, panne:0 },
+                { no:100, name:"Pompe péristaltique de laboratoire", marche:0, panne:0 },
+                { no:101, name:"Dialyseur de laboratoire", marche:0, panne:0 },
+                { no:102, name:"Compteur d'échantillons (gamma)", marche:0, panne:0 },
+                { no:103, name:"Compteur d'échantillons (bêta)", marche:0, panne:0 },
+                { no:104, name:"Analyseur par polarisation de fluorescence", marche:0, panne:0 },
+                { no:105, name:"Thromboélastographe", marche:0, panne:0 },
+                { no:106, name:"Coagulomètre", marche:0, panne:0 },
+                { no:107, name:"Agrégomètre", marche:0, panne:0 },
+                { no:108, name:"Compte-globules 16 touches", marche:0, panne:0 },
+                { no:109, name:"Compte-globules à 8 touches", marche:0, panne:0 },
+                { no:110, name:"Compte-globules à 5 touches", marche:0, panne:0 },
+                { no:111, name:"Compte-globules à 3 touches", marche:0, panne:0 },
+                { no:112, name:"Compteur de colonies", marche:0, panne:0 },
+                { no:113, name:"Automate pour antibiogramme / identification", marche:0, panne:0 },
+                { no:114, name:"Osmomètre", marche:0, panne:0 },
+                { no:115, name:"Rhésuscope", marche:0, panne:0 },
+                { no:116, name:"Trompe à vide", marche:0, panne:0 },
+                { no:117, name:"Autoclave de laboratoire", marche:0, panne:0 },
+                { no:118, name:"Pompe à héparine", marche:0, panne:0 },
+                { no:119, name:"Lave-pipettes", marche:0, panne:0 },
+                { no:120, name:"Sécheuse automatique de verrerie", marche:0, panne:0 },
+                { no:121, name:"Cellule de Benker", marche:0, panne:0 },
+                { no:122, name:"Plaque chauffante", marche:0, panne:0 },
+                { no:123, name:"Bec Bunsen", marche:0, panne:0 },
+                { no:124, name:"Minuterie", marche:0, panne:0 },
+                { no:125, name:"Chronomètre", marche:0, panne:0 },
+                { no:126, name:"Congélateur -80°C", marche:0, panne:0 },
+                { no:127, name:"Congélateur -70°C", marche:0, panne:0 },
+                { no:128, name:"Congélateur à azote liquide -170°C", marche:0, panne:0 },
+                { no:129, name:"Appareil d'anesthésie", marche:0, panne:0 }
+            ];
 
-            // ---------- FULL REPORT PDF (A4) ----------
-            function buildFullReportHTML() {
-                const sections = document.querySelectorAll('.slide');
-                let fullContent = '';
-
-                // Official header
-                fullContent += `
-                    <div style="text-align: left; margin-bottom: 30px; line-height: 1.5;">
-                        <strong>République Algérienne Démocratique et Populaire</strong><br>
-                        <strong>Ministère de la Santé</strong><br>
-                        <strong>Direction de la Santé de la Wilaya de Ghardaïa</strong><br>
-                        <strong>Établissement Public de Santé de Proximité – Berriane</strong><br>
-                        <strong>Sous-direction des services de santé / Bureau d’informatique</strong><br>
-                        N° : &nbsp;&nbsp;&nbsp;&nbsp;/2026
-                    </div>`;
-
-                // Title page
-                fullContent += `
-                    <div style="text-align: center; margin: 40px 0;">
-                        <h1 style="font-size: 2em; color: #003366; margin: 0;">Statistiques</h1>
-                        <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">de l'Établissement Public de Santé de</h1>
-                        <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">Proximité</h1>
-                        <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">de Berriane</h1>
-                        <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">Année 2025</h1>
-                    </div>
-                    <hr style="border: 1px solid #003366; margin: 30px 0;">`;
-
-                // Add all slide content (clone them, make visible)
-                sections.forEach(section => {
-                    // Skip the title slide (slide-0) for content, or we could include? We'll skip slide 0 and start from slide 1.
-                    if (section.id === 'slide-0') return;
-                    const clone = section.cloneNode(true);
-                    clone.classList.remove('opacity-0', 'invisible');
-                    clone.style.display = 'block';
-                    clone.style.position = 'static';
-                    clone.style.height = 'auto';
-                    clone.querySelectorAll('*').forEach(el => {
-                        if (el.classList.contains('hidden')) el.classList.remove('hidden');
-                    });
-                    fullContent += `<div style="margin-bottom: 30px; page-break-inside: avoid;">${clone.innerHTML}</div>`;
+            const equipmentBody = document.getElementById('equipmentBody');
+            if (equipmentBody) {
+                equipmentData.forEach((item, idx) => {
+                    const row = document.createElement('tr');
+                    row.className = idx % 2 === 0 ? 'bg-rowblue' : '';
+                    row.innerHTML = `<td>${item.no}</td><td>${item.name}</td><td>${item.marche}</td><td>${item.panne}</td>`;
+                    equipmentBody.appendChild(row);
                 });
-
-                // Conclusion and signature
-                fullContent += `
-                    <hr style="border: 1px solid #003366; margin: 30px 0;">
-                    <div style="text-align: justify; margin-bottom: 20px;">
-                        <h3 style="color: #003366;">Conclusion</h3>
-                        <p>Le présent rapport compile l’ensemble des données statistiques de l’EPSP de Berriane pour l’année 2025. 
-                        Il reflète l’état des infrastructures, les ressources humaines, l’activité des services et l’inventaire des équipements. 
-                        Ces informations sont destinées à la sous-direction des services de santé et serviront de base pour la planification 
-                        et l’amélioration continue de l’offre de soins.</p>
-                    </div>
-                    <div style="text-align: right; margin-top: 40px;">
-                        <p>Berriane le : __________________</p>
-                        <p><strong>Le directeur</strong></p>
-                    </div>`;
-
-                return fullContent;
             }
 
-            document.getElementById('exportPdfBtn').addEventListener('click', async () => {
-                const btn = document.getElementById('exportPdfBtn');
-                btn.disabled = true;
-                btn.innerText = 'Génération...';
-
-                const reportContainer = document.createElement('div');
-                reportContainer.id = 'pdfFullReport';
-                reportContainer.innerHTML = buildFullReportHTML();
-                document.body.appendChild(reportContainer);
-
-                try {
-                    const canvas = await html2canvas(reportContainer, {
-                        scale: 2,
-                        useCORS: true,
-                        allowTaint: true,
-                        backgroundColor: '#ffffff'
+            // Charts
+            window.addEventListener('DOMContentLoaded', () => {
+                const persCtx = document.getElementById('persChart');
+                if (persCtx) {
+                    new Chart(persCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['Infirmiers dipl.', 'Aides param.', 'Méd. général', 'Admin.', 'Service', 'Dentistes', 'Pharmaciens', 'Techniques'],
+                            datasets: [{
+                                label: 'Effectif',
+                                data: [47, 104, 37, 42, 78, 10, 2, 3],
+                                backgroundColor: '#003366'
+                            }]
+                        },
+                        options: { responsive: true, plugins: { legend: { display: false } } }
                     });
-                    const imgData = canvas.toDataURL('image/png');
-                    const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
-                    const pdfWidth = pdf.internal.pageSize.getWidth();
-                    const pdfHeight = pdf.internal.pageSize.getHeight();
-                    const imgWidth = pdfWidth;
-                    const imgHeight = canvas.height * imgWidth / canvas.width;
-                    let heightLeft = imgHeight;
-                    let position = 0;
-                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                    heightLeft -= pdfHeight;
-                    while (heightLeft > 0) {
-                        position = heightLeft - imgHeight;
-                        pdf.addPage();
-                        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
-                        heightLeft -= pdfHeight;
-                    }
-                    pdf.save('EPSP_Berriane_Statistiques_2025.pdf');
-                } catch (error) {
-                    console.error('PDF error:', error);
-                    alert('Erreur lors de la génération du PDF.');
-                } finally {
-                    document.body.removeChild(reportContainer);
-                    btn.disabled = false;
-                    btn.innerText = 'Rapport PDF';
+                }
+                const consultCtx = document.getElementById('consultChartSlide');
+                if (consultCtx) {
+                    new Chart(consultCtx, {
+                        type: 'bar',
+                        data: {
+                            labels: ['05 Juill.', 'Chiekh Ameur', 'Baba Saad', 'Elmadagh', 'Bailiche', 'Vieux Ksar', 'Belle Vue', 'UDS', 'UCTMR'],
+                            datasets: [
+                                { label: 'Urgence', data: [34688,0,0,0,0,0,0,0,0], backgroundColor: '#e74c3c' },
+                                { label: 'Méd. Générale', data: [0,4225,2408,4015,6474,6614,1417,3786,4], backgroundColor: '#3498db' }
+                            ]
+                        },
+                        options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true } } }
+                    });
                 }
             });
         })();
