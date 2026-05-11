@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPSP Berriane – Statistiques 2025 + Export PDF</title>
+    <title>EPSP Berriane – Statistiques 2025 + Rapport PDF complet</title>
     <!-- Tajawal font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,6 +30,16 @@
     <!-- jsPDF + html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        /* For full report PDF capture, we'll temporarily build a report container */
+        #pdfFullReport {
+            font-family: 'Tajawal', sans-serif;
+            background: white;
+            padding: 30px 40px;
+            line-height: 1.5;
+            color: #1f2937;
+        }
+    </style>
 </head>
 <body class="font-tajawal bg-gray-50 text-gray-800">
 
@@ -42,7 +52,7 @@
         <!-- Export PDF Button -->
         <button id="exportPdfBtn" class="ml-4 bg-white text-headerblue font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-100 transition flex items-center gap-2">
             <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            Export PDF
+            Export PDF complet
         </button>
     </header>
 
@@ -74,7 +84,7 @@
         </div>
     </nav>
 
-    <!-- Main Content (captured as PDF) -->
+    <!-- Main Content (visible tabs) -->
     <main class="container mx-auto px-4 py-8" id="mainContent">
         <!-- INFRASTRUCTURES TAB -->
         <section id="tab-infrastructures" class="tab-content block">
@@ -227,7 +237,7 @@
                     <canvas id="consultChart"></canvas>
                 </div>
             </div>
-            <!-- Other activities cards -->
+            <!-- Other activity cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="bg-white p-4 rounded-xl shadow-md">
                     <h4 class="font-bold text-headerblue mb-2">Services d'urgence</h4>
@@ -504,47 +514,75 @@
             }
         });
 
-        // ---------- PDF Export with jsPDF + html2canvas ----------
+        // ---------- FULL REPORT PDF EXPORT ----------
+        function buildFullReportHTML() {
+            // Clone each tab section content, making them visible
+            const sections = document.querySelectorAll('.tab-content');
+            let fullContent = '';
+
+            // Official header and title
+            fullContent += `
+                <div style="text-align: left; margin-bottom: 30px; line-height: 1.5;">
+                    <strong>République Algérienne Démocratique et Populaire</strong><br>
+                    <strong>Ministère de la Santé</strong><br>
+                    <strong>Direction de la Santé de la Wilaya de Ghardaïa</strong><br>
+                    <strong>Établissement Public de Santé de Proximité – Berriane</strong><br>
+                    <strong>Sous-direction des services de santé / Bureau d’informatique</strong><br>
+                    N° : &nbsp;&nbsp;&nbsp;&nbsp;/2026
+                </div>
+                <div style="text-align: center; margin: 40px 0;">
+                    <h1 style="font-size: 2em; color: #003366; margin: 0;">Statistiques</h1>
+                    <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">de l'Établissement Public de Santé de</h1>
+                    <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">Proximité</h1>
+                    <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">de Berriane</h1>
+                    <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">Année 2025</h1>
+                </div>
+                <hr style="border: 1px solid #003366; margin: 30px 0;">
+            `;
+
+            // Each tab content (we'll make a temporary copy to manipulate)
+            sections.forEach(section => {
+                const clone = section.cloneNode(true);
+                clone.classList.remove('hidden');
+                clone.style.display = 'block';
+                clone.querySelectorAll('*').forEach(el => {
+                    if (el.classList.contains('hidden')) el.classList.remove('hidden');
+                });
+                fullContent += `<div style="margin-bottom: 30px;">${clone.innerHTML}</div>`;
+            });
+
+            // Conclusion and signature
+            fullContent += `
+                <hr style="border: 1px solid #003366; margin: 30px 0;">
+                <div style="text-align: justify; margin-bottom: 20px;">
+                    <h3 style="color: #003366;">Conclusion</h3>
+                    <p>Le présent rapport compile l’ensemble des données statistiques de l’EPSP de Berriane pour l’année 2025. 
+                    Il reflète l’état des infrastructures, les ressources humaines, l’activité des services et l’inventaire des équipements. 
+                    Ces informations sont destinées à la sous-direction des services de santé et serviront de base pour la planification 
+                    et l’amélioration continue de l’offre de soins.</p>
+                </div>
+                <div style="text-align: right; margin-top: 40px;">
+                    <p>Berriane le : __________________</p>
+                    <p><strong>Le directeur</strong></p>
+                </div>
+            `;
+
+            return fullContent;
+        }
+
         document.getElementById('exportPdfBtn').addEventListener('click', async () => {
             const btn = document.getElementById('exportPdfBtn');
             btn.disabled = true;
-            btn.innerText = 'Génération...';
+            btn.innerText = 'Génération du rapport...';
 
-            // Capture the currently visible tab content (the whole main section)
-            const main = document.getElementById('mainContent');
-            // We need to capture only the visible tab, not hidden ones.
-            // We'll clone the visible tab content into a temporary container.
-            const visibleTab = document.querySelector('.tab-content:not(.hidden)');
-            if (!visibleTab) {
-                alert('Aucun contenu à exporter.');
-                btn.disabled = false;
-                btn.innerText = 'Export PDF';
-                return;
-            }
-            // Create a temporary div and set the same width as main content for proper rendering
-            const container = document.createElement('div');
-            container.style.width = main.offsetWidth + 'px';
-            container.style.padding = '20px';
-            container.style.fontFamily = 'Tajawal, sans-serif';
-            // Add a title similar to the header
-            const title = document.createElement('h2');
-            title.innerText = 'EPSP Berriane – Statistiques 2025';
-            title.style.color = '#003366';
-            title.style.marginBottom = '10px';
-            container.appendChild(title);
-            // Clone the visible tab content
-            const clone = visibleTab.cloneNode(true);
-            // Remove any hidden class/style from the clone and its children to ensure visibility in capture
-            clone.classList.remove('hidden');
-            clone.style.display = 'block';
-            clone.querySelectorAll('*').forEach(el => {
-                if (el.classList.contains('hidden')) el.classList.remove('hidden');
-            });
-            container.appendChild(clone);
-            document.body.appendChild(container);
+            // Build full report in a temporary hidden div
+            const reportContainer = document.createElement('div');
+            reportContainer.id = 'pdfFullReport';
+            reportContainer.innerHTML = buildFullReportHTML();
+            document.body.appendChild(reportContainer);
 
             try {
-                const canvas = await html2canvas(container, {
+                const canvas = await html2canvas(reportContainer, {
                     scale: 2,
                     useCORS: true,
                     allowTaint: true,
@@ -566,14 +604,14 @@
                     pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
                     heightLeft -= pdfHeight;
                 }
-                pdf.save('EPSP_Berriane_2025.pdf');
+                pdf.save('EPSP_Berriane_Statistiques_2025.pdf');
             } catch (error) {
                 console.error('PDF generation error:', error);
                 alert('Erreur lors de la génération du PDF.');
             } finally {
-                document.body.removeChild(container);
+                document.body.removeChild(reportContainer);
                 btn.disabled = false;
-                btn.innerText = 'Export PDF';
+                btn.innerText = 'Export PDF complet';
             }
         });
     </script>
