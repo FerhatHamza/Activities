@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPSP Berriane 2025 – Présentation interactive</title>
+    <!-- Tajawal font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'tajawal': ['Tajawal', 'sans-serif'],
+                    },
+                    colors: {
+                        headerblue: '#003366',
+                        rowblue: '#e6f0ff',
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <!-- jsPDF + html2canvas -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        .slide {
+            transition: opacity 0.6s ease-in-out, visibility 0.6s ease-in-out;
+        }
+    </style>
+</head>
+<body class="font-tajawal bg-gradient-to-br from-gray-100 to-gray-200 min-h-screen flex flex-col items-center justify-center p-2">
+
+    <!-- Main presentation container -->
+    <div class="relative w-full max-w-6xl bg-white rounded-2xl shadow-2xl overflow-hidden" style="height: 85vh; max-height: 900px;">
+        
+        <!-- Top bar with PDF export -->
+        <div class="absolute top-0 left-0 right-0 bg-headerblue text-white px-6 py-2 flex justify-between items-center z-20">
+            <span class="text-sm md:text-base font-medium">EPSP Berriane – Année 2025</span>
+            <button id="exportPdfBtn" class="bg-white text-headerblue font-semibold py-1 px-4 rounded-lg shadow hover:bg-gray-100 transition flex items-center gap-1 text-sm">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                Rapport PDF
+            </button>
+        </div>
+
+        <!-- Slides wrapper (padding top for the bar) -->
+        <div class="relative w-full h-full pt-12">
+            <!-- Slide 0 : Titre -->
+            <div class="slide absolute inset-0 flex flex-col items-center justify-center p-6 md:p-10 opacity-100 visible" id="slide-0">
+                <div class="text-center">
+                    <div class="text-headerblue mb-4">
+                        <svg class="w-20 h-20 mx-auto" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L2 7v10c0 5.5 4.5 10 10 10s10-4.5 10-10V7l-10-5zm0 2.2l7 3.5v5.5c0 4-3.1 7.7-7 8.8-3.9-1.1-7-4.8-7-8.8V7.7l7-3.5z"/></svg>
+                    </div>
+                    <h1 class="text-3xl md:text-5xl font-bold text-headerblue mb-2">Statistiques</h1>
+                    <h2 class="text-xl md:text-3xl font-light text-gray-600 mb-6">de l’Établissement Public de Santé de Proximité de Berriane</h2>
+                    <h3 class="text-lg md:text-2xl font-bold text-headerblue">Année 2025</h3>
+                </div>
+            </div>
+
+            <!-- Slide 1 : Infrastructures Publiques (Polycliniques, Centres de santé) -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-1">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">🏥 Infrastructures Publiques – Polycliniques & Centres de santé</h3>
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Polycliniques (Canevas n°2)</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Dénomination</th><th class="py-1 px-2 border">Mat.</th><th class="py-1 px-2 border">Urg.</th><th class="py-1 px-2 border">Hém.</th><th class="py-1 px-2 border">Fonc.</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>05 Juillet BALLOUH</td><td>0</td><td>11</td><td>12</td><td>23</td></tr>
+                                <tr><td>BAILICHE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                <tr class="bg-rowblue"><td>VIEUX K'SAR</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>0</td><td>11</td><td>12</td><td>23</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Centres de santé (Canevas n°3)</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Dénomination</th><th class="py-1 px-2 border">Lits</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>ELMADAHG</td><td>0</td></tr>
+                                <tr><td>BABA SAAD</td><td>0</td></tr>
+                                <tr class="bg-rowblue"><td>CHEIKH AMEUR</td><td>0</td></tr>
+                                <tr><td>BELLE VUE</td><td>0</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 : Autres infrastructures + réceptionnées -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-2">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">🏥 Autres infrastructures & Réception 2025</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Autres structures (Canevas n°4)</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Type</th><th class="py-1 px-2 border">Fonctionnel</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>UDS</td><td>1</td></tr>
+                                <tr><td>UCTMR</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>SEMEP</td><td>1</td></tr>
+                                <tr><td>MATERNITE</td><td>0</td></tr>
+                                <tr class="bg-rowblue"><td>Maison de diabétique</td><td>0</td></tr>
+                                <tr><td>CIST</td><td>0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Infrastructures réceptionnées (Canevas n°5)</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-1 border">Structure</th><th class="py-1 px-1 border">Mat.</th><th class="py-1 px-1 border">Urg.</th><th class="py-1 px-1 border">Hém.</th><th class="py-1 px-1 border">Date</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Poly. BALLOUH</td><td>0</td><td>11</td><td>/</td><td>1998</td></tr>
+                                <tr><td>P/Bailiche Mazouz</td><td>/</td><td>/</td><td>12</td><td>2000</td></tr>
+                                <tr class="bg-rowblue"><td>P/Vieux K'sar</td><td>/</td><td>/</td><td>/</td><td>1988</td></tr>
+                                <tr><td>Salle Baba Saad</td><td>/</td><td>/</td><td>/</td><td>1958</td></tr>
+                                <tr class="bg-rowblue"><td>Salle Elmadagh</td><td>/</td><td>/</td><td>/</td><td>1989</td></tr>
+                                <tr><td>Salle Chiekh Ameur</td><td>/</td><td>/</td><td>/</td><td>1999</td></tr>
+                                <tr class="bg-rowblue"><td>Salle Belle Vue</td><td>/</td><td>/</td><td>/</td><td>2006</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 : Ressources Humaines – Médical -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-3">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">👥 Personnel médical général</h3>
+                <table class="min-w-full bg-white border border-gray-200 text-sm">
+                    <thead class="bg-headerblue text-white"><tr><th class="py-1 px-4 border">Type de personnel</th><th class="py-1 px-4 border">H</th><th class="py-1 px-4 border">F</th><th class="py-1 px-4 border">Total</th></tr></thead>
+                    <tbody>
+                        <tr class="bg-rowblue"><td>Médecins généralistes</td><td>6</td><td>19</td><td>25</td></tr>
+                        <tr><td>Chirurgiens dentistes</td><td>3</td><td>7</td><td>10</td></tr>
+                        <tr class="bg-rowblue"><td>Pharmaciens</td><td>0</td><td>2</td><td>2</td></tr>
+                        <tr class="font-bold"><td>Total</td><td>9</td><td>28</td><td>37</td></tr>
+                    </tbody>
+                </table>
+                <p class="mt-4 text-red-600 font-medium">Médecins spécialistes (toutes spécialités) : Néant (0)</p>
+            </div>
+
+            <!-- Slide 4 : Personnel paramédical (non zero) -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-4">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">👥 Personnel paramédical (effectifs > 0)</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Infirmiers Diplômés d'État</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Filière</th><th class="py-1 px-2 border">H</th><th class="py-1 px-2 border">F</th><th class="py-1 px-2 border">Tot.</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Kinésithérapie</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr><td>Sages femmes</td><td>0</td><td>5</td><td>5</td></tr>
+                                <tr class="bg-rowblue"><td>Soins infirmiers gén.</td><td>11</td><td>6</td><td>17</td></tr>
+                                <tr><td>Laborantin</td><td>3</td><td>3</td><td>6</td></tr>
+                                <tr class="bg-rowblue"><td>Manipulateur radio</td><td>5</td><td>3</td><td>8</td></tr>
+                                <tr><td>Épidémiologie</td><td>2</td><td>3</td><td>5</td></tr>
+                                <tr class="bg-rowblue"><td>Psychologue clinicienne</td><td>0</td><td>5</td><td>5</td></tr>
+                                <tr class="font-bold"><td>TOTAL IDE</td><td>21</td><td>26</td><td>47</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Aides Paramédicaux</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Filière</th><th class="py-1 px-2 border">H</th><th class="py-1 px-2 border">F</th><th class="py-1 px-2 border">Tot.</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Soins puériculture</td><td>0</td><td>2</td><td>2</td></tr>
+                                <tr><td>Soins infirmiers gén.</td><td>55</td><td>42</td><td>97</td></tr>
+                                <tr class="bg-rowblue"><td>Autres</td><td>4</td><td>1</td><td>5</td></tr>
+                                <tr class="font-bold"><td>TOTAL Aides</td><td>59</td><td>45</td><td>104</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="mt-4 h-32 md:h-48">
+                    <canvas id="persChart1"></canvas>
+                </div>
+            </div>
+
+            <!-- Slide 5 : Personnel administratif, technique, service -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-5">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">👥 Personnels administratif, technique et de service</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-sm">
+                    <div>
+                        <h4 class="font-semibold text-headerblue">Administratif (extrait)</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-1">Grade</th><th class="py-1 px-1">H</th><th class="py-1 px-1">F</th><th class="py-1 px-1">Tot</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Administrateur principal</td><td>2</td><td>3</td><td>5</td></tr>
+                                <tr><td>Administrateur analyste</td><td>1</td><td>3</td><td>4</td></tr>
+                                <tr class="bg-rowblue"><td>Administrateur</td><td>5</td><td>2</td><td>7</td></tr>
+                                <tr><td>Aide administrateur</td><td>3</td><td>0</td><td>3</td></tr>
+                                <tr class="bg-rowblue"><td>Attaché d'admin. princ.</td><td>0</td><td>5</td><td>5</td></tr>
+                                <tr><td>Attaché d'administration</td><td>1</td><td>1</td><td>2</td></tr>
+                                <tr class="bg-rowblue"><td>Agent d'administration</td><td>2</td><td>1</td><td>3</td></tr>
+                                <tr><td>Agent de bureau</td><td>0</td><td>2</td><td>2</td></tr>
+                                <tr class="bg-rowblue"><td>Secrétaire de direction</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr><td>Secrétaire</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>Agent de saisie</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr><td>Comptable admin. princ.</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>Administrateur conseillé</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>Assistant Archiviste Doc.</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>Agent d'admin. princ.</td><td>4</td><td>1</td><td>5</td></tr>
+                                <tr class="font-bold"><td>TOTAL</td><td>21</td><td>21</td><td>42</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-headerblue">Technique</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-1">Fonction</th><th class="py-1 px-1">H</th><th class="py-1 px-1">F</th><th class="py-1 px-1">Tot</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Ingénieur d'état</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>Adjoint technique</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>3</td><td>0</td><td>3</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-headerblue">Service</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-1">Catégorie</th><th class="py-1 px-1">H</th><th class="py-1 px-1">F</th><th class="py-1 px-1">Tot</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>OPHC</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>OP1</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr class="bg-rowblue"><td>Cond. auto 1ère cat.</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>Cond. auto 1er niv.</td><td>6</td><td>0</td><td>6</td></tr>
+                                <tr class="bg-rowblue"><td>Cond. auto 2ème niv.</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr><td>OP niveau 1</td><td>48</td><td>12</td><td>60</td></tr>
+                                <tr class="bg-rowblue"><td>OP niveau 3</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr><td>Agent de sécurité</td><td>3</td><td>0</td><td>3</td></tr>
+                                <tr class="bg-rowblue"><td>Agent de service</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>65</td><td>13</td><td>78</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 6 : Activités – Consultations -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-6">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">📈 Consultations</h3>
+                <div class="overflow-x-auto text-sm mb-4">
+                    <table class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Structure</th><th class="py-1 px-2 border">Urgences</th><th class="py-1 px-2 border">Méd. Générale</th><th class="py-1 px-2 border">Spécialisée</th></tr></thead>
+                        <tbody>
+                            <tr class="bg-rowblue"><td>Poly. 05 Juillet</td><td>34 688</td><td>0</td><td>0</td></tr>
+                            <tr><td>Salle Chiekh Ameur</td><td>0</td><td>4 225</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Salle Baba Saad</td><td>0</td><td>2 408</td><td>0</td></tr>
+                            <tr><td>Salle Elmadagh</td><td>0</td><td>4 015</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Poly. Bailiche</td><td>0</td><td>6 474</td><td>0</td></tr>
+                            <tr><td>Poly. Vieux Ksar</td><td>0</td><td>6 614</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Salle Belle Vue</td><td>0</td><td>1 417</td><td>0</td></tr>
+                            <tr><td>UDS Abou Elyakadane</td><td>0</td><td>3 786</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>UCTMR</td><td>0</td><td>4</td><td>0</td></tr>
+                            <tr class="font-bold"><td>TOTAL</td><td>34 688</td><td>28 943</td><td>0</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="h-40 md:h-56">
+                    <canvas id="consultChartSlide"></canvas>
+                </div>
+            </div>
+
+            <!-- Slide 7 : Autres activités (Urgences, Labo, Radio, Stomato, Hémodialyse) -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-7">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">📈 Activités – Urgences, Laboratoire, Radiologie, Stomatologie, Hémodialyse</h3>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
+                    <div class="bg-gray-50 p-3 rounded-lg shadow">
+                        <h4 class="font-bold text-headerblue">Maternité</h4><p>Néant (0)</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg shadow">
+                        <h4 class="font-bold text-headerblue">Urgences</h4>
+                        <p>Lits : 11 | Consult. : 34 688</p>
+                        <p>Obs. : 3 168 | Évac. : 572</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg shadow">
+                        <h4 class="font-bold text-headerblue">Laboratoire</h4>
+                        <p>Bioch. : 40 485</p>
+                        <p>Hémobio. : 67 436</p>
+                        <p>Microbio. : 130 | Immuno. : 5 975</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg shadow">
+                        <h4 class="font-bold text-headerblue">Radiologie</h4>
+                        <p>Actes radio : 8 006</p>
+                        <p>Échographies : 0</p>
+                        <p>ECG : 454</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg shadow">
+                        <h4 class="font-bold text-headerblue">Stomatologie</h4>
+                        <p>Fauteuils : 6 | Consult. stom. : 1 527</p>
+                        <p>Soins : 616 | Extract. : 3 004</p>
+                    </div>
+                    <div class="bg-gray-50 p-3 rounded-lg shadow">
+                        <h4 class="font-bold text-headerblue">Hémodialyse</h4>
+                        <p>Lits : 12 | Reins fct : 23</p>
+                        <p>Malades : 32 | Séances : 4 847</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 8 : Équipements lourds + Parc auto -->
+            <div class="slide absolute inset-0 p-4 md:p-8 opacity-0 invisible overflow-y-auto" id="slide-8">
+                <h3 class="text-2xl md:text-3xl font-bold text-headerblue mb-4 border-b pb-2">⚙️ Équipements</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Équipements lourds</h4>
+                        <p class="text-red-600 font-medium">Aucun (IRM, Scanner, etc.) – Néant.</p>
+                        <p class="mt-2">Inventaire détaillé des 129 appareils médicaux disponible dans le rapport PDF intégral.</p>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg text-headerblue">Parc automobile</h4>
+                        <table class="min-w-full bg-white border border-gray-200">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2 border">Véhicule</th><th class="py-1 px-2 border">Marche</th><th class="py-1 px-2 border">Panne</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Ambulances</td><td>4</td><td>5</td></tr>
+                                <tr><td>Véhicules de liaison</td><td>2</td><td>0</td></tr>
+                                <tr class="bg-rowblue"><td>Camions</td><td>1</td><td>0</td></tr>
+                                <tr><td>Bus mini van (FAW)</td><td>0</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>Clino-Mobiles</td><td>0</td><td>0</td></tr>
+                                <tr><td>Véhicules de C.T.S</td><td>0</td><td>0</td></tr>
+                                <tr class="bg-rowblue"><td>Camionnette (Pick up)</td><td>0</td><td>0</td></tr>
+                                <tr><td>Citroën fourgon C 25</td><td>0</td><td>0</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 9 : Conclusion -->
+            <div class="slide absolute inset-0 flex flex-col items-center justify-center p-4 md:p-8 opacity-0 invisible" id="slide-9">
+                <h3 class="text-3xl font-bold text-headerblue mb-6">Conclusion</h3>
+                <p class="text-lg text-gray-700 max-w-2xl text-center">
+                    Ce rapport compile l’ensemble des données statistiques de l’EPSP de Berriane pour l’année 2025.
+                    Il servira de base à la planification et à l’amélioration continue de l’offre de soins.
+                </p>
+                <div class="mt-8 text-right w-full max-w-2xl">
+                    <p>Berriane le : __________________</p>
+                    <p class="font-bold">Le directeur</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Navigation controls bottom bar -->
+        <div class="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 flex items-center justify-between px-4 py-2">
+            <div class="flex items-center space-x-2">
+                <button id="prevBtn" class="p-2 rounded-full hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5 text-headerblue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button id="pauseBtn" class="p-2 rounded-full hover:bg-gray-100 transition">
+                    <svg id="pauseIcon" class="w-5 h-5 text-headerblue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    <svg id="playIcon" class="w-5 h-5 text-headerblue hidden" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+                </button>
+                <button id="nextBtn" class="p-2 rounded-full hover:bg-gray-100 transition">
+                    <svg class="w-5 h-5 text-headerblue" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+            <div class="flex space-x-2" id="dotsContainer"></div>
+            <div class="text-sm text-gray-500" id="slideCounter"></div>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            let currentSlide = 0;
+            let autoplayInterval = null;
+            let isPaused = false;
+            const autoplayDelay = 8000;
+
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const pauseBtn = document.getElementById('pauseBtn');
+            const pauseIcon = document.getElementById('pauseIcon');
+            const playIcon = document.getElementById('playIcon');
+            const dotsContainer = document.getElementById('dotsContainer');
+            const slideCounter = document.getElementById('slideCounter');
+
+            // Create dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'w-3 h-3 rounded-full bg-gray-300 hover:bg-headerblue transition';
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            }
+            const dots = dotsContainer.children;
+
+            function updateSlides() {
+                slides.forEach((slide, index) => {
+                    if (index === currentSlide) {
+                        slide.classList.remove('opacity-0', 'invisible');
+                        slide.classList.add('opacity-100', 'visible');
+                    } else {
+                        slide.classList.add('opacity-0', 'invisible');
+                        slide.classList.remove('opacity-100', 'visible');
+                    }
+                });
+                for (let i = 0; i < dots.length; i++) {
+                    if (i === currentSlide) {
+                        dots[i].classList.add('bg-headerblue');
+                        dots[i].classList.remove('bg-gray-300');
+                    } else {
+                        dots[i].classList.remove('bg-headerblue');
+                        dots[i].classList.add('bg-gray-300');
+                    }
+                }
+                slideCounter.textContent = `${currentSlide + 1} / ${totalSlides}`;
+            }
+
+            function goToSlide(index) {
+                if (index < 0 || index >= totalSlides) return;
+                currentSlide = index;
+                updateSlides();
+                resetAutoplay();
+            }
+
+            function nextSlide() {
+                goToSlide((currentSlide + 1) % totalSlides);
+            }
+
+            function prevSlide() {
+                goToSlide((currentSlide - 1 + totalSlides) % totalSlides);
+            }
+
+            function startAutoplay() {
+                stopAutoplay();
+                if (!isPaused) {
+                    autoplayInterval = setInterval(nextSlide, autoplayDelay);
+                }
+            }
+
+            function stopAutoplay() {
+                if (autoplayInterval) {
+                    clearInterval(autoplayInterval);
+                    autoplayInterval = null;
+                }
+            }
+
+            function resetAutoplay() {
+                stopAutoplay();
+                startAutoplay();
+            }
+
+            function togglePause() {
+                isPaused = !isPaused;
+                if (isPaused) {
+                    pauseIcon.classList.add('hidden');
+                    playIcon.classList.remove('hidden');
+                    stopAutoplay();
+                } else {
+                    pauseIcon.classList.remove('hidden');
+                    playIcon.classList.add('hidden');
+                    startAutoplay();
+                }
+            }
+
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            pauseBtn.addEventListener('click', togglePause);
+
+            updateSlides();
+            startAutoplay();
+
+            // Keyboard support
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+                if (e.key === ' ') { e.preventDefault(); togglePause(); }
+            });
+
+            // Render charts when specific slides become visible
+            const observer = new MutationObserver(() => {
+                const slide4 = document.getElementById('slide-4');
+                if (slide4 && slide4.classList.contains('opacity-100') && !window.persChartRendered) {
+                    window.persChartRendered = true;
+                    const ctx = document.getElementById('persChart1');
+                    if (ctx) {
+                        new Chart(ctx, {
+                            type: 'bar',
+                            data: {
+                                labels: ['Infirmiers dipl.', 'Aides param.', 'Méd. général', 'Admin.', 'Service', 'Dentistes', 'Pharmaciens', 'Techniques'],
+                                datasets: [{
+                                    label: 'Effectif',
+                                    data: [47, 104, 37, 42, 78, 10, 2, 3],
+                                    backgroundColor: '#003366'
+                                }]
+                            },
+                            options: { responsive: true, plugins: { legend: { display: false } } }
+                        });
+                    }
+                }
+                const slide6 = document.getElementById('slide-6');
+                if (slide6 && slide6.classList.contains('opacity-100') && !window.consultChartRendered) {
+                    window.consultChartRendered = true;
+                    const ctx2 = document.getElementById('consultChartSlide');
+                    if (ctx2) {
+                        new Chart(ctx2, {
+                            type: 'bar',
+                            data: {
+                                labels: ['05 Juillet (Urg)', 'Chiekh Ameur', 'Baba Saad', 'Elmadagh', 'Bailiche', 'Vieux Ksar', 'Belle Vue', 'UDS', 'UCTMR'],
+                                datasets: [
+                                    { label: 'Urgence', data: [34688,0,0,0,0,0,0,0,0], backgroundColor: '#e74c3c' },
+                                    { label: 'Méd. Générale', data: [0,4225,2408,4015,6474,6614,1417,3786,4], backgroundColor: '#3498db' }
+                                ]
+                            },
+                            options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true } } }
+                        });
+                    }
+                }
+            });
+            slides.forEach(slide => observer.observe(slide, { attributes: true, attributeFilter: ['class'] }));
+
+            // ---------- FULL REPORT PDF (A4) ----------
+            function buildFullReportHTML() {
+                const sections = document.querySelectorAll('.slide');
+                let fullContent = '';
+
+                // Official header
+                fullContent += `
+                    <div style="text-align: left; margin-bottom: 30px; line-height: 1.5;">
+                        <strong>République Algérienne Démocratique et Populaire</strong><br>
+                        <strong>Ministère de la Santé</strong><br>
+                        <strong>Direction de la Santé de la Wilaya de Ghardaïa</strong><br>
+                        <strong>Établissement Public de Santé de Proximité – Berriane</strong><br>
+                        <strong>Sous-direction des services de santé / Bureau d’informatique</strong><br>
+                        N° : &nbsp;&nbsp;&nbsp;&nbsp;/2026
+                    </div>`;
+
+                // Title page
+                fullContent += `
+                    <div style="text-align: center; margin: 40px 0;">
+                        <h1 style="font-size: 2em; color: #003366; margin: 0;">Statistiques</h1>
+                        <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">de l'Établissement Public de Santé de</h1>
+                        <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">Proximité</h1>
+                        <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">de Berriane</h1>
+                        <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">Année 2025</h1>
+                    </div>
+                    <hr style="border: 1px solid #003366; margin: 30px 0;">`;
+
+                // Add all slide content (clone them, make visible)
+                sections.forEach(section => {
+                    // Skip the title slide (slide-0) for content, or we could include? We'll skip slide 0 and start from slide 1.
+                    if (section.id === 'slide-0') return;
+                    const clone = section.cloneNode(true);
+                    clone.classList.remove('opacity-0', 'invisible');
+                    clone.style.display = 'block';
+                    clone.style.position = 'static';
+                    clone.style.height = 'auto';
+                    clone.querySelectorAll('*').forEach(el => {
+                        if (el.classList.contains('hidden')) el.classList.remove('hidden');
+                    });
+                    fullContent += `<div style="margin-bottom: 30px; page-break-inside: avoid;">${clone.innerHTML}</div>`;
+                });
+
+                // Conclusion and signature
+                fullContent += `
+                    <hr style="border: 1px solid #003366; margin: 30px 0;">
+                    <div style="text-align: justify; margin-bottom: 20px;">
+                        <h3 style="color: #003366;">Conclusion</h3>
+                        <p>Le présent rapport compile l’ensemble des données statistiques de l’EPSP de Berriane pour l’année 2025. 
+                        Il reflète l’état des infrastructures, les ressources humaines, l’activité des services et l’inventaire des équipements. 
+                        Ces informations sont destinées à la sous-direction des services de santé et serviront de base pour la planification 
+                        et l’amélioration continue de l’offre de soins.</p>
+                    </div>
+                    <div style="text-align: right; margin-top: 40px;">
+                        <p>Berriane le : __________________</p>
+                        <p><strong>Le directeur</strong></p>
+                    </div>`;
+
+                return fullContent;
+            }
+
+            document.getElementById('exportPdfBtn').addEventListener('click', async () => {
+                const btn = document.getElementById('exportPdfBtn');
+                btn.disabled = true;
+                btn.innerText = 'Génération...';
+
+                const reportContainer = document.createElement('div');
+                reportContainer.id = 'pdfFullReport';
+                reportContainer.innerHTML = buildFullReportHTML();
+                document.body.appendChild(reportContainer);
+
+                try {
+                    const canvas = await html2canvas(reportContainer, {
+                        scale: 2,
+                        useCORS: true,
+                        allowTaint: true,
+                        backgroundColor: '#ffffff'
+                    });
+                    const imgData = canvas.toDataURL('image/png');
+                    const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    const imgWidth = pdfWidth;
+                    const imgHeight = canvas.height * imgWidth / canvas.width;
+                    let heightLeft = imgHeight;
+                    let position = 0;
+                    pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                    heightLeft -= pdfHeight;
+                    while (heightLeft > 0) {
+                        position = heightLeft - imgHeight;
+                        pdf.addPage();
+                        pdf.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                        heightLeft -= pdfHeight;
+                    }
+                    pdf.save('EPSP_Berriane_Statistiques_2025.pdf');
+                } catch (error) {
+                    console.error('PDF error:', error);
+                    alert('Erreur lors de la génération du PDF.');
+                } finally {
+                    document.body.removeChild(reportContainer);
+                    btn.disabled = false;
+                    btn.innerText = 'Rapport PDF';
+                }
+            });
+        })();
+    </script>
+</body>
+</html>
