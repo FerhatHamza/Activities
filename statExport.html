@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EPSP Berriane – Statistiques 2025 + Rapport PDF complet</title>
+    <title>EPSP Berriane – Statistiques 2025</title>
     <!-- Tajawal font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,16 +30,6 @@
     <!-- jsPDF + html2canvas -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <style>
-        /* For full report PDF capture, we'll temporarily build a report container */
-        #pdfFullReport {
-            font-family: 'Tajawal', sans-serif;
-            background: white;
-            padding: 30px 40px;
-            line-height: 1.5;
-            color: #1f2937;
-        }
-    </style>
 </head>
 <body class="font-tajawal bg-gray-50 text-gray-800">
 
@@ -95,12 +85,12 @@
                 <div class="overflow-x-auto mb-6">
                     <table class="min-w-full bg-white border border-gray-200">
                         <thead class="bg-headerblue text-white">
-                            <tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Polyclinique</th><th class="py-2 px-4 border">Lits Maternité</th><th class="py-2 px-4 border">Lits Urgence</th><th class="py-2 px-4 border">Lits Hémodialyse</th><th class="py-2 px-4 border">Lits Fonctionnels</th></tr>
+                            <tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Polyclinique</th><th class="py-2 px-4 border">Lits Maternité</th><th class="py-2 px-4 border">Lits Urgence</th><th class="py-2 px-4 border">Lits Hémodialyse</th><th class="py-2 px-4 border">Lits fonctionnels</th></tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-rowblue"><td>BERRIANE</td><td>Polyclinique 05 Juillet BALLOUH</td><td>0</td><td>11</td><td>12</td><td>23</td></tr>
-                            <tr><td></td><td>Polyclinique BAILICHE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
-                            <tr class="bg-rowblue"><td></td><td>Polyclinique VIEUX K'SAR</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>Polyclinique 05 juillet BALLOUH</td><td>0</td><td>11</td><td>12</td><td>23</td></tr>
+                            <tr><td>BERRIANE</td><td>Polyclinique BAILICHE</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>Polyclinique VIEUX K'SAR</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
                             <tr class="font-bold"><td colspan="2">Total</td><td>0</td><td>11</td><td>12</td><td>23</td></tr>
                         </tbody>
                     </table>
@@ -109,12 +99,12 @@
                 <h4 class="font-semibold text-lg mb-2">Centres de santé (Canevas n°3)</h4>
                 <div class="overflow-x-auto mb-6">
                     <table class="min-w-full bg-white border border-gray-200">
-                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Centre de santé</th><th class="py-2 px-4 border">Lits</th></tr></thead>
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Dénomination de la salle de soins</th><th class="py-2 px-4 border">Lits</th></tr></thead>
                         <tbody>
                             <tr class="bg-rowblue"><td>BERRIANE</td><td>Centre de santé ELMADAHG</td><td>0</td></tr>
-                            <tr><td></td><td>Centre de santé BABA SAAD</td><td>0</td></tr>
-                            <tr class="bg-rowblue"><td></td><td>Centre de santé CHEIKH AMEUR</td><td>0</td></tr>
-                            <tr><td></td><td>Centre de santé BELLE VUE</td><td>0</td></tr>
+                            <tr><td>BERRIANE</td><td>Centre de santé BABA SAAD</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>Centre de santé CHEIKH AMEUR</td><td>0</td></tr>
+                            <tr><td>BERRIANE</td><td>Centre de santé BELLE VUE</td><td>0</td></tr>
                             <tr class="font-bold"><td colspan="2">Total</td><td>0</td></tr>
                         </tbody>
                     </table>
@@ -138,15 +128,15 @@
                 <h4 class="font-semibold text-lg mb-2">Infrastructures réceptionnées / mises en service (Canevas n°5)</h4>
                 <div class="overflow-x-auto">
                     <table class="min-w-full bg-white border border-gray-200">
-                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Structure</th><th class="py-2 px-4 border">Lits Mat.</th><th class="py-2 px-4 border">Lits Urg.</th><th class="py-2 px-4 border">Lits Hém.</th><th class="py-2 px-4 border">Date</th></tr></thead>
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Commune</th><th class="py-2 px-4 border">Type de structures</th><th class="py-2 px-4 border">Lits Maternité</th><th class="py-2 px-4 border">Lits Urgence</th><th class="py-2 px-4 border">Lits Hémodialyse</th><th class="py-2 px-4 border">Date de réception</th></tr></thead>
                         <tbody>
-                            <tr class="bg-rowblue"><td>BERRIANE</td><td>Polyclinique BALLOUH</td><td>0</td><td>11</td><td>/</td><td>1998</td></tr>
-                            <tr><td></td><td>P/Bailiche Mazouz</td><td>/</td><td>/</td><td>12</td><td>2000</td></tr>
-                            <tr class="bg-rowblue"><td></td><td>P/Vieux K'sar</td><td>/</td><td>/</td><td>/</td><td>1988</td></tr>
-                            <tr><td></td><td>Salle de soins Baba Saad</td><td>/</td><td>/</td><td>/</td><td>1958</td></tr>
-                            <tr class="bg-rowblue"><td></td><td>Salle de soins Elmadagh</td><td>/</td><td>/</td><td>/</td><td>1989</td></tr>
-                            <tr><td></td><td>Salle de soins Chiekh Ameur</td><td>/</td><td>/</td><td>/</td><td>1999</td></tr>
-                            <tr class="bg-rowblue"><td></td><td>Salle de soins Belle Vue</td><td>/</td><td>/</td><td>/</td><td>2006</td></tr>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>polyclinique BALLOUH</td><td>0</td><td>11</td><td>/</td><td>1998</td></tr>
+                            <tr><td>BERRIANE</td><td>P/Bailiche mazouz</td><td>/</td><td>/</td><td>12</td><td>2000</td></tr>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>P/vieux k'sar</td><td>/</td><td>/</td><td>/</td><td>1988</td></tr>
+                            <tr><td>BERRIANE</td><td>Salle de soins baba saad</td><td>/</td><td>/</td><td>/</td><td>1958</td></tr>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>salle de soins elmadagh</td><td>/</td><td>/</td><td>/</td><td>1989</td></tr>
+                            <tr><td>BERRIANE</td><td>salle de soins chiekh ameur</td><td>/</td><td>/</td><td>/</td><td>1999</td></tr>
+                            <tr class="bg-rowblue"><td>BERRIANE</td><td>salle de soins BELLE VUE</td><td>/</td><td>/</td><td>/</td><td>2006</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -159,7 +149,7 @@
                 <h3 class="text-2xl font-bold text-headerblue mb-6 border-b pb-2">Personnel médical général</h3>
                 <div class="overflow-x-auto mb-8">
                     <table class="min-w-full bg-white border border-gray-200">
-                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Type de personnel</th><th class="py-2 px-4 border">H</th><th class="py-2 px-4 border">F</th><th class="py-2 px-4 border">TOTAL</th></tr></thead>
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Type de personnel</th><th class="py-2 px-4 border">H</th><th class="py-2 px-4 border">F</th><th class="py-2 px-4 border">Total</th></tr></thead>
                         <tbody>
                             <tr class="bg-rowblue"><td>Médecins généralistes</td><td>6</td><td>19</td><td>25</td></tr>
                             <tr><td>Chirurgiens dentistes</td><td>3</td><td>7</td><td>10</td></tr>
@@ -168,12 +158,13 @@
                         </tbody>
                     </table>
                 </div>
+                <p class="mb-4 text-gray-700"><span class="font-bold">Médecins spécialistes :</span> Tous (médicaux, chirurgicaux, dentaires, laboratoire) – Néant (0).</p>
 
                 <h3 class="text-2xl font-bold text-headerblue mb-6 border-b pb-2">Personnel paramédical (effectifs non nuls)</h3>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- Infirmiers diplômés d'État -->
                     <div>
-                        <h4 class="font-semibold text-lg mb-2">Infirmiers diplômés d'État</h4>
+                        <h4 class="font-semibold text-lg mb-2">Infirmiers Diplômés d'État</h4>
                         <div class="overflow-x-auto">
                             <table class="min-w-full bg-white border border-gray-200">
                                 <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Filière</th><th class="py-2 px-4 border">H</th><th class="py-2 px-4 border">F</th><th class="py-2 px-4 border">Total</th></tr></thead>
@@ -185,14 +176,14 @@
                                     <tr class="bg-rowblue"><td>Manipulateur en radiologie</td><td>5</td><td>3</td><td>8</td></tr>
                                     <tr><td>Épidémiologie</td><td>2</td><td>3</td><td>5</td></tr>
                                     <tr class="bg-rowblue"><td>Psychologue clinicienne</td><td>0</td><td>5</td><td>5</td></tr>
-                                    <tr class="font-bold"><td>TOTAL</td><td>21</td><td>26</td><td>47</td></tr>
+                                    <tr class="font-bold"><td>TOTAL IDE</td><td>21</td><td>26</td><td>47</td></tr>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                     <!-- Aides paramédicaux -->
                     <div>
-                        <h4 class="font-semibold text-lg mb-2">Aides paramédicaux</h4>
+                        <h4 class="font-semibold text-lg mb-2">Aides Paramédicaux</h4>
                         <div class="overflow-x-auto">
                             <table class="min-w-full bg-white border border-gray-200">
                                 <thead class="bg-headerblue text-white"><tr><th class="py-2 px-4 border">Filière</th><th class="py-2 px-4 border">H</th><th class="py-2 px-4 border">F</th><th class="py-2 px-4 border">Total</th></tr></thead>
@@ -200,10 +191,68 @@
                                     <tr class="bg-rowblue"><td>Soins en puériculture</td><td>0</td><td>2</td><td>2</td></tr>
                                     <tr><td>Soins infirmiers généraux</td><td>55</td><td>42</td><td>97</td></tr>
                                     <tr class="bg-rowblue"><td>Autres</td><td>4</td><td>1</td><td>5</td></tr>
-                                    <tr class="font-bold"><td>TOTAL</td><td>59</td><td>45</td><td>104</td></tr>
+                                    <tr class="font-bold"><td>Total aides paramédicaux</td><td>59</td><td>45</td><td>104</td></tr>
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+                <!-- Personnel administratif, technique, service in separate cards -->
+                <div class="mt-8">
+                    <h4 class="font-semibold text-lg mb-2">Personnel Administratif (partiel, effectif non nul)</h4>
+                    <div class="overflow-x-auto">
+                        <table class="min-w-full bg-white border border-gray-200 text-sm">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-3 border">Grade/Fonction</th><th class="py-1 px-3 border">H</th><th class="py-1 px-3 border">F</th><th class="py-1 px-3 border">Total</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Administrateur principal</td><td>2</td><td>3</td><td>5</td></tr>
+                                <tr><td>Administrateur analyste</td><td>1</td><td>3</td><td>4</td></tr>
+                                <tr class="bg-rowblue"><td>Administrateur</td><td>5</td><td>2</td><td>7</td></tr>
+                                <tr><td>Aide administrateur</td><td>3</td><td>0</td><td>3</td></tr>
+                                <tr class="bg-rowblue"><td>Attaché d'administration principal</td><td>0</td><td>5</td><td>5</td></tr>
+                                <tr><td>Attaché d'administration</td><td>1</td><td>1</td><td>2</td></tr>
+                                <tr class="bg-rowblue"><td>Agent d'administration</td><td>2</td><td>1</td><td>3</td></tr>
+                                <tr><td>Agent de bureau</td><td>0</td><td>2</td><td>2</td></tr>
+                                <tr class="bg-rowblue"><td>Secrétaire de direction</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr><td>Secrétaire</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>Agent de saisie</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr><td>Comptable administratif principal</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>Administrateur conseillé</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>Assistant Archiviste Documentaliste</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr class="bg-rowblue"><td>Agent d'administration principal</td><td>4</td><td>1</td><td>5</td></tr>
+                                <tr class="font-bold"><td>TOTAL</td><td>21</td><td>21</td><td>42</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+                    <div>
+                        <h4 class="font-semibold text-lg">Personnel Technique</h4>
+                        <table class="min-w-full bg-white border text-sm">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2">Fonction</th><th class="py-1 px-2">H</th><th class="py-1 px-2">F</th><th class="py-1 px-2">Total</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>Ingénieur d'état</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>Adjoint technique</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>3</td><td>0</td><td>3</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-lg">Personnel de Service</h4>
+                        <table class="min-w-full bg-white border text-sm">
+                            <thead class="bg-headerblue text-white"><tr><th class="py-1 px-2">Catégorie</th><th class="py-1 px-2">H</th><th class="py-1 px-2">F</th><th class="py-1 px-2">Total</th></tr></thead>
+                            <tbody>
+                                <tr class="bg-rowblue"><td>OPHC</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>OP1</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr class="bg-rowblue"><td>Conducteur auto 1ère cat.</td><td>1</td><td>0</td><td>1</td></tr>
+                                <tr><td>Conducteur auto 1er niv.</td><td>6</td><td>0</td><td>6</td></tr>
+                                <tr class="bg-rowblue"><td>Conducteur auto 2ème niv.</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr><td>OP niveau 1</td><td>48</td><td>12</td><td>60</td></tr>
+                                <tr class="bg-rowblue"><td>OP niveau 3</td><td>2</td><td>0</td><td>2</td></tr>
+                                <tr><td>Agent de sécurité</td><td>3</td><td>0</td><td>3</td></tr>
+                                <tr class="bg-rowblue"><td>Agent de service</td><td>0</td><td>1</td><td>1</td></tr>
+                                <tr class="font-bold"><td>Total</td><td>65</td><td>13</td><td>78</td></tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <div class="mt-8">
@@ -218,18 +267,18 @@
                 <h3 class="text-2xl font-bold text-headerblue mb-6 border-b pb-2">Consultations</h3>
                 <div class="overflow-x-auto mb-6">
                     <table class="min-w-full bg-white border border-gray-200 text-sm">
-                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-2 border">Structure</th><th class="py-2 px-2 border">Urgence</th><th class="py-2 px-2 border">Méd. Gén.</th><th class="py-2 px-2 border">Spécialisées</th></tr></thead>
+                        <thead class="bg-headerblue text-white"><tr><th class="py-2 px-2 border">Structure</th><th class="py-2 px-2 border">Urgences</th><th class="py-2 px-2 border">Médecine Générale</th><th class="py-2 px-2 border">Médecine Spécialisée</th></tr></thead>
                         <tbody>
                             <tr class="bg-rowblue"><td>POLYCLINIQUE 05 JUILLET</td><td>34 688</td><td>0</td><td>0</td></tr>
-                            <tr><td>SALLE DE SOINS EL CHIEKH AMEUR</td><td>0</td><td>4 225</td><td>0</td></tr>
-                            <tr class="bg-rowblue"><td>SALLE DE SOINS BABA SAAD</td><td>0</td><td>2 408</td><td>0</td></tr>
-                            <tr><td>SALLE DE SOINS ELMADAGH</td><td>0</td><td>4 015</td><td>0</td></tr>
+                            <tr><td>Salle de soins EL CHIEKH AMEUR</td><td>0</td><td>4 225</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Salle de soins BABA SAAD</td><td>0</td><td>2 408</td><td>0</td></tr>
+                            <tr><td>Salle de soins ELMADAGH</td><td>0</td><td>4 015</td><td>0</td></tr>
                             <tr class="bg-rowblue"><td>POLYCLINIQUE BAILICHE MAZOUZ</td><td>0</td><td>6 474</td><td>0</td></tr>
                             <tr><td>POLYCLINIQUE VIEUX K'SAR</td><td>0</td><td>6 614</td><td>0</td></tr>
-                            <tr class="bg-rowblue"><td>SALLE DE SOINS BELLE VUE</td><td>0</td><td>1 417</td><td>0</td></tr>
+                            <tr class="bg-rowblue"><td>Salle de soins BELLE VUE</td><td>0</td><td>1 417</td><td>0</td></tr>
                             <tr><td>UDS ABOU ELYAKADANE</td><td>0</td><td>3 786</td><td>0</td></tr>
                             <tr class="bg-rowblue"><td>UCTMR</td><td>0</td><td>4</td><td>0</td></tr>
-                            <tr class="font-bold"><td>TOTAL</td><td>34 688</td><td>28 943</td><td>0</td></tr>
+                            <tr class="font-bold"><td>Total</td><td>34 688</td><td>28 943</td><td>0</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -237,8 +286,13 @@
                     <canvas id="consultChart"></canvas>
                 </div>
             </div>
-            <!-- Other activity cards -->
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Maternité extra-hospitalière -->
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <h4 class="font-bold text-headerblue mb-2">Maternité extra-hospitalière</h4>
+                    <p>État : <span class="font-bold">Néant</span> – Aucune activité enregistrée.</p>
+                </div>
+                <!-- Urgences -->
                 <div class="bg-white p-4 rounded-xl shadow-md">
                     <h4 class="font-bold text-headerblue mb-2">Services d'urgence</h4>
                     <table class="w-full text-sm border">
@@ -246,6 +300,7 @@
                         <tbody><tr class="bg-rowblue"><td>11</td><td>34 688</td><td>3 168</td><td>572</td></tr></tbody>
                     </table>
                 </div>
+                <!-- Laboratoire -->
                 <div class="bg-white p-4 rounded-xl shadow-md">
                     <h4 class="font-bold text-headerblue mb-2">Laboratoire</h4>
                     <table class="w-full text-sm border">
@@ -253,20 +308,23 @@
                         <tbody><tr class="bg-rowblue"><td>40 485</td><td>67 436</td><td>130</td><td>5 975</td></tr></tbody>
                     </table>
                 </div>
+                <!-- Radiologie -->
                 <div class="bg-white p-4 rounded-xl shadow-md">
                     <h4 class="font-bold text-headerblue mb-2">Radiologie & Explorations</h4>
                     <table class="w-full text-sm border">
-                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Actes Radio</th><th class="p-1">Échogr.</th><th class="p-1">ECG</th></tr></thead>
+                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Actes radio</th><th class="p-1">Échogr.</th><th class="p-1">ECG</th></tr></thead>
                         <tbody><tr class="bg-rowblue"><td>8 006</td><td>0</td><td>454</td></tr></tbody>
                     </table>
                 </div>
+                <!-- Stomatologie -->
                 <div class="bg-white p-4 rounded-xl shadow-md">
                     <h4 class="font-bold text-headerblue mb-2">Stomatologie</h4>
                     <table class="w-full text-sm border">
-                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Fauteuils</th><th class="p-1">Cons. stom.</th><th class="p-1">Soins</th><th class="p-1">Extract.</th><th class="p-1">Proth.</th></tr></thead>
+                        <thead class="bg-headerblue text-white"><tr><th class="p-1">Fauteuils</th><th class="p-1">Consult.</th><th class="p-1">Soins</th><th class="p-1">Extract.</th><th class="p-1">Proth.</th></tr></thead>
                         <tbody><tr class="bg-rowblue"><td>6</td><td>1 527</td><td>616</td><td>3 004</td><td>0</td></tr></tbody>
                     </table>
                 </div>
+                <!-- Hémodialyse -->
                 <div class="bg-white p-4 rounded-xl shadow-md">
                     <h4 class="font-bold text-headerblue mb-2">Hémodialyse</h4>
                     <table class="w-full text-sm border">
@@ -279,6 +337,10 @@
 
         <!-- ÉQUIPEMENTS TAB -->
         <section id="tab-equipements" class="tab-content hidden">
+            <div class="bg-white p-6 rounded-xl shadow-md mb-8">
+                <h3 class="text-2xl font-bold text-headerblue mb-4">Équipements lourds</h3>
+                <p class="text-red-600 font-medium">Aucun (IRM, Scanner, etc.) – Néant.</p>
+            </div>
             <div class="bg-white p-6 rounded-xl shadow-md mb-8">
                 <h3 class="text-2xl font-bold text-headerblue mb-4">Inventaire des appareils médicaux</h3>
                 <input type="text" id="equipmentSearch" placeholder="Rechercher un appareil..." class="w-full px-4 py-2 mb-4 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-headerblue">
@@ -329,137 +391,137 @@
         });
         document.querySelector('.tab-link[data-tab="tab-infrastructures"]').classList.add('text-headerblue', 'border-headerblue', 'active');
 
-        // Equipment data and filtering (only non-zero)
+        // Equipment data (full list)
         const equipmentData = [
-            { no:1, name:"Appareil de Radiographie Mobile", marche:0, panne:0 },
-            { no:2, name:"Appareil de radiographie mobile avec amplificateur de brillance", marche:0, panne:0 },
-            { no:3, name:"Appareil de radiographie fixe avec table télécommandée (grande salle)", marche:0, panne:0 },
-            { no:4, name:"Appareil de radiographie fixe avec table non télécommandée (grande salle)", marche:3, panne:0 },
-            { no:5, name:"Angiographie ophtalmologique", marche:0, panne:0 },
-            { no:6, name:"Appareil de radiographie spécialisé - Mamographe", marche:0, panne:0 },
-            { no:7, name:"Appareil de radiographie spécialisé - Craniographe", marche:0, panne:0 },
-            { no:8, name:"Appareil de radiographie spécialisé - Urologique", marche:0, panne:0 },
-            { no:9, name:"Appareil de radiographie spécialisé - Pulmonaire", marche:0, panne:0 },
-            { no:10, name:"Appareil de radiographie spécialisé - Dentaire", marche:0, panne:0 },
-            { no:11, name:"Échographe multi-disciplinaire", marche:0, panne:0 },
-            { no:12, name:"Échocardiographe", marche:2, panne:0 },
-            { no:13, name:"Échocardiographe - portatif", marche:0, panne:0 },
-            { no:14, name:"Développeuse de films - automatique", marche:0, panne:0 },
-            { no:15, name:"Développeuse de films - manuelle", marche:3, panne:0 },
-            { no:16, name:"Électroencéphalographie 16 plumes", marche:0, panne:0 },
-            { no:17, name:"Électroencéphalographie 8 plumes", marche:0, panne:0 },
-            { no:18, name:"Électromyographe (E.M.G)", marche:0, panne:0 },
-            { no:19, name:"Électrocardiogramme (E.C.G) - 6 Pistes", marche:0, panne:0 },
-            { no:20, name:"Électrocardiogramme (E.C.G) - 3 Pistes", marche:5, panne:0 },
-            { no:21, name:"Électrocardiogramme (E.C.G) - 1 Piste", marche:0, panne:0 },
-            { no:22, name:"Holter (Lecteur enregistreur)", marche:1, panne:0 },
-            { no:23, name:"Tensiomètre automatique", marche:0, panne:0 },
-            { no:24, name:"Spiromètre", marche:0, panne:0 },
-            { no:25, name:"Ensemble d'analyse de la fonction respiratoire", marche:0, panne:0 },
-            { no:26, name:"Cabine audiométrique", marche:0, panne:0 },
-            { no:27, name:"Audiomètre clinique", marche:0, panne:0 },
-            { no:28, name:"Audiomètre diagnostic", marche:0, panne:0 },
-            { no:29, name:"Audiomètre infantile", marche:0, panne:0 },
-            { no:30, name:"Impédancemètre", marche:0, panne:0 },
-            { no:31, name:"Ophtalmomètre", marche:0, panne:0 },
-            { no:32, name:"Biomicroscope occulaire / Lampe de fente", marche:0, panne:0 },
-            { no:33, name:"Réfracteur", marche:0, panne:0 },
-            { no:34, name:"Focomètre", marche:0, panne:0 },
-            { no:35, name:"Périmètre automatique", marche:0, panne:0 },
-            { no:36, name:"Ophtalmoscope électrique", marche:0, panne:0 },
-            { no:37, name:"Tonomètre de shiotz", marche:0, panne:0 },
-            { no:38, name:"Tonomètre à applanation", marche:0, panne:0 },
-            { no:39, name:"Valise de verre d'essai", marche:0, panne:0 },
-            { no:40, name:"Monture de verre d'essai pour adultes", marche:0, panne:0 },
-            { no:41, name:"Échelle d'acuité visuelle (L+) et (L-II)", marche:8, panne:0 },
-            { no:42, name:"Verre à trois (03) miroirs", marche:0, panne:0 },
-            { no:43, name:"Verre à un (01) miroir", marche:0, panne:0 },
-            { no:44, name:"Fibroscope œsogastroduodénal pour adultes", marche:0, panne:0 },
-            { no:45, name:"Fibroscope œsogastroduodénal pour enfants", marche:0, panne:0 },
-            { no:46, name:"Fibro-sigmoïdoscope pour adultes", marche:0, panne:0 },
-            { no:47, name:"Fibro-sigmoïdoscope pour enfants", marche:0, panne:0 },
-            { no:48, name:"Fibroscope nasale", marche:0, panne:0 },
-            { no:49, name:"Fibro-bronchoscope pour adultes", marche:0, panne:0 },
-            { no:50, name:"Fibro-bronchoscope pour enfants", marche:0, panne:0 },
-            { no:51, name:"Hystéroscope/Salpingographe", marche:0, panne:0 },
-            { no:52, name:"Cœlioscope", marche:0, panne:0 },
-            { no:53, name:"Colposcope", marche:0, panne:0 },
-            { no:54, name:"Pince à biopsie", marche:0, panne:0 },
-            { no:55, name:"Pince à extraction de corps étrangers", marche:0, panne:0 },
-            { no:56, name:"Balance d'analyse / Précision", marche:0, panne:0 },
-            { no:57, name:"Balance roberval avec poids", marche:0, panne:0 },
-            { no:58, name:"Bain marie universel", marche:1, panne:0 },
-            { no:59, name:"Bain marie de sérologie", marche:0, panne:0 },
-            { no:60, name:"Incubateur de tissus", marche:0, panne:0 },
-            { no:61, name:"Enceinte anaérobie", marche:0, panne:0 },
-            { no:62, name:"Étuve à paraffine", marche:0, panne:0 },
-            { no:63, name:"Étuve universelle", marche:0, panne:0 },
-            { no:64, name:"Étuve bactériologique 57°", marche:0, panne:0 },
-            { no:65, name:"Étuve bactériologique 37°", marche:3, panne:0 },
-            { no:66, name:"Étuve de séchage", marche:0, panne:0 },
-            { no:67, name:"Centrifugeuse de paillasse", marche:7, panne:0 },
-            { no:68, name:"Centrifugeuse réfrigérée", marche:0, panne:0 },
-            { no:69, name:"Centrifugeuse à hématocrite", marche:0, panne:0 },
-            { no:70, name:"Micro-centrifugeuse", marche:0, panne:0 },
-            { no:71, name:"Microscope binoculaire à lumière transmise", marche:4, panne:0 },
-            { no:72, name:"Microscope binoculaire à lumière polarisée", marche:0, panne:0 },
-            { no:73, name:"Microscope binoculaire à contraste de phase", marche:0, panne:0 },
-            { no:74, name:"Microscope à plusieurs têtes", marche:0, panne:0 },
-            { no:75, name:"Microscope binoculaire photonique", marche:0, panne:0 },
-            { no:76, name:"Microscope binoculaire fluoresconique", marche:0, panne:0 },
-            { no:77, name:"Micromètre pour microscopes / réticules gradués", marche:0, panne:0 },
-            { no:78, name:"Filtre de polarisation pour microscopes", marche:0, panne:0 },
-            { no:79, name:"Colorimètre / Coloration des lames", marche:0, panne:0 },
-            { no:80, name:"Lyophilisateur", marche:0, panne:0 },
-            { no:81, name:"Dessicateur", marche:0, panne:0 },
-            { no:82, name:"Analyseur de métabolites (1 à 3 paramètres)", marche:0, panne:0 },
-            { no:83, name:"Analyseur d'ions (photomètre à flamme)", marche:0, panne:0 },
-            { no:84, name:"pH-Mètre", marche:0, panne:0 },
-            { no:85, name:"Hémoglobinomètre", marche:0, panne:0 },
-            { no:86, name:"Co-Oxymètre", marche:0, panne:0 },
-            { no:87, name:"Appareil à Élysa", marche:0, panne:0 },
-            { no:88, name:"Spectrophotomètre", marche:6, panne:0 },
-            { no:89, name:"Chromatographie liquide", marche:0, panne:0 },
-            { no:90, name:"Spectrofluorimètre", marche:0, panne:0 },
-            { no:91, name:"Fluorimètre", marche:0, panne:0 },
-            { no:92, name:"Cuve générateur pour électrophorèse", marche:0, panne:0 },
-            { no:93, name:"Densitomètre pour électrophorèse", marche:0, panne:0 },
-            { no:94, name:"Automate de préparation / Distribution d'échantillons réactifs", marche:6, panne:2 },
-            { no:95, name:"Dilutateur", marche:0, panne:0 },
-            { no:96, name:"Agitateur de Kahn", marche:0, panne:0 },
-            { no:97, name:"Agitateur de Kline", marche:0, panne:0 },
-            { no:98, name:"Agitateur de vortex", marche:0, panne:0 },
-            { no:99, name:"Agitateur de flacons", marche:0, panne:0 },
-            { no:100, name:"Pompe péristaltique de labo", marche:0, panne:0 },
-            { no:101, name:"Dialyseur de laboratoire", marche:0, panne:0 },
-            { no:102, name:"Compteur d'échantillons (gamma)", marche:0, panne:0 },
-            { no:103, name:"Compteur d'échantillons (béta)", marche:0, panne:0 },
-            { no:104, name:"Analyseur par polarisation de fluorescence", marche:0, panne:0 },
-            { no:105, name:"Trombolastographe", marche:0, panne:0 },
-            { no:106, name:"Coagulomètre", marche:0, panne:0 },
-            { no:107, name:"Agrégomètre", marche:0, panne:0 },
-            { no:108, name:"Compte globules 16 touches", marche:0, panne:0 },
-            { no:109, name:"Compte globules à 8 touches", marche:0, panne:0 },
-            { no:110, name:"Compte globules à 5 touches", marche:0, panne:0 },
-            { no:111, name:"Compte globules à 3 touches", marche:0, panne:0 },
-            { no:112, name:"Compteur de colonie", marche:0, panne:0 },
-            { no:113, name:"Automate pour antibiogramme / identification", marche:0, panne:0 },
-            { no:114, name:"Osmomètre", marche:0, panne:0 },
-            { no:115, name:"Rhésuscope", marche:0, panne:0 },
-            { no:116, name:"Trompe à vide", marche:0, panne:0 },
-            { no:117, name:"Autoclave de laboratoire", marche:0, panne:0 },
-            { no:118, name:"Pompe à héparine", marche:0, panne:0 },
-            { no:119, name:"Lave pipettes", marche:0, panne:0 },
-            { no:120, name:"Sécheuse automatique de verre", marche:0, panne:0 },
-            { no:121, name:"Cellule de Benker", marche:0, panne:0 },
-            { no:122, name:"Plaque chauffante", marche:0, panne:0 },
-            { no:123, name:"Bec Bunsen", marche:0, panne:0 },
-            { no:124, name:"Minuterie", marche:0, panne:0 },
-            { no:125, name:"Chronomètre", marche:0, panne:0 },
-            { no:126, name:"Congélateur -80°C", marche:0, panne:0 },
-            { no:127, name:"Congélateur -70°C", marche:0, panne:0 },
-            { no:128, name:"Congélateur à azote liquide -170°C", marche:0, panne:0 },
-            { no:129, name:"Appareil d'anesthésie", marche:0, panne:0 }
+            { no: 1, name: "Appareil de Radiographie Mobile", marche: 0, panne: 0 },
+            { no: 2, name: "Appareil de radiographie mobile avec amplificateur de brillance", marche: 0, panne: 0 },
+            { no: 3, name: "Appareil de radiographie fixe avec table télécommandée (grande salle)", marche: 0, panne: 0 },
+            { no: 4, name: "Appareil de radiographie fixe avec table non télécommandée (grande salle)", marche: 3, panne: 0 },
+            { no: 5, name: "Angiographie ophtalmologique", marche: 0, panne: 0 },
+            { no: 6, name: "Appareil de radiographie spécialisé - Mamographe", marche: 0, panne: 0 },
+            { no: 7, name: "Appareil de radiographie spécialisé - Craniographe", marche: 0, panne: 0 },
+            { no: 8, name: "Appareil de radiographie spécialisé - Urologique", marche: 0, panne: 0 },
+            { no: 9, name: "Appareil de radiographie spécialisé - Pulmonaire", marche: 0, panne: 0 },
+            { no: 10, name: "Appareil de radiographie spécialisé - Dentaire", marche: 0, panne: 0 },
+            { no: 11, name: "Échographe multi-disciplinaire", marche: 0, panne: 0 },
+            { no: 12, name: "Échocardiographe", marche: 2, panne: 0 },
+            { no: 13, name: "Échocardiographe - portatif", marche: 0, panne: 0 },
+            { no: 14, name: "Développeuse de films - automatique", marche: 0, panne: 0 },
+            { no: 15, name: "Développeuse de films - manuelle", marche: 3, panne: 0 },
+            { no: 16, name: "Électroencéphalographe 16 plumes", marche: 0, panne: 0 },
+            { no: 17, name: "Électroencéphalographe 8 plumes", marche: 0, panne: 0 },
+            { no: 18, name: "Électromyographe (E.M.G)", marche: 0, panne: 0 },
+            { no: 19, name: "Électrocardiogramme (E.C.G) - 6 Pistes", marche: 0, panne: 0 },
+            { no: 20, name: "Électrocardiogramme (E.C.G) - 3 Pistes", marche: 5, panne: 0 },
+            { no: 21, name: "Électrocardiogramme (E.C.G) - 1 Piste", marche: 0, panne: 0 },
+            { no: 22, name: "Holter (Lecteur enregistreur)", marche: 1, panne: 0 },
+            { no: 23, name: "Tensiomètre automatique", marche: 0, panne: 0 },
+            { no: 24, name: "Spiromètre", marche: 0, panne: 0 },
+            { no: 25, name: "Ensemble d'analyse de la fonction respiratoire", marche: 0, panne: 0 },
+            { no: 26, name: "Cabine audiométrique", marche: 0, panne: 0 },
+            { no: 27, name: "Audiomètre clinique", marche: 0, panne: 0 },
+            { no: 28, name: "Audiomètre diagnostic", marche: 0, panne: 0 },
+            { no: 29, name: "Audiomètre infantile", marche: 0, panne: 0 },
+            { no: 30, name: "Impédancemètre", marche: 0, panne: 0 },
+            { no: 31, name: "Ophtalmomètre", marche: 0, panne: 0 },
+            { no: 32, name: "Biomicroscope oculaire / Lampe de fente", marche: 0, panne: 0 },
+            { no: 33, name: "Réfracteur", marche: 0, panne: 0 },
+            { no: 34, name: "Focomètre", marche: 0, panne: 0 },
+            { no: 35, name: "Périmètre automatique", marche: 0, panne: 0 },
+            { no: 36, name: "Ophtalmoscope électrique", marche: 0, panne: 0 },
+            { no: 37, name: "Tonomètre de Schiotz", marche: 0, panne: 0 },
+            { no: 38, name: "Tonomètre à applanation", marche: 0, panne: 0 },
+            { no: 39, name: "Valise de verre d'essai", marche: 0, panne: 0 },
+            { no: 40, name: "Monture de verre d'essai pour adultes", marche: 0, panne: 0 },
+            { no: 41, name: "Échelle d'acuité visuelle (L+) et (L-II)", marche: 8, panne: 0 },
+            { no: 42, name: "Verre à trois (03) miroirs", marche: 0, panne: 0 },
+            { no: 43, name: "Verre à un (01) miroir", marche: 0, panne: 0 },
+            { no: 44, name: "Fibroscope œsogastroduodénal pour adultes", marche: 0, panne: 0 },
+            { no: 45, name: "Fibroscope œsogastroduodénal pour enfants", marche: 0, panne: 0 },
+            { no: 46, name: "Fibro-sigmoïdoscope pour adultes", marche: 0, panne: 0 },
+            { no: 47, name: "Fibro-sigmoïdoscope pour enfants", marche: 0, panne: 0 },
+            { no: 48, name: "Fibroscope nasal", marche: 0, panne: 0 },
+            { no: 49, name: "Fibro-bronchoscope pour adultes", marche: 0, panne: 0 },
+            { no: 50, name: "Fibro-bronchoscope pour enfants", marche: 0, panne: 0 },
+            { no: 51, name: "Hystéroscope / Salpingographe", marche: 0, panne: 0 },
+            { no: 52, name: "Cœlioscope", marche: 0, panne: 0 },
+            { no: 53, name: "Colposcope", marche: 0, panne: 0 },
+            { no: 54, name: "Pince à biopsie", marche: 0, panne: 0 },
+            { no: 55, name: "Pince à extraction de corps étrangers", marche: 0, panne: 0 },
+            { no: 56, name: "Balance d'analyse / Précision", marche: 0, panne: 0 },
+            { no: 57, name: "Balance Roberval avec poids", marche: 0, panne: 0 },
+            { no: 58, name: "Bain-marie universel", marche: 1, panne: 0 },
+            { no: 59, name: "Bain-marie de sérologie", marche: 0, panne: 0 },
+            { no: 60, name: "Incubateur de tissus", marche: 0, panne: 0 },
+            { no: 61, name: "Enceinte anaérobie", marche: 0, panne: 0 },
+            { no: 62, name: "Étuve à paraffine", marche: 0, panne: 0 },
+            { no: 63, name: "Étuve universelle", marche: 0, panne: 0 },
+            { no: 64, name: "Étuve bactériologique 57°C", marche: 0, panne: 0 },
+            { no: 65, name: "Étuve bactériologique 37°C", marche: 3, panne: 0 },
+            { no: 66, name: "Étuve de séchage", marche: 0, panne: 0 },
+            { no: 67, name: "Centrifugeuse de paillasse", marche: 7, panne: 0 },
+            { no: 68, name: "Centrifugeuse réfrigérée", marche: 0, panne: 0 },
+            { no: 69, name: "Centrifugeuse à hématocrite", marche: 0, panne: 0 },
+            { no: 70, name: "Micro-centrifugeuse", marche: 0, panne: 0 },
+            { no: 71, name: "Microscope binoculaire à lumière transmise", marche: 4, panne: 0 },
+            { no: 72, name: "Microscope binoculaire à lumière polarisée", marche: 0, panne: 0 },
+            { no: 73, name: "Microscope binoculaire à contraste de phase", marche: 0, panne: 0 },
+            { no: 74, name: "Microscope à plusieurs têtes", marche: 0, panne: 0 },
+            { no: 75, name: "Microscope binoculaire photonique", marche: 0, panne: 0 },
+            { no: 76, name: "Microscope binoculaire à fluorescence", marche: 0, panne: 0 },
+            { no: 77, name: "Micromètre pour microscopes / réticules gradués", marche: 0, panne: 0 },
+            { no: 78, name: "Filtre de polarisation pour microscopes", marche: 0, panne: 0 },
+            { no: 79, name: "Colorimètre / Coloration des lames", marche: 0, panne: 0 },
+            { no: 80, name: "Lyophilisateur", marche: 0, panne: 0 },
+            { no: 81, name: "Dessiccateur", marche: 0, panne: 0 },
+            { no: 82, name: "Analyseur de métabolites (1 à 3 paramètres)", marche: 0, panne: 0 },
+            { no: 83, name: "Analyseur d'ions (photomètre à flamme)", marche: 0, panne: 0 },
+            { no: 84, name: "pH-mètre", marche: 0, panne: 0 },
+            { no: 85, name: "Hémoglobinomètre", marche: 0, panne: 0 },
+            { no: 86, name: "Co-oxymètre", marche: 0, panne: 0 },
+            { no: 87, name: "Appareil à ELISA", marche: 0, panne: 0 },
+            { no: 88, name: "Spectrophotomètre", marche: 6, panne: 0 },
+            { no: 89, name: "Chromatographie liquide", marche: 0, panne: 0 },
+            { no: 90, name: "Spectrofluorimètre", marche: 0, panne: 0 },
+            { no: 91, name: "Fluorimètre", marche: 0, panne: 0 },
+            { no: 92, name: "Cuve générateur pour électrophorèse", marche: 0, panne: 0 },
+            { no: 93, name: "Densitomètre pour électrophorèse", marche: 0, panne: 0 },
+            { no: 94, name: "Automate de préparation / Distribution d'échantillons réactifs", marche: 6, panne: 2 },
+            { no: 95, name: "Diluteur", marche: 0, panne: 0 },
+            { no: 96, name: "Agitateur de Kahn", marche: 0, panne: 0 },
+            { no: 97, name: "Agitateur de Kline", marche: 0, panne: 0 },
+            { no: 98, name: "Agitateur de vortex", marche: 0, panne: 0 },
+            { no: 99, name: "Agitateur de flacons", marche: 0, panne: 0 },
+            { no: 100, name: "Pompe péristaltique de laboratoire", marche: 0, panne: 0 },
+            { no: 101, name: "Dialyseur de laboratoire", marche: 0, panne: 0 },
+            { no: 102, name: "Compteur d'échantillons (gamma)", marche: 0, panne: 0 },
+            { no: 103, name: "Compteur d'échantillons (bêta)", marche: 0, panne: 0 },
+            { no: 104, name: "Analyseur par polarisation de fluorescence", marche: 0, panne: 0 },
+            { no: 105, name: "Thromboélastographe", marche: 0, panne: 0 },
+            { no: 106, name: "Coagulomètre", marche: 0, panne: 0 },
+            { no: 107, name: "Agrégomètre", marche: 0, panne: 0 },
+            { no: 108, name: "Compte-globules 16 touches", marche: 0, panne: 0 },
+            { no: 109, name: "Compte-globules à 8 touches", marche: 0, panne: 0 },
+            { no: 110, name: "Compte-globules à 5 touches", marche: 0, panne: 0 },
+            { no: 111, name: "Compte-globules à 3 touches", marche: 0, panne: 0 },
+            { no: 112, name: "Compteur de colonies", marche: 0, panne: 0 },
+            { no: 113, name: "Automate pour antibiogramme / identification", marche: 0, panne: 0 },
+            { no: 114, name: "Osmomètre", marche: 0, panne: 0 },
+            { no: 115, name: "Rhésuscope", marche: 0, panne: 0 },
+            { no: 116, name: "Trompe à vide", marche: 0, panne: 0 },
+            { no: 117, name: "Autoclave de laboratoire", marche: 0, panne: 0 },
+            { no: 118, name: "Pompe à héparine", marche: 0, panne: 0 },
+            { no: 119, name: "Lave-pipettes", marche: 0, panne: 0 },
+            { no: 120, name: "Sécheuse automatique de verrerie", marche: 0, panne: 0 },
+            { no: 121, name: "Cellule de Benker", marche: 0, panne: 0 },
+            { no: 122, name: "Plaque chauffante", marche: 0, panne: 0 },
+            { no: 123, name: "Bec Bunsen", marche: 0, panne: 0 },
+            { no: 124, name: "Minuterie", marche: 0, panne: 0 },
+            { no: 125, name: "Chronomètre", marche: 0, panne: 0 },
+            { no: 126, name: "Congélateur -80°C", marche: 0, panne: 0 },
+            { no: 127, name: "Congélateur -70°C", marche: 0, panne: 0 },
+            { no: 128, name: "Congélateur à azote liquide -170°C", marche: 0, panne: 0 },
+            { no: 129, name: "Appareil d'anesthésie", marche: 0, panne: 0 }
         ];
 
         function renderEquipmentTable(filterText = '') {
@@ -505,8 +567,8 @@
                     data: {
                         labels: ['05 Juillet (Urg)', 'Chiekh Ameur', 'Baba Saad', 'Elmadagh', 'Bailiche', 'Vieux Ksar', 'Belle Vue', 'UDS', 'UCTMR'],
                         datasets: [
-                            { label: 'Urgence', data: [34688,0,0,0,0,0,0,0,0], backgroundColor: '#e74c3c' },
-                            { label: 'Méd. Générale', data: [0,4225,2408,4015,6474,6614,1417,3786,4], backgroundColor: '#3498db' }
+                            { label: 'Urgence', data: [34688, 0, 0, 0, 0, 0, 0, 0, 0], backgroundColor: '#e74c3c' },
+                            { label: 'Méd. Générale', data: [0, 4225, 2408, 4015, 6474, 6614, 1417, 3786, 4], backgroundColor: '#3498db' }
                         ]
                     },
                     options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true } } }
@@ -514,13 +576,12 @@
             }
         });
 
-        // ---------- FULL REPORT PDF EXPORT ----------
+        // ---------- FULL REPORT PDF EXPORT (A4) ----------
         function buildFullReportHTML() {
-            // Clone each tab section content, making them visible
             const sections = document.querySelectorAll('.tab-content');
             let fullContent = '';
 
-            // Official header and title
+            // Official header
             fullContent += `
                 <div style="text-align: left; margin-bottom: 30px; line-height: 1.5;">
                     <strong>République Algérienne Démocratique et Populaire</strong><br>
@@ -529,7 +590,10 @@
                     <strong>Établissement Public de Santé de Proximité – Berriane</strong><br>
                     <strong>Sous-direction des services de santé / Bureau d’informatique</strong><br>
                     N° : &nbsp;&nbsp;&nbsp;&nbsp;/2026
-                </div>
+                </div>`;
+
+            // Title page
+            fullContent += `
                 <div style="text-align: center; margin: 40px 0;">
                     <h1 style="font-size: 2em; color: #003366; margin: 0;">Statistiques</h1>
                     <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">de l'Établissement Public de Santé de</h1>
@@ -537,10 +601,9 @@
                     <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">de Berriane</h1>
                     <h1 style="font-size: 2em; color: #003366; margin: 5px 0;">Année 2025</h1>
                 </div>
-                <hr style="border: 1px solid #003366; margin: 30px 0;">
-            `;
+                <hr style="border: 1px solid #003366; margin: 30px 0;">`;
 
-            // Each tab content (we'll make a temporary copy to manipulate)
+            // Add all sections (clone each tab content)
             sections.forEach(section => {
                 const clone = section.cloneNode(true);
                 clone.classList.remove('hidden');
@@ -564,8 +627,7 @@
                 <div style="text-align: right; margin-top: 40px;">
                     <p>Berriane le : __________________</p>
                     <p><strong>Le directeur</strong></p>
-                </div>
-            `;
+                </div>`;
 
             return fullContent;
         }
@@ -575,7 +637,6 @@
             btn.disabled = true;
             btn.innerText = 'Génération du rapport...';
 
-            // Build full report in a temporary hidden div
             const reportContainer = document.createElement('div');
             reportContainer.id = 'pdfFullReport';
             reportContainer.innerHTML = buildFullReportHTML();
@@ -589,7 +650,7 @@
                     backgroundColor: '#ffffff'
                 });
                 const imgData = canvas.toDataURL('image/png');
-                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+                const pdf = new jspdf.jsPDF('p', 'mm', 'a4'); // A4 format
                 const pdfWidth = pdf.internal.pageSize.getWidth();
                 const pdfHeight = pdf.internal.pageSize.getHeight();
                 const imgWidth = pdfWidth;
