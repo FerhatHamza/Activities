@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>EPSP Berriane - Gestion des Infrastructures Publiques</title>
+  <!-- Tailwind CSS + Font Awesome Icons -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* custom scroll & transitions */
+    body {
+      background: #f0f4f8;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      border-radius: 1rem;
+    }
+    .card-hover {
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.1);
+    }
+    button, .btn-action {
+      transition: all 0.15s;
+    }
+    input, select {
+      transition: all 0.2s;
+    }
+    td, th {
+      vertical-align: middle;
+    }
+    .badge-count {
+      background-color: #e2e8f0;
+      border-radius: 9999px;
+      padding: 0.2rem 0.6rem;
+      font-size: 0.75rem;
+    }
+  </style>
+</head>
+<body class="font-sans antialiased p-4 md:p-6">
+
+  <div class="max-w-7xl mx-auto">
+    <!-- Header -->
+    <div class="mb-8 text-center md:text-left md:flex md:justify-between md:items-center border-b border-gray-200 pb-4">
+      <div>
+        <h1 class="text-2xl md:text-3xl font-bold text-gray-800"><i class="fas fa-hospital-user text-emerald-600 mr-2"></i>EPSP BERRIANE</h1>
+        <p class="text-gray-500 mt-1">Wilaya de GHARDAIA — Année 2025 · Gestion des infrastructures et effectifs</p>
+      </div>
+      <div class="mt-2 md:mt-0 text-sm bg-white/60 rounded-full px-4 py-2 shadow-sm">
+        <i class="fas fa-edit text-emerald-500 mr-1"></i> Formulaire dynamique · Modifier / Ajouter / Supprimer
+      </div>
+    </div>
+
+    <!-- Section 1: Polycliniques (Canevas n°2) -->
+    <div class="mb-10 bg-white rounded-2xl shadow-md card-hover overflow-hidden">
+      <div class="bg-gradient-to-r from-blue-700 to-blue-800 px-6 py-4 flex flex-wrap justify-between items-center">
+        <h2 class="text-xl font-semibold text-white"><i class="fas fa-clinic-medical mr-2"></i>Polycliniques · Canevas n°2 (lits par spécialité)</h2>
+        <button id="openPolyForm" class="bg-white text-blue-700 hover:bg-blue-50 px-4 py-1.5 rounded-full text-sm font-medium shadow transition"><i class="fas fa-plus-circle mr-1"></i>Ajouter polyclinique</button>
+      </div>
+      <div class="p-4 table-wrapper">
+        <table id="polyclinicsTable" class="min-w-full bg-white border-collapse text-sm">
+          <thead class="bg-gray-100 text-gray-700">
+            <tr>
+              <th class="px-4 py-3 text-left">Commune</th>
+              <th class="px-4 py-3 text-left">Dénomination</th>
+              <th class="px-4 py-3 text-center">Lits Maternité</th>
+              <th class="px-4 py-3 text-center">Lits Urgence</th>
+              <th class="px-4 py-3 text-center">Lits Hémodialyse</th>
+              <th class="px-4 py-3 text-center">Lits fonctionnels</th>
+              <th class="px-4 py-3 text-center">Observation</th>
+              <th class="px-4 py-3 text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="polyTbody"></tbody>
+          <tfoot id="polyTfoot" class="bg-gray-50 font-semibold"></tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 2: Centres de santé (Canevas n°3) -->
+    <div class="mb-10 bg-white rounded-2xl shadow-md card-hover overflow-hidden">
+      <div class="bg-gradient-to-r from-teal-700 to-teal-800 px-6 py-4 flex flex-wrap justify-between items-center">
+        <h2 class="text-xl font-semibold text-white"><i class="fas fa-ambulance mr-2"></i>Centres de santé · Canevas n°3</h2>
+        <button id="openCentreForm" class="bg-white text-teal-700 hover:bg-teal-50 px-4 py-1.5 rounded-full text-sm font-medium shadow"><i class="fas fa-plus-circle mr-1"></i>Ajouter centre</button>
+      </div>
+      <div class="p-4 table-wrapper">
+        <table id="centresTable" class="min-w-full bg-white border-collapse text-sm">
+          <thead class="bg-gray-100 text-gray-700">
+            <tr><th class="px-4 py-3 text-left">Commune</th><th class="px-4 py-3 text-left">Dénomination</th><th class="px-4 py-3 text-center">Lits</th><th class="px-4 py-3 text-center">Observation</th><th class="px-4 py-3 text-center">Actions</th></tr>
+          </thead>
+          <tbody id="centreTbody"></tbody>
+          <tfoot id="centreTfoot" class="bg-gray-50 font-semibold"></tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 3: Autres Infrastructures (Canevas n°04) -->
+    <div class="mb-10 bg-white rounded-2xl shadow-md card-hover overflow-hidden">
+      <div class="bg-gradient-to-r from-purple-700 to-purple-800 px-6 py-4 flex flex-wrap justify-between items-center">
+        <h2 class="text-xl font-semibold text-white"><i class="fas fa-building mr-2"></i>Autres infrastructures · Canevas n°4</h2>
+        <button id="openInfraForm" class="bg-white text-purple-700 hover:bg-purple-50 px-4 py-1.5 rounded-full text-sm font-medium shadow"><i class="fas fa-plus-circle mr-1"></i>Ajouter structure</button>
+      </div>
+      <div class="p-4 table-wrapper">
+        <table id="infraTable" class="min-w-full bg-white border-collapse text-sm">
+          <thead class="bg-gray-100 text-gray-700"><tr><th class="px-4 py-3 text-left">Commune</th><th class="px-4 py-3 text-left">Type de structures</th><th class="px-4 py-3 text-center">Fonctionnel</th><th class="px-4 py-3 text-center">Observation</th><th class="px-4 py-3 text-center">Actions</th></tr></thead>
+          <tbody id="infraTbody"></tbody>
+          <tfoot id="infraTfoot" class="bg-gray-50"></tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 4: Structures réceptionnées / mises en service (Canevas n°5) -->
+    <div class="mb-10 bg-white rounded-2xl shadow-md card-hover overflow-hidden">
+      <div class="bg-gradient-to-r from-amber-700 to-amber-800 px-6 py-4 flex flex-wrap justify-between items-center">
+        <h2 class="text-xl font-semibold text-white"><i class="fas fa-calendar-check mr-2"></i>Réceptionnées / mises en service · Canevas n°5</h2>
+        <button id="openMESForm" class="bg-white text-amber-700 hover:bg-amber-50 px-4 py-1.5 rounded-full text-sm font-medium shadow"><i class="fas fa-plus-circle mr-1"></i>Ajouter structure</button>
+      </div>
+      <div class="p-4 table-wrapper">
+        <table id="mesTable" class="min-w-full bg-white border-collapse text-sm">
+          <thead class="bg-gray-100 text-gray-700"><tr><th class="px-3 py-2">Commune</th><th class="px-3 py-2">Type structure</th><th class="px-3 py-2 text-center">Lits Maternité</th><th class="px-3 py-2 text-center">Lits Urgence</th><th class="px-3 py-2 text-center">Lits Hémodialyse</th><th class="px-3 py-2 text-center">Date réception</th><th class="px-3 py-2 text-center">Obs.</th><th class="px-3 py-2 text-center">Actions</th></tr></thead>
+          <tbody id="mesTbody"></tbody>
+          <tfoot id="mesTfoot" class="bg-gray-50 font-semibold"></tfoot>
+        </table>
+      </div>
+    </div>
+
+    <!-- Section 5: Effectifs (Personnel) Tableau des effectifs -->
+    <div class="mb-10 bg-white rounded-2xl shadow-md card-hover overflow-hidden">
+      <div class="bg-gradient-to-r from-rose-700 to-rose-800 px-6 py-4 flex flex-wrap justify-between items-center">
+        <h2 class="text-xl font-semibold text-white"><i class="fas fa-users mr-2"></i>Tableau des effectifs (EPSP) · Année 2025</h2>
+        <button id="openPersonnelForm" class="bg-white text-rose-700 hover:bg-rose-50 px-4 py-1.5 rounded-full text-sm font-medium shadow"><i class="fas fa-user-edit mr-1"></i>Modifier effectifs</button>
+      </div>
+      <div class="p-4 table-wrapper">
+        <table class="min-w-full bg-white border-collapse text-sm">
+          <thead class="bg-gray-100"><tr><th class="px-4 py-3 text-left">Type de personnel</th><th class="px-4 py-3 text-center">Hommes (H)</th><th class="px-4 py-3 text-center">Femmes (F)</th><th class="px-4 py-3 text-center">TOTAL</th></tr></thead>
+          <tbody id="personnelTbody"></tbody>
+          <tfoot class="bg-gray-100 font-bold"><tr id="personnelTotalRow"><td class="px-4 py-2">Total général</td><td class="text-center" id="totalHommes">0</td><td class="text-center" id="totalFemmes">0</td><td class="text-center" id="totalPersonnel">0</td></tr></tfoot>
+        </table>
+        <p class="text-xs text-gray-400 mt-2 italic"><i class="fas fa-info-circle"></i> Cliquez sur "Modifier effectifs" pour mettre à jour les effectifs médicaux</p>
+      </div>
+    </div>
+
+    <footer class="text-center text-sm text-gray-500 py-6 border-t mt-6">EPSP BERRIANE - Infrastructure publique interactive · Données conformes aux canevas 2025</footer>
+  </div>
+
+  <!-- MODAL GENERIQUE (pour formulaires) -->
+  <div id="genericModal" class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 hidden transition-all">
+    <div class="bg-white rounded-2xl w-full max-w-md mx-4 p-6 shadow-2xl transform transition-all">
+      <div class="flex justify-between items-center border-b pb-2 mb-4">
+        <h3 id="modalTitle" class="text-xl font-bold text-gray-800"></h3>
+        <button id="closeModalBtn" class="text-gray-400 hover:text-gray-600"><i class="fas fa-times text-xl"></i></button>
+      </div>
+      <div id="modalBody" class="space-y-3"></div>
+      <div class="mt-5 flex justify-end gap-2">
+        <button id="modalCancelBtn" class="px-4 py-2 border rounded-lg text-gray-600 hover:bg-gray-100">Annuler</button>
+        <button id="modalConfirmBtn" class="px-5 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ---------- DONNÉES INITIALES (EXTRAITES DES IMAGES) ----------
+    // 1. Polycliniques
+    let polyclinics = [
+      { commune: "BERRIANE", denomination: "Polyclinique 05 juillet BALLOUH", litsMaternite: 0, litsUrgence: 11, litsHemodialyse: 12, litsFonctionnels: 23, observation: "" },
+      { commune: "BERRIANE", denomination: "Polyclinique BAILICHE", litsMaternite: 0, litsUrgence: 0, litsHemodialyse: 0, litsFonctionnels: 0, observation: "" },
+      { commune: "BERRIANE", denomination: "Polyclinique VIEUX K'SAR", litsMaternite: 0, litsUrgence: 0, litsHemodialyse: 0, litsFonctionnels: 0, observation: "" }
+    ];
+
+    // 2. Centres de santé
+    let centres = [
+      { commune: "BERRIANE", denomination: "Centre de santé ELMADAHG", lits: 0, observation: "" },
+      { commune: "BERRIANE", denomination: "Centre de santé BABA SAAD", lits: 0, observation: "" },
+      { commune: "BERRIANE", denomination: "Centre de santé CHEIKH AMEUR", lits: 0, observation: "" },
+      { commune: "BERRIANE", denomination: "Centre de santé BELLE VUE", lits: 0, observation: "" }
+    ];
+
+    // 3. Autres Infrastructures
+    let autresInfras = [
+      { commune: "BERRIANE", typeStructure: "UDS", fonctionnel: 1, observation: "" },
+      { commune: "BERRIANE", typeStructure: "UCTMR", fonctionnel: 1, observation: "" },
+      { commune: "BERRIANE", typeStructure: "SEMEP", fonctionnel: 1, observation: "" },
+      { commune: "BERRIANE", typeStructure: "MATERNITE", fonctionnel: 0, observation: "" },
+      { commune: "BERRIANE", typeStructure: "Maison de diabétique", fonctionnel: 0, observation: "" },
+      { commune: "BERRIANE", typeStructure: "CIST", fonctionnel: 0, observation: "" }
+    ];
+
+    // 4. Structures réceptionnées/mises en service (Canevas n°5) : valeurs exactes des images
+    let mesStructures = [
+      { commune: "BERRIANE", typeStructure: "Polyclinique BALLOUH", litsMaternite: 0, litsUrgence: 11, litsHemodialyse: null, dateService: "1998", observation: "" },
+      { commune: "BERRIANE", typeStructure: "P/Bailiche mazouz", litsMaternite: null, litsUrgence: null, litsHemodialyse: 12, dateService: "2000", observation: "" },
+      { commune: "BERRIANE", typeStructure: "P/vieux k'sar", litsMaternite: null, litsUrgence: null, litsHemodialyse: null, dateService: "1988", observation: "" },
+      { commune: "BERRIANE", typeStructure: "Salle de soins baba saad", litsMaternite: null, litsUrgence: null, litsHemodialyse: null, dateService: "1958", observation: "" },
+      { commune: "BERRIANE", typeStructure: "salle de soins elmadagh", litsMaternite: null, litsUrgence: null, litsHemodialyse: null, dateService: "1989", observation: "" },
+      { commune: "BERRIANE", typeStructure: "Salle de soins chiekh ameur", litsMaternite: null, litsUrgence: null, litsHemodialyse: null, dateService: "1999", observation: "" },
+      { commune: "BERRIANE", typeStructure: "Salle de soins BELLE VUE", litsMaternite: null, litsUrgence: null, litsHemodialyse: null, dateService: "2006", observation: "" }
+    ];
+
+    // 5. Effectifs Personnel (original)
+    let personnel = [
+      { type: "Médecins généralistes", hommes: 6, femmes: 19, total: 25 },
+      { type: "Chirurgiens dentistes", hommes: 3, femmes: 7, total: 10 },
+      { type: "Pharmaciens", hommes: 0, femmes: 2, total: 2 }
+    ];
+
+    // Fonctions utilitaires
+    function nullToDash(val) {
+      return (val === null || val === undefined) ? "-" : val;
+    }
+
+    // ----- RENDER POLYCLINIQUES -----
+    function renderPolyclinics() {
+      const tbody = document.getElementById('polyTbody');
+      const tfoot = document.getElementById('polyTfoot');
+      tbody.innerHTML = '';
+      let sumMat = 0, sumUrg = 0, sumHemo = 0, sumFonc = 0;
+      polyclinics.forEach((p, idx) => {
+        sumMat += p.litsMaternite; sumUrg += p.litsUrgence; sumHemo += p.litsHemodialyse; sumFonc += p.litsFonctionnels;
+        const row = `<tr class="border-b hover:bg-gray-50">
+          <td class="px-4 py-2 font-medium">${p.commune}</td>
+          <td class="px-4 py-2">${p.denomination}</td>
+          <td class="px-4 py-2 text-center">${p.litsMaternite}</td>
+          <td class="px-4 py-2 text-center">${p.litsUrgence}</td>
+          <td class="px-4 py-2 text-center">${p.litsHemodialyse}</td>
+          <td class="px-4 py-2 text-center">${p.litsFonctionnels}</td>
+          <td class="px-4 py-2 text-center italic text-gray-400">${p.observation || '-'}</td>
+          <td class="px-2 py-2 text-center space-x-1">
+            <button class="editPolyBtn text-blue-600 hover:text-blue-800" data-idx="${idx}"><i class="fas fa-edit"></i></button>
+            <button class="deletePolyBtn text-red-500 hover:text-red-700" data-idx="${idx}"><i class="fas fa-trash-alt"></i></button>
+          </td>
+        </tr>`;
+        tbody.insertAdjacentHTML('beforeend', row);
+      });
+      tfoot.innerHTML = `<tr class="bg-gray-100"><td colspan="2" class="px-4 py-2 font-bold">Total général</td><td class="text-center font-bold">${sumMat}</td><td class="text-center font-bold">${sumUrg}</td><td class="text-center font-bold">${sumHemo}</td><td class="text-center font-bold">${sumFonc}</td><td colspan="2"></td></tr>`;
+      attachPolyEvents();
+    }
+    function attachPolyEvents() {
+      document.querySelectorAll('.editPolyBtn').forEach(btn => btn.addEventListener('click', (e) => { let idx = btn.dataset.idx; openPolyEditModal(parseInt(idx)); }));
+      document.querySelectorAll('.deletePolyBtn').forEach(btn => btn.addEventListener('click', (e) => { let idx = btn.dataset.idx; if(confirm('Supprimer cette polyclinique ?')) { polyclinics.splice(idx,1); renderPolyclinics(); } }));
+    }
+    function openPolyEditModal(idx) {
+      const p = polyclinics[idx];
+      showModal("Modifier polyclinique", `
+        <div><label class="block text-sm font-medium">Dénomination</label><input id="editDenom" type="text" value="${p.denomination}" class="w-full border rounded p-2"></div>
+        <div><label>Lits Maternité</label><input id="editMat" type="number" value="${p.litsMaternite}" class="w-full border rounded p-2"></div>
+        <div><label>Lits Urgence</label><input id="editUrg" type="number" value="${p.litsUrgence}" class="w-full border rounded p-2"></div>
+        <div><label>Lits Hémodialyse</label><input id="editHemo" type="number" value="${p.litsHemodialyse}" class="w-full border rounded p-2"></div>
+        <div><label>Lits fonctionnels</label><input id="editFonc" type="number" value="${p.litsFonctionnels}" class="w-full border rounded p-2"></div>
+        <div><label>Observation</label><input id="editObs" type="text" value="${p.observation}" class="w-full border rounded p-2"></div>
+      `, () => {
+        p.denomination = document.getElementById('editDenom').value;
+        p.litsMaternite = parseInt(document.getElementById('editMat').value) || 0;
+        p.litsUrgence = parseInt(document.getElementById('editUrg').value) || 0;
+        p.litsHemodialyse = parseInt(document.getElementById('editHemo').value) || 0;
+        p.litsFonctionnels = parseInt(document.getElementById('editFonc').value) || 0;
+        p.observation = document.getElementById('editObs').value;
+        renderPolyclinics();
+        closeModal();
+      });
+    }
+    function addPolyclinique(newPoly) { polyclinics.push(newPoly); renderPolyclinics(); }
+
+    // Centres
+    function renderCentres() {
+      const tbody = document.getElementById('centreTbody'); let totalLits = 0;
+      tbody.innerHTML = '';
+      centres.forEach((c, idx) => { totalLits += c.lits;
+        tbody.insertAdjacentHTML('beforeend', `<tr class="border-b"><td class="px-4 py-2">${c.commune}</td><td>${c.denomination}</td><td class="text-center">${c.lits}</td><td class="italic text-gray-400">${c.observation||'-'}</td><td class="text-center"><button class="editCentreBtn text-blue-600 mr-2" data-idx="${idx}"><i class="fas fa-edit"></i></button><button class="deleteCentreBtn text-red-500" data-idx="${idx}"><i class="fas fa-trash-alt"></i></button></td></tr>`);
+      });
+      document.getElementById('centreTfoot').innerHTML = `<tr><td colspan="2" class="font-bold">Total lits</td><td class="text-center font-bold">${totalLits}</td><td colspan="2"></td></tr>`;
+      document.querySelectorAll('.editCentreBtn').forEach(btn => btn.addEventListener('click', (e) => { let idx = btn.dataset.idx; openCentreEditModal(parseInt(idx)); }));
+      document.querySelectorAll('.deleteCentreBtn').forEach(btn => btn.addEventListener('click', (e) => { let idx = btn.dataset.idx; if(confirm('Supprimer ce centre ?')) { centres.splice(idx,1); renderCentres(); } }));
+    }
+    function openCentreEditModal(idx) { let c = centres[idx]; showModal("Modifier centre", `<div><label>Dénomination</label><input id="cenDenom" value="${c.denomination}" class="w-full border p-2 rounded"></div><div><label>Lits</label><input id="cenLits" type="number" value="${c.lits}" class="w-full border p-2 rounded"></div><div><label>Observation</label><input id="cenObs" value="${c.observation}" class="w-full border p-2 rounded"></div>`, () => { c.denomination = document.getElementById('cenDenom').value; c.lits = parseInt(document.getElementById('cenLits').value)||0; c.observation = document.getElementById('cenObs').value; renderCentres(); closeModal(); }); }
+    function addCentre(centre) { centres.push(centre); renderCentres(); }
+
+    // Autres Infrastructures
+    function renderInfras() {
+      const tbody = document.getElementById('infraTbody'); let sumFonc = 0;
+      tbody.innerHTML = '';
+      autresInfras.forEach((inf, idx) => { sumFonc += inf.fonctionnel;
+        tbody.insertAdjacentHTML('beforeend', `<tr class="border-b"><td>${inf.commune}</td><td>${inf.typeStructure}</td><td class="text-center">${inf.fonctionnel}</td><td class="italic">${inf.observation||'-'}</td><td><button class="editInfraBtn text-blue-600 mr-2" data-idx="${idx}"><i class="fas fa-edit"></i></button><button class="deleteInfraBtn text-red-500" data-idx="${idx}"><i class="fas fa-trash-alt"></i></button></td></tr>`);
+      });
+      document.getElementById('infraTfoot').innerHTML = `<tr><td colspan="2" class="font-bold">Total fonctionnel</td><td class="text-center font-bold">${sumFonc}</td><td colspan="2"></td></tr>`;
+      document.querySelectorAll('.editInfraBtn').forEach(btn => btn.addEventListener('click', (e) => { let idx = btn.dataset.idx; openInfraEditModal(parseInt(idx)); }));
+      document.querySelectorAll('.deleteInfraBtn').forEach(btn => btn.addEventListener('click', (e) => { let idx = btn.dataset.idx; if(confirm('Supprimer cette infrastructure ?')) { autresInfras.splice(idx,1); renderInfras(); } }));
+    }
+    function openInfraEditModal(idx) { let inf = autresInfras[idx]; showModal("Modifier infrastructure", `<div><label>Type structure</label><input id="infType" value="${inf.typeStructure}" class="w-full border p-2 rounded"></div><div><label>Fonctionnel (0/1)</label><input id="infFonc" type="number" value="${inf.fonctionnel}" class="w-full border p-2 rounded"></div><div><label>Observation</label><input id="infObs" value="${inf.observation}" class="w-full border p-2 rounded"></div>`, () => { inf.typeStructure = document.getElementById('infType').value; inf.fonctionnel = parseInt(document.getElementById('infFonc').value)||0; inf.observation = document.getElementById('infObs').value; renderInfras(); closeModal(); });}
+    function addInfra(infra) { autresInfras.push(infra); renderInfras(); }
+
+    // Mise en service
+    function renderMES() {
+      const tbody = document.getElementById('mesTbody'); let sumMat=0, sumUrg=0, sumHemo=0;
+      tbody.innerHTML = '';
+      mesStructures.forEach((m, idx) => {
+        let matVal = m.litsMaternite !== null ? m.litsMaternite : 0; let urgVal = m.litsUrgence !== null ? m.litsUrgence : 0; let hemoVal = m.litsHemodialyse !== null ? m.litsHemodialyse : 0;
+        sumMat += matVal; sumUrg += urgVal; sumHemo += hemoVal;
+        tbody.insertAdjacentHTML('beforeend', `<tr class="border-b text-sm"><td>${m.commune}</td><td>${m.typeStructure}</td><td class="text-center">${nullToDash(m.litsMaternite)}</td><td class="text-center">${nullToDash(m.litsUrgence)}</td><td class="text-center">${nullToDash(m.litsHemodialyse)}</td><td class="text-center">${m.dateService}</td><td class="italic">${m.observation||'-'}</td><td><button class="editMesBtn text-blue-600 mr-1" data-idx="${idx}"><i class="fas fa-edit"></i></button><button class="deleteMesBtn text-red-500" data-idx="${idx}"><i class="fas fa-trash-alt"></i></button></td></tr>`);
+      });
+      document.getElementById('mesTfoot').innerHTML = `<tr><td colspan="2" class="font-bold">TOTAUX</td><td class="text-center font-bold">${sumMat}</td><td class="text-center font-bold">${sumUrg}</td><td class="text-center font-bold">${sumHemo}</td><td colspan="3"></td></tr>`;
+      attachMESEvents();
+    }
+    function attachMESEvents() { document.querySelectorAll('.editMesBtn').forEach(btn => btn.addEventListener('click', (e) => { let idx = btn.dataset.idx; openMESEditModal(parseInt(idx)); })); document.querySelectorAll('.deleteMesBtn').forEach(btn => btn.addEventListener('click', (e) => { let idx = btn.dataset.idx; if(confirm('Supprimer ?')) { mesStructures.splice(idx,1); renderMES(); } })); }
+    function openMESEditModal(idx) { let m = mesStructures[idx]; showModal("Modifier structure MES", `<div><label>Type structure</label><input id="mesType" value="${m.typeStructure}" class="w-full border p-2"></div><div><label>Lits Maternité (vide = -)</label><input id="mesMat" type="text" value="${m.litsMaternite !== null ? m.litsMaternite : ''}" class="w-full border p-2"></div><div><label>Lits Urgence</label><input id="mesUrg" type="text" value="${m.litsUrgence !== null ? m.litsUrgence : ''}" class="w-full border p-2"></div><div><label>Lits Hémodialyse</label><input id="mesHemo" type="text" value="${m.litsHemodialyse !== null ? m.litsHemodialyse : ''}" class="w-full border p-2"></div><div><label>Date réception</label><input id="mesDate" value="${m.dateService}" class="w-full border p-2"></div><div><label>Observation</label><input id="mesObs" value="${m.observation}" class="w-full border p-2"></div>`, () => {
+      m.typeStructure = document.getElementById('mesType').value;
+      let mat = document.getElementById('mesMat').value; m.litsMaternite = (mat === "" ? null : parseInt(mat));
+      let urg = document.getElementById('mesUrg').value; m.litsUrgence = (urg === "" ? null : parseInt(urg));
+      let hemo = document.getElementById('mesHemo').value; m.litsHemodialyse = (hemo === "" ? null : parseInt(hemo));
+      m.dateService = document.getElementById('mesDate').value; m.observation = document.getElementById('mesObs').value; renderMES(); closeModal();
+    });}
+    function addMES(mes) { mesStructures.push(mes); renderMES(); }
+
+    // Personnel + totals
+    function renderPersonnel() {
+      const tbody = document.getElementById('personnelTbody'); tbody.innerHTML = '';
+      personnel.forEach(p => { tbody.insertAdjacentHTML('beforeend', `<tr class="border-b"><td class="py-2">${p.type}</td><td class="text-center">${p.hommes}</td><td class="text-center">${p.femmes}</td><td class="text-center font-medium">${p.total}</td></tr>`); });
+      let totH = personnel.reduce((s,p)=>s+p.hommes,0); let totF = personnel.reduce((s,p)=>s+p.femmes,0);
+      document.getElementById('totalHommes').innerText = totH; document.getElementById('totalFemmes').innerText = totF; document.getElementById('totalPersonnel').innerText = totH+totF;
+    }
+    function openPersonnelModal() {
+      showModal("Modifier les effectifs", personnel.map((p,i)=>`<div class="border-b pb-2 mb-2"><label class="font-semibold">${p.type}</label><div class="flex gap-2 mt-1"><div><label>H</label><input id="ph_${i}" type="number" value="${p.hommes}" class="w-20 border p-1 rounded"></div><div><label>F</label><input id="pf_${i}" type="number" value="${p.femmes}" class="w-20 border p-1 rounded"></div></div></div>`).join(''), () => {
+        personnel.forEach((p,i) => { let newH = parseInt(document.getElementById(`ph_${i}`).value)||0; let newF = parseInt(document.getElementById(`pf_${i}`).value)||0; p.hommes = newH; p.femmes = newF; p.total = newH+newF; });
+        renderPersonnel(); closeModal();
+      });
+    }
+
+    // MODAL MANAGER
+    let modalCallback = null;
+    function showModal(title, bodyHtml, onConfirm) { document.getElementById('modalTitle').innerText = title; document.getElementById('modalBody').innerHTML = bodyHtml; modalCallback = onConfirm; document.getElementById('genericModal').classList.remove('hidden'); }
+    function closeModal() { document.getElementById('genericModal').classList.add('hidden'); modalCallback = null; }
+    document.getElementById('closeModalBtn').addEventListener('click', closeModal); document.getElementById('modalCancelBtn').addEventListener('click', closeModal);
+    document.getElementById('modalConfirmBtn').addEventListener('click', () => { if(modalCallback) modalCallback(); closeModal(); });
+
+    // Ouverture formulaires d'ajout
+    document.getElementById('openPolyForm').addEventListener('click', () => { showModal("Ajouter une polyclinique", `<div><label>Dénomination</label><input id="newDenom" class="w-full border p-2 rounded"></div><div><label>Lits Maternité</label><input id="newMat" type="number" value="0" class="w-full p-2 border rounded"></div><div><label>Lits Urgence</label><input id="newUrg" type="number" value="0" class="w-full p-2 border rounded"></div><div><label>Lits Hémodialyse</label><input id="newHemo" type="number" value="0" class="w-full p-2 border rounded"></div><div><label>Lits fonctionnels</label><input id="newFonc" type="number" value="0" class="w-full p-2 border rounded"></div>`, () => { addPolyclinique({ commune:"BERRIANE", denomination:document.getElementById('newDenom').value, litsMaternite:parseInt(document.getElementById('newMat').value)||0, litsUrgence:parseInt(document.getElementById('newUrg').value)||0, litsHemodialyse:parseInt(document.getElementById('newHemo').value)||0, litsFonctionnels:parseInt(document.getElementById('newFonc').value)||0, observation:"" }); }); });
+    document.getElementById('openCentreForm').addEventListener('click', () => { showModal("Ajouter centre santé", `<div><label>Dénomination</label><input id="cenDenomAdd" class="w-full border p-2"></div><div><label>Lits</label><input id="cenLitsAdd" type="number" value="0" class="w-full p-2 border"></div>`, () => { addCentre({ commune:"BERRIANE", denomination:document.getElementById('cenDenomAdd').value, lits:parseInt(document.getElementById('cenLitsAdd').value)||0, observation:"" }); }); });
+    document.getElementById('openInfraForm').addEventListener('click', () => { showModal("Ajouter infrastructure", `<div><label>Type structure</label><input id="infTypeAdd" class="w-full border p-2"></div><div><label>Fonctionnel (0/1)</label><input id="infFoncAdd" type="number" value="0" class="w-full p-2 border"></div>`, () => { addInfra({ commune:"BERRIANE", typeStructure:document.getElementById('infTypeAdd').value, fonctionnel:parseInt(document.getElementById('infFoncAdd').value)||0, observation:"" }); }); });
+    document.getElementById('openMESForm').addEventListener('click', () => { showModal("Ajouter mise en service", `<div><label>Type structure</label><input id="mesTypeAdd" class="w-full border p-2"></div><div><label>Lits Maternité (vide = -)</label><input id="mesMatAdd" type="text" class="w-full border p-2"></div><div><label>Lits Urgence</label><input id="mesUrgAdd" type="text" class="w-full border p-2"></div><div><label>Lits Hémodialyse</label><input id="mesHemoAdd" type="text" class="w-full border p-2"></div><div><label>Date réception</label><input id="mesDateAdd" class="w-full border p-2" placeholder="ex: 2025"></div>`, () => { let mat = document.getElementById('mesMatAdd').value; let urg = document.getElementById('mesUrgAdd').value; let hemo = document.getElementById('mesHemoAdd').value; addMES({ commune:"BERRIANE", typeStructure:document.getElementById('mesTypeAdd').value, litsMaternite: mat===""?null:parseInt(mat), litsUrgence:urg===""?null:parseInt(urg), litsHemodialyse:hemo===""?null:parseInt(hemo), dateService:document.getElementById('mesDateAdd').value, observation:"" }); }); });
+    document.getElementById('openPersonnelForm').addEventListener('click', openPersonnelModal);
+    
+    // Initial render all tables
+    renderPolyclinics(); renderCentres(); renderInfras(); renderMES(); renderPersonnel();
+  </script>
+</body>
+</html>
