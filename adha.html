@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning des Gardes Fête - EPSP Berriane</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #f1f5f9 0%, #cbd5e1 100%);
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-title: #0f172a;
+            --text-muted: #64748b;
+            --teal-primary: #0d9488;
+            --teal-dark: #0f172a;
+            --amber-text: #c2410c;
+            --border-color: #e2e8f0;
+            --highlight-bg: #f0fdf4; 
+            --highlight-border: #bbf7d0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05);
+        }
+
+        body {
+            background: var(--bg-gradient);
+            font-family: 'Inter', 'Cairo', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 30px 15px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 1100px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+
+        /* --- Header Section --- */
+        .header-section {
+            padding: 25px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border-bottom: 1px solid var(--border-color);
+            gap: 20px;
+        }
+        .national-emblem {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .emblem-img {
+            height: 65px;
+            width: auto;
+            object-fit: contain;
+        }
+        .emblem-text {
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.72rem;
+            font-weight: 700;
+            color: #15803d;
+            line-height: 1.3;
+        }
+        .header-title-block {
+            text-align: right;
+        }
+        .main-title-row {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 4px;
+        }
+        .main-title-row span.ar {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 800;
+            color: var(--teal-primary);
+        }
+        .sub-title-row {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* --- Event Sub-Banner --- */
+        .event-banner {
+            background: #1e293b;
+            color: #ffffff;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        .event-info h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            margin-bottom: 2px;
+        }
+        .event-info p {
+            color: #94a3b8;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+        .date-badge {
+            background: rgba(13, 148, 136, 0.25);
+            border: 1px solid var(--teal-primary);
+            padding: 8px 16px;
+            border-radius: 30px;
+            color: #2dd4bf;
+            font-weight: 600;
+            font-size: 0.92rem;
+        }
+
+        /* --- Indicators bar --- */
+        .indicators-bar {
+            background: #fffbeb;
+            border-bottom: 1px solid #fde68a;
+            padding: 14px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        .indicator-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--amber-text);
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+        .indicator-item svg {
+            width: 18px;
+            height: 18px;
+            flex-shrink: 0;
+        }
+
+        /* --- Hero Showcase Section --- */
+        .hero-showcase {
+            background: linear-gradient(135deg, #021526 0%, #032b44 100%);
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            gap: 30px;
+        }
+        /* Mosque Silhouette Background Graphic Simulation */
+        .hero-showcase::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 80px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,120 L1200,120 L1200,60 C1100,70 1050,40 950,50 C850,60 800,20 700,40 C600,60 550,30 450,40 C350,50 300,10 200,30 C100,50 50,20 0,60 Z" fill="%23010b14" opacity="0.5"/></svg>') bottom repeat-x;
+            background-size: cover;
+            pointer-events: none;
+        }
+        .hero-text-side {
+            text-align: right;
+            direction: rtl;
+            z-index: 2;
+        }
+        .eid-greetings {
+            font-family: 'Cairo', sans-serif;
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #fbbf24;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.4);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+        }
+        .qr-instructions {
+            font-family: 'Cairo', sans-serif;
+            color: #ffffff;
+            font-size: 1.15rem;
+            font-weight: 600;
+            line-height: 1.6;
+        }
+        .qr-instructions span.highlight {
+            color: #34d399;
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: block;
+            margin: 4px 0;
+        }
+        .hero-qr-side {
+            background: #ffffff;
+            padding: 16px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .qr-placeholder {
+            width: 170px;
+            height: 170px;
+            background-color: #fff;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><path d="M5,5 h30 v30 h-30 z M10,10 h20 v20 h-20 z M65,5 h30 v30 h-30 z M70,10 h20 v20 h-20 z M5,65 h30 v30 h-30 z M10,70 h20 v20 h-20 z M45,15 h10 v10 h-10 z M45,45 h10 v10 h-10 z M15,45 h10 v10 h-10 z M75,45 h10 v10 h-10 z M65,65 h10 v10 h-10 z M85,85 h10 v10 h-10 z" fill="%230f172a"/></svg>');
+            background-size: cover;
+            position: relative;
+        }
+        /* Custom simulated center QR icon element */
+        .qr-placeholder::after {
+            content: '📊';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #ffffff;
+            padding: 4px;
+            border-radius: 4px;
+            font-size: 1.2rem;
+        }
+
+        /* --- Main Content Workspace --- */
+        .main-workspace {
+            padding: 40px;
+        }
+
+        /* --- Interactive Native RTL Centered Table Layout --- */
+        .table-title {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 20px;
+            padding-right: 5px;
+            border-right: 4px solid var(--teal-primary);
+        }
+        .table-responsive-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            direction: rtl;
+            -webkit-overflow-scrolling: touch;
+        }
+        table.pharmacy-table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        table.pharmacy-table th {
+            background: #f8fafc;
+            color: var(--text-title);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+            padding: 16px;
+            border-bottom: 2px solid var(--border-color);
+            white-space: nowrap;
+        }
+        table.pharmacy-table td {
+            padding: 18px 16px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            background: #ffffff;
+            transition: background 0.15s ease;
+        }
+        table.pharmacy-table tr:last-child td {
+            border-bottom: none;
+        }
+        table.pharmacy-table tr:hover td {
+            background: #f8fafc;
+        }
+        
+        /* Premium Row Holiday Highlight */
+        table.pharmacy-table tr.holiday-highlight td {
+            background-color: var(--highlight-bg) !important;
+            border-bottom-color: var(--highlight-border);
+        }
+        table.pharmacy-table tr.holiday-highlight:hover td {
+            background-color: #e6fbf0 !important;
+        }
+        
+        td.date-cell-highlight {
+            font-weight: 700;
+            color: var(--text-title);
+            white-space: nowrap;
+        }
+
+        /* --- Connected Application Footer --- */
+        .app-footer {
+            background: #061e33;
+            padding: 25px 40px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-top: 4px solid var(--teal-primary);
+        }
+        .footer-node {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: 600;
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+        .footer-node:hover {
+            color: #34d399;
+            transform: translateY(-2px);
+        }
+        .footer-node .icon-circle {
+            width: 44px;
+            height: 44px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #2dd4bf;
+        }
+        .footer-node:hover .icon-circle {
+            background: var(--teal-primary);
+            color: #ffffff;
+            border-color: transparent;
+        }
+        .footer-divider {
+            width: 1px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        /* --- Device-Specific Responsive Adaptation Layer --- */
+        @media (max-width: 850px) {
+            .header-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 20px;
+            }
+            .national-emblem {
+                flex-direction: column;
+                gap: 6px;
+            }
+            .emblem-text, .header-title-block {
+                text-align: center;
+            }
+            .main-title-row {
+                justify-content: center;
+                font-size: 1.25rem;
+            }
+            .event-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
+            }
+            .date-badge {
+                width: 100%;
+                text-align: center;
+            }
+            .hero-showcase {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 30px 20px;
+            }
+            .hero-text-side {
+                text-align: center;
+            }
+            .eid-greetings {
+                font-size: 2.1rem;
+            }
+            .main-workspace {
+                padding: 20px 12px;
+            }
+            .app-footer {
+                flex-direction: column;
+                padding: 25px 20px;
+                gap: 15px;
+            }
+            .footer-divider {
+                display: none;
+            }
+        }
+
+        @media (max-width: 550px) {
+            body {
+                padding: 5px;
+            }
+            .app-container {
+                border-radius: 12px;
+            }
+            /* Assures inner tables are scrollable on micro screens without causing body leakage */
+            table.pharmacy-table {
+                min-width: 500px;
+            }
+            .indicators-bar {
+                padding: 12px 20px;
+                grid-template-columns: 1fr;
+            }
+            th, td {
+                padding: 12px 10px !important;
+                font-size: 0.85rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <header class="header-section">
+            <div class="national-emblem">
+                <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' fill='none' stroke='%2315803d' stroke-width='2'/><path d='M50,15 L55,30 L70,30 L58,40 L62,55 L50,45 L38,55 L42,40 L30,30 L45,30 Z' fill='%23ef4444'/><path d='M25,70 Q50,55 75,70' fill='none' stroke='%2315803d' stroke-width='4'/></svg>" alt="Emblem" class="emblem-img">
+                <div class="emblem-text">
+                    الجمهورية الجزائرية الديمقراطية الشعبية<br>
+                    وزارة الصــــــــــــــــحة<br>
+                    مديرية الصحة والسكان - لولاية غرداية
+                </div>
+            </div>
+            <div class="header-title-block">
+                <div class="main-title-row">
+                    <span class="fr">Planning des Gardes Fête</span> 
+                    <span class="ar">| مخطط المناوبات المعتمد</span>
+                </div>
+                <div class="sub-title-row">المؤسسة العمومية للصحة الجوارية ببريان • EPSP Berriane</div>
+            </div>
+        </header>
+
+        <div class="event-banner">
+            <div class="event-info">
+                <h2>AÏD EL ADHA 1447 H</h2>
+                <p>Sous-Direction des Services Sanitaires • Wilaya de Ghardaïa</p>
+            </div>
+            <div class="date-badge">
+                Du 27/05/2026 Au 30/05/2026
+            </div>
+        </div>
+
+        <div class="indicators-bar">
+            <div class="indicator-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>
+                <span>Médicaments Disponibles &amp; Suffisants</span>
+            </div>
+            <div class="indicator-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" /></svg>
+                <span>Groupes Électrogènes Opérationnels</span>
+            </div>
+            <div class="indicator-item">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m.9 0a1.67 1.67 0 033.35 0m-3 0a1.5 1.5 0 01-3 0m3 0h1.15m-11.5 0h.85m12.7-3.25H14.25m5.7 0c0-2.5-2.01-4.25-4.25-4.25H3.75V15.5h16.2z" /></svg>
+                <span>Ambulances Prêtes &amp; Disponibles</span>
+            </div>
+        </div>
+
+        <section class="hero-showcase">
+            <div class="hero-qr-side">
+                <div class="qr-placeholder"></div>
+            </div>
+            <div class="hero-text-side">
+                <h1 class="eid-greetings">عيد أضحى مبارك</h1>
+                <p class="qr-instructions">
+                    امسح رمز QR للاطلاع على
+                    <span class="highlight">البرنامج الكامل</span>
+                    لمناوبات عيد الأضحى 1447 هـ
+                </p>
+            </div>
+        </section>
+
+        <main class="main-workspace">
+            <h3 class="table-title">الصيادلة الخواص المناوبين - بلدية بريان</h3>
+            
+            <div class="table-responsive-wrapper">
+                <table class="pharmacy-table">
+                    <thead>
+                        <tr>
+                            <th>التاريخ واليوم</th>
+                            <th>صيادلة الفترة الصباحية (الفوج الأول)</th>
+                            <th>صيادلة الفترة المسائية (الفوج الثاني)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="date-cell-highlight">الثلاثاء 2026/05/26</td>
+                            <td>فتان خدوحة سارة • فريوي محمد</td>
+                            <td>لعساكر عبد الصمد • الطالب باحمد نذير</td>
+                        </tr>
+                        <tr class="holiday-highlight">
+                            <td class="date-cell-highlight">الأربعاء 2026/05/27</td>
+                            <td>بعوشي حاج موسى • تان خدوحة سارة</td>
+                            <td>كاسي اوصالح صبرينة • سلامي سايح</td>
+                        </tr>
+                        <tr class="holiday-highlight">
+                            <td class="date-cell-highlight">الخميس 2026/05/28</td>
+                            <td>الدعور عائشة • كاسي اوصالح صبرينة</td>
+                            <td>لمساكر عبد الصمد • بعوشي حاج موسى</td>
+                        </tr>
+                        <tr class="holiday-highlight">
+                            <td class="date-cell-highlight">الجمعة 2026/05/29</td>
+                            <td>الطالب باحمد نذير • فتان خدوحة سارة</td>
+                            <td>فتان خدوحة سارة • فريوي محمد</td>
+                        </tr>
+                        <tr>
+                            <td class="date-cell-highlight">السبت 2026/05/30</td>
+                            <td>بوتاسوقة عائشة • بعوشي حاج موسى</td>
+                            <td>باسليمان نور الدين • الدعور عائشة</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+
+        <footer class="app-footer">
+            <a href="tel:029241244" class="footer-node">
+                <span>029241244</span>
+                <div class="icon-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" width="20" height="20"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+            </a>
+            <div class="footer-divider"></div>
+            <a href="mailto:05juillet.ballouh@gmail.com" class="footer-node">
+                <span>05juillet.ballouh@gmail.com</span>
+                <div class="icon-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" width="20" height="20"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                </div>
+            </a>
+        </footer>
+
+    </div>
+
+</body>
+</html>
