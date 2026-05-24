@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="حملة وطنية للوقاية من الكيس المائي - عيد الأضحى 2026 | Campagne nationale de prévention du kyste hydatique">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="حملة الوقاية من الكيس المائي | Campagne Kyste Hydatique 2026">
+    <meta property="og:description" content="داء الكيس المائي - مرض طفيلي خطير. احمِ نفسك وعائلتك خلال عيد الأضحى. وزارة الصحة - 20 إلى 26 ماي 2026">
+    <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect fill='%231a6b4b' width='1200' height='630'/%3E%3Ctext x='600' y='280' text-anchor='middle' fill='white' font-size='48' font-weight='bold'%3Eحملة الوقاية من الكيس المائي%3C/text%3E%3Ctext x='600' y='360' text-anchor='middle' fill='%23e2b96f' font-size='32'%3Eوزارة الصحة • 20-26 ماي 2026%3C/text%3E%3C/svg%3E">
+    <meta property="og:locale" content="ar_DZ">
+    <title>بطاقات الحملة | الكيس المائي | Ministère de la Santé</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
+    </script>
+    <style>
+        :root {
+            --primary: #1a6b4b;
+            --primary-light: #2e8b65;
+            --primary-dark: #0f4d33;
+            --gold: #c8963e;
+            --gold-light: #e2b96f;
+            --gold-dark: #a67c2e;
+            --danger: #c0392b;
+            --danger-light: #fdecea;
+            --warning: #e67e22;
+            --warning-light: #fef5ec;
+            --info: #2471a3;
+            --info-light: #eaf2f8;
+            --bg: #f7f5ef;
+            --card-bg: #ffffff;
+            --text: #1e1e1e;
+            --text-light: #4a4a4a;
+            --text-muted: #6e6e6e;
+            --border: #e0dcd0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.07), 0 2px 8px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12), 0 4px 16px rgba(0, 0, 0, 0.06);
+            --shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.18), 0 8px 24px rgba(0, 0, 0, 0.08);
+            --radius-card: 20px;
+            --radius-inner: 12px;
+            --radius-btn: 28px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-ar: 'Tajawal', 'Segoe UI', 'Noto Naskh Arabic', 'Arial', sans-serif;
+            --font-fr: 'Inter', 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            font-family: var(--font-ar);
+            background: #e8e4da;
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            background-image:
+                radial-gradient(ellipse at 20% 5%, rgba(26, 107, 75, 0.06) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 95%, rgba(200, 150, 62, 0.07) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(26, 107, 75, 0.03) 0%, transparent 60%);
+            background-attachment: fixed;
+        }
+
+        /* ─── TOP BAR ─── */
+        .top-bar {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 0.82rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 16px rgba(15, 77, 51, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .top-bar .bar-badge {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 4px 14px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+        .top-bar .bar-icon {
+            font-size: 1.2rem;
+        }
+
+        /* ─── LANGUAGE TOGGLE ─── */
+        .lang-wrap {
+            position: sticky;
+            top: 50px;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            padding: 10px 0 6px;
+            pointer-events: none;
+        }
+        .lang-toggle {
+            pointer-events: all;
+            display: flex;
+            background: #fff;
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+        .lang-toggle button {
+            border: none;
+            background: transparent;
+            padding: 9px 20px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 0.85rem;
+            transition: var(--transition);
+            color: var(--text-muted);
+            font-family: var(--font-ar);
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+        .lang-toggle button.active {
+            background: var(--primary);
+            color: #fff;
+            border-radius: 28px;
+            box-shadow: 0 3px 10px rgba(26, 107, 75, 0.4);
+        }
+        .lang-toggle button:hover:not(.active) {
+            color: var(--primary);
+            background: rgba(26, 107, 75, 0.06);
+        }
+
+        /* ─── MAIN CONTAINER ─── */
+        .main-container {
+            max-width: 750px;
+            margin: 0 auto;
+            padding: 10px 14px 50px;
+        }
+
+        /* ─── SECTION TITLE ─── */
+        .section-title {
+            text-align: center;
+            margin: 18px 0 12px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .section-title::before,
+        .section-title::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: var(--border);
+            max-width: 60px;
+        }
+
+        /* ─── CARD GRID ─── */
+        .cards-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* ─── INDIVIDUAL SHAREABLE CARD ─── */
+        .share-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-lg);
+            overflow: hidden;
+            position: relative;
+            transition: var(--transition);
+            border: 1px solid #e8e4d8;
+            cursor: default;
+        }
+        .share-card:hover {
+            box-shadow: var(--shadow-xl);
+            transform: translateY(-3px);
+        }
+        .share-card .card-stripe {
+            height: 6px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--gold) 40%, var(--primary-light) 70%, var(--gold-light) 100%);
+        }
+        .share-card .card-header {
+            padding: 18px 20px 10px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .share-card .card-icon-circle {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+        }
+        .card-icon-circle.green {
+            background: #e6f4ec;
+        }
+        .card-icon-circle.gold {
+            background: #fef7e8;
+        }
+        .card-icon-circle.red {
+            background: #fdecea;
+        }
+        .card-icon-circle.blue {
+            background: #eaf2f8;
+        }
+        .card-icon-circle.orange {
+            background: #fef5ec;
+        }
+        .share-card .card-title {
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            line-height: 1.3;
+        }
+        .share-card .card-subtitle {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .share-card .card-body {
+            padding: 4px 20px 16px;
+        }
+        .share-card .card-body p {
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        .share-card .card-list {
+            list-style: none;
+            padding: 0;
+            margin: 6px 0 0;
+        }
+        .share-card .card-list li {
+            padding: 8px 12px 8px 32px;
+            margin-bottom: 5px;
+            background: #fafaf7;
+            border-radius: 8px;
+            font-size: 0.84rem;
+            font-weight: 500;
+            position: relative;
+            border: 1px solid #f0ede4;
+            transition: var(--transition);
+        }
+        .share-card .card-list li:hover {
+            background: #f5f3ec;
+        }
+        .share-card .card-list li::before {
+            position: absolute;
+            right: 10px;
+            top: 8px;
+            font-weight: 700;
+            font-size: 0.8rem;
+        }
+        .share-card .card-list li.check::before {
+            content: '✓';
+            color: var(--primary);
+        }
+        .share-card .card-list li.warn::before {
+            content: '⚠';
+            color: var(--warning);
+        }
+        .share-card .card-list li.stop::before {
+            content: '✕';
+            color: var(--danger);
+            font-weight: 900;
+        }
+        .share-card .card-list li.bullet::before {
+            content: '•';
+            color: var(--primary);
+            font-size: 1.3rem;
+            top: 5px;
+        }
+        .share-card .card-footer {
+            padding: 10px 20px 14px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            border-top: 1px solid #f0ede4;
+            background: #fdfdfb;
+        }
+        .share-card .card-footer .btn-action {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 9px 16px;
+            border-radius: var(--radius-btn);
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            font-family: var(--font-ar);
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .btn-capture {
+            background: #fff;
+            color: var(--text);
+            border: 2px solid #d5d0c4 !important;
+        }
+        .btn-capture:hover {
+            border-color: var(--primary) !important;
+            color: var(--primary);
+            background: #f9fdf8;
+        }
+        .btn-share-card {
+            background: #1877f2;
+            color: #fff;
+        }
+        .btn-share-card:hover {
+            background: #1565d6;
+            box-shadow: 0 4px 14px rgba(24, 119, 242, 0.35);
+        }
+        .btn-download {
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-download:hover {
+            background: var(--primary-dark);
+            box-shadow: 0 4px 14px rgba(26, 107, 75, 0.35);
+        }
+
+        /* ─── MINISTRY BADGE ON CARDS ─── */
+        .card-ministry-badge {
+            display: inline-block;
+            background: var(--info-light);
+            color: var(--info);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.4px;
+        }
+
+        /* ─── HERO CARD (FULL WIDTH) ─── */
+        .hero-share-card {
+            background: linear-gradient(160deg, #fff 0%, #fdfcfa 100%);
+            border-radius: var(--radius-card);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            text-align: center;
+            border: 1px solid #e8e4d8;
+            margin-bottom: 10px;
+        }
+        .hero-share-card .hero-stripe {
+            height: 8px;
+            background: linear-gradient(90deg, var(--primary-dark), var(--primary), var(--gold), var(--primary-light), var(--gold-dark));
+        }
+        .hero-share-card .hero-inner {
+            padding: 24px 20px 20px;
+        }
+        .hero-share-card .hero-icon {
+            font-size: 4rem;
+            display: block;
+            margin-bottom: 6px;
+            animation: floatHero 3.5s ease-in-out infinite;
+        }
+        @keyframes floatHero {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-14px);
+            }
+        }
+        .hero-share-card h1 {
+            font-size: 1.6rem;
+            font-weight: 900;
+            color: var(--primary-dark);
+            margin-bottom: 4px;
+        }
+        .hero-share-card .hero-sub {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+        .hero-share-card .hero-date-badge {
+            display: inline-block;
+            background: #fff8e7;
+            color: var(--warning);
+            padding: 7px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            margin-top: 8px;
+            border: 2px solid #fde3b8;
+        }
+        .hero-share-card .hero-footer {
+            padding: 12px 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            justify-content: center;
+            border-top: 1px solid #f0ede4;
+            background: #fdfdfb;
+        }
+
+        /* ─── TOAST ─── */
+        .toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(120px);
+            background: #1a1a1a;
+            color: #fff;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            z-index: 9999;
+            transition: transform 0.4s ease;
+            pointer-events: none;
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+            white-space: nowrap;
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ─── OVERLAY FOR CAPTURE ─── */
+        .capture-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 9998;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+        .capture-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .capture-overlay .overlay-card {
+            background: #fff;
+            border-radius: var(--radius-card);
+            padding: 20px;
+            max-width: 400px;
+            width: 90%;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+        }
+        .capture-overlay .overlay-card img {
+            width: 100%;
+            border-radius: 12px;
+            display: block;
+        }
+        .capture-overlay .overlay-close {
+            position: absolute;
+            top: -12px;
+            right: -12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #fff;
+            border: 2px solid #ddd;
+            cursor: pointer;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #555;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 1;
+        }
+        .capture-overlay .overlay-close:hover {
+            background: #fee;
+            border-color: #c0392b;
+            color: #c0392b;
+        }
+        .capture-overlay .overlay-actions {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        /* ─── RTL/LTR BODY ─── */
+        body[dir="ltr"] {
+            font-family: var(--font-fr);
+        }
+        body[dir="ltr"] .share-card .card-list li {
+            padding: 8px 32px 8px 12px;
+        }
+        body[dir="ltr"] .share-card .card-list li::before {
+            right: auto;
+            left: 10px;
+        }
+        body[dir="ltr"] .lang-toggle button {
+            font-family: var(--font-fr);
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 480px) {
+            .share-card .card-title {
+                font-size: 1rem;
+            }
+            .share-card .card-body p {
+                font-size: 0.82rem;
+            }
+            .share-card .card-list li {
+                font-size: 0.78rem;
+                padding: 7px 10px 7px 28px;
+            }
+            .share-card .card-header {
+                padding: 14px 14px 8px;
+                gap: 8px;
+            }
+            .share-card .card-body {
+                padding: 4px 14px 12px;
+            }
+            .share-card .card-footer {
+                padding: 10px 14px 12px;
+                gap: 6px;
+            }
+            .btn-action {
+                padding: 7px 12px !important;
+                font-size: 0.72rem !important;
+            }
+            .hero-share-card h1 {
+                font-size: 1.3rem;
+            }
+            .hero-share-card .hero-inner {
+                padding: 18px 14px 14px;
+            }
+            .top-bar {
+                font-size: 0.7rem;
+                padding: 8px 10px;
+            }
+            .lang-toggle button {
+                padding: 7px 12px;
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body dir="rtl">
+
+    <!-- ─── TOP BAR ─── -->
+    <div class="top-bar">
+        <span class="bar-icon">🏛️</span>
+        <span data-lang="ar">وزارة الصحة – الجزائر</span>
+        <span data-lang="fr" style="display:none;">Ministère de la Santé – Algérie</span>
+        <span class="bar-badge">📅 20 – 26 ماي 2026</span>
+    </div>
+
+    <!-- ─── LANGUAGE TOGGLE ─── -->
+    <div class="lang-wrap">
+        <div class="lang-toggle">
+            <button id="btnAr" class="active" onclick="switchLang('ar')">🇩🇿 العربية</button>
+            <button id="btnFr" onclick="switchLang('fr')">🇫🇷 Français</button>
+        </div>
+    </div>
+
+    <!-- ─── MAIN ─── -->
+    <div class="main-container">
+
+        <!-- ─── HERO CARD ─── -->
+        <div class="hero-share-card" id="heroCard">
+            <div class="hero-stripe"></div>
+            <div class="hero-inner">
+                <span class="hero-icon">🦠</span>
+                <span class="card-ministry-badge" data-lang="ar">البرنامج الوطني للوقاية من الأمراض الحيوانية المنشأ</span>
+                <span class="card-ministry-badge" data-lang="fr" style="display:none;">Programme National de Prévention des Zoonoses</span>
+                <h1 data-lang="ar">حملة الوقاية و مكافحة<br>الكيس المائي</h1>
+                <h1 data-lang="fr" style="display:none;">Campagne de Lutte Contre<br>le Kyste Hydatique</h1>
+                <p class="hero-sub" data-lang="ar">بمناسبة عيد الأضحى المبارك 🐑</p>
+                <p class="hero-sub" data-lang="fr" style="display:none;">À l'occasion de l'Aïd el-Adha 🐑</p>
+                <span class="hero-date-badge">📅 20 – 26 مايو / Mai 2026</span>
+            </div>
+            <div class="hero-footer">
+                <button class="btn-action btn-capture" onclick="captureCard('heroCard','البطاقة_الرئيسية_الكيس_المائي')">📸 <span data-lang="ar">التقاط البطاقة</span><span data-lang="fr" style="display:none;">Capturer</span></button>
+                <button class="btn-action btn-share-card" onclick="shareCardToFB('heroCard')">📢 <span data-lang="ar">مشاركة</span><span data-lang="fr" style="display:none;">Partager</span></button>
+            </div>
+        </div>
+
+        <div class="section-title">
+            <span>📋</span> <span data-lang="ar">بطاقات التوعية</span><span data-lang="fr" style="display:none;">Fiches de sensibilisation</span> <span>📋</span>
+        </div>
+
+        <!-- ─── CARD 1: Veterinary Check ─── -->
+        <div class="share-card" id="card1">
+            <div class="card-stripe"></div>
+            <div class="card-header">
+                <div class="card-icon-circle green">🥼</div>
+                <div>
+                    <div class="card-title" data-lang="ar">١. الفحص البيطري للأضحية</div>
+                    <div class="card-title" data-lang="fr" style="display:none;">1. Contrôle Vétérinaire du Mouton</div>
+                    <div class="card-subtitle" data-lang="ar">الخطوة الأولى والأهم للوقاية</div>
+                    <div class="card-subtitle" data-lang="fr" style="display:none;">La première étape essentielle</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p data-lang="ar">✅ <strong>خذ كل الترتيبات لفحص الأضحية بعد ذبحها من طرف الطبيب البيطري.</strong> الفحص البيطري هو خط الدفاع الأول لاكتشاف الأكياس المائية قبل استهلاك الأعضاء.</p>
+                <p data-lang="fr" style="display:none;">✅ <strong>Prenez toutes les dispositions pour faire contrôler le mouton sacrifié par le vétérinaire.</strong> Le contrôle vétérinaire est la première ligne de défense pour détecter les kystes hydatiques.</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-action btn-capture" onclick="captureCard('card1','فحص_بيطري_الكيس_المائي')">📸 <span data-lang="ar">التقاط</span><span data-lang="fr" style="display:none;">Capturer</span></button>
+                <button class="btn-action btn-download" onclick="downloadCard('card1','فحص_بيطري_الكيس_المائي')">⬇ <span data-lang="ar">تحميل</span><span data-lang="fr" style="display:none;">Télécharger</span></button>
+                <button class="btn-action btn-share-card" onclick="shareCardToFB('card1')">📢 <span data-lang="ar">مشاركة</span><span data-lang="fr" style="display:none;">Partager</span></button>
+            </div>
+        </div>
+
+        <!-- ─── CARD 2: Self Inspection ─── -->
+        <div class="share-card" id="card2">
+            <div class="card-stripe"></div>
+            <div class="card-header">
+                <div class="card-icon-circle gold">🔍</div>
+                <div>
+                    <div class="card-title" data-lang="ar">٢. الفحص الذاتي عند تعذّر الفحص البيطري</div>
+                    <div class="card-title" data-lang="fr" style="display:none;">2. Auto-examen si le contrôle vétérinaire est impossible</div>
+                    <div class="card-subtitle" data-lang="ar">إجراءات دقيقة يجب اتباعها</div>
+                    <div class="card-subtitle" data-lang="fr" style="display:none;">Procédures à suivre rigoureusement</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <ul class="card-list">
+                    <li class="check" data-lang="ar">🔎 افحص بدقة الكبد والرئتين وبقية الأحشاء بحثًا عن الأكياس أو الحويصلات (كريات الماء).</li>
+                    <li class="check" data-lang="fr" style="display:none;">🔎 Examinez avec précaution le foie, les poumons et les autres viscères à la recherche de kystes ou vésicules (boules d'eau).</li>
+                    <li class="warn" data-lang="ar">🔥 اغلِ أو احرق الأعضاء والأحشاء التي تحمل أكياسًا مائية.</li>
+                    <li class="warn" data-lang="fr" style="display:none;">🔥 Bouillir ou brûler les abats et viscères qui portent des boules d'eau.</li>
+                    <li class="warn" data-lang="ar">🪦 ادفن الأعضاء المصابة عميقًا (50 سم) بحيث لا تستطيع الكلاب الضالة انتشالها.</li>
+                    <li class="warn" data-lang="fr" style="display:none;">🪦 Enterrer les abats parasités profondément (50 cm) pour que les chiens errants ne les déterrent pas.</li>
+                    <li class="stop" data-lang="ar">🚫 لا ترمِ الأعضاء المشبوهة في الطبيعة أبدًا.</li>
+                    <li class="stop" data-lang="fr" style="display:none;">🚫 Ne jamais abandonner dans la nature les abats et viscères suspects.</li>
+                    <li class="stop" data-lang="ar">🐕 لا تقدّم الأعضاء المصابة للكلاب (كلابك أو كلاب الجيران) – فهي خزّان الطفيليات.</li>
+                    <li class="stop" data-lang="fr" style="display:none;">🐕 Ne jamais donner les abats parasités aux chiens – ils sont le réservoir du parasite.</li>
+                    <li class="stop" data-lang="ar">🗑️ لا ترمِ الأعضاء المصابة مع النفايات المنزلية.</li>
+                    <li class="stop" data-lang="fr" style="display:none;">🗑️ Ne pas jeter les abats parasités avec les ordures ménagères.</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <button class="btn-action btn-capture" onclick="captureCard('card2','فحص_ذاتي_الكيس_المائي')">📸 <span data-lang="ar">التقاط</span><span data-lang="fr" style="display:none;">Capturer</span></button>
+                <button class="btn-action btn-download" onclick="downloadCard('card2','فحص_ذاتي_الكيس_المائي')">⬇ <span data-lang="ar">تحميل</span><span data-lang="fr" style="display:none;">Télécharger</span></button>
+                <button class="btn-action btn-share-card" onclick="shareCardToFB('card2')">📢 <span data-lang="ar">مشاركة</span><span data-lang="fr" style="display:none;">Partager</span></button>
+            </div>
+        </div>
+
+        <!-- ─── CARD 3: Hygiene ─── -->
+        <div class="share-card" id="card3">
+            <div class="card-stripe"></div>
+            <div class="card-header">
+                <div class="card-icon-circle blue">🧼</div>
+                <div>
+                    <div class="card-title" data-lang="ar">٣. قواعد النظافة الأساسية</div>
+                    <div class="card-title" data-lang="fr" style="display:none;">3. Règles d'Hygiène Élémentaires</div>
+                    <div class="card-subtitle" data-lang="ar">لا تنسَ هذه العادات البسيطة والفعّالة</div>
+                    <div class="card-subtitle" data-lang="fr" style="display:none;">N'oubliez pas ces gestes simples et efficaces</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <ul class="card-list">
+                    <li class="check" data-lang="ar">👐 اغسل يديك جيدًا <strong>قبل الأكل</strong>.</li>
+                    <li class="check" data-lang="fr" style="display:none;">👐 Lavez-vous les mains <strong>avant les repas</strong>.</li>
+                    <li class="check" data-lang="ar">🐶 اغسل يديك جيدًا <strong>بعد لمس الكلاب</strong> أو مداعبتها.</li>
+                    <li class="check" data-lang="fr" style="display:none;">🐶 Lavez-vous les mains <strong>après avoir caressé un chien</strong>.</li>
+                </ul>
+                <p style="margin-top:8px;font-size:0.82rem;color:var(--text-muted);" data-lang="ar">💡 غسل اليدين بانتظام يقي من العديد من الأمراض المعدية، بما فيها الكيس المائي.</p>
+                <p style="margin-top:8px;font-size:0.82rem;color:var(--text-muted);" data-lang="fr" style="display:none;">💡 Le lavage régulier des mains protège contre de nombreuses maladies infectieuses, y compris le kyste hydatique.</p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-action btn-capture" onclick="captureCard('card3','نظافة_الكيس_المائي')">📸 <span data-lang="ar">التقاط</span><span data-lang="fr" style="display:none;">Capturer</span></button>
+                <button class="btn-action btn-download" onclick="downloadCard('card3','نظافة_الكيس_المائي')">⬇ <span data-lang="ar">تحميل</span><span data-lang="fr" style="display:none;">Télécharger</span></button>
+                <button class="btn-action btn-share-card" onclick="shareCardToFB('card3')">📢 <span data-lang="ar">مشاركة</span><span data-lang="fr" style="display:none;">Partager</span></button>
+            </div>
+        </div>
+
+        <!-- ─── CARD 4: Home Accidents ─── -->
+        <div class="share-card" id="card4">
+            <div class="card-stripe"></div>
+            <div class="card-header">
+                <div class="card-icon-circle orange">🏠</div>
+                <div>
+                    <div class="card-title" data-lang="ar">٤. الوقاية من الحوادث المنزلية</div>
+                    <div class="card-title" data-lang="fr" style="display:none;">4. Prévention des Accidents Domestiques</div>
+                    <div class="card-subtitle" data-lang="ar">سلامة العائلة أثناء العيد</div>
+                    <div class="card-subtitle" data-lang="fr" style="display:none;">Sécurité familiale pendant l'Aïd</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <ul class="card-list">
+                    <li class="bullet" data-lang="ar">🔥 تأكد من <strong>سلامة قارورات الغاز</strong> قبل الاستخدام.</li>
+                    <li class="bullet" data-lang="fr" style="display:none;">🔥 Assurez la <strong>sécurité des bouteilles de gaz</strong> avant utilisation.</li>
+                    <li class="bullet" data-lang="ar">👶 تجنب <strong>تواجد الأطفال أمام الطابونات</strong> (المواقد).</li>
+                    <li class="bullet" data-lang="fr" style="display:none;">👶 Évitez la <strong>présence d'enfants devant les Tabounas</strong>.</li>
+                    <li class="bullet" data-lang="ar">🔪 تجنب التعامل غير الآمن مع <strong>أدوات التقطيع</strong> (السكاكين، الفؤوس...).</li>
+                    <li class="bullet" data-lang="fr" style="display:none;">🔪 Évitez la manipulation sans sécurité des <strong>éléments coupants</strong> (couteaux, haches...).</li>
+                </ul>
+            </div>
+            <div class="card-footer">
+                <button class="btn-action btn-capture" onclick="captureCard('card4','حوادث_منزلية_العيد')">📸 <span data-lang="ar">التقاط</span><span data-lang="fr" style="display:none;">Capturer</span></button>
+                <button class="btn-action btn-download" onclick="downloadCard('card4','حوادث_منزلية_العيد')">⬇ <span data-lang="ar">تحميل</span><span data-lang="fr" style="display:none;">Télécharger</span></button>
+                <button class="btn-action btn-share-card" onclick="shareCardToFB('card4')">📢 <span data-lang="ar">مشاركة</span><span data-lang="fr" style="display:none;">Partager</span></button>
+            </div>
+        </div>
+
+        <!-- ─── CARD 5: Health Services ─── -->
+        <div class="share-card" id="card5">
+            <div class="card-stripe"></div>
+            <div class="card-header">
+                <div class="card-icon-circle red">🏥</div>
+                <div>
+                    <div class="card-title" data-lang="ar">٥. جاهزية المؤسسات الصحية</div>
+                    <div class="card-title" data-lang="fr" style="display:none;">5. Disponibilité des Structures de Santé</div>
+                    <div class="card-subtitle" data-lang="ar">نحن في خدمتكم خلال العيد</div>
+                    <div class="card-subtitle" data-lang="fr" style="display:none;">À votre service pendant l'Aïd</div>
+                </div>
+            </div>
+            <div class="card-body">
+                <p data-lang="ar" style="font-weight:700;color:var(--primary-dark);text-align:center;font-size:1rem;">
+                    ✅ خلال هذه المناسبة الدينية، تبقى <strong>هياكل الصحة الجوارية</strong> و <strong>المؤسسات الصحية</strong> في خدمة المواطنين وجاهزة لاستقبالكم على مدار الساعة.
+                </p>
+                <p data-lang="fr" style="font-weight:700;color:var(--primary-dark);text-align:center;font-size:1rem;display:none;">
+                    ✅ Durant cette fête religieuse, les <strong>structures de santé de proximité</strong> et les <strong>établissements de santé</strong> sont fonctionnels et à votre disposition.
+                </p>
+            </div>
+            <div class="card-footer">
+                <button class="btn-action btn-capture" onclick="captureCard('card5','خدمات_صحية_العيد')">📸 <span data-lang="ar">التقاط</span><span data-lang="fr" style="display:none;">Capturer</span></button>
+                <button class="btn-action btn-download" onclick="downloadCard('card5','خدمات_صحية_العيد')">⬇ <span data-lang="ar">تحميل</span><span data-lang="fr" style="display:none;">Télécharger</span></button>
+                <button class="btn-action btn-share-card" onclick="shareCardToFB('card5')">📢 <span data-lang="ar">مشاركة</span><span data-lang="fr" style="display:none;">Partager</span></button>
+            </div>
+        </div>
+
+        <!-- ─── FOOTER ─── -->
+        <div style="text-align:center;padding:24px 10px;color:var(--text-muted);font-size:0.8rem;border-top:2px solid var(--border);margin-top:16px;">
+            <span style="font-weight:700;color:var(--primary);display:block;font-size:0.9rem;" data-lang="ar">وزارة الصحة – الجمهورية الجزائرية الديمقراطية الشعبية</span>
+            <span style="font-weight:700;color:var(--primary);display:block;font-size:0.9rem;" data-lang="fr" style="display:none;">Ministère de la Santé – République Algérienne Démocratique et Populaire</span>
+            <span data-lang="ar">الحملة الوطنية للوقاية من الأمراض الحيوانية المنشأ • 20–26 ماي 2026</span>
+            <span data-lang="fr" style="display:none;">Campagne nationale de prévention des zoonoses • 20–26 Mai 2026</span>
+            <br>
+            <span data-lang="ar">معًا من أجل عيد أضحى آمن وصحي 🐑💚</span>
+            <span data-lang="fr" style="display:none;">Ensemble pour un Aïd el-Adha sûr et sain 🐑💚</span>
+        </div>
+    </div>
+
+    <!-- ─── CAPTURE OVERLAY ─── -->
+    <div class="capture-overlay" id="captureOverlay">
+        <div class="overlay-card">
+            <button class="overlay-close" onclick="closeOverlay()">✕</button>
+            <img id="overlayImg" src="" alt="Card Preview">
+            <div class="overlay-actions">
+                <button class="btn-action btn-download" id="overlayDownload" onclick="downloadOverlayImage()">⬇ <span data-lang="ar">تحميل الصورة</span><span data-lang="fr" style="display:none;">Télécharger</span></button>
+                <button class="btn-action btn-share-card" onclick="shareOverlayToFB()">📢 <span data-lang="ar">مشاركة على فيسبوك</span><span data-lang="fr" style="display:none;">Partager sur Facebook</span></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ─── TOAST ─── -->
+    <div class="toast" id="toast">✅ <span data-lang="ar">تم بنجاح!</span><span data-lang="fr" style="display:none;">Succès !</span></div>
+
+    <script>
+        let currentLang = 'ar';
+        let overlayImageDataUrl = null;
+        let overlayFilename = 'card.png';
+
+        function switchLang(lang) {
+            currentLang = lang;
+            const body = document.body;
+            const btnAr = document.getElementById('btnAr');
+            const btnFr = document.getElementById('btnFr');
+            if (lang === 'ar') {
+                body.setAttribute('dir', 'rtl');
+                body.style.fontFamily = getComputedStyle(document.documentElement).getPropertyValue(
+                '--font-ar').trim();
+                btnAr.classList.add('active');
+                btnFr.classList.remove('active');
+            } else {
+                body.setAttribute('dir', 'ltr');
+                body.style.fontFamily = getComputedStyle(document.documentElement).getPropertyValue(
+                '--font-fr').trim();
+                btnFr.classList.add('active');
+                btnAr.classList.remove('active');
+            }
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.style.display = '';
+                } else if (el.getAttribute('data-lang')) {
+                    el.style.display = 'none';
+                }
+            });
+            document.querySelectorAll('.accordion-body [data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) el.style.display = '';
+                else if (el.getAttribute('data-lang')) el.style.display = 'none';
+            });
+            updateToastLang();
+            try { localStorage.setItem('campaign-lang-v2', lang); } catch (e) {}
+        }
+
+        function updateToastLang() {
+            const toast = document.getElementById('toast');
+            const spans = toast.querySelectorAll('[data-lang]');
+            spans.forEach(s => {
+                if (s.getAttribute('data-lang') === currentLang) s.style.display = '';
+                else if (s.getAttribute('data-lang')) s.style.display = 'none';
+            });
+        }
+
+        // ─── CAPTURE CARD ───
+        function captureCard(cardId, filename) {
+            const card = document.getElementById(cardId);
+            if (!card) return;
+            showToastMsg(currentLang === 'ar' ? '⏳ جارٍ التقاط البطاقة...' : '⏳ Capture en cours...');
+            html2canvas(card, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                allowTaint: true,
+            }).then(canvas => {
+                const dataUrl = canvas.toDataURL('image/png');
+                overlayImageDataUrl = dataUrl;
+                overlayFilename = (filename || 'card') + '.png';
+                document.getElementById('overlayImg').src = dataUrl;
+                document.getElementById('captureOverlay').classList.add('active');
+                updateOverlayLang();
+                showToastMsg(currentLang === 'ar' ? '✅ تم التقاط البطاقة!' : '✅ Carte capturée !');
+            }).catch(err => {
+                console.error('Capture error:', err);
+                showToastMsg(currentLang === 'ar' ? '❌ حدث خطأ أثناء الالتقاط' : '❌ Erreur lors de la capture');
+            });
+        }
+
+        function updateOverlayLang() {
+            const overlay = document.getElementById('captureOverlay');
+            const spans = overlay.querySelectorAll('[data-lang]');
+            spans.forEach(s => {
+                if (s.getAttribute('data-lang') === currentLang) s.style.display = '';
+                else if (s.getAttribute('data-lang')) s.style.display = 'none';
+            });
+        }
+
+        function closeOverlay() {
+            document.getElementById('captureOverlay').classList.remove('active');
+            overlayImageDataUrl = null;
+        }
+
+        function downloadOverlayImage() {
+            if (!overlayImageDataUrl) return;
+            downloadDataUrl(overlayImageDataUrl, overlayFilename);
+            showToastMsg(currentLang === 'ar' ? '⬇ تم بدء التحميل!' : '⬇ Téléchargement lancé !');
+        }
+
+        function downloadCard(cardId, filename) {
+            const card = document.getElementById(cardId);
+            if (!card) return;
+            showToastMsg(currentLang === 'ar' ? '⏳ جارٍ تجهيز التحميل...' : '⏳ Préparation du téléchargement...');
+            html2canvas(card, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                allowTaint: true,
+            }).then(canvas => {
+                const dataUrl = canvas.toDataURL('image/png');
+                downloadDataUrl(dataUrl, (filename || 'card') + '.png');
+                showToastMsg(currentLang === 'ar' ? '⬇ تم التحميل!' : '⬇ Téléchargé !');
+            }).catch(err => {
+                console.error('Download error:', err);
+                showToastMsg(currentLang === 'ar' ? '❌ خطأ في التحميل' : '❌ Erreur de téléchargement');
+            });
+        }
+
+        function downloadDataUrl(dataUrl, filename) {
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = dataUrl;
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // ─── SHARE TO FACEBOOK ───
+        function shareCardToFB(cardId) {
+            const card = document.getElementById(cardId);
+            if (!card) return;
+            showToastMsg(currentLang === 'ar' ? '⏳ جارٍ تجهيز الصورة للمشاركة...' : '⏳ Préparation de l\'image...');
+            html2canvas(card, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+                logging: false,
+                allowTaint: true,
+            }).then(canvas => {
+                canvas.toBlob(blob => {
+                    if (!blob) {
+                        fallbackFBShare();
+                        return;
+                    }
+                    const file = new File([blob], 'card.png', { type: 'image/png' });
+                    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                        navigator.share({
+                            files: [file],
+                            title: currentLang === 'ar' ? 'حملة الوقاية من الكيس المائي' :
+                                'Campagne Kyste Hydatique',
+                            text: currentLang === 'ar' ?
+                                'وزارة الصحة - حملة الوقاية من الكيس المائي خلال عيد الأضحى 2026' :
+                                'Ministère de la Santé - Campagne Kyste Hydatique Aid 2026',
+                        }).then(() => {
+                            showToastMsg(currentLang === 'ar' ? '✅ تمت المشاركة!' : '✅ Partagé !');
+                        }).catch(() => {
+                            fallbackFBShare();
+                        });
+                    } else {
+                        fallbackFBShare();
+                    }
+                }, 'image/png');
+            }).catch(() => {
+                fallbackFBShare();
+            });
+        }
+
+        function shareOverlayToFB() {
+            if (!overlayImageDataUrl) return;
+            const blob = dataURLtoBlob(overlayImageDataUrl);
+            const file = new File([blob], 'card.png', { type: 'image/png' });
+            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                navigator.share({
+                    files: [file],
+                    title: currentLang === 'ar' ? 'حملة الوقاية من الكيس المائي' : 'Campagne Kyste Hydatique',
+                    text: currentLang === 'ar' ? 'وزارة الصحة - حملة الوقاية من الكيس المائي 2026' :
+                        'Ministère de la Santé - Campagne Kyste Hydatique 2026',
+                }).then(() => {
+                    showToastMsg(currentLang === 'ar' ? '✅ تمت المشاركة!' : '✅ Partagé !');
+                }).catch(() => fallbackFBShare());
+            } else {
+                fallbackFBShare();
+            }
+        }
+
+        function fallbackFBShare() {
+            const url = encodeURIComponent(window.location.href);
+            const fbUrl =
+                `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${encodeURIComponent(currentLang==='ar'?'حملة الوقاية من الكيس المائي - وزارة الصحة 2026':'Campagne Kyste Hydatique - Ministère de la Santé 2026')}`;
+            window.open(fbUrl, '_blank', 'width=600,height=400');
+            showToastMsg(currentLang === 'ar' ? '📢 فتح فيسبوك للمشاركة' : '📢 Facebook ouvert pour partage');
+        }
+
+        function dataURLtoBlob(dataurl) {
+            const arr = dataurl.split(',');
+            const mime = arr[0].match(/:(.*?);/)[1];
+            const bstr = atob(arr[1]);
+            let n = bstr.length;
+            const u8arr = new Uint8Array(n);
+            while (n--) { u8arr[n] = bstr.charCodeAt(n); }
+            return new Blob([u8arr], { type: mime });
+        }
+
+        // ─── TOAST ───
+        function showToastMsg(msg) {
+            const toast = document.getElementById('toast');
+            toast.textContent = msg;
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+                updateToastLang();
+            }, 2200);
+        }
+
+        // ─── INIT ───
+        function init() {
+            let saved = null;
+            try { saved = localStorage.getItem('campaign-lang-v2'); } catch (e) {}
+            if (saved === 'fr') switchLang('fr');
+            else switchLang('ar');
+            document.getElementById('captureOverlay').addEventListener('click', function(e) {
+                if (e.target === this) closeOverlay();
+            });
+        }
+        document.addEventListener('DOMContentLoaded', init);
+    </script>
+</body>
+</html>
