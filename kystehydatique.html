@@ -1,0 +1,858 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="حملة وطنية للوقاية من الكيس المائي خلال عيد الأضحى 2026 - Campagne nationale de prévention du kyste hydatique - Aid El Adha 2026">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="حملة الوقاية من الكيس المائي | Campagne Kyste Hydatique">
+    <meta property="og:description" content="داء الكيس المائي - مرض طفيلي خطير. احمِ نفسك وعائلتك خلال عيد الأضحى. وزارة الصحة - 20 إلى 26 ماي 2026">
+    <meta property="og:image" content="https://cdn-icons-png.flaticon.com/512/2913/2913461.png">
+    <meta property="og:image:width" content="512">
+    <meta property="og:image:height" content="512">
+    <meta property="og:locale" content="ar_DZ">
+    <meta property="og:site_name" content="وزارة الصحة - الحملة الوطنية للوقاية من الكيس المائي">
+
+    <title>حملة الوقاية من الكيس المائي | Ministère de la Santé</title>
+    <style>
+        :root {
+            --primary: #1a6b4b;
+            --primary-light: #2e8b65;
+            --primary-dark: #0f4d33;
+            --gold: #c8963e;
+            --gold-light: #e2b96f;
+            --danger: #c0392b;
+            --danger-light: #fdecea;
+            --warning: #e67e22;
+            --warning-light: #fef5ec;
+            --info: #2471a3;
+            --info-light: #eaf2f8;
+            --bg: #f9f7f2;
+            --card-bg: #ffffff;
+            --text: #2c2c2c;
+            --text-light: #5a5a5a;
+            --text-muted: #7a7a7a;
+            --border: #e0dcd0;
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+            --shadow: 0 4px 16px rgba(0, 0, 0, 0.08), 0 2px 6px rgba(0, 0, 0, 0.04);
+            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.06);
+            --radius: 16px;
+            --radius-sm: 10px;
+            --radius-xs: 6px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-ar: 'Tajawal', 'Segoe UI', 'Arial', sans-serif;
+            --font-fr: 'Inter', 'Segoe UI', 'Arial', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: var(--font-ar);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            background-image:
+                radial-gradient(ellipse at 15% 10%, rgba(26, 107, 75, 0.04) 0%, transparent 55%),
+                radial-gradient(ellipse at 85% 90%, rgba(200, 150, 62, 0.05) 0%, transparent 55%),
+                radial-gradient(ellipse at 50% 50%, rgba(26, 107, 75, 0.02) 0%, transparent 70%);
+            background-attachment: fixed;
+        }
+
+        /* ─── TOP RIBBON ─── */
+        .top-ribbon {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%);
+            color: #fff;
+            text-align: center;
+            padding: 10px 16px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.4px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(15, 77, 51, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .top-ribbon .ribbon-icon {
+            font-size: 1.1rem;
+        }
+        .top-ribbon .ribbon-date {
+            background: rgba(255, 255, 255, 0.18);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+
+        /* ─── LANGUAGE TOGGLE ─── */
+        .lang-toggle-wrap {
+            position: sticky;
+            top: 48px;
+            z-index: 99;
+            display: flex;
+            justify-content: center;
+            padding: 8px 0;
+            pointer-events: none;
+        }
+        .lang-toggle {
+            pointer-events: all;
+            display: flex;
+            background: var(--card-bg);
+            border-radius: 30px;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 2px solid var(--border);
+        }
+        .lang-toggle button {
+            border: none;
+            background: transparent;
+            padding: 10px 22px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            color: var(--text-muted);
+            font-family: var(--font-ar);
+            white-space: nowrap;
+            letter-spacing: 0.3px;
+        }
+        .lang-toggle button.active {
+            background: var(--primary);
+            color: #fff;
+            border-radius: 28px;
+            box-shadow: 0 2px 8px rgba(26, 107, 75, 0.35);
+        }
+        .lang-toggle button:hover:not(.active) {
+            color: var(--primary);
+            background: rgba(26, 107, 75, 0.05);
+        }
+
+        /* ─── MAIN CONTAINER ─── */
+        .main-container {
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 12px 14px 40px;
+        }
+
+        /* ─── HERO CARD ─── */
+        .hero-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            padding: 28px 22px 22px;
+            margin-bottom: 18px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+        }
+        .hero-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--gold) 50%, var(--primary-light) 100%);
+            border-radius: var(--radius) var(--radius) 0 0;
+        }
+        .hero-icon {
+            font-size: 3.5rem;
+            margin-bottom: 8px;
+            display: block;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+        .hero-card .ministry-badge {
+            display: inline-block;
+            background: var(--info-light);
+            color: var(--info);
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 10px;
+        }
+        .hero-card h1 {
+            font-size: 1.7rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            margin-bottom: 6px;
+            line-height: 1.3;
+        }
+        .hero-card .subtitle {
+            font-size: 1rem;
+            color: var(--text-light);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+        .hero-card .campaign-dates {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: #fff8e7;
+            color: var(--warning);
+            padding: 7px 15px;
+            border-radius: 20px;
+            font-weight: 700;
+            font-size: 0.88rem;
+            margin-top: 8px;
+            border: 1px solid #fde3b8;
+        }
+
+        /* ─── ALERT BANNER ─── */
+        .alert-banner {
+            background: linear-gradient(135deg, #fef3f2 0%, #fde8e5 100%);
+            border: 1px solid #f5c6c0;
+            border-radius: var(--radius);
+            padding: 16px 18px;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            box-shadow: var(--shadow-sm);
+        }
+        .alert-banner .alert-icon {
+            font-size: 2rem;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+        .alert-banner p {
+            margin: 0;
+            font-weight: 600;
+            color: #8b1a1a;
+            font-size: 0.95rem;
+        }
+        .alert-banner .alert-sub {
+            font-weight: 400;
+            color: #a04040;
+            font-size: 0.82rem;
+            margin-top: 2px;
+            display: block;
+        }
+
+        /* ─── SECTION CARDS ─── */
+        .section-card {
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 20px 18px;
+            margin-bottom: 16px;
+            border: 1px solid var(--border);
+            transition: var(--transition);
+        }
+        .section-card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        .section-card h2 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .section-card h2 .sec-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        .section-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 8px;
+        }
+
+        /* ─── TIP LIST ─── */
+        .tip-list {
+            list-style: none;
+            padding: 0;
+        }
+        .tip-list li {
+            padding: 11px 14px 11px 40px;
+            margin-bottom: 8px;
+            background: #fafff7;
+            border-radius: var(--radius-sm);
+            position: relative;
+            font-weight: 500;
+            border: 1px solid #e8f0e3;
+            transition: var(--transition);
+            font-size: 0.93rem;
+        }
+        .tip-list li:hover {
+            background: #f2f9ed;
+            border-color: #c8dcc0;
+        }
+        .tip-list li::before {
+            content: '✓';
+            position: absolute;
+            right: 14px;
+            top: 11px;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .tip-list li.warn {
+            background: #fffdf7;
+            border-color: #fde8c0;
+        }
+        .tip-list li.warn::before {
+            content: '⚠';
+            color: var(--warning);
+        }
+        .tip-list li.danger {
+            background: #fef9f9;
+            border-color: #f5c6c0;
+        }
+        .tip-list li.danger::before {
+            content: '✕';
+            color: var(--danger);
+            font-weight: 900;
+        }
+
+        /* ─── HIGHLIGHT BOX ─── */
+        .highlight-box {
+            background: linear-gradient(135deg, #eafaf1 0%, #d5f0e0 100%);
+            border: 2px solid #a3d9b7;
+            border-radius: var(--radius);
+            padding: 16px 18px;
+            margin-top: 12px;
+            text-align: center;
+            font-weight: 700;
+            color: var(--primary-dark);
+            font-size: 0.95rem;
+        }
+
+        /* ─── ACCORDION ─── */
+        .accordion {
+            margin-top: 6px;
+        }
+        .accordion-item {
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            margin-bottom: 8px;
+            overflow: hidden;
+            background: var(--card-bg);
+        }
+        .accordion-header {
+            padding: 14px 16px;
+            cursor: pointer;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: var(--transition);
+            user-select: none;
+            font-size: 0.93rem;
+            color: var(--text);
+        }
+        .accordion-header:hover {
+            background: #f9faf8;
+        }
+        .accordion-header .acc-arrow {
+            transition: var(--transition);
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            flex-shrink: 0;
+        }
+        .accordion-item.open .accordion-header .acc-arrow {
+            transform: rotate(180deg);
+            color: var(--primary);
+        }
+        .accordion-item.open .accordion-header {
+            color: var(--primary-dark);
+            background: #f9fdf8;
+        }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.45s ease, padding 0.3s ease;
+            padding: 0 16px;
+        }
+        .accordion-item.open .accordion-body {
+            max-height: 600px;
+            padding: 0 16px 14px;
+        }
+        .accordion-body .tip-list {
+            margin-top: 4px;
+        }
+
+        /* ─── GRID CARDS ─── */
+        .grid-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        @media (max-width: 420px) {
+            .grid-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        .mini-card {
+            background: #fdfcfa;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-sm);
+            padding: 14px 12px;
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+        .mini-card:hover {
+            box-shadow: var(--shadow);
+            border-color: #ccc8b8;
+        }
+        .mini-card .mini-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        /* ─── FOOTER ─── */
+        .app-footer {
+            text-align: center;
+            padding: 20px 14px;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            border-top: 2px solid var(--border);
+            margin-top: 20px;
+        }
+        .app-footer .footer-ministry {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+            display: block;
+        }
+
+        /* ─── SHARE BUTTON ─── */
+        .share-bar {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 20px 0 8px;
+        }
+        .btn-share {
+            display: inline-flex;
+            align-items: center;
+            gap: 7px;
+            padding: 12px 24px;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            cursor: pointer;
+            border: none;
+            transition: var(--transition);
+            text-decoration: none;
+            font-family: var(--font-ar);
+            box-shadow: var(--shadow);
+        }
+        .btn-share.facebook {
+            background: #1877f2;
+            color: #fff;
+        }
+        .btn-share.facebook:hover {
+            background: #1666d6;
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-2px);
+        }
+        .btn-share.copy {
+            background: #fff;
+            color: var(--text);
+            border: 2px solid var(--border);
+        }
+        .btn-share.copy:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+        }
+
+        /* ─── TOAST ─── */
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: #1a1a1a;
+            color: #fff;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            z-index: 999;
+            transition: transform 0.35s ease;
+            pointer-events: none;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+        .toast.show {
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ─── DIRECTION SWITCH ─── */
+        body[dir="ltr"] {
+            font-family: var(--font-fr);
+        }
+        body[dir="ltr"] .tip-list li {
+            padding: 11px 40px 11px 14px;
+        }
+        body[dir="ltr"] .tip-list li::before {
+            right: auto;
+            left: 14px;
+        }
+        body[dir="ltr"] .lang-toggle button {
+            font-family: var(--font-fr);
+        }
+        body[dir="ltr"] .alert-banner {
+            flex-direction: row;
+        }
+
+        /* ─── RESPONSIVE ─── */
+        @media (max-width: 480px) {
+            .hero-card h1 {
+                font-size: 1.35rem;
+            }
+            .hero-card {
+                padding: 22px 14px 16px;
+            }
+            .section-card {
+                padding: 16px 12px;
+            }
+            .section-card h2 {
+                font-size: 1.05rem;
+            }
+            .tip-list li {
+                font-size: 0.85rem;
+                padding: 10px 12px 10px 34px;
+            }
+            .btn-share {
+                padding: 10px 16px;
+                font-size: 0.8rem;
+            }
+            .lang-toggle button {
+                padding: 8px 14px;
+                font-size: 0.78rem;
+            }
+            .top-ribbon {
+                font-size: 0.73rem;
+                padding: 8px 10px;
+            }
+        }
+    </style>
+</head>
+<body dir="rtl">
+
+    <!-- ─── TOP RIBBON ─── -->
+    <div class="top-ribbon">
+        <span class="ribbon-icon">🏛️</span>
+        <span data-lang="ar">وزارة الصحة - الجزائر</span>
+        <span data-lang="fr" style="display:none;">Ministère de la Santé - Algérie</span>
+        <span class="ribbon-date">📅 20 – 26 ماي 2026</span>
+    </div>
+
+    <!-- ─── LANGUAGE TOGGLE ─── -->
+    <div class="lang-toggle-wrap">
+        <div class="lang-toggle">
+            <button id="btnAr" class="active" onclick="switchLang('ar')">🇩🇿 العربية</button>
+            <button id="btnFr" onclick="switchLang('fr')">🇫🇷 Français</button>
+        </div>
+    </div>
+
+    <!-- ─── MAIN CONTENT ─── -->
+    <div class="main-container">
+
+        <!-- HERO -->
+        <div class="hero-card">
+            <span class="hero-icon">🦠</span>
+            <span class="ministry-badge" data-lang="ar">وزارة الصحة • البرنامج الوطني لمكافحة الأمراض الحيوانية المنشأ</span>
+            <span class="ministry-badge" data-lang="fr" style="display:none;">Ministère de la Santé • Programme National de Lutte contre les Zoonoses</span>
+            <h1 data-lang="ar">حملة الوقاية و مكافحة الكيس المائي</h1>
+            <h1 data-lang="fr" style="display:none;">Campagne de Lutte Contre le Kyste Hydatique</h1>
+            <p class="subtitle" data-lang="ar">بمناسبة عيد الأضحى المبارك</p>
+            <p class="subtitle" data-lang="fr" style="display:none;">À l'occasion de l'Aïd el-Adha</p>
+            <span class="campaign-dates">📅 20 – 26 مايو / Mai 2026</span>
+        </div>
+
+        <!-- ALERT -->
+        <div class="alert-banner">
+            <span class="alert-icon">⚠️</span>
+            <div>
+                <p data-lang="ar">داء الكيس المائي مرض طفيلي خطير، أعراضه صامتة ولا تظهر إلا في مرحلة متأخرة تستوجب جراحة ثقيلة!</p>
+                <p data-lang="fr" style="display:none;">Le kyste hydatique est une maladie parasitaire grave, asymptomatique au début, diagnostiquée tardivement et nécessitant une chirurgie lourde !</p>
+                <span class="alert-sub" data-lang="ar">خلال أيام عيد الأضحى تزداد الظروف الملائمة لانتشار هذا المرض.</span>
+                <span class="alert-sub" data-lang="fr" style="display:none;">Lors de l'Aïd el-Adha, tous les facteurs propices à la diffusion de cette maladie sont réunis.</span>
+            </div>
+        </div>
+
+        <!-- ABOUT THE DISEASE -->
+        <div class="section-card">
+            <h2><span class="sec-icon">🔬</span> <span data-lang="ar">ما هو الكيس المائي؟</span><span data-lang="fr" style="display:none;">Qu'est-ce que le kyste hydatique ?</span></h2>
+            <p data-lang="ar">الكيس المائي (أو يرقة الدودة الوحيدة) مرض طفيلي معدي يتميّز بتطوّره عند الإنسان على مستوى <strong>الكبد</strong> أو <strong>الرئة</strong> في أغلب الأحيان، على شكل يرقة دودة تعرف باسم <strong>"الدودة الشريطية"</strong> (<em>Echinococcus granulosus</em>).</p>
+            <p data-lang="fr" style="display:none;">Le kyste hydatique (ou hydatidose) est une maladie parasitaire caractérisée par le développement chez l'homme, le plus souvent au niveau du <strong>foie</strong> ou du <strong>poumon</strong>, de la forme larvaire d'un ver appelé <strong><em>Echinococcus granulosus</em></strong> (Tænia).</p>
+            <p style="margin-top:8px;color:var(--danger);font-weight:600;" data-lang="ar">⚠ أعراضه لا تظهر في البداية، ولا يُشخَّص إلا في مرحلة المضاعفات (ظهور الأكياس داخل الأعضاء) مما يستوجب جراحة ثقيلة ومعقّدة.</p>
+            <p style="margin-top:8px;color:var(--danger);font-weight:600;" data-lang="fr" style="display:none;">⚠ Cette maladie asymptomatique à son début n'est diagnostiquée qu'au stade de complications (apparition de kystes dans les organes) et nécessite une intervention chirurgicale lourde et complexe.</p>
+        </div>
+
+        <!-- PREVENTION MEASURES - ACCORDION -->
+        <div class="section-card">
+            <h2><span class="sec-icon">🛡️</span> <span data-lang="ar">إجراءات الوقاية الأساسية</span><span data-lang="fr" style="display:none;">Mesures de Prévention Essentielles</span></h2>
+
+            <!-- Step 1 -->
+            <div class="accordion-item open">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🥼 <span data-lang="ar">1. الفحص البيطري للأضحية بعد الذبح</span><span data-lang="fr" style="display:none;">1. Faire contrôler le mouton sacrifié par le vétérinaire</span></span>
+                    <span class="acc-arrow">▼</span>
+                </div>
+                <div class="accordion-body">
+                    <p data-lang="ar" style="color:var(--primary);font-weight:600;">✅ خذ كل الترتيبات لفحص الأضحية بعد ذبحها من طرف الطبيب البيطري.</p>
+                    <p data-lang="fr" style="color:var(--primary);font-weight:600;display:none;">✅ Prenez toutes les dispositions pour faire contrôler le mouton sacrifié par le vétérinaire.</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🔍 <span data-lang="ar">2. في حالة عدم التمكن من الفحص البيطري</span><span data-lang="fr" style="display:none;">2. Si le contrôle vétérinaire n'est pas possible</span></span>
+                    <span class="acc-arrow">▼</span>
+                </div>
+                <div class="accordion-body">
+                    <ul class="tip-list">
+                        <li data-lang="ar">🔎 افحص بدقة أعضاء الكبش (الكبد والرئتين) وبقية الأحشاء بحثًا عن الأكياس أو الحويصلات (كريات الماء).</li>
+                        <li data-lang="fr" style="display:none;">🔎 Examinez avec précaution les abats (foie, poumons) et les autres viscères à la recherche des kystes ou vésicules (boules d'eau).</li>
+                        <li class="warn" data-lang="ar">🔥 اغلِ أو احرق الأعضاء والأحشاء التي تحمل أكياسًا مائية.</li>
+                        <li class="warn" data-lang="fr" style="display:none;">🔥 Bouillir ou brûler les abats et viscères qui portent des boules d'eau.</li>
+                        <li class="warn" data-lang="ar">🪦 ادفن الأعضاء والأحشاء المصابة عميقًا (50 سم) بحيث لا تستطيع الكلاب الضالة انتشالها.</li>
+                        <li class="warn" data-lang="fr" style="display:none;">🪦 Enterrer les abats et viscères parasités profondément (50 cm) pour que les chiens errants ne les déterrent pas.</li>
+                        <li class="danger" data-lang="ar">🚫 لا ترمِ الأعضاء والأحشاء المشبوهة في الطبيعة أبدًا.</li>
+                        <li class="danger" data-lang="fr" style="display:none;">🚫 Ne jamais abandonner dans la nature les abats et viscères suspects.</li>
+                        <li class="danger" data-lang="ar">🐕 لا تقدّم الأعضاء والأحشاء المصابة للكلاب (كلابك أو كلاب الجيران) لأنها خزّان الطفيليات.</li>
+                        <li class="danger" data-lang="fr" style="display:none;">🐕 Ne jamais donner les abats parasités aux chiens (le vôtre ou celui du voisin), ils sont le réservoir du parasite.</li>
+                        <li class="danger" data-lang="ar">🗑️ لا ترمِ أعضاء الأضحية المصابة مع النفايات المنزلية (قد تأكلها الكلاب الضالة).</li>
+                        <li class="danger" data-lang="fr" style="display:none;">🗑️ Ne pas jeter les abats parasités avec les ordures ménagères (nourriture pour chiens errants).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🧼 <span data-lang="ar">3. قواعد النظافة الأساسية</span><span data-lang="fr" style="display:none;">3. Règles d'hygiène élémentaires</span></span>
+                    <span class="acc-arrow">▼</span>
+                </div>
+                <div class="accordion-body">
+                    <ul class="tip-list">
+                        <li data-lang="ar">👐 اغسل يديك جيدًا قبل الأكل.</li>
+                        <li data-lang="fr" style="display:none;">👐 Se laver les mains avant les repas.</li>
+                        <li data-lang="ar">🐶 اغسل يديك بعد لمس الكلاب.</li>
+                        <li data-lang="fr" style="display:none;">🐶 Se laver les mains après avoir caressé un chien.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🏠 <span data-lang="ar">4. الوقاية من الحوادث المنزلية</span><span data-lang="fr" style="display:none;">4. Prévention des accidents domestiques</span></span>
+                    <span class="acc-arrow">▼</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="grid-cards">
+                        <div class="mini-card"><span class="mini-icon">🔥</span><span data-lang="ar">تأكد من سلامة قارورات الغاز</span><span data-lang="fr" style="display:none;">Assurer la sécurité des bouteilles de gaz</span></div>
+                        <div class="mini-card"><span class="mini-icon">👶</span><span data-lang="ar">تجنب تواجد الأطفال أمام الطابونات</span><span data-lang="fr" style="display:none;">Éviter la présence d'enfants devant les Tabounas</span></div>
+                        <div class="mini-card"><span class="mini-icon">🔪</span><span data-lang="ar">تجنب التعامل غير الآمن مع أدوات التقطيع</span><span data-lang="fr" style="display:none;">Éviter la manipulation sans sécurité des éléments coupants</span></div>
+                        <div class="mini-card"><span class="mini-icon">🪓</span><span data-lang="ar">السكاكين والفؤوس... إلخ</span><span data-lang="fr" style="display:none;">Couteaux, haches, etc.</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 5 -->
+            <div class="accordion-item">
+                <div class="accordion-header" onclick="toggleAccordion(this)">
+                    <span>🏥 <span data-lang="ar">5. جاهزية المؤسسات الصحية</span><span data-lang="fr" style="display:none;">5. Disponibilité des structures de santé</span></span>
+                    <span class="acc-arrow">▼</span>
+                </div>
+                <div class="accordion-body">
+                    <div class="highlight-box">
+                        <span data-lang="ar">✅ خلال عيد الأضحى، هياكل الصحة الجوارية والمؤسسات الصحية تبقى في خدمة المواطنين وجاهزة لاستقبالكم.</span>
+                        <span data-lang="fr" style="display:none;">✅ Durant l'Aïd, les structures de santé de proximité et les établissements de santé sont fonctionnels et à votre disposition.</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SHARE BAR -->
+        <div class="share-bar">
+            <button class="btn-share facebook" onclick="shareToFacebook()">
+                <span>📢</span> <span data-lang="ar">شارك على فيسبوك</span><span data-lang="fr" style="display:none;">Partager sur Facebook</span>
+            </button>
+            <button class="btn-share copy" onclick="copyLink()">
+                <span>📋</span> <span data-lang="ar">نسخ الرابط</span><span data-lang="fr" style="display:none;">Copier le lien</span>
+            </button>
+        </div>
+
+        <!-- FOOTER -->
+        <div class="app-footer">
+            <span class="footer-ministry" data-lang="ar">وزارة الصحة - الجمهورية الجزائرية الديمقراطية الشعبية</span>
+            <span class="footer-ministry" data-lang="fr" style="display:none;">Ministère de la Santé - République Algérienne Démocratique et Populaire</span>
+            <span data-lang="ar">الحملة الوطنية للوقاية من الأمراض الحيوانية المنشأ • 20–26 ماي 2026</span>
+            <span data-lang="fr" style="display:none;">Campagne nationale de prévention des zoonoses • 20–26 Mai 2026</span>
+            <br>
+            <span style="font-size:0.7rem;opacity:0.6;" data-lang="ar">معًا من أجل عيد أضحى آمن وصحي 🐑💚</span>
+            <span style="font-size:0.7rem;opacity:0.6;" data-lang="fr" style="display:none;">Ensemble pour un Aïd el-Adha sûr et sain 🐑💚</span>
+        </div>
+    </div>
+
+    <!-- TOAST -->
+    <div class="toast" id="toast">✅ <span data-lang="ar">تم نسخ الرابط!</span><span data-lang="fr" style="display:none;">Lien copié !</span></div>
+
+    <script>
+        // ─── LANGUAGE SWITCH ───
+        let currentLang = 'ar';
+
+        function switchLang(lang) {
+            currentLang = lang;
+            const body = document.body;
+            const btnAr = document.getElementById('btnAr');
+            const btnFr = document.getElementById('btnFr');
+
+            if (lang === 'ar') {
+                body.setAttribute('dir', 'rtl');
+                body.style.fontFamily = getComputedStyle(document.documentElement).getPropertyValue('--font-ar').trim();
+                btnAr.classList.add('active');
+                btnFr.classList.remove('active');
+            } else {
+                body.setAttribute('dir', 'ltr');
+                body.style.fontFamily = getComputedStyle(document.documentElement).getPropertyValue('--font-fr').trim();
+                btnFr.classList.add('active');
+                btnAr.classList.remove('active');
+            }
+
+            // Toggle visibility of all data-lang elements
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.style.display = '';
+                } else if (el.getAttribute('data-lang')) {
+                    el.style.display = 'none';
+                }
+            });
+
+            // Re-apply special inline displays for accordion bodies
+            document.querySelectorAll('.accordion-body [data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.style.display = '';
+                } else if (el.getAttribute('data-lang')) {
+                    el.style.display = 'none';
+                }
+            });
+
+            // Update toast text visibility
+            updateToastLang();
+            // Store preference
+            try { localStorage.setItem('campaign-lang', lang); } catch (e) {}
+        }
+
+        function updateToastLang() {
+            const toastEl = document.getElementById('toast');
+            const spans = toastEl.querySelectorAll('[data-lang]');
+            spans.forEach(s => {
+                if (s.getAttribute('data-lang') === currentLang) s.style.display = '';
+                else if (s.getAttribute('data-lang')) s.style.display = 'none';
+            });
+        }
+
+        // ─── ACCORDION ───
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isOpen = item.classList.contains('open');
+            // Close all siblings
+            const parent = item.parentElement;
+            parent.querySelectorAll('.accordion-item').forEach(sib => sib.classList.remove('open'));
+            // Toggle clicked
+            if (!isOpen) {
+                item.classList.add('open');
+            }
+        }
+
+        // ─── SHARE TO FACEBOOK ───
+        function shareToFacebook() {
+            const url = encodeURIComponent(window.location.href);
+            const fbShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${encodeURIComponent('حملة الوقاية من الكيس المائي - وزارة الصحة | Campagne Kyste Hydatique')}`;
+            window.open(fbShareUrl, '_blank', 'width=600,height=400');
+        }
+
+        // ─── COPY LINK ───
+        function copyLink() {
+            const url = window.location.href;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(url).then(() => showToast());
+            } else {
+                const ta = document.createElement('textarea');
+                ta.value = url;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                document.body.appendChild(ta);
+                ta.select();
+                document.execCommand('copy');
+                document.body.removeChild(ta);
+                showToast();
+            }
+        }
+
+        function showToast() {
+            const toast = document.getElementById('toast');
+            updateToastLang();
+            toast.classList.add('show');
+            clearTimeout(toast._timeout);
+            toast._timeout = setTimeout(() => {
+                toast.classList.remove('show');
+            }, 2200);
+        }
+
+        // ─── INIT ───
+        function init() {
+            // Restore language preference
+            let savedLang = null;
+            try { savedLang = localStorage.getItem('campaign-lang'); } catch (e) {}
+            if (savedLang === 'fr') {
+                switchLang('fr');
+            } else {
+                switchLang('ar');
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+
+        // ─── SERVICE WORKER REGISTRATION FOR PWA (optional offline support) ───
+        if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+            // Could register a simple SW for caching, but keeping it minimal here.
+        }
+    </script>
+</body>
+</html>
