@@ -1,525 +1,732 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>Planning des Gardes - Aïd El Adha 1447H | EPSP Berriane</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planning des Gardes - Aïd El Adha 1447H</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        :root {
+            --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            --card-bg: #ffffff;
+            --text-main: #334155;
+            --text-title: #0f172a;
+            --text-muted: #64748b;
+            --teal-primary: #0d9488;
+            --teal-light: #f0fdfa;
+            --amber-bg: #fffbeb;
+            --amber-border: #fde68a;
+            --amber-text: #b45309;
+            --border-color: #e2e8f0;
+            --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05);
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background: #f4f9f4;
-            background-image: radial-gradient(circle at 10% 20%, rgba(200, 230, 201, 0.2) 0%, rgba(220, 245, 220, 0) 80%);
-            color: #1a2e2a;
-            padding: 1.25rem;
-        }
-
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        /* header redesign */
-        .hero {
-            background: linear-gradient(135deg, #ffffff 0%, #fefaf0 100%);
-            border-radius: 2.5rem;
-            padding: 2rem 1.8rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
-            border: 1px solid rgba(200, 180, 100, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::after {
-            content: "🌙✨";
-            font-size: 8rem;
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            opacity: 0.08;
-            pointer-events: none;
-        }
-
-        .ministry {
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #2b7a4b;
-            border-left: 3px solid #e4b641;
-            padding-left: 12px;
-            margin-bottom: 0.8rem;
-        }
-
-        h1 {
-            font-size: 1.85rem;
-            font-weight: 800;
-            line-height: 1.2;
-            background: linear-gradient(120deg, #1f5e42, #c9a23b);
-            background-clip: text;
-            -webkit-background-clip: text;
-            color: transparent;
-            margin: 0.5rem 0 0.2rem;
-        }
-
-        .subhead {
-            font-weight: 500;
-            color: #3e6b58;
-            border-bottom: 2px dashed #e9d6a3;
-            display: inline-block;
-            padding-bottom: 6px;
-            font-size: 0.9rem;
-        }
-
-        .festive-date {
+            background: var(--bg-gradient);
+            font-family: 'Inter', 'Cairo', sans-serif;
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 40px 20px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            align-items: center;
-            margin-top: 1rem;
+            justify-content: center;
+            align-items: flex-start;
         }
 
-        .date-chip {
-            background: #ebf5e9;
-            padding: 0.4rem 1rem;
-            border-radius: 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: #2a734b;
-            box-shadow: inset 0 0 0 1px #d4e2cd;
-        }
-
-        .date-chip i {
-            margin-right: 6px;
-        }
-
-        /* grid modern */
-        .grid-modern {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 1.8rem;
-            margin-bottom: 2rem;
-        }
-
-        .card-modern {
-            background: rgba(255,255,255,0.96);
-            backdrop-filter: blur(2px);
-            border-radius: 1.8rem;
-            box-shadow: 0 12px 28px -8px rgba(0, 0, 0, 0.06);
-            transition: all 0.25s ease;
-            border: 1px solid #eef3e8;
+        .dashboard-container {
+            width: 100%;
+            max-width: 1200px;
+            background: var(--card-bg);
+            border-radius: 24px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid rgba(255,255,255,0.8);
             overflow: hidden;
+        }
+
+        /* Top Header Bar */
+        .top-bar {
+            background: #f8fafc;
+            padding: 28px 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--border-color);
+            gap: 24px;
+        }
+        .logo-img {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            flex-shrink: 0;
+        }
+        .title-container {
             display: flex;
             flex-direction: column;
-        }
-
-        .card-modern:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.12);
-            border-color: #d9e3cf;
-        }
-
-        .card-title {
-            padding: 1.2rem 1.5rem 0.6rem 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-bottom: 2px solid #ecf3e6;
-        }
-
-        .card-title i {
-            font-size: 1.6rem;
-            background: #e6f2ea;
-            padding: 8px;
-            border-radius: 18px;
-            color: #2b7a4b;
-        }
-
-        .card-title h2 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            letter-spacing: -0.2px;
-            color: #1c4f3a;
-        }
-
-        .card-badge {
-            font-size: 0.7rem;
-            font-weight: 600;
-            background: #fbf7e3;
-            margin: 0 1.5rem;
-            padding: 0.2rem 0.8rem;
-            border-radius: 20px;
-            display: inline-block;
-            width: fit-content;
-            color: #b2862c;
-        }
-
-        .scroll-table {
-            overflow-x: auto;
-            margin: 0.8rem 1.2rem 1.2rem 1.2rem;
-            border-radius: 1.2rem;
-            scrollbar-width: thin;
-        }
-
-        .table-elegant {
+            gap: 4px;
+            text-align: right;
             width: 100%;
-            border-collapse: collapse;
-            font-size: 0.8rem;
-            min-width: 280px;
         }
-
-        .table-elegant th {
-            text-align: left;
-            padding: 12px 8px;
-            background: #f6faf4;
+        .top-title-row {
+            display: flex;
+            align-items: baseline;
+            justify-content: flex-end;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .top-title {
             font-weight: 700;
-            color: #215f44;
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            border-bottom: 1px solid #e2ecd9;
+            font-size: 1.35rem;
+            color: var(--text-title);
         }
-
-        .table-elegant td {
-            padding: 10px 8px;
-            border-bottom: 1px solid #eff5ea;
-            color: #2a463c;
-            font-weight: 500;
-            vertical-align: top;
-        }
-
-        .highlight {
+        .top-title.ar {
+            font-family: 'Cairo', sans-serif;
             font-weight: 800;
-            color: #1d6e48;
+            color: var(--teal-primary);
         }
-
-        .multi-line {
-            font-size: 0.72rem;
-            line-height: 1.4;
-        }
-
-        .contact-pills {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.7rem;
-            padding: 1rem 1.5rem;
-        }
-
-        .pill {
-            background: #eef4ea;
-            border-radius: 40px;
-            padding: 6px 14px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            color: #286e48;
-            box-shadow: inset 0 0 0 1px #cfdfc4;
-        }
-
-        .pill i {
-            margin-right: 6px;
-            font-size: 0.7rem;
-        }
-
-        .dispo-block {
-            background: #fef9e8;
-            margin: 0.8rem 1.2rem 1.2rem 1.2rem;
-            padding: 0.8rem 1rem;
-            border-radius: 1.2rem;
-            border-left: 4px solid #e9bc5a;
-            font-size: 0.75rem;
+        .top-sub {
+            font-size: 0.88rem;
+            color: var(--text-muted);
             font-weight: 500;
         }
 
-        .footer-director {
-            background: #fefcf5;
-            margin-top: 1rem;
-            padding: 1rem 1.5rem;
-            border-radius: 1.5rem;
+        /* Event Banner banner */
+        .event-banner {
+            background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 24px 40px;
             display: flex;
-            flex-wrap: wrap;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .event-details h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 4px;
+        }
+        .event-details p {
+            color: #94a3b8;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+        .event-badge-dates {
+            background: rgba(13, 148, 136, 0.2);
+            border: 1px solid var(--teal-primary);
+            padding: 10px 18px;
+            border-radius: 12px;
+            color: #2dd4bf;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-align: right;
+        }
+
+        /* Dispositions Section Grid */
+        .dispositions-bar {
+            background: var(--amber-bg);
+            border-bottom: 1px solid var(--amber-border);
+            padding: 18px 40px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+        }
+        .disp-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--amber-text);
+            font-size: 0.88rem;
+            font-weight: 600;
+        }
+        .disp-item svg {
+            width: 20px;
+            height: 20px;
+            color: #d97706;
+            flex-shrink: 0;
+        }
+
+        /* Tabs Navigation layout */
+        .tabs-nav {
+            display: flex;
+            gap: 8px;
+            padding: 20px 40px 0 40px;
+            background: #fff;
+            border-bottom: 1px solid var(--border-color);
+            overflow-x: auto;
+            scrollbar-width: none;
+        }
+        .tabs-nav::-webkit-scrollbar { display: none; }
+        
+        .tab-btn {
+            padding: 14px 20px;
+            border: none;
+            background: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            white-space: nowrap;
+            transition: all 0.15s ease;
+            border-radius: 8px 8px 0 0;
+        }
+        .tab-btn:hover {
+            color: var(--text-title);
+            background: #f8fafc;
+        }
+        .tab-btn.active {
+            color: var(--teal-primary);
+            border-bottom-color: var(--teal-primary);
+            background: var(--teal-light);
+        }
+
+        /* Content Sections layout */
+        .main-content {
+            padding: 40px;
+        }
+        .tab-panel {
+            display: none;
+        }
+        .tab-panel.active {
+            display: block;
+        }
+
+        /* Premium Schedule Tables styling */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+        th {
+            background: #f8fafc;
+            color: var(--text-title);
+            font-weight: 600;
+            padding: 16px 20px;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+            font-weight: 500;
+            background: #fff;
+        }
+        tr:last-child td { border-bottom: none; }
+        tr:hover td { background: #f8fafc; }
+
+        .date-cell {
+            font-weight: 700;
+            color: var(--text-title);
+            white-space: nowrap;
+        }
+        .badge-jf {
+            background: #fee2e2;
+            color: #ef4444;
+            padding: 4px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            margin-left: 8px;
+            display: inline-block;
+        }
+
+        /* Pharmacist Arabic Specific Grid Layout */
+        .ar-table {
+            direction: rtl;
+            text-align: right;
+        }
+        .ar-table th {
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.95rem;
+            letter-spacing: 0;
+        }
+        .ar-table td {
+            font-family: 'Cairo', sans-serif;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        /* Contacts Grid Panel Layout */
+        .contacts-card {
+            background: #f8fafc;
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin-top: 20px;
+        }
+        .contacts-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-title);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 16px;
+        }
+        .contact-item {
+            background: #fff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: var(--shadow-sm);
+        }
+        .c-info .name {
+            font-weight: 700;
+            color: var(--text-title);
+            font-size: 0.95rem;
+            margin-bottom: 2px;
+        }
+        .c-info .role {
             font-size: 0.8rem;
-            border: 1px solid #f0e9cf;
+            color: var(--text-muted);
+            font-weight: 500;
         }
+        .c-phone {
+            color: var(--teal-primary);
+            font-weight: 700;
+            font-size: 0.95rem;
+            text-decoration: none;
+            background: var(--teal-light);
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+        }
+        .c-phone:hover { background: #ccfbf1; }
 
-        @media (max-width: 640px) {
-            body {
-                padding: 0.8rem;
-            }
-            .hero {
-                padding: 1.5rem;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            .card-title h2 {
-                font-size: 1.1rem;
-            }
-            .table-elegant th, .table-elegant td {
-                font-size: 0.7rem;
-                padding: 8px 5px;
-            }
+        /* Footer styling */
+        .footer-wrapper {
+            border-top: 1px solid var(--border-color);
+            background: #f8fafc;
+            padding: 24px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
         }
+        .footer-text .fr { font-size: 0.88rem; font-weight: 600; color: var(--text-title); }
+        .footer-text .ar { font-family: 'Cairo'; font-size: 0.95rem; font-weight: 700; color: var(--teal-primary); }
+        .footer-subline { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
 
-        /* special dua style */
-        .verse {
-            text-align: center;
-            font-size: 0.7rem;
-            margin-top: 1.2rem;
-            opacity: 0.7;
-            font-weight: 400;
-        }
-        hr {
-            margin: 0 1rem;
-            opacity: 0.3;
-        }
-        .badge-night {
-            background: #e8f0fe;
-            color: #2c6e9e;
+        @media (max-width: 768px) {
+            .top-bar { flex-direction: column; align-items: flex-start; padding: 20px; }
+            .title-container { text-align: left; }
+            .top-title-row { justify-content: flex-start; }
+            .event-banner, .main-content, .footer-wrapper { padding: 20px; }
+            .tabs-nav { padding: 16px 20px 0 20px; }
         }
     </style>
 </head>
 <body>
-<div class="container">
-    <!-- header réinventé -->
-    <div class="hero">
-        <div class="ministry">
-            <i class="fas fa-landmark"></i> République Algérienne Démocratique et Populaire · Ministère de la Santé <br>
-            EPSP Berriane · Wilaya de Ghardaïa
+
+    <div class="dashboard-container">
+        
+        <!-- Top Administrative Header -->
+        <div class="top-bar">
+            <img src="logo.png" alt="Logo" class="logo-img" draggable="false">
+            <div class="title-container">
+                <div class="top-title-row">
+                    <div class="top-title">Planning des Gardes Fête</div>
+                    <div class="top-title ar">| مخطط المناوبات المعتمد</div>
+                </div>
+                <div class="top-sub">EPSP Berriane • المؤسسة العمومية للصحة الجوارية ببريان</div>
+            </div>
         </div>
-        <h1>📋 Gardes médicales<br>Aïd El Adha 1447H (2026)</h1>
-        <div class="subhead">Période de solidarité et vigilance sanitaire</div>
-        <div class="festive-date">
-            <span class="date-chip"><i class="fas fa-calendar-week"></i> 27 → 30 Mai 2026</span>
-            <span class="date-chip"><i class="fas fa-clock"></i> Permanences 24h/24</span>
-            <span class="date-chip"><i class="fas fa-mosque"></i> Aïd Moubarak</span>
+
+        <!-- Banner Context Information -->
+        <div class="event-banner">
+            <div class="event-details">
+                <h1>AÏD EL ADHA 1447 H</h1>
+                <p>Sous-Direction des Services Sanitaires • Wilaya de Ghardaïa</p>
+            </div>
+            <div class="event-badge-dates">
+                <div>Du 27/05/2026 Au 30/05/2026</div>
+                <div style="font-size: 0.8rem; opacity: 0.8; margin-top: 2px;">Réf: N°: ____/2026</div>
+            </div>
         </div>
+
+        <!-- Dispositions Alerte Matrix -->
+        <div class="dispositions-bar">
+            <div class="disp-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M11.54 22.351l.07.04.028.016a.76.76 0 00.723 0l.028-.015.071-.041a16.975 16.975 0 001.144-.742 19.58 19.58 0 002.683-2.282c1.944-1.99 3.963-4.98 3.963-8.827a8.25 8.25 0 00-16.5 0c0 3.846 2.02 6.837 3.963 8.827a19.58 19.58 0 002.682 2.282 16.975 16.975 0 001.145.742zM12 13.5a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" clip-rule="evenodd" /></svg>
+                <span>Médicaments Disponibles &amp; Suffisants</span>
+            </div>
+            <div class="disp-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M12 2.25a.75.75 0 01.75.75v1.607a7.222 7.222 0 014.143 1.706l1.137-1.137a.75.75 0 111.06 1.06l-1.137 1.137a7.222 7.222 0 011.706 4.143H21a.75.75 0 010 1.5h-1.607a7.222 7.222 0 01-1.706 4.143l1.137 1.137a.75.75 0 11-1.06 1.06l-1.137-1.137a7.222 7.222 0 01-4.143 1.706V21a.75.75 0 01-1.5 0v-1.607a7.222 7.222 0 01-4.143-1.706l-1.137 1.137a.75.75 0 11-1.06-1.06l1.137-1.137a7.222 7.222 0 01-1.706-4.143H3a.75.75 0 010-1.5h1.607a7.222 7.222 0 011.706-4.143L5.176 5.656a.75.75 0 111.06-1.06l1.137 1.137A7.222 7.222 0 0111.25 4.607V3a.75.75 0 01.75-.75zM12 9a3 3 0 100 6 3 3 0 000-6z" clip-rule="evenodd" /></svg>
+                <span>Groupes Électrogènes Opérationnels</span>
+            </div>
+            <div class="disp-item">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M3.375 4.5C2.339 4.5 1.5 5.34 1.5 6.375V13.5h12V6.375c0-1.036-.84-1.875-1.875-1.875h-8.25zM13.5 15h-12v2.625c0 1.035.84 1.875 1.875 1.875h.375a3.75 3.75 0 017.5 0h.375c1.036 0 1.875-.84 1.875-1.875V15zM15 6.375a.375.375 0 01.375-.375h.75c1.036 0 1.875.84 1.875 1.875v1.125c0 .518.42.938.938.938h1.187c.518 0 .938.42.938.938v3.375a3.75 3.75 0 01-3.75 3.75H15V6.375z" /></svg>
+                <span>Ambulances Prêtes &amp; Disponibles</span>
+            </div>
+        </div>
+
+        <!-- Dashboard Selection Navigation Menu -->
+        <div class="tabs-nav">
+            <button class="tab-btn active" onclick="switchTab(event, 'tab-admin')">Admin / Bureau</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-medical')">Médicale / Spécialités</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-paramedical')">Paramédicaux (PU)</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-pharmacy')">Pharmacie Extérieure (عربي)</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-support')">Technique / Chauffeurs</button>
+        </div>
+
+        <!-- Main Body Panels Layout -->
+        <div class="main-content">
+
+            <!-- Tab 1: Administrative and Desk Entries -->
+            <div id="tab-admin" class="tab-panel active">
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes Administratives</h3>
+                <div class="table-responsive" style="margin-bottom: 30px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Jour (08h00 - 20h00)</th>
+                                <th>Nuit (20h00 - 08h00)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>/</td><td>FAKHAR Y.</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>BOUKHALFA B.</td><td>LABTER M.</td></tr>
+                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>ISMAIL Y.</td><td>LAAROUSSI S.</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>BOUGHEFALA S.</td><td>CHAMANI M.</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>FAKHAR Y.</td><td>BOUKHALFA B.</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>/</td><td>LABTER M.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Bureau des Entrées</h3>
+                <div class="table-responsive" style="margin-bottom: 30px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Jour (08h00 - 20h00)</th>
+                                <th>Nuit (20h00 - 08h00)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>LAMOURI M. / KOUADER F.</td><td>SAYFIA L.</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>MECHAT S. / SAIFIA M.</td><td>LAMOURI L.</td></tr>
+                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>AYACHE F. / SAYFIA M.</td><td>MACHAT S.</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>ABBES Y. / KOUADER F.</td><td>AYACHE F.</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>SAYFIA L. / KOUADER F.</td><td>ABBES Y.</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>LAMOURI M. / KOUADER F.</td><td>SAYFIA L.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes des Surveillances</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Jour (08h00 - 20h00)</th>
+                                <th>Nuit (20h00 - 08h00)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>CHOUIREB A.</td><td>MOURED S.</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>BENACHAR M.</td><td>CHOUIREB A.</td></tr>
+                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>MEDJLIDA L.</td><td>BENACHAR M.</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>BEKKAIR MB.</td><td>MADJLIDA L.</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>MOURED S.</td><td>BEKKAIR MB.</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>CHOUIREB A.</td><td>MOURED S.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 2: Medical, Radiology, Laboratoire, Hemodialyse -->
+            <div id="tab-medical" class="tab-panel">
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes Médicales</h3>
+                <div class="table-responsive" style="margin-bottom: 30px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Équipe Jour A (08h - 20h)</th>
+                                <th>Équipe Jour B (08h - 20h)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>Dr OURACI / Dr HADEF</td><td>Dr LECHEHEB</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>Dr DJABER / Dr OURACI</td><td>Dr BERAHAIL</td></tr>
+                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>Dr OURACI / Dr LECHEHEB</td><td>Dr BASLIMANE</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>Dr HADEF / Dr BERAHAIL</td><td>Dr LECHEHEB</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>Dr CHAMANI / Dr HADEF</td><td>Dr BEDJLOUD</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>Dr DJILLALI I. / Dr DJILLALI L.</td><td>Dr SAHRI</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Service Radiologie &amp; Laboratoire</h3>
+                <div class="table-responsive" style="margin-bottom: 30px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Radiologie (08h00 - 20h00)</th>
+                                <th>Laboratoire (08h00 - 20h00)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>LATRECHE F. / KERROUCHI L.</td><td>DAGHOUR H. / NAADJA DJ.</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>BABA OU MOUSSA / LATRECHE F.</td><td>OULAD MILOUD A. / OULAD MILLOUD Y.</td></tr>
+                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>HADJ AISSA A. / BABA OU MOUSSA</td><td>OULAD MILOUD A. / OULAD MILLOUD Y.</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>AZIEZ A. / HADJ AISSA A.</td><td>DAGHOUR H. / NAADJA DJ.</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>KERROUCHI EL. / AZIEZ A.</td><td>DAGHOUR H. / NAADJA DJ.</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>LATRECHE F. / KERROUCHI L.</td><td>OULAD MILOUD A. / OULAD MILLOUD Y.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Service d'Hémodialyse</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Médecin de Garde</th>
+                                <th>Astreinte Paramédical</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>/</td><td>TIMEZGHINE B.</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>/</td><td>MOURED Y.</td></tr>
+                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>Dr DJABER W.</td><td>OULED ALI M.</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>/</td><td>BAHEDI M.</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>/</td><td>HACHANI DJ.</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>/</td><td>ZITOUT H.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 3: Paramedical Service (PU) -->
+            <div id="tab-paramedical" class="tab-panel">
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes des Paramédicaux de Service (PU)</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th style="width: 15%;">Date</th>
+                                <th style="width: 42.5%;">Équipe Jour (08h00 - 20h00)</th>
+                                <th style="width: 42.5%;">Équipe Nuit (20h00 - 08h00)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="date-cell">MAR 26/05</td>
+                                <td>CHOUIREB A, LAKHNECHE ABD, GUESMI A, BELAKHDAR S, DABOUZ H, BOUALAM DJ</td>
+                                <td>HOBI Z, MOURED A, BOUTOULA S, ZITOUT S, HAMAZA Y, KACIOUSALAH B</td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">MER 27/05</td>
+                                <td>M/CHOUIREB AB, BAOUCHI Y, BKIRI N, BEN CHEKEL S</td>
+                                <td>CHOUIREB A, LAKHNECHE ABD, GUESMI A, BELAKHDAR S, DABOUZ H, BOUALAM DJ</td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">JEU 28/05 <span class="badge-jf">J-F</span></td>
+                                <td>MEDJLIDA L, MACHAT H, KALOU S, MADKOUR M, ZAMIT S, OULED DAOUD A, OULED MILOUD S</td>
+                                <td>BENACHAR M, CHABHA A, OMARA AYOUB M, CHOUIREB AB, BAOUCHI Y, BKIRI N, BEN CHEKEL S</td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">VEN 29/05</td>
+                                <td>BKAIR HADJ B, LOUAR M, MEDJLIDA B, OULED SIDI CHIKH, GUERGUER S, LAKHNECH ABD, ABOUSADIK</td>
+                                <td>MEDJLIDA L, MACHAT H, KALOU S, MADKOUR M, ZAMIT S, OULED DAOUD A, OULED MILOUD S</td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">SAM 30/05</td>
+                                <td>MOURED S, HOBI Z, MOURED A, BOUTOULA S, ZITOUT S, HAMAZA Y, KACIOUSALAH B, KASSI OUSALAH B</td>
+                                <td>BKAIR HADJ B, LOUAR M, MEDJLIDA B, OULED SIDI CHIKH, GUERGUER S, LAKHNECH ABD, ABOUSADIK M</td>
+                            </tr>
+                            <tr>
+                                <td class="date-cell">DIM 31/05</td>
+                                <td>CHOUIREB A, LAKHNECHE ABD, GUESMI A, BELAKHDAR S, DABOUZ H, BOUALAM DJ</td>
+                                <td>MOURED S, HOBI Z, MOURED A, BOUTOULA S, ZITOUT S, HAMAZA Y, KACIOUSALAH B, KASSI OUSALAH B</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 4: Pharmacy (Internal and External Private Arabic Schedule) -->
+            <div id="tab-pharmacy" class="tab-panel">
+                <h3 style="margin-bottom: 16px; font-weight: 700;">الصيادلة الخواص المناوبين - بلدية بريان</h3>
+                <div class="table-responsive ar-table" style="margin-bottom: 35px;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>التاريخ واليوم</th>
+                                <th>صيادلة الفترة الصباحية (الفوج الأول)</th>
+                                <th>صيادلة الفترة المسائية (الفوج الثاني)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">الثلاثاء 2026/05/26</td><td>فتان خدوحة سارة • قربعوني محمد</td><td>لعساكر عبد الصمد • الطالب باحمد نذير</td></tr>
+                            <tr><td class="date-cell">الأربعاء 2026/05/27</td><td>بعوشي حاج موسى • فتان خدوحة سارة</td><td>كاسي اوصالح صبرينة • سلامي سايح</td></tr>
+                            <tr><td class="date-cell">الخميس 2026/05/28</td><td>الدغور عائشة • كاسي اوصالح صبرينة</td><td>لعساكر عبد الصمد • بعوشي حاج موسى</td></tr>
+                            <tr><td class="date-cell">الجمعة 2026/05/29</td><td>الطالب باحمد نذير • فتان خدوحة سارة</td><td>فتان خدوحة سارة • قربعوني محمد</td></tr>
+                            <tr><td class="date-cell">السبت 2026/05/30</td><td>بوتاسونة عائشة • بعوشي حاج موسى</td><td>باسليمان نور الدين • الدغور عائشة</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes du Service Pharmacie (Interne)</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Personnel de permanence (08h00 - 20h00)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>MOUSEMAL F. / HACHANI A. / BENABDALLAH Y.</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>SRIFIH T. / GRINE I. / BENABDELLAH Y.</td></tr>
+                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>MOUSSELMAL F. / HACHANI A.</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>SRIFIH T. / GRINE I.</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>MOUSEMAL F. / HACHANI A. / BENABDALLAH Y.</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>SRIFIH T. / GRINE I. / BENABDELLAH Y.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Tab 5: Chauffeurs and Security Layout -->
+            <div id="tab-support" class="tab-panel">
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes des Chauffeurs / Ambulances</h3>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Date</th>
+                                <th>Chauffeur Jour (07h00 - 19h00)</th>
+                                <th>Chauffeur Nuit (19h00 - 07h00)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>BOUCHALA A.</td><td>CHANAA M.</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>LATRECHE M.</td><td>BAHADI H. Y.</td></tr>
+                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>KAHLOUL B.</td><td>MOUSELMAL S.</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>BOUCHALA H.</td><td>CHABHA A. R.</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>BOUCHALA A.</td><td>CHANAA M.</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>LATRECHE M.</td><td>BAHADI H. Y.</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Global Contacts Section -->
+            <div class="contacts-card">
+                <div class="contacts-title">
+                    <svg style="width:22px; height:22px; color: var(--teal-primary);" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path fill-rule="evenodd" d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l.547 2.19a.75.75 0 01-.218.727l-1.19 1.19a15.253 15.253 0 006.218 6.218l1.19-1.19a.75.75 0 01.727-.218l2.19.547c.834.208 1.42.957 1.42 1.819V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z" clip-rule="evenodd" /></svg>
+                    Numéros de Téléphone des Responsables &amp; Permanences
+                </div>
+                <div class="contacts-grid">
+                    <div class="contact-item">
+                        <div class="c-info"><div class="name">BOUGHOUFALA S.</div><div class="role">Responsable Planification</div></div>
+                        <a href="tel:0549161865" class="c-phone">0549.161.865</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="c-info"><div class="name">BOUKHALFA B.</div><div class="role">Administration Générale</div></div>
+                        <a href="tel:0672523997" class="c-phone">0672.523.997</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="c-info"><div class="name">FEKHARA YAHIA</div><div class="role">Supervision / Logistique</div></div>
+                        <a href="tel:0779177707" class="c-phone">0779.177.707</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="c-info"><div class="name">AROUSSI Said</div><div class="role">Permanence Médicale</div></div>
+                        <a href="tel:0698996469" class="c-phone">0698.996.469</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="c-info"><div class="name">LABTER Mohammed</div><div class="role">Coordination Services</div></div>
+                        <a href="tel:0663870453" class="c-phone">0663.870.453</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="c-info"><div class="name">SMAIL YOUNES</div><div class="role">Régulation Technique</div></div>
+                        <a href="tel:0674838981" class="c-phone">0674.838.981</a>
+                    </div>
+                    <div class="contact-item">
+                        <div class="c-info"><div class="name">CHEMANI Massoud</div><div class="role">Suivi Intervention</div></div>
+                        <a href="tel:0660696289" class="c-phone">0660.696.289</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Premium Harmonious Bottom Footer Bar -->
+        <div class="footer-wrapper">
+            <div class="footer-text">
+                <span class="ar">تحت إشراف إدارة المؤسسة العمومية للصحة الجوارية ببريان</span>
+                <span style="color:#cbd5e1; margin: 0 8px;">•</span>
+                <span class="fr">Le Directeur d'Établissement</span>
+            </div>
+            <div class="footer-subline">
+                EPSP BERRIANE © 2026
+            </div>
+        </div>
+
     </div>
 
-    <!-- GRILLE 1 : MÉDECINS JOUR/NUIT -->
-    <div class="grid-modern">
-        <!-- Nuit médecins -->
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-moon"></i><h2>Garde de Nuit · Médecins</h2></div>
-            <div class="card-badge">⏱️ 19:00 – 08:00</div>
-            <div class="scroll-table">
-                <table class="table-elegant">
-                    <thead><tr><th>Jour</th><th>Date</th><th>Médecin de garde</th></tr></thead>
-                    <tbody>
-                        <tr><td>MARDI</td><td>26/05/2026</td><td class="highlight">FAKHAR Y</td></tr>
-                        <tr><td>MERCREDI</td><td>27/05/2026</td><td class="highlight">LABTER M</td></tr>
-                        <tr><td>JEUDI</td><td>28/05/2026</td><td class="highlight">LAAROUSSI S</td></tr>
-                        <tr><td>VENDREDI</td><td>29/05/2026</td><td class="highlight">CHAMANI M</td></tr>
-                        <tr><td>SAMEDI</td><td>30/05/2026</td><td class="highlight">BOUKHALFA B</td></tr>
-                        <tr><td>DIMANCHE</td><td>31/05/2026</td><td class="highlight">LABTER M</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
+    <!-- Interface Controller Logic Script -->
+    <script>
+        function switchTab(event, tabId) {
+            const panels = document.querySelectorAll('.tab-panel');
+            const buttons = document.querySelectorAll('.tab-btn');
+            
+            panels.forEach(panel => panel.classList.remove('active'));
+            buttons.forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
 
-        <!-- Jour médecins (double) -->
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-sun"></i><h2>Garde de Jour · Médecins</h2></div>
-            <div class="card-badge">☀️ 08:00 – 20:00 (équipe duo)</div>
-            <div class="scroll-table">
-                <table class="table-elegant">
-                    <thead><tr><th>Date</th><th>Médecins (08h-20h)</th></tr></thead>
-                    <tbody>
-                        <tr><td>26/05</td><td>Dr OUROCIRI · Dr HADEF</td></tr>
-                        <tr><td>27/05</td><td>Dr DJABER · Dr OUROACI</td></tr>
-                        <tr><td>28/05</td><td>Dr OUROCIRI · Dr LECHEHBE</td></tr>
-                        <tr><td>29/05</td><td>Dr HADEF · Dr BERAHALL</td></tr>
-                        <tr><td>30/05</td><td>Dr CHAMANI · Dr HADEF</td></tr>
-                        <tr><td>31/05</td><td>Dr DJILLALI I · Dr DJILLALI L</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Infirmiers polyvalents A -->
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-hand-holding-heart"></i><h2>Soignants · Équipe Alpha</h2></div>
-            <div class="card-badge">🩺 08h-20h / 20h-08h</div>
-            <div class="scroll-table">
-                <table class="table-elegant">
-                    <thead><tr><th>Date</th><th>08:00–20:00</th><th>20:00–08:00</th></tr></thead>
-                    <tbody>
-                        <tr><td>26/05</td><td>SAYFIA L</td><td>—</td></tr>
-                        <tr><td>27/05</td><td>LAMOURI M</td><td>KOUADER F</td></tr>
-                        <tr><td>28/05</td><td>MACHAT S</td><td>—</td></tr>
-                        <tr><td>29/05</td><td>ABBES Y</td><td>KOUADER F</td></tr>
-                        <tr><td>30/05</td><td>SAYFIA L</td><td>KOUADER F</td></tr>
-                        <tr><td>31/05</td><td>LAMOURI M</td><td>KOUADER F</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <!-- Soignants équipe B -->
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-hospital-user"></i><h2>Soignants · Équipe Bravo</h2></div>
-            <div class="card-badge">🩹 relève & appui</div>
-            <div class="scroll-table">
-                <table class="table-elegant">
-                    <thead><tr><th>Date</th><th>08:00–20:00</th><th>20:00–08:00</th></tr></thead>
-                    <tbody>
-                        <tr><td>26/05</td><td>MOURED S</td><td>CHOUIREB A</td></tr>
-                        <tr><td>27/05</td><td>CHOUIREB A</td><td>—</td></tr>
-                        <tr><td>28/05</td><td>BENACHAR M</td><td>—</td></tr>
-                        <tr><td>29/05</td><td>MEDJILDA L</td><td>—</td></tr>
-                        <tr><td>30/05</td><td>BEKKAIR MB</td><td>—</td></tr>
-                        <tr><td>31/05</td><td>CHOUIREB A</td><td>—</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-    </div>
-
-    <!-- SERVICES TECHNIQUES : PHARMACIE, PARAMEDICAL, RADIO, LABO, HEMODIALYSE -->
-    <div class="grid-modern">
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-prescription-bottle-alt"></i><h2>Pharmacie de Garde</h2></div>
-            <div class="card-badge">💊 08:00 – 20:00</div>
-            <div class="scroll-table">
-                <table class="table-elegant">
-                    <thead><tr><th>Date</th><th>Pharmacien(s) / Préparateur(s)</th></tr></thead>
-                    <tbody>
-                        <tr><td>26/05</td><td class="multi-line">MOUSEMAL F · HACHANI A · BENABDALLAH Y</td></tr>
-                        <tr><td>27/05</td><td>SRIFIH T · GRINE I · BENABDELLAH Y</td></tr>
-                        <tr><td>28/05</td><td>MOUSSELMAL F · HACHANI A</td></tr>
-                        <tr><td>30/05</td><td>SRIFIH T · GRINE I</td></tr>
-                        <tr><td>31/05</td><td>MOUSEMAL F · HACHANI A · BENABDALLAH Y + SRIFIH T / GRINE I</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-users"></i><h2>Paramédicaux (PU)</h2></div>
-            <div class="card-badge">🔄 08:00 – 20:00</div>
-            <div class="scroll-table">
-                <table class="table-elegant">
-                    <thead><tr><th>Date</th><th>Personnel technique</th></tr></thead>
-                    <tbody>
-                        <tr><td>26/05</td><td class="multi-line">CHOUIREB A · LAKHNECHE ABD · GUESMI A · BELAKHDAR S · DABOUZ H · BOUALAM DJ</td></tr>
-                        <tr><td>27/05</td><td>M/CHOUIREB AB · BAOUCHI Y · BKIRI N · BEN CHEKEL S</td></tr>
-                        <tr><td>28/05</td><td>MEDJILDA L · MACHAH H · KALOUD S · MADKOUR M · ZAMIT S · OULED DAOUD A · OULAD MILOUD S</td></tr>
-                        <tr><td>30/05</td><td>BKIAH HADI B · LOUAR M · MEDJILDA B · OULAD SIDI CHIKH · GUERGUER S · LAKHNECH ABD · ABOUSADIK</td></tr>
-                        <tr><td>31/05</td><td>MOURED S · HOBI Z · MOURED A · BOUTOULA S · ZITOUT S · HAMAZA Y · KACIOSALAH B · KASSI OUSALAH B</td></tr>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-x-ray"></i><h2>Radiologie</h2></div>
-            <div class="card-badge">📷 08:00 – 20:00</div>
-            <div class="scroll-table">
-                <table class="table-elegant"><thead><tr><th>Date</th><th>Technicien</th></tr></thead><tbody>
-                    <tr><td>26/05</td><td>LATRECHE F</td></tr><tr><td>27/05</td><td>BABA OU MOUSSA</td></tr>
-                    <tr><td>28/05</td><td>HADI AISSA A</td></tr><tr><td>29/05</td><td>AZIEZ A</td></tr><tr><td>30/05</td><td>KERROUCH EL</td></tr><tr><td>31/05</td><td>LATRECHE F</td></tr>
-                </tbody></table>
-            </div>
-        </div>
-
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-microscope"></i><h2>Laboratoire</h2></div>
-            <div class="card-badge">🧪 08:00 – 20:00</div>
-            <div class="scroll-table">
-                <table class="table-elegant"><thead><tr><th>Date</th><th>Biologiste(s)</th></tr></thead><tbody>
-                    <tr><td>26/05</td><td>DAGHOUR H · OULAD MILOUD A</td></tr>
-                    <tr><td>27/05</td><td>OULAD MILOUD A · DAGHOUR H</td></tr>
-                    <tr><td>28/05</td><td>OULAD MILOUD A · OULAD MILLOUD Y</td></tr>
-                    <tr><td>29/05</td><td>OULAD MILLOUD Y · DAGHOUR H</td></tr>
-                    <tr><td>30/05</td><td>OULAD MILOUD A · OULAD MILOUD Y · NAADJA DJ</td></tr>
-                    <tr><td>31/05</td><td>NAADJA DJ · OULAD MILOUD Y</td></tr>
-                </tbody></table>
-            </div>
-        </div>
-
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-tint"></i><h2>Hémodialyse</h2></div>
-            <div class="card-badge">🩸 Médecin + paramédical astreint</div>
-            <div class="scroll-table">
-                <table class="table-elegant"><thead><tr><th>Date</th><th>Médecin</th><th>Astreinte paramédicale</th></tr></thead><tbody>
-                    <tr><td>26/05</td><td>TIMEZGHEINE B</td><td>—</td></tr>
-                    <tr><td>27/05</td><td>MOURED Y</td><td>—</td></tr>
-                    <tr><td>28/05</td><td>OULED ALI M</td><td>—</td></tr>
-                    <tr><td>30/05</td><td>BAHEDI M</td><td>ZITOUTH H</td></tr>
-                    <tr><td>31/05</td><td>HACHANI DJ</td><td>ZITOUTH H</td></tr>
-                </tbody></table>
-            </div>
-        </div>
-
-        <!-- Chauffeurs d'ambulance -->
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-ambulance"></i><h2>Chauffeurs · Ambulances</h2></div>
-            <div class="card-badge">🚑 07:00 – 19:00 / 19:00 – 07:00</div>
-            <div class="scroll-table">
-                <table class="table-elegant"><thead><tr><th>Date</th><th>7h-19h</th><th>19h-7h</th></tr></thead><tbody>
-                    <tr><td>26/05</td><td>BOUCHALA A</td><td>CHANAA M</td></tr>
-                    <tr><td>27/05</td><td>LATRECHE M</td><td>BAHADI H Y</td></tr>
-                    <tr><td>28/05</td><td>KAHLOUL B</td><td>MOUSELMAL S</td></tr>
-                    <tr><td>29/05</td><td>BOUCHALA H</td><td>CHABHA A R</td></tr>
-                    <tr><td>30/05</td><td>BOUCHALA A</td><td>CHANAA M</td></tr>
-                    <tr><td>31/05</td><td>LATRECHE M</td><td>BAHADI H Y</td></tr>
-                </tbody></table>
-            </div>
-        </div>
-    </div>
-
-    <!-- PHARMACIENS COMPLÉMENTAIRES (ARABIC + CONTACTS) -->
-    <div class="grid-modern">
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-star-of-life"></i><h2>صيادلة إضافيون · Pharmaciens de garde complémentaires</h2></div>
-            <div class="card-badge">📜 Permanence supplémentaire Aïd</div>
-            <div class="scroll-table">
-                <table class="table-elegant"><thead><tr><th>Date</th><th>Pharmacien(ne) de garde</th></tr></thead><tbody>
-                    <tr><td>MAR 26/05</td><td>قنات خدوجة سارة (KHENATE K.) · قربوعي محمد (GUERBOUZI M.)</td></tr>
-                    <tr><td>MER 27/05</td><td>بعوشي حاج موسى (BAOUCHI H.M.) · قنات خدوجة سارة</td></tr>
-                    <tr><td>JEU 28/05</td><td>الدغور عائشة (DAGHOUR A.) · كاسي اوصالح صبرينة · القباب بامحمد نذير · قنات خدوجة سارة</td></tr>
-                    <tr><td>VEN 29/05</td><td>بريوان (BRIOUANE) · بوثاسونة عائشة (BOUTHASSOUNA A.)</td></tr>
-                    <tr><td>SAM 30/05</td><td>بعوشي حاج موسى</td></tr>
-                </tbody></table>
-            </div>
-        </div>
-
-        <!-- Coordonnées responsables -->
-        <div class="card-modern">
-            <div class="card-title"><i class="fas fa-address-card"></i><h2>Responsables · Contacts d’urgence</h2></div>
-            <div class="contact-pills">
-                <div class="pill"><i class="fas fa-user-tie"></i> BOUGHOUFALA S. 0549.161.865</div>
-                <div class="pill"><i class="fas fa-user-md"></i> BOUKHALFA B. 0672.523.997</div>
-                <div class="pill"><i class="fas fa-phone-alt"></i> FEKHARA Y. 0779 17 77 07</div>
-                <div class="pill"><i class="fas fa-stethoscope"></i> AROUSSI S. 0698.996.469</div>
-                <div class="pill"><i class="fas fa-heartbeat"></i> LABTER M. 0663.870.453</div>
-                <div class="pill"><i class="fas fa-chart-line"></i> SMAIL Y. 0674 83 89 81</div>
-                <div class="pill"><i class="fas fa-truck-medical"></i> CHEMANI M. 0660.696.289</div>
-            </div>
-            <div class="dispo-block">
-                <i class="fas fa-check-circle" style="color:#357a4e;"></i> <strong>Mesures essentielles</strong><br>
-                ✅ Médicaments en quantité suffisante · ✅ Groupes électrogènes testés · ✅ Ambulances opérationnelles
-            </div>
-        </div>
-    </div>
-
-    <!-- FOOTER DIRECTEUR -->
-    <div class="footer-director">
-        <span><i class="far fa-calendar-alt"></i> Berriane, le 26 Joumada Al Oula 1447H / Mai 2026</span>
-        <span style="font-weight: 600;"><i class="fas fa-signature"></i> Le Directeur de l’EPSP Berriane</span>
-    </div>
-    <div class="verse">
-        <i class="fas fa-hand-sparkles"></i> Bon Aïd à tout le personnel soignant · Que la santé protège notre communauté
-    </div>
-</div>
+        (function() {
+            document.addEventListener('keydown', function(e) {
+                if (e.keyCode === 123) { e.preventDefault(); return false; }
+                if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) { e.preventDefault(); return false; }
+                if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 83)) { e.preventDefault(); return false; }
+            });
+            document.addEventListener('contextmenu', e => e.preventDefault());
+            document.addEventListener('dragstart', e => e.preventDefault());
+            document.addEventListener('selectstart', e => e.preventDefault());
+        })();
+    </script>
 </body>
 </html>
