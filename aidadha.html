@@ -26,6 +26,8 @@
             --amber-border: #fde68a;
             --amber-text: #b45309;
             --border-color: #e2e8f0;
+            --highlight-date: #f0fdf4; /* Soft premium green tone for holiday rows */
+            --highlight-border: #bbf7d0;
             --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
             --shadow-md: 0 4px 6px -1px rgba(0,0,0,0.05);
             --shadow-lg: 0 20px 25px -5px rgba(0,0,0,0.05);
@@ -98,7 +100,7 @@
             font-weight: 500;
         }
 
-        /* Event Banner banner */
+        /* Event Banner */
         .event-banner {
             background: linear-gradient(90deg, #0f172a 0%, #1e293b 100%);
             color: #ffffff;
@@ -164,6 +166,7 @@
             border-bottom: 1px solid var(--border-color);
             overflow-x: auto;
             scrollbar-width: none;
+            -webkit-overflow-scrolling: touch;
         }
         .tabs-nav::-webkit-scrollbar { display: none; }
         
@@ -208,6 +211,7 @@
             border-radius: 16px;
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
+            -webkit-overflow-scrolling: touch;
         }
         table {
             width: 100%;
@@ -224,6 +228,7 @@
             font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 0.05em;
+            white-space: nowrap;
         }
         td {
             padding: 18px 20px;
@@ -235,34 +240,33 @@
         tr:last-child td { border-bottom: none; }
         tr:hover td { background: #f8fafc; }
 
+        /* Modern Row Highlight Setup for Holiday Dates */
+        tr.holiday-highlight td {
+            background-color: var(--highlight-date) !important;
+            border-bottom-color: var(--highlight-border);
+        }
+        tr.holiday-highlight:hover td {
+            background-color: #e6fbf0 !important;
+        }
+
         .date-cell {
             font-weight: 700;
             color: var(--text-title);
             white-space: nowrap;
         }
-        .badge-jf {
-            background: #fee2e2;
-            color: #ef4444;
-            padding: 4px 8px;
-            border-radius: 6px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            margin-left: 8px;
-            display: inline-block;
-        }
 
-        /* Pharmacist Arabic Specific Grid Layout */
+        /* Centered Arabic Layout Specifics */
         .ar-table {
             direction: rtl;
-            text-align: right;
         }
         .ar-table th {
-            text-align: right;
+            text-align: center;
             font-family: 'Cairo', sans-serif;
             font-size: 0.95rem;
             letter-spacing: 0;
         }
         .ar-table td {
+            text-align: center;
             font-family: 'Cairo', sans-serif;
             font-size: 1rem;
             font-weight: 600;
@@ -345,12 +349,27 @@
         .footer-text .ar { font-family: 'Cairo'; font-size: 0.95rem; font-weight: 700; color: var(--teal-primary); }
         .footer-subline { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; }
 
-        @media (max-width: 768px) {
-            .top-bar { flex-direction: column; align-items: flex-start; padding: 20px; }
-            .title-container { text-align: left; }
-            .top-title-row { justify-content: flex-start; }
-            .event-banner, .main-content, .footer-wrapper { padding: 20px; }
-            .tabs-nav { padding: 16px 20px 0 20px; }
+        /* Advanced Responsive Systems (Mobile Optimized Viewports) */
+        @media (max-width: 900px) {
+            body { padding: 10px 8px; }
+            .top-bar { flex-direction: column; align-items: center; padding: 20px; text-align: center; }
+            .title-container { text-align: center; }
+            .top-title-row { justify-content: center; gap: 6px; }
+            .event-banner { flex-direction: column; text-align: center; padding: 20px; }
+            .event-badge-dates { text-align: center; width: 100%; }
+            .main-content { padding: 16px 12px; }
+            .tabs-nav { padding: 12px 12px 0 12px; }
+            .tab-btn { padding: 10px 14px; font-size: 0.85rem; }
+            th, td { padding: 12px 14px; font-size: 0.88rem; }
+        }
+
+        @media (max-width: 600px) {
+            /* Force table horizontal stability across super-small handheld dimensions */
+            table { min-width: 550px; }
+            .contacts-card { padding: 16px; }
+            .contact-item { flex-direction: column; align-items: flex-start; gap: 12px; }
+            .c-phone { width: 100%; text-align: center; }
+            .footer-wrapper { flex-direction: column; text-align: center; padding: 20px; }
         }
     </style>
 </head>
@@ -402,14 +421,14 @@
             <button class="tab-btn active" onclick="switchTab(event, 'tab-admin')">Admin / Bureau</button>
             <button class="tab-btn" onclick="switchTab(event, 'tab-medical')">Médicale / Spécialités</button>
             <button class="tab-btn" onclick="switchTab(event, 'tab-paramedical')">Paramédicaux (PU)</button>
-            <button class="tab-btn" onclick="switchTab(event, 'tab-pharmacy')">Pharmacie Extérieure (عربي)</button>
+            <button class="tab-btn" onclick="switchTab(event, 'tab-pharmacy')">Pharmacie Extérieure</button>
             <button class="tab-btn" onclick="switchTab(event, 'tab-support')">Technique / Chauffeurs</button>
         </div>
 
         <!-- Main Body Panels Layout -->
         <div class="main-content">
 
-            <!-- Tab 1: Administrative Only (Subsections Removed) -->
+            <!-- Tab 1: Administrative Only -->
             <div id="tab-admin" class="tab-panel active">
                 <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes Administratives</h3>
                 <div class="table-responsive">
@@ -423,9 +442,9 @@
                         </thead>
                         <tbody>
                             <tr><td class="date-cell">MAR 26/05/2026</td><td>/</td><td>FAKHAR Y.</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>BOUKHALFA B.</td><td>LABTER M.</td></tr>
-                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>ISMAIL Y.</td><td>LAAROUSSI S.</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>BOUGHEFALA S.</td><td>CHAMANI M.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">MER 27/05/2026</td><td>BOUKHALFA B.</td><td>LABTER M.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">JEU 28/05/2026</td><td>ISMAIL Y.</td><td>LAAROUSSI S.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">VEN 29/05/2026</td><td>BOUGHEFALA S.</td><td>CHAMANI M.</td></tr>
                             <tr><td class="date-cell">SAM 30/05/2026</td><td>FAKHAR Y.</td><td>BOUKHALFA B.</td></tr>
                             <tr><td class="date-cell">DIM 31/05/2026</td><td>/</td><td>LABTER M.</td></tr>
                         </tbody>
@@ -433,7 +452,7 @@
                 </div>
             </div>
 
-            <!-- Tab 2: Medical, Radiology, Laboratoire, Hemodialyse (Dr. DJABER W. Configured All Days) -->
+            <!-- Tab 2: Medical, Radiology, Laboratoire, Hemodialyse (Highlights Activated) -->
             <div id="tab-medical" class="tab-panel">
                 <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes Médicales</h3>
                 <div class="table-responsive" style="margin-bottom: 30px;">
@@ -447,9 +466,9 @@
                         </thead>
                         <tbody>
                             <tr><td class="date-cell">MAR 26/05/2026</td><td>Dr OURACI / Dr HADEF</td><td>Dr LECHEHEB</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>Dr DJABER / Dr OURACI</td><td>Dr BERAHAIL</td></tr>
-                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>Dr OURACI / Dr LECHEHEB</td><td>Dr BASLIMANE</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>Dr HADEF / Dr BERAHAIL</td><td>Dr LECHEHEB</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">MER 27/05/2026</td><td>Dr DJABER / Dr OURACI</td><td>Dr BERAHAIL</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">JEU 28/05/2026</td><td>Dr OURACI / Dr LECHEHEB</td><td>Dr BASLIMANE</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">VEN 29/05/2026</td><td>Dr HADEF / Dr BERAHAIL</td><td>Dr LECHEHEB</td></tr>
                             <tr><td class="date-cell">SAM 30/05/2026</td><td>Dr CHAMANI / Dr HADEF</td><td>Dr BEDJLOUD</td></tr>
                             <tr><td class="date-cell">DIM 31/05/2026</td><td>Dr DJILLALI I. / Dr DJILLALI L.</td><td>Dr SAHRI</td></tr>
                         </tbody>
@@ -468,9 +487,9 @@
                         </thead>
                         <tbody>
                             <tr><td class="date-cell">MAR 26/05/2026</td><td>LATRECHE F. / KERROUCHI L.</td><td>DAGHOUR H. / NAADJA DJ.</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>BABA OU MOUSSA / LATRECHE F.</td><td>OULAD MILOUD A. / OULAD MILLOUD Y.</td></tr>
-                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>HADJ AISSA A. / BABA OU MOUSSA</td><td>OULAD MILOUD A. / OULAD MILLOUD Y.</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>AZIEZ A. / HADJ AISSA A.</td><td>DAGHOUR H. / NAADJA DJ.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">MER 27/05/2026</td><td>BABA OU MOUSSA / LATRECHE F.</td><td>OULAD MILOUD A. / OULAD MILLOUD Y.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">JEU 28/05/2026</td><td>HADJ AISSA A. / BABA OU MOUSSA</td><td>OULAD MILOUD A. / OULAD MILLOUD Y.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">VEN 29/05/2026</td><td>AZIEZ A. / HADJ AISSA A.</td><td>DAGHOUR H. / NAADJA DJ.</td></tr>
                             <tr><td class="date-cell">SAM 30/05/2026</td><td>KERROUCHI EL. / AZIEZ A.</td><td>DAGHOUR H. / NAADJA DJ.</td></tr>
                             <tr><td class="date-cell">DIM 31/05/2026</td><td>LATRECHE F. / KERROUCHI L.</td><td>OULAD MILOUD A. / OULAD MILLOUD Y.</td></tr>
                         </tbody>
@@ -489,9 +508,9 @@
                         </thead>
                         <tbody>
                             <tr><td class="date-cell">MAR 26/05/2026</td><td>Dr DJABER W.</td><td>TIMEZGHINE B.</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>Dr DJABER W.</td><td>MOURED Y.</td></tr>
-                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>Dr DJABER W.</td><td>OULED ALI M.</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>Dr DJABER W.</td><td>BAHEDI M.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">MER 27/05/2026</td><td>Dr DJABER W.</td><td>MOURED Y.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">JEU 28/05/2026</td><td>Dr DJABER W.</td><td>OULED ALI M.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">VEN 29/05/2026</td><td>Dr DJABER W.</td><td>BAHEDI M.</td></tr>
                             <tr><td class="date-cell">SAM 30/05/2026</td><td>Dr DJABER W.</td><td>HACHANI DJ.</td></tr>
                             <tr><td class="date-cell">DIM 31/05/2026</td><td>Dr DJABER W.</td><td>ZITOUT H.</td></tr>
                         </tbody>
@@ -517,17 +536,17 @@
                                 <td>CHOUIREB A, LAKHNECHE ABD, GUESMI A, BELAKHDAR S, DABOUZ H, BOUALAM DJ</td>
                                 <td>HOBI Z, MOURED A, BOUTOULA S, ZITOUT S, HAMAZA Y, KACIOUSALAH B</td>
                             </tr>
-                            <tr>
+                            <tr class="holiday-highlight">
                                 <td class="date-cell">MER 27/05</td>
                                 <td>M/CHOUIREB AB, BAOUCHI Y, BKIRI N, BEN CHEKEL S</td>
                                 <td>CHOUIREB A, LAKHNECHE ABD, GUESMI A, BELAKHDAR S, DABOUZ H, BOUALAM DJ</td>
                             </tr>
-                            <tr>
-                                <td class="date-cell">JEU 28/05 <span class="badge-jf">J-F</span></td>
+                            <tr class="holiday-highlight">
+                                <td class="date-cell">JEU 28/05</td>
                                 <td>MEDJLIDA L, MACHAT H, KALOU S, MADKOUR M, ZAMIT S, OULED DAOUD A, OULED MILOUD S</td>
                                 <td>BENACHAR M, CHABHA A, OMARA AYOUB M, CHOUIREB AB, BAOUCHI Y, BKIRI N, BEN CHEKEL S</td>
                             </tr>
-                            <tr>
+                            <tr class="holiday-highlight">
                                 <td class="date-cell">VEN 29/05</td>
                                 <td>BKAIR HADJ B, LOUAR M, MEDJLIDA B, OULED SIDI CHIKH, GUERGUER S, LAKHNECH ABD, ABOUSADIK</td>
                                 <td>MEDJLIDA L, MACHAT H, KALOU S, MADKOUR M, ZAMIT S, OULED DAOUD A, OULED MILOUD S</td>
@@ -547,7 +566,7 @@
                 </div>
             </div>
 
-            <!-- Tab 4: Pharmacy (External Arabic RTL Content Embedded Successfully) -->
+            <!-- Tab 4: Pharmacy Layout with Fully Centered Content -->
             <div id="tab-pharmacy" class="tab-panel">
                 <h3 class="ar-title">الصيادلة الخواص المناوبين - بلدية بريان</h3>
                 <div class="table-responsive ar-table" style="margin-bottom: 35px;">
@@ -561,15 +580,15 @@
                         </thead>
                         <tbody>
                             <tr><td class="date-cell">الثلاثاء 2026/05/26</td><td>فتان خدوحة سارة • قربوعي محمد</td><td>لعساكر عبد الصمد • الطالب باحمد نذير</td></tr>
-                            <tr><td class="date-cell">الأربعاء 2026/05/27</td><td>بعوشي حاج موسى • فتان خدوحة سارة</td><td>كاسي اوصالح صبرينة • سلامي سايح</td></tr>
-                            <tr><td class="date-cell">الخميس 2026/05/28</td><td>الدغور عائشة • كاسي اوصالح صبرينة</td><td>لعساكر عبد الصمد • بعوشي حاج موسى</td></tr>
-                            <tr><td class="date-cell">الجمعة 2026/05/29</td><td>الطالب باحمد نذير • فتان خدوحة سارة</td><td>فتان خدوحة سارة • قربوعي محمد</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">الأربعاء 2026/05/27</td><td>بعوشي حاج موسى • تان خدوحة سارة</td><td>كاسي اوصالح صبرينة • سلامي سايح</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">الخميس 2026/05/28</td><td>الدغور عائشة • كاسي اوصالح صبرينة</td><td>لعساكر عبد الصمد • بعوشي حاج موسى</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">الجمعة 2026/05/29</td><td>الطالب باحمد نذير • فتان خدوحة سارة</td><td>فتان خدوحة سارة • قربوعي محمد</td></tr>
                             <tr><td class="date-cell">السبت 2026/05/30</td><td>بوتاسونة عائشة • بعوشي حاج موسى</td><td>باسليمان نور الدين • الدغور عائشة</td></tr>
                         </tbody>
                     </table>
                 </div>
 
-                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes du Service Pharmacie (Interne)</h3>
+                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes du Service Pharmacie de l'EPSP (Interne)</h3>
                 <div class="table-responsive">
                     <table>
                         <thead>
@@ -580,9 +599,9 @@
                         </thead>
                         <tbody>
                             <tr><td class="date-cell">MAR 26/05/2026</td><td>MOUSEMAL F. / HACHANI A. / BENABDALLAH Y.</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>SRIFIH T. / GRINE I. / BENABDELLAH Y.</td></tr>
-                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>MOUSSELMAL F. / HACHANI A.</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>SRIFIH T. / GRINE I.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">MER 27/05/2026</td><td>SRIFIH T. / GRINE I. / BENABDELLAH Y.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">JEU 28/05/2026</td><td>MOUSSELMAL F. / HACHANI A.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">VEN 29/05/2026</td><td>SRIFIH T. / GRINE I.</td></tr>
                             <tr><td class="date-cell">SAM 30/05/2026</td><td>MOUSEMAL F. / HACHANI A. / BENABDALLAH Y.</td></tr>
                             <tr><td class="date-cell">DIM 31/05/2026</td><td>SRIFIH T. / GRINE I. / BENABDELLAH Y.</td></tr>
                         </tbody>
@@ -590,7 +609,7 @@
                 </div>
             </div>
 
-            <!-- Tab 5: Chauffeurs and Security Layout -->
+            <!-- Tab 5: Chauffeurs and Technical Layout -->
             <div id="tab-support" class="tab-panel">
                 <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes des Chauffeurs / Ambulances</h3>
                 <div class="table-responsive">
@@ -604,9 +623,9 @@
                         </thead>
                         <tbody>
                             <tr><td class="date-cell">MAR 26/05/2026</td><td>BOUCHALA A.</td><td>CHANAA M.</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>LATRECHE M.</td><td>BAHADI H. Y.</td></tr>
-                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>KAHLOUL B.</td><td>MOUSELMAL S.</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>BOUCHALA H.</td><td>CHABHA A. R.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">MER 27/05/2026</td><td>LATRECHE M.</td><td>BAHADI H. Y.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">JEU 28/05/2026</td><td>KAHLOUL B.</td><td>MOUSELMAL S.</td></tr>
+                            <tr class="holiday-highlight"><td class="date-cell">VEN 29/05/2026</td><td>BOUCHALA H.</td><td>CHABHA A. R.</td></tr>
                             <tr><td class="date-cell">SAM 30/05/2026</td><td>BOUCHALA A.</td><td>CHANAA M.</td></tr>
                             <tr><td class="date-cell">DIM 31/05/2026</td><td>LATRECHE M.</td><td>BAHADI H. Y.</td></tr>
                         </tbody>
@@ -622,31 +641,31 @@
                 </div>
                 <div class="contacts-grid">
                     <div class="contact-item">
-                        <div class="c-info"><div class="name">BOUGHOUFALA S.</div><div class="role">Responsable Planification</div></div>
+                        <div class="c-info"><div class="name">BOUGHOUFALA S.</div><div class="role">Administration</div></div>
                         <a href="tel:0549161865" class="c-phone">0549.161.865</a>
                     </div>
                     <div class="contact-item">
-                        <div class="c-info"><div class="name">BOUKHALFA B.</div><div class="role">Administration Générale</div></div>
+                        <div class="c-info"><div class="name">BOUKHALFA B.</div><div class="role">Administration</div></div>
                         <a href="tel:0672523997" class="c-phone">0672.523.997</a>
                     </div>
                     <div class="contact-item">
-                        <div class="c-info"><div class="name">FEKHARA YAHIA</div><div class="role">Supervision / Logistique</div></div>
+                        <div class="c-info"><div class="name">FEKHARA YAHIA</div><div class="role">Administration</div></div>
                         <a href="tel:0779177707" class="c-phone">0779.177.707</a>
                     </div>
                     <div class="contact-item">
-                        <div class="c-info"><div class="name">AROUSSI Said</div><div class="role">Permanence Médicale</div></div>
+                        <div class="c-info"><div class="name">AROUSSI Said</div><div class="role">Administration</div></div>
                         <a href="tel:0698996469" class="c-phone">0698.996.469</a>
                     </div>
                     <div class="contact-item">
-                        <div class="c-info"><div class="name">LABTER Mohammed</div><div class="role">Coordination Services</div></div>
+                        <div class="c-info"><div class="name">LABTER Mohammed</div><div class="role">Administration</div></div>
                         <a href="tel:0663870453" class="c-phone">0663.870.453</a>
                     </div>
                     <div class="contact-item">
-                        <div class="c-info"><div class="name">SMAIL YOUNES</div><div class="role">Régulation Technique</div></div>
+                        <div class="c-info"><div class="name">SMAIL YOUNES</div><div class="role">Administration</div></div>
                         <a href="tel:0674838981" class="c-phone">0674.838.981</a>
                     </div>
                     <div class="contact-item">
-                        <div class="c-info"><div class="name">CHEMANI Massoud</div><div class="role">Suivi Intervention</div></div>
+                        <div class="c-info"><div class="name">CHEMANI Massoud</div><div class="role">Administration</div></div>
                         <a href="tel:0660696289" class="c-phone">0660.696.289</a>
                     </div>
                 </div>
@@ -654,7 +673,7 @@
 
         </div>
 
-        <!-- Premium Harmonious Bottom Footer Bar (Updated Text String) -->
+        <!-- Premium Harmonious Bottom Footer Bar -->
         <div class="footer-wrapper">
             <div class="footer-text">
                 <span class="ar">تحت إشراف مديرالمؤسسة العمومية للصحة الجوارية ببريان</span>
