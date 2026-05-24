@@ -9,6 +9,9 @@
     <meta property="og:description" content="وزارة الصحة - حملة التوعية ضد داء الكيس المائي خلال عيد الأضحى">
     <meta property="og:image" content="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'%3E%3Crect fill='%231a6b4b' width='1200' height='630'/%3E%3Ctext x='600' y='280' text-anchor='middle' fill='white' font-size='48' font-weight='bold'%3Eحملة الكيس المائي%3C/text%3E%3C/svg%3E">
     <title>صورة منشور فيسبوك | الكيس المائي 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js">
     </script>
     <style>
@@ -24,22 +27,24 @@
             --text-light: #4a4a4a;
             --font-ar: 'Tajawal', 'Segoe UI', 'Noto Naskh Arabic', sans-serif;
             --font-fr: 'Inter', 'Segoe UI', sans-serif;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.04);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.06);
+            --shadow-lg: 0 20px 40px rgba(0,0,0,0.1);
+            --radius: 28px;
         }
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+
         body {
             font-family: var(--font-ar);
-            background: #e8e4da;
+            background: #ede9df;
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 20px;
-            background-image: radial-gradient(ellipse at 30% 20%, rgba(26, 107, 75, 0.04) 0%, transparent 50%),
-                radial-gradient(ellipse at 70% 80%, rgba(200, 150, 62, 0.05) 0%, transparent 50%);
+            background-image:
+                radial-gradient(ellipse at 30% 10%, rgba(26,107,75,0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 90%, rgba(200,150,62,0.07) 0%, transparent 60%);
         }
 
         /* Language toggle */
@@ -51,25 +56,30 @@
             display: flex;
             background: #fff;
             border-radius: 30px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            border: 2px solid #d5d0c4;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            border: 1px solid #e0dcd0;
         }
         .lang-toggle button {
             border: none;
             background: transparent;
-            padding: 8px 18px;
+            padding: 10px 20px;
             cursor: pointer;
             font-weight: 700;
             font-size: 0.85rem;
             color: #5a5a5a;
             font-family: var(--font-ar);
-            transition: 0.2s;
+            transition: all 0.2s ease;
             white-space: nowrap;
+            letter-spacing: 0.3px;
         }
         .lang-toggle button.active {
             background: var(--primary);
             color: #fff;
             border-radius: 28px;
+            box-shadow: 0 2px 8px rgba(26,107,75,0.4);
+        }
+        .lang-toggle button:hover:not(.active) {
+            color: var(--primary-dark);
         }
 
         /* Visible preview card */
@@ -77,11 +87,15 @@
             width: 100%;
             max-width: 500px;
             aspect-ratio: 1 / 1;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-            border-radius: 24px;
+            border-radius: 32px;
             overflow: hidden;
             background: #fff;
-            border: 1px solid #e0d9cc;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);
+            border: 1px solid rgba(255,255,255,0.5);
+            transition: transform 0.2s ease;
+        }
+        .preview-wrapper:hover {
+            transform: translateY(-4px);
         }
         .post-card {
             width: 100%;
@@ -89,127 +103,181 @@
             display: flex;
             flex-direction: column;
             background: #ffffff;
+            position: relative;
         }
-        .post-header {
-            background: linear-gradient(135deg, #1a6b4b 0%, #2e8b65 100%);
-            padding: 20px 16px 14px;
+
+        /* Card header with gradient */
+        .card-header {
+            background: linear-gradient(145deg, #0f4d33 0%, #1a6b4b 35%, #2e8b65 100%);
+            padding: 22px 18px 18px;
             text-align: center;
             color: #fff;
+            position: relative;
+            overflow: hidden;
         }
-        .ministry-line {
-            font-size: 0.75rem;
-            letter-spacing: 0.5px;
-            background: rgba(255, 255, 255, 0.2);
+        .card-header::before {
+            content: '';
+            position: absolute;
+            top: -30px;
+            right: -30px;
+            width: 120px;
+            height: 120px;
+            background: rgba(255,255,255,0.06);
+            border-radius: 50%;
+        }
+        .card-header::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: -20px;
+            width: 80px;
+            height: 80px;
+            background: rgba(255,255,255,0.04);
+            border-radius: 50%;
+        }
+        .ministry-badge {
             display: inline-block;
-            padding: 3px 14px;
+            background: rgba(255,255,255,0.2);
+            backdrop-filter: blur(4px);
+            padding: 5px 16px;
             border-radius: 20px;
-            margin-bottom: 10px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border: 1px solid rgba(255,255,255,0.3);
         }
         .post-icon {
             font-size: 2.8rem;
-            margin-bottom: 4px;
+            margin-bottom: 8px;
+            display: block;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.2));
         }
         .campaign-title {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 900;
-            line-height: 1.3;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            line-height: 1.2;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            letter-spacing: -0.3px;
         }
         .post-subtitle {
             font-size: 0.85rem;
             font-weight: 500;
-            opacity: 0.9;
+            opacity: 0.95;
             margin-top: 4px;
+            color: #f5e6c8;
         }
-        .date-tag {
-            display: inline-block;
+        .date-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             background: #fff8e7;
             color: #b37400;
-            padding: 5px 15px;
+            padding: 6px 16px;
             border-radius: 20px;
             font-weight: 700;
             font-size: 0.75rem;
-            margin-top: 8px;
+            margin-top: 10px;
             border: 2px solid #fde3b8;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
         }
-        .post-body {
-            padding: 16px 18px;
+
+        /* Card body */
+        .card-body {
+            padding: 16px 20px;
             flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 12px;
+            background: #ffffff;
         }
-        .warning-text {
-            background: #fef4f2;
+        .alert-box {
+            background: #fef9f4;
             border-right: 4px solid #c0392b;
-            padding: 10px 12px;
-            border-radius: 8px;
+            padding: 12px 14px;
+            border-radius: 12px;
             font-size: 0.78rem;
-            color: #4a1e1e;
-            line-height: 1.5;
+            color: #5a3e1a;
+            line-height: 1.6;
+            box-shadow: var(--shadow-sm);
         }
-        .check-grid {
+        .alert-box strong {
+            color: #b33a1a;
+        }
+        .tips-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
         }
-        .check-item {
-            background: #f6faf3;
-            border-radius: 10px;
-            padding: 8px 10px;
-            font-size: 0.75rem;
+        .tip-item {
+            background: #f7faf5;
+            border-radius: 12px;
+            padding: 10px 10px;
+            font-size: 0.74rem;
             font-weight: 600;
             display: flex;
             align-items: center;
-            gap: 6px;
-            border: 1px solid #e2ecda;
+            gap: 7px;
+            border: 1px solid #e4f0da;
+            transition: background 0.2s;
+            color: #2c3e2b;
+            box-shadow: var(--shadow-sm);
         }
-        .check-item .icon {
-            font-size: 1rem;
+        .tip-item .tip-icon {
+            font-size: 1.1rem;
             flex-shrink: 0;
+            opacity: 0.9;
         }
-        .footer-note {
+        .health-footer {
             background: #eaf7ee;
-            border-radius: 10px;
-            padding: 8px 12px;
+            border-radius: 12px;
+            padding: 10px 14px;
             font-weight: 700;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #0f4d33;
             text-align: center;
             border: 1px solid #c3e0cf;
+            box-shadow: var(--shadow-sm);
         }
+
+        /* Action buttons */
         .action-bar {
             display: flex;
-            gap: 8px;
+            gap: 10px;
             justify-content: center;
-            padding: 10px;
-            border-top: 1px solid #f0ede4;
-            flex-wrap: wrap;
+            padding: 12px 16px;
+            background: #fafaf8;
+            border-top: 1px solid #eae5d8;
+            border-radius: 0 0 28px 28px;
         }
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            padding: 10px 16px;
+            padding: 10px 18px;
             border-radius: 30px;
             font-weight: 700;
             font-size: 0.8rem;
             cursor: pointer;
             border: none;
-            transition: 0.2s;
+            transition: all 0.2s ease;
             font-family: var(--font-ar);
             text-decoration: none;
             background: #fff;
             color: #1e1e1e;
             border: 2px solid #d5d0c4;
+            letter-spacing: 0.3px;
         }
         .btn-primary {
             background: var(--primary);
             color: #fff;
             border-color: var(--primary);
+            box-shadow: 0 4px 10px rgba(26,107,75,0.3);
         }
         .btn-primary:hover {
             background: var(--primary-dark);
+            box-shadow: 0 6px 14px rgba(26,107,75,0.4);
+            transform: translateY(-1px);
         }
         .btn:hover {
             border-color: var(--primary);
@@ -224,89 +292,98 @@
             width: 1080px;
             height: 1080px;
             background: #fff;
-            border-radius: 24px;
+            border-radius: 40px;
             overflow: hidden;
-            box-shadow: 0 0 0;
+            box-shadow: none;
             font-family: var(--font-ar);
         }
         .capture-container .post-card {
             width: 100%;
             height: 100%;
-            background: #ffffff;
         }
-        .capture-container .post-header {
-            padding: 40px 30px 25px;
-            font-size: 1.6rem;
+        .capture-container .card-header {
+            padding: 45px 35px 35px;
         }
-        .capture-container .campaign-title {
-            font-size: 2.4rem;
-        }
-        .capture-container .post-icon {
-            font-size: 4.5rem;
-        }
-        .capture-container .ministry-line {
-            font-size: 1.1rem;
-        }
-        .capture-container .post-subtitle {
-            font-size: 1.3rem;
-        }
-        .capture-container .date-tag {
-            font-size: 1.1rem;
+        .capture-container .ministry-badge {
+            font-size: 1.2rem;
             padding: 8px 24px;
         }
-        .capture-container .post-body {
-            padding: 30px 35px;
-            gap: 20px;
+        .capture-container .post-icon {
+            font-size: 5rem;
+            margin-bottom: 12px;
         }
-        .capture-container .warning-text {
-            font-size: 1.2rem;
-            padding: 18px 20px;
+        .capture-container .campaign-title {
+            font-size: 2.8rem;
+            letter-spacing: -0.5px;
         }
-        .capture-container .check-grid {
-            gap: 14px;
-        }
-        .capture-container .check-item {
-            font-size: 1.1rem;
-            padding: 14px 16px;
-        }
-        .capture-container .check-item .icon {
+        .capture-container .post-subtitle {
             font-size: 1.5rem;
         }
-        .capture-container .footer-note {
-            font-size: 1.15rem;
-            padding: 14px 20px;
+        .capture-container .date-badge {
+            font-size: 1.2rem;
+            padding: 10px 28px;
+            margin-top: 14px;
+        }
+        .capture-container .card-body {
+            padding: 35px 40px;
+            gap: 20px;
+        }
+        .capture-container .alert-box {
+            font-size: 1.3rem;
+            padding: 20px 24px;
+            border-right-width: 6px;
+        }
+        .capture-container .tips-grid {
+            gap: 16px;
+        }
+        .capture-container .tip-item {
+            font-size: 1.25rem;
+            padding: 16px 18px;
+            gap: 12px;
+            border-radius: 16px;
+        }
+        .capture-container .tip-item .tip-icon {
+            font-size: 1.8rem;
+        }
+        .capture-container .health-footer {
+            font-size: 1.3rem;
+            padding: 16px 24px;
+            border-radius: 16px;
         }
 
+        /* Toast */
         .toast {
             position: fixed;
-            bottom: 20px;
+            bottom: 24px;
             left: 50%;
             transform: translateX(-50%) translateY(100px);
             background: #1a1a1a;
             color: #fff;
-            padding: 10px 22px;
+            padding: 12px 24px;
             border-radius: 30px;
             font-weight: 600;
             font-size: 0.8rem;
             z-index: 9999;
-            transition: 0.3s;
+            transition: transform 0.3s ease;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.3);
         }
         .toast.show {
             transform: translateX(-50%) translateY(0);
         }
 
+        /* Direction support */
         body[dir="ltr"] {
             font-family: var(--font-fr);
         }
         body[dir="ltr"] .lang-toggle button {
             font-family: var(--font-fr);
         }
-        body[dir="ltr"] .warning-text {
+        body[dir="ltr"] .alert-box {
             border-right: none;
             border-left: 4px solid #c0392b;
         }
-        body[dir="ltr"] .capture-container .warning-text {
-            border-left: 4px solid #c0392b;
+        body[dir="ltr"] .capture-container .alert-box {
+            border-left: 6px solid #c0392b;
             border-right: none;
         }
     </style>
@@ -318,76 +395,75 @@
         <button id="btnFr" onclick="switchLang('fr')">🇫🇷 Français</button>
     </div>
 
-    <!-- Visible preview card -->
+    <!-- Visible preview card (responsive, for display) -->
     <div class="preview-wrapper" id="previewCard">
-        <!-- The same structure as capture, but for preview -->
         <div class="post-card">
-            <div class="post-header">
-                <span class="ministry-line" data-lang="ar">وزارة الصحة • البرنامج الوطني لمكافحة الأمراض الحيوانية المنشأ</span>
-                <span class="ministry-line" data-lang="fr" style="display:none;">Ministère de la Santé • Programme National de Lutte contre les Zoonoses</span>
-                <div class="post-icon">🦠</div>
-                <div class="campaign-title" data-lang="ar">حملة الوقاية و مكافحة الكيس المائي</div>
-                <div class="campaign-title" data-lang="fr" style="display:none;">Campagne de Lutte Contre le Kyste Hydatique</div>
+            <div class="card-header">
+                <span class="ministry-badge" data-lang="ar">وزارة الصحة • البرنامج الوطني لمكافحة الأمراض الحيوانية المنشأ</span>
+                <span class="ministry-badge" data-lang="fr" style="display:none;">Ministère de la Santé • Programme National de Lutte contre les Zoonoses</span>
+                <span class="post-icon">🛡️</span>
+                <div class="campaign-title" data-lang="ar">حملة الوقاية من الكيس المائي</div>
+                <div class="campaign-title" data-lang="fr" style="display:none;">Campagne Kyste Hydatique</div>
                 <div class="post-subtitle" data-lang="ar">بمناسبة عيد الأضحى المبارك 🐑</div>
                 <div class="post-subtitle" data-lang="fr" style="display:none;">À l'occasion de l'Aïd el-Adha 🐑</div>
-                <span class="date-tag">📅 20 – 26 مايو / Mai 2026</span>
+                <span class="date-badge">📅 20 – 26 مايو / Mai 2026</span>
             </div>
-            <div class="post-body">
-                <div class="warning-text">
-                    <span data-lang="ar">⚠️ الكيس المائي مرض طفيلي خطير يصيب الكبد والرئة. لا تظهر أعراضه مبكرًا، ويُكتشف غالبًا في مرحلة متأخرة تستوجب جراحة ثقيلة.</span>
-                    <span data-lang="fr" style="display:none;">⚠️ Le kyste hydatique est une maladie parasitaire grave touchant le foie et les poumons. Asymptomatique au début, elle est souvent diagnostiquée tardivement.</span>
+            <div class="card-body">
+                <div class="alert-box">
+                    <span data-lang="ar">⚠️ <strong>الكيس المائي</strong> مرض طفيلي خطير يصيب الكبد والرئة. لا تظهر أعراضه مبكرًا، ويُكتشف غالبًا في مرحلة متأخرة تستوجب جراحة ثقيلة.</span>
+                    <span data-lang="fr" style="display:none;">⚠️ <strong>Le kyste hydatique</strong> est une maladie parasitaire grave touchant le foie et les poumons. Asymptomatique au début, elle est souvent diagnostiquée tardivement.</span>
                 </div>
-                <div class="check-grid">
-                    <div class="check-item"><span class="icon">🥼</span><span data-lang="ar">افحص الأضحية عند البيطري</span><span data-lang="fr" style="display:none;">Contrôle vétérinaire</span></div>
-                    <div class="check-item"><span class="icon">🔍</span><span data-lang="ar">افحص الأحشاء بنفسك</span><span data-lang="fr" style="display:none;">Examinez les abats</span></div>
-                    <div class="check-item"><span class="icon">🔥</span><span data-lang="ar">اغلِ أو احرق الأعضاء المصابة</span><span data-lang="fr" style="display:none;">Bouillir ou brûler</span></div>
-                    <div class="check-item"><span class="icon">🪦</span><span data-lang="ar">ادفنها بعمق 50 سم</span><span data-lang="fr" style="display:none;">Enterrer à 50 cm</span></div>
-                    <div class="check-item"><span class="icon">🚫</span><span data-lang="ar">لا ترمِها للكلاب أو الطبيعة</span><span data-lang="fr" style="display:none;">Ne pas jeter aux chiens</span></div>
-                    <div class="check-item"><span class="icon">🧼</span><span data-lang="ar">اغسل يديك قبل الأكل وبعد لمس الكلاب</span><span data-lang="fr" style="display:none;">Lavez-vous les mains</span></div>
-                    <div class="check-item"><span class="icon">🏠</span><span data-lang="ar">تجنب الحوادث المنزلية</span><span data-lang="fr" style="display:none;">Prévention accidents domestiques</span></div>
-                    <div class="check-item"><span class="icon">🏥</span><span data-lang="ar">المؤسسات الصحية في خدمتكم</span><span data-lang="fr" style="display:none;">Structures de santé disponibles</span></div>
+                <div class="tips-grid">
+                    <div class="tip-item"><span class="tip-icon">🥼</span><span data-lang="ar">فحص بيطري للأضحية</span><span data-lang="fr" style="display:none;">Contrôle vétérinaire</span></div>
+                    <div class="tip-item"><span class="tip-icon">🔍</span><span data-lang="ar">افحص الأحشاء بنفسك</span><span data-lang="fr" style="display:none;">Examinez les abats</span></div>
+                    <div class="tip-item"><span class="tip-icon">🔥</span><span data-lang="ar">اغلِ أو احرق المصاب</span><span data-lang="fr" style="display:none;">Bouillir ou brûler</span></div>
+                    <div class="tip-item"><span class="tip-icon">🪦</span><span data-lang="ar">ادفن بعمق 50 سم</span><span data-lang="fr" style="display:none;">Enterrer à 50 cm</span></div>
+                    <div class="tip-item"><span class="tip-icon">🚫</span><span data-lang="ar">لا ترمِ للكلاب أو الطبيعة</span><span data-lang="fr" style="display:none;">Ne pas jeter aux chiens</span></div>
+                    <div class="tip-item"><span class="tip-icon">🧼</span><span data-lang="ar">اغسل يديك جيدًا</span><span data-lang="fr" style="display:none;">Lavez-vous les mains</span></div>
+                    <div class="tip-item"><span class="tip-icon">🏠</span><span data-lang="ar">احذر الحوادث المنزلية</span><span data-lang="fr" style="display:none;">Prévention accidents domestiques</span></div>
+                    <div class="tip-item"><span class="tip-icon">🏥</span><span data-lang="ar">الصحة في خدمتكم</span><span data-lang="fr" style="display:none;">Structures de santé disponibles</span></div>
                 </div>
-                <div class="footer-note">
+                <div class="health-footer">
                     <span data-lang="ar">معًا من أجل عيد أضحى آمن وصحي 💚</span>
                     <span data-lang="fr" style="display:none;">Ensemble pour un Aïd el-Adha sûr et sain 💚</span>
                 </div>
             </div>
             <div class="action-bar">
-                <button class="btn btn-primary" onclick="captureAndDownload()">📸 <span data-lang="ar">التقاط الصورة</span><span data-lang="fr" style="display:none;">Capturer</span></button>
+                <button class="btn btn-primary" onclick="captureAndDownload()">📸 <span data-lang="ar">تحميل الصورة</span><span data-lang="fr" style="display:none;">Télécharger</span></button>
                 <button class="btn" onclick="shareImage()">📢 <span data-lang="ar">مشاركة</span><span data-lang="fr" style="display:none;">Partager</span></button>
             </div>
         </div>
     </div>
 
-    <!-- Hidden fixed‑size capture container (1080x1080) -->
+    <!-- Hidden fixed‑size capture container (1080x1080px) -->
     <div class="capture-container" id="captureContainer">
         <div class="post-card">
-            <div class="post-header">
-                <span class="ministry-line" data-lang="ar">وزارة الصحة • البرنامج الوطني لمكافحة الأمراض الحيوانية المنشأ</span>
-                <span class="ministry-line" data-lang="fr" style="display:none;">Ministère de la Santé • Programme National de Lutte contre les Zoonoses</span>
-                <div class="post-icon">🦠</div>
-                <div class="campaign-title" data-lang="ar">حملة الوقاية و مكافحة الكيس المائي</div>
-                <div class="campaign-title" data-lang="fr" style="display:none;">Campagne de Lutte Contre le Kyste Hydatique</div>
+            <div class="card-header">
+                <span class="ministry-badge" data-lang="ar">وزارة الصحة • البرنامج الوطني لمكافحة الأمراض الحيوانية المنشأ</span>
+                <span class="ministry-badge" data-lang="fr" style="display:none;">Ministère de la Santé • Programme National de Lutte contre les Zoonoses</span>
+                <span class="post-icon">🛡️</span>
+                <div class="campaign-title" data-lang="ar">حملة الوقاية من الكيس المائي</div>
+                <div class="campaign-title" data-lang="fr" style="display:none;">Campagne Kyste Hydatique</div>
                 <div class="post-subtitle" data-lang="ar">بمناسبة عيد الأضحى المبارك 🐑</div>
                 <div class="post-subtitle" data-lang="fr" style="display:none;">À l'occasion de l'Aïd el-Adha 🐑</div>
-                <span class="date-tag">📅 20 – 26 مايو / Mai 2026</span>
+                <span class="date-badge">📅 20 – 26 مايو / Mai 2026</span>
             </div>
-            <div class="post-body">
-                <div class="warning-text">
-                    <span data-lang="ar">⚠️ الكيس المائي مرض طفيلي خطير يصيب الكبد والرئة. لا تظهر أعراضه مبكرًا، ويُكتشف غالبًا في مرحلة متأخرة تستوجب جراحة ثقيلة.</span>
-                    <span data-lang="fr" style="display:none;">⚠️ Le kyste hydatique est une maladie parasitaire grave touchant le foie et les poumons. Asymptomatique au début, elle est souvent diagnostiquée tardivement.</span>
+            <div class="card-body">
+                <div class="alert-box">
+                    <span data-lang="ar">⚠️ <strong>الكيس المائي</strong> مرض طفيلي خطير يصيب الكبد والرئة. لا تظهر أعراضه مبكرًا، ويُكتشف غالبًا في مرحلة متأخرة تستوجب جراحة ثقيلة.</span>
+                    <span data-lang="fr" style="display:none;">⚠️ <strong>Le kyste hydatique</strong> est une maladie parasitaire grave touchant le foie et les poumons. Asymptomatique au début, elle est souvent diagnostiquée tardivement.</span>
                 </div>
-                <div class="check-grid">
-                    <div class="check-item"><span class="icon">🥼</span><span data-lang="ar">افحص الأضحية عند البيطري</span><span data-lang="fr" style="display:none;">Contrôle vétérinaire</span></div>
-                    <div class="check-item"><span class="icon">🔍</span><span data-lang="ar">افحص الأحشاء بنفسك</span><span data-lang="fr" style="display:none;">Examinez les abats</span></div>
-                    <div class="check-item"><span class="icon">🔥</span><span data-lang="ar">اغلِ أو احرق الأعضاء المصابة</span><span data-lang="fr" style="display:none;">Bouillir ou brûler</span></div>
-                    <div class="check-item"><span class="icon">🪦</span><span data-lang="ar">ادفنها بعمق 50 سم</span><span data-lang="fr" style="display:none;">Enterrer à 50 cm</span></div>
-                    <div class="check-item"><span class="icon">🚫</span><span data-lang="ar">لا ترمِها للكلاب أو الطبيعة</span><span data-lang="fr" style="display:none;">Ne pas jeter aux chiens</span></div>
-                    <div class="check-item"><span class="icon">🧼</span><span data-lang="ar">اغسل يديك قبل الأكل وبعد لمس الكلاب</span><span data-lang="fr" style="display:none;">Lavez-vous les mains</span></div>
-                    <div class="check-item"><span class="icon">🏠</span><span data-lang="ar">تجنب الحوادث المنزلية</span><span data-lang="fr" style="display:none;">Prévention accidents domestiques</span></div>
-                    <div class="check-item"><span class="icon">🏥</span><span data-lang="ar">المؤسسات الصحية في خدمتكم</span><span data-lang="fr" style="display:none;">Structures de santé disponibles</span></div>
+                <div class="tips-grid">
+                    <div class="tip-item"><span class="tip-icon">🥼</span><span data-lang="ar">فحص بيطري للأضحية</span><span data-lang="fr" style="display:none;">Contrôle vétérinaire</span></div>
+                    <div class="tip-item"><span class="tip-icon">🔍</span><span data-lang="ar">افحص الأحشاء بنفسك</span><span data-lang="fr" style="display:none;">Examinez les abats</span></div>
+                    <div class="tip-item"><span class="tip-icon">🔥</span><span data-lang="ar">اغلِ أو احرق المصاب</span><span data-lang="fr" style="display:none;">Bouillir ou brûler</span></div>
+                    <div class="tip-item"><span class="tip-icon">🪦</span><span data-lang="ar">ادفن بعمق 50 سم</span><span data-lang="fr" style="display:none;">Enterrer à 50 cm</span></div>
+                    <div class="tip-item"><span class="tip-icon">🚫</span><span data-lang="ar">لا ترمِ للكلاب أو الطبيعة</span><span data-lang="fr" style="display:none;">Ne pas jeter aux chiens</span></div>
+                    <div class="tip-item"><span class="tip-icon">🧼</span><span data-lang="ar">اغسل يديك جيدًا</span><span data-lang="fr" style="display:none;">Lavez-vous les mains</span></div>
+                    <div class="tip-item"><span class="tip-icon">🏠</span><span data-lang="ar">احذر الحوادث المنزلية</span><span data-lang="fr" style="display:none;">Prévention accidents domestiques</span></div>
+                    <div class="tip-item"><span class="tip-icon">🏥</span><span data-lang="ar">الصحة في خدمتكم</span><span data-lang="fr" style="display:none;">Structures de santé disponibles</span></div>
                 </div>
-                <div class="footer-note">
+                <div class="health-footer">
                     <span data-lang="ar">معًا من أجل عيد أضحى آمن وصحي 💚</span>
                     <span data-lang="fr" style="display:none;">Ensemble pour un Aïd el-Adha sûr et sain 💚</span>
                 </div>
@@ -416,7 +492,6 @@
                 btnFr.classList.add('active');
                 btnAr.classList.remove('active');
             }
-            // Update both visible and hidden containers
             document.querySelectorAll('[data-lang]').forEach(el => {
                 if (el.getAttribute('data-lang') === lang) {
                     el.style.display = '';
@@ -424,9 +499,9 @@
                     el.style.display = 'none';
                 }
             });
-            // Ensure capture container's specific overrides remain
-            document.querySelector('#captureContainer').style.fontFamily = body.style.fontFamily;
-            try { localStorage.setItem('postLang', lang); } catch (e) {}
+            const capContainer = document.getElementById('captureContainer');
+            capContainer.style.fontFamily = body.style.fontFamily;
+            try { localStorage.setItem('postLangDesign', lang); } catch (e) {}
         }
 
         function toast(msg) {
@@ -439,7 +514,6 @@
 
         async function captureAndDownload() {
             const container = document.getElementById('captureContainer');
-            // Ensure it uses the correct font and direction
             container.style.fontFamily = document.body.style.fontFamily;
             toast(currentLang === 'ar' ? '⏳ جارٍ إنشاء الصورة...' : '⏳ Création de l\'image...');
             try {
@@ -480,32 +554,20 @@
                     height: 1080
                 });
                 canvas.toBlob(async (blob) => {
-                    if (!blob) {
-                        fallbackFBShare();
-                        return;
-                    }
+                    if (!blob) { fallbackFBShare(); return; }
                     const file = new File([blob], 'campagne.png', { type: 'image/png' });
                     if (navigator.canShare && navigator.canShare({ files: [file] })) {
                         try {
                             await navigator.share({
                                 files: [file],
-                                title: currentLang === 'ar' ? 'حملة الكيس المائي' :
-                                    'Campagne Kyste Hydatique',
-                                text: currentLang === 'ar' ?
-                                    'وزارة الصحة - حملة الوقاية من الكيس المائي 2026' :
-                                    'Ministère de la Santé - Campagne 2026',
+                                title: currentLang === 'ar' ? 'حملة الكيس المائي' : 'Campagne Kyste Hydatique',
+                                text: currentLang === 'ar' ? 'وزارة الصحة - حملة الوقاية من الكيس المائي 2026' : 'Ministère de la Santé - Campagne 2026',
                             });
                             toast(currentLang === 'ar' ? '✅ تمت المشاركة!' : '✅ Partagé !');
-                        } catch (e) {
-                            fallbackFBShare();
-                        }
-                    } else {
-                        fallbackFBShare();
-                    }
+                        } catch (e) { fallbackFBShare(); }
+                    } else { fallbackFBShare(); }
                 }, 'image/png');
-            } catch (e) {
-                fallbackFBShare();
-            }
+            } catch (e) { fallbackFBShare(); }
         }
 
         function fallbackFBShare() {
@@ -515,10 +577,10 @@
             toast(currentLang === 'ar' ? '📢 فتح فيسبوك للمشاركة' : '📢 Facebook ouvert');
         }
 
-        // Initialize language
+        // Init language
         (function() {
             let saved = null;
-            try { saved = localStorage.getItem('postLang'); } catch (e) {}
+            try { saved = localStorage.getItem('postLangDesign'); } catch (e) {}
             if (saved === 'fr') switchLang('fr');
             else switchLang('ar');
         })();
