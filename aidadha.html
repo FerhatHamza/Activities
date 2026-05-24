@@ -267,6 +267,13 @@
             font-size: 1rem;
             font-weight: 600;
         }
+        .ar-title {
+            direction: rtl;
+            text-align: right;
+            font-family: 'Cairo', sans-serif;
+            margin-bottom: 16px; 
+            font-weight: 700;
+        }
 
         /* Contacts Grid Panel Layout */
         .contacts-card {
@@ -403,10 +410,10 @@
         <!-- Main Body Panels Layout -->
         <div class="main-content">
 
-            <!-- Tab 1: Administrative and Desk Entries -->
+            <!-- Tab 1: Administrative Only (Subsections Removed) -->
             <div id="tab-admin" class="tab-panel active">
                 <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes Administratives</h3>
-                <div class="table-responsive" style="margin-bottom: 30px;">
+                <div class="table-responsive">
                     <table>
                         <thead>
                             <tr>
@@ -425,51 +432,9 @@
                         </tbody>
                     </table>
                 </div>
-
-                <h3 style="margin-bottom: 16px; font-weight: 700;">Bureau des Entrées</h3>
-                <div class="table-responsive" style="margin-bottom: 30px;">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Jour (08h00 - 20h00)</th>
-                                <th>Nuit (20h00 - 08h00)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td class="date-cell">MAR 26/05/2026</td><td>LAMOURI M. / KOUADER F.</td><td>SAYFIA L.</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>MECHAT S. / SAIFIA M.</td><td>LAMOURI L.</td></tr>
-                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>AYACHE F. / SAYFIA M.</td><td>MACHAT S.</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>ABBES Y. / KOUADER F.</td><td>AYACHE F.</td></tr>
-                            <tr><td class="date-cell">SAM 30/05/2026</td><td>SAYFIA L. / KOUADER F.</td><td>ABBES Y.</td></tr>
-                            <tr><td class="date-cell">DIM 31/05/2026</td><td>LAMOURI M. / KOUADER F.</td><td>SAYFIA L.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-
-                <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes des Surveillances</h3>
-                <div class="table-responsive">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Date</th>
-                                <th>Jour (08h00 - 20h00)</th>
-                                <th>Nuit (20h00 - 08h00)</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr><td class="date-cell">MAR 26/05/2026</td><td>CHOUIREB A.</td><td>MOURED S.</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>BENACHAR M.</td><td>CHOUIREB A.</td></tr>
-                            <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>MEDJLIDA L.</td><td>BENACHAR M.</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>BEKKAIR MB.</td><td>MADJLIDA L.</td></tr>
-                            <tr><td class="date-cell">SAM 30/05/2026</td><td>MOURED S.</td><td>BEKKAIR MB.</td></tr>
-                            <tr><td class="date-cell">DIM 31/05/2026</td><td>CHOUIREB A.</td><td>MOURED S.</td></tr>
-                        </tbody>
-                    </table>
-                </div>
             </div>
 
-            <!-- Tab 2: Medical, Radiology, Laboratoire, Hemodialyse -->
+            <!-- Tab 2: Medical, Radiology, Laboratoire, Hemodialyse (Dr. DJABER W. Configured All Days) -->
             <div id="tab-medical" class="tab-panel">
                 <h3 style="margin-bottom: 16px; font-weight: 700;">Gardes Médicales</h3>
                 <div class="table-responsive" style="margin-bottom: 30px;">
@@ -524,12 +489,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="date-cell">MAR 26/05/2026</td><td>/</td><td>TIMEZGHINE B.</td></tr>
-                            <tr><td class="date-cell">MER 27/05/2026</td><td>/</td><td>MOURED Y.</td></tr>
+                            <tr><td class="date-cell">MAR 26/05/2026</td><td>Dr DJABER W.</td><td>TIMEZGHINE B.</td></tr>
+                            <tr><td class="date-cell">MER 27/05/2026</td><td>Dr DJABER W.</td><td>MOURED Y.</td></tr>
                             <tr><td class="date-cell">JEU 28/05/2026 <span class="badge-jf">J-F</span></td><td>Dr DJABER W.</td><td>OULED ALI M.</td></tr>
-                            <tr><td class="date-cell">VEN 29/05/2026</td><td>/</td><td>BAHEDI M.</td></tr>
-                            <tr><td class="date-cell">SAM 30/05/2026</td><td>/</td><td>HACHANI DJ.</td></tr>
-                            <tr><td class="date-cell">DIM 31/05/2026</td><td>/</td><td>ZITOUT H.</td></tr>
+                            <tr><td class="date-cell">VEN 29/05/2026</td><td>Dr DJABER W.</td><td>BAHEDI M.</td></tr>
+                            <tr><td class="date-cell">SAM 30/05/2026</td><td>Dr DJABER W.</td><td>HACHANI DJ.</td></tr>
+                            <tr><td class="date-cell">DIM 31/05/2026</td><td>Dr DJABER W.</td><td>ZITOUT H.</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -583,9 +548,9 @@
                 </div>
             </div>
 
-            <!-- Tab 4: Pharmacy (Internal and External Private Arabic Schedule) -->
+            <!-- Tab 4: Pharmacy (External Arabic RTL Content Embedded Successfully) -->
             <div id="tab-pharmacy" class="tab-panel">
-                <h3 style="margin-bottom: 16px; font-weight: 700;">الصيادلة الخواص المناوبين - بلدية بريان</h3>
+                <h3 class="ar-title">الصيادلة الخواص المناوبين - بلدية بريان</h3>
                 <div class="table-responsive ar-table" style="margin-bottom: 35px;">
                     <table>
                         <thead>
@@ -596,10 +561,10 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr><td class="date-cell">الثلاثاء 2026/05/26</td><td>فتان خدوحة سارة • قربعوني محمد</td><td>لعساكر عبد الصمد • الطالب باحمد نذير</td></tr>
+                            <tr><td class="date-cell">الثلاثاء 2026/05/26</td><td>فتان خدوحة سارة • قربوعي محمد</td><td>لعساكر عبد الصمد • الطالب باحمد نذير</td></tr>
                             <tr><td class="date-cell">الأربعاء 2026/05/27</td><td>بعوشي حاج موسى • فتان خدوحة سارة</td><td>كاسي اوصالح صبرينة • سلامي سايح</td></tr>
                             <tr><td class="date-cell">الخميس 2026/05/28</td><td>الدغور عائشة • كاسي اوصالح صبرينة</td><td>لعساكر عبد الصمد • بعوشي حاج موسى</td></tr>
-                            <tr><td class="date-cell">الجمعة 2026/05/29</td><td>الطالب باحمد نذير • فتان خدوحة سارة</td><td>فتان خدوحة سارة • قربعوني محمد</td></tr>
+                            <tr><td class="date-cell">الجمعة 2026/05/29</td><td>الطالب باحمد نذير • فتان خدوحة سارة</td><td>فتان خدوحة سارة • قربوعي محمد</td></tr>
                             <tr><td class="date-cell">السبت 2026/05/30</td><td>بوتاسونة عائشة • بعوشي حاج موسى</td><td>باسليمان نور الدين • الدغور عائشة</td></tr>
                         </tbody>
                     </table>
@@ -690,10 +655,10 @@
 
         </div>
 
-        <!-- Premium Harmonious Bottom Footer Bar -->
+        <!-- Premium Harmonious Bottom Footer Bar (Updated Text String) -->
         <div class="footer-wrapper">
             <div class="footer-text">
-                <span class="ar">تحت إشراف إدارة المؤسسة العمومية للصحة الجوارية ببريان</span>
+                <span class="ar">تحت إشراف مديرالمؤسسة العمومية للصحة الجوارية ببريان</span>
                 <span style="color:#cbd5e1; margin: 0 8px;">•</span>
                 <span class="fr">Le Directeur d'Établissement</span>
             </div>
