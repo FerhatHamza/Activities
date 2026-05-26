@@ -29,6 +29,9 @@
             --shadow-lg: 0 20px 35px -12px rgba(0,0,0,0.12);
             --shadow-md: 0 8px 18px rgba(0,0,0,0.06);
             --shadow-sm: 0 2px 6px rgba(0,0,0,0.03);
+            --font-base: 1.05rem;
+            --font-lg: 1.25rem;
+            --font-xl: 1.5rem;
         }
 
         body {
@@ -40,6 +43,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            font-size: var(--font-base);
         }
 
         .dashboard-container {
@@ -52,24 +56,24 @@
             transition: all 0.2s;
         }
 
-        /* Top header refined */
+        /* Top header refined - larger fonts */
         .top-bar {
             background: #ffffff;
-            padding: 24px 44px;
+            padding: 28px 48px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 24px;
+            gap: 28px;
             border-bottom: 1px solid var(--border-color);
         }
         .logo-area {
             display: flex;
             align-items: center;
-            gap: 20px;
+            gap: 24px;
         }
         .logo-img {
-            height: 72px;
+            height: 80px;
             width: auto;
             object-fit: contain;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
@@ -81,12 +85,12 @@
             display: flex;
             align-items: baseline;
             justify-content: flex-end;
-            gap: 14px;
+            gap: 16px;
             flex-wrap: wrap;
         }
         .top-title {
-            font-weight: 500;
-            font-size: 1rem;
+            font-weight: 600;
+            font-size: 1.2rem;
             color: var(--text-muted);
             letter-spacing: -0.2px;
         }
@@ -94,45 +98,47 @@
             font-family: 'Cairo', sans-serif;
             font-weight: 800;
             color: var(--teal-primary);
-            font-size: 1.25rem;
+            font-size: 1.5rem;
         }
         .top-sub {
-            font-size: 0.85rem;
+            font-size: 1rem;
             font-weight: 500;
             color: #7c8ea0;
+            margin-top: 4px;
         }
 
-        /* Event banner refined */
+        /* Event banner refined - larger */
         .event-banner {
             background: linear-gradient(115deg, #0e3b36 0%, #1b7a64 100%);
             color: white;
-            padding: 32px 44px;
+            padding: 36px 48px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 24px;
+            gap: 28px;
         }
         .event-details h1 {
-            font-size: 1.8rem;
+            font-size: 2.2rem;
             font-weight: 800;
             letter-spacing: -0.4px;
-            margin-bottom: 8px;
+            margin-bottom: 12px;
         }
         .event-details p {
             color: #cff2ec;
             font-weight: 500;
             display: flex;
-            gap: 20px;
+            gap: 24px;
             flex-wrap: wrap;
+            font-size: 1.05rem;
         }
         .register-link {
             background: rgba(255,255,255,0.18);
             backdrop-filter: blur(6px);
-            border-radius: 48px;
-            padding: 12px 28px;
-            font-weight: 700;
-            font-size: 0.9rem;
+            border-radius: 56px;
+            padding: 14px 34px;
+            font-weight: 800;
+            font-size: 1.05rem;
             text-decoration: none;
             color: white;
             border: 1px solid rgba(255,255,255,0.4);
@@ -143,58 +149,59 @@
             color: #1b7a64;
         }
 
-        /* Callout section */
+        /* Callout section - larger text */
         .callout-attendance {
             background: var(--gold-light);
             border-left: 8px solid var(--gold-accent);
-            margin: 28px 44px 0 44px;
-            border-radius: 28px;
-            padding: 28px 36px;
+            margin: 32px 48px 0 48px;
+            border-radius: 32px;
+            padding: 32px 40px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 28px;
+            gap: 32px;
             box-shadow: var(--shadow-sm);
         }
         .callout-text h3 {
             font-weight: 800;
             color: #b45f1b;
-            font-size: 1.35rem;
+            font-size: 1.6rem;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
         }
         .callout-text p {
-            margin-top: 10px;
+            margin-top: 12px;
             color: #674d2c;
             font-weight: 500;
             line-height: 1.5;
+            font-size: 1.05rem;
         }
         .limited-badge {
             background: var(--gold-accent);
             color: white;
-            padding: 10px 28px;
+            padding: 12px 32px;
             border-radius: 60px;
             font-weight: 800;
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             white-space: nowrap;
             box-shadow: var(--shadow-sm);
         }
 
-        /* Tabs navigation - refined modern */
+        /* Tabs navigation - larger */
         .tabs-nav {
             display: flex;
-            gap: 12px;
-            padding: 32px 44px 0 44px;
+            gap: 16px;
+            padding: 36px 48px 0 48px;
             background: white;
             flex-wrap: wrap;
         }
         .tab-btn {
-            padding: 14px 32px;
+            padding: 16px 38px;
             border: none;
             background: #f8fbfe;
-            font-size: 1rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: var(--text-muted);
             cursor: pointer;
@@ -218,7 +225,7 @@
         }
 
         .main-content {
-            padding: 32px 44px;
+            padding: 36px 48px;
         }
         .tab-panel {
             display: none;
@@ -232,7 +239,7 @@
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Elegant schedule table */
+        /* Elegant schedule table - larger fonts */
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
@@ -244,19 +251,19 @@
         }
         .schedule-table th {
             background: #f9fdfe;
-            padding: 20px 24px;
-            font-weight: 700;
-            font-size: 0.85rem;
+            padding: 22px 28px;
+            font-weight: 800;
+            font-size: 0.95rem;
             text-transform: uppercase;
             letter-spacing: 0.8px;
             color: #2f6b5e;
             border-bottom: 1px solid var(--border-color);
         }
         .schedule-table td {
-            padding: 18px 24px;
+            padding: 22px 28px;
             border-bottom: 1px solid #ecf3f6;
             vertical-align: middle;
-            font-size: 0.95rem;
+            font-size: 1rem;
         }
         .schedule-table tr:last-child td {
             border-bottom: none;
@@ -267,9 +274,9 @@
         .workshop-badge {
             background: #faeedc;
             color: #bd7a2a;
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             font-weight: 800;
-            padding: 5px 14px;
+            padding: 6px 16px;
             border-radius: 40px;
             display: inline-block;
             letter-spacing: 0.3px;
@@ -277,81 +284,88 @@
         .conf-badge {
             background: var(--teal-light);
             color: var(--teal-primary);
-            font-size: 0.7rem;
+            font-size: 0.85rem;
             font-weight: 800;
-            padding: 5px 14px;
+            padding: 6px 16px;
             border-radius: 40px;
             display: inline-block;
         }
         .speaker-name {
             font-weight: 800;
             color: #1c4a41;
-            line-height: 1.35;
-            font-size: 0.95rem;
+            line-height: 1.4;
+            font-size: 1.05rem;
+        }
+        .speaker-name span {
+            font-size: 0.85rem;
+            font-weight: 500;
         }
         .theme-text {
             font-weight: 500;
-            line-height: 1.4;
+            line-height: 1.45;
             color: #2c4a5e;
+            font-size: 1rem;
         }
         .time-cell {
             font-weight: 700;
             white-space: nowrap;
             color: var(--teal-dark);
-            font-size: 0.9rem;
+            font-size: 1rem;
         }
 
-        /* Contact card + button area */
+        /* Contact card + button area - larger */
         .contact-card {
-            margin-top: 56px;
+            margin-top: 60px;
             background: #fbfefc;
-            border-radius: 32px;
-            padding: 32px 36px;
+            border-radius: 36px;
+            padding: 36px 42px;
             border: 1px solid #e2f0ed;
             box-shadow: var(--shadow-sm);
         }
         .contact-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 32px;
+            gap: 36px;
             justify-content: space-between;
             align-items: flex-start;
         }
         .admin-info h4 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: var(--teal-primary);
-            margin-bottom: 18px;
+            margin-bottom: 22px;
             font-weight: 800;
         }
         .admin-info p {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             font-weight: 500;
             color: #2c4f5e;
+            font-size: 1.05rem;
         }
         .position-highlight {
             background: #e1f3ef;
-            padding: 8px 20px;
-            border-radius: 40px;
+            padding: 10px 24px;
+            border-radius: 48px;
             font-weight: 800;
             display: inline-block;
-            margin: 12px 0 6px 0;
+            margin: 16px 0 8px 0;
             color: var(--teal-dark);
+            font-size: 1rem;
         }
         .button-wrapper {
             background: white;
-            border-radius: 28px;
-            padding: 24px 28px;
+            border-radius: 32px;
+            padding: 28px 32px;
             text-align: center;
             border: 1px solid #cbe5e1;
-            min-width: 260px;
+            min-width: 280px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 18px;
+            gap: 20px;
             box-shadow: var(--shadow-sm);
         }
         .button-wrapper p {
-            font-size: 0.9rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: var(--teal-primary);
         }
@@ -359,11 +373,11 @@
             display: inline-block;
             background: var(--teal-primary);
             color: white;
-            padding: 14px 32px;
+            padding: 16px 38px;
             border-radius: 60px;
             font-weight: 800;
             text-decoration: none;
-            font-size: 1rem;
+            font-size: 1.1rem;
             transition: all 0.2s ease;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
             letter-spacing: -0.2px;
@@ -374,39 +388,42 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* Footer EPSP Berriane only */
+        /* Footer - larger */
         .footer-wrapper {
             background: #fafefd;
             border-top: 1px solid var(--border-color);
-            padding: 24px 44px;
+            padding: 28px 48px;
             display: flex;
             justify-content: center;
             align-items: center;
             flex-wrap: wrap;
-            gap: 16px;
-            font-size: 0.85rem;
+            gap: 20px;
+            font-size: 1rem;
             text-align: center;
         }
         .footer-text .ar {
             font-family: 'Cairo', sans-serif;
-            font-weight: 700;
+            font-weight: 800;
             color: var(--teal-primary);
+            font-size: 1.1rem;
         }
         .footer-subline {
             font-weight: 500;
             color: var(--text-muted);
+            font-size: 0.95rem;
         }
 
         @media (max-width: 850px) {
-            body { padding: 20px 12px; }
+            body { padding: 20px 12px; font-size: 0.95rem; }
             .top-bar, .event-banner, .main-content, .tabs-nav, .callout-attendance {
-                padding-left: 24px;
-                padding-right: 24px;
+                padding-left: 28px;
+                padding-right: 28px;
             }
             .schedule-table th, .schedule-table td {
-                padding: 14px 16px;
+                padding: 16px 20px;
             }
-            .tab-btn { padding: 10px 22px; font-size: 0.85rem; }
+            .tab-btn { padding: 12px 26px; font-size: 0.95rem; }
+            .event-details h1 { font-size: 1.6rem; }
         }
         @media (max-width: 680px) {
             .schedule-table {
@@ -422,7 +439,8 @@
                 flex-direction: column;
             }
             .button-wrapper { width: 100%; }
-            .event-details h1 { font-size: 1.3rem; }
+            .top-title { font-size: 1rem; }
+            .top-title.ar { font-size: 1.2rem; }
         }
         a { text-decoration: none; }
     </style>
@@ -446,7 +464,7 @@
     <!-- Event banner with corrected registration URL -->
     <div class="event-banner">
         <div class="event-details">
-            <h1>Dentex Algeria 2026</h1>
+            <h1>🇩🇿 Dentex Algeria 2026</h1>
             <p>📍 SAFEX Alger – Pavillon Palestine  |  📅 2–5 Juin 2026  |  🎟️ Entrée libre sur inscription</p>
         </div>
         <a href="https://www.dentex.dz/fr/" target="_blank" class="register-link">✨ Inscription gratuite ✨</a>
@@ -456,14 +474,14 @@
     <div class="callout-attendance">
         <div class="callout-text">
             <h3>🦷 Sortie scientifique – Congrès Dentex 2026</h3>
-            <p><strong>Seulement 2 places disponibles</strong> pour les chirurgiens-dentistes de l’EPSP Berriane souhaitant assister au congrès.<br>
-            Vous souhaitez vous rendre à l’événement (en tant que visiteur) ? Déposez une <strong>demande d’autorisation d’absence</strong> au Secrétariat du directeur.<br>
-            📌 <strong>Date limite : 31 mai 2026</strong> — dossiers étudiés par ordre d’arrivée.</p>
+            <p><strong>Seulement 2 places disponibles</strong> pour les chirurgiens-dentistes de l'EPSP Berriane souhaitant assister au congrès.<br>
+            Vous souhaitez vous rendre à l'événement (en tant que visiteur) ? Déposez une <strong>demande d'autorisation d'absence</strong> au Secrétariat du directeur.<br>
+            📌 <strong>Date limite : 31 mai 2026</strong> — dossiers étudiés par ordre d'arrivée.</p>
         </div>
         <div class="limited-badge">🔹 Libération maximale : 2 praticiens 🔹</div>
     </div>
 
-    <!-- Day tabs: ALL tables are hidden until user clicks on date -->
+    <!-- Day tabs: ALL tables hidden until user clicks on date -->
     <div class="tabs-nav">
         <button class="tab-btn active" onclick="switchTab(event, 'day-tue')">📆 MARDI 02 JUIN</button>
         <button class="tab-btn" onclick="switchTab(event, 'day-wed')">📆 MERCREDI 03 JUIN</button>
@@ -472,13 +490,13 @@
     </div>
 
     <div class="main-content">
-        <!-- Tuesday schedule (initially visible because active by default, but user can toggle) -->
+        <!-- Tuesday schedule -->
         <div id="day-tue" class="tab-panel active">
             <table class="schedule-table">
                 <thead><tr><th>Horaire</th><th>Intervenant(e)</th><th>Thème</th><th>Type</th></tr></thead>
                 <tbody>
-                    <tr><td class="time-cell">09:50 – 10:10</td><td class="speaker-name">Dr. YASMINA AKOUCHE<br><span style="font-size:0.7rem;">Spécialiste ODF</span></td><td class="theme-text">Fonction et esthétique : deux notions indissociables en orthodontie moderne</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">10:10 – 10:30</td><td class="speaker-name">Pr. DJACEM BELMOKRE<br><span style="font-size:0.7rem;">Pathologie & implantologie</span></td><td class="theme-text">Défi esthétique en implantologie</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">09:50 – 10:10</td><td class="speaker-name">Dr. YASMINA AKOUCHE<br><span>Spécialiste ODF</span></td><td class="theme-text">Fonction et esthétique : deux notions indissociables en orthodontie moderne</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">10:10 – 10:30</td><td class="speaker-name">Pr. DJACEM BELMOKRE<br><span>Pathologie & implantologie</span></td><td class="theme-text">Défi esthétique en implantologie</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">10:30 – 10:50</td><td class="speaker-name">Dr. AHMED TAREK FAROUK<br><span>Consultant restorative & esthetic</span></td><td class="theme-text">Daily recipes for more predictable anterior composite masterpieces</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">10:50 – 11:10</td><td class="speaker-name">Dr. MOHAMED FOUAD HARIEDY<br><span>Prof. Conservative dentistry</span></td><td class="theme-text">Sculpting smiles: the art and science of direct composite veneers</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">11:15 – 11:35</td><td class="speaker-name">Dr. STEFANO CARDERI<br><span>Orthodontiste consultant italien</span></td><td class="theme-text">Rethinking orthodontic biomechanics</td><td><span class="conf-badge">Conférence</span></td></tr>
@@ -549,9 +567,9 @@
         <div class="contact-card">
             <div class="contact-grid">
                 <div class="admin-info">
-                    <h4>📋 Modalités de participation – Demande d’autorisation</h4>
+                    <h4>📋 Modalités de participation – Demande d'autorisation</h4>
                     <p><strong>📍 Dépôt :</strong> Secrétariat du directeur / EPSP Berriane</p>
-                    <p><strong>📄 Pièces :</strong> Lettre de demande d’autorisation d’absence (jours souhaités : 02-05 juin 2026).</p>
+                    <p><strong>📄 Pièces :</strong> Lettre de demande d'autorisation d'absence (jours souhaités : 02-05 juin 2026).</p>
                     <p><strong>🗓️ Date limite :</strong> <strong>31 mai 2026</strong> – <strong>2 places disponibles</strong> (premier arrivé, premier servi).</p>
                     <p><strong>📞 Renseignements :</strong> Secrétariat / 029 24 12 44</p>
                     <div class="position-highlight">🎯 Validation administrative → autorisation de sortie pour assister au congrès.</div>
@@ -559,7 +577,7 @@
                 <div class="button-wrapper">
                     <p>🌐 Programme officiel & inscription</p>
                     <a href="https://www.dentex.dz/fr/" target="_blank" class="web-button">🔗 Go to the official website</a>
-                    <p style="font-size:0.7rem;">Accès libre – inscription recommandée</p>
+                    <p style="font-size:0.85rem;">Accès libre – inscription recommandée</p>
                 </div>
             </div>
         </div>
