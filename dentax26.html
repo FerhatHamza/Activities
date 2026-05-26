@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>EPSP Berriane | Sortie scientifique – Dentex 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <!-- QR Code Library -->
-    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -141,14 +139,8 @@
             background: #ffffff;
             color: #1b6b5e;
         }
-        .event-badge-dates {
-            background: rgba(0,0,0,0.2);
-            padding: 8px 20px;
-            border-radius: 40px;
-            font-weight: 600;
-        }
 
-        /* Call for attendance EPSP Berriane – only 4 slots */
+        /* Call for attendance EPSP Berriane – only 2 slots */
         .callout-attendance {
             background: linear-gradient(120deg, #fef9e6, #fff6e8);
             border-left: 8px solid #c47a2e;
@@ -293,7 +285,7 @@
             white-space: nowrap;
         }
 
-        /* Admin contact card for attendance requests + QR */
+        /* Admin contact card for attendance requests + button */
         .contact-card {
             margin-top: 48px;
             background: #f8fafc;
@@ -321,31 +313,42 @@
             display: inline-block;
             margin: 10px 0;
         }
-        .qr-wrapper {
+        .button-wrapper {
             background: white;
             border-radius: 24px;
-            padding: 16px;
+            padding: 20px;
             text-align: center;
             border: 1px solid #cbe5e1;
-            min-width: 180px;
+            min-width: 220px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 12px;
+            gap: 16px;
         }
-        .qr-wrapper p {
-            font-size: 0.8rem;
+        .button-wrapper p {
+            font-size: 0.85rem;
             font-weight: 600;
             color: var(--teal-primary);
         }
-        #qrcode {
-            display: flex;
-            justify-content: center;
+        .web-button {
+            display: inline-block;
+            background: var(--teal-primary);
+            color: white;
+            padding: 14px 28px;
+            border-radius: 50px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            border: none;
+            cursor: pointer;
+            text-align: center;
         }
-        #qrcode img, #qrcode canvas {
-            width: 130px;
-            height: auto;
-            border-radius: 12px;
+        .web-button:hover {
+            background: #0f5e50;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
         }
 
         /* Footer EPSP Berriane */
@@ -385,6 +388,12 @@
                 flex-direction: column;
                 text-align: center;
             }
+            .contact-grid {
+                flex-direction: column;
+            }
+            .button-wrapper {
+                width: 100%;
+            }
         }
         a {
             text-decoration: none;
@@ -413,10 +422,10 @@
             <h1>🇩🇿 الملتقى العالمي دونتاكس 2026 – Dentex Algeria</h1>
             <p>📍 SAFEX Alger – Pavillon Palestine  |  📅 2–5 Juin 2026  |  🎟️ Accès libre sur inscription</p>
         </div>
-        <a href="https://www.dentex.dz/fr/visiter/?utm_source=paid_search&utm_medium=google&utm_campaign=&utm_content=&utm_term=MOF&actioncode=100100&gad_source=1&gad_campaignid=23714569639&gbraid=0AAAABDJ7jjo1ZdGhVneIGBlvfrY0Vj3Zl&gclid=CjwKCAjwidXQBhAZEiwA4egw6LabtUEmphLW7yNNxUo_Ydedk2yERW81lQgSUGxn8FsW6sUZimo85BoCIPgQAvD_BwE" target="_blank" class="register-link">✨ Inscription gratuite ✨</a>
+        <a href="https://register.visitcloud.com/survey/2r84lirzg9l1b?actioncode=102" target="_blank" class="register-link">✨ Inscription gratuite ✨</a>
     </div>
 
-    <!-- NEW : Invitation à ASSISTER (pas à présenter) – 4 places pour le personnel EPSP -->
+    <!-- Invitation à ASSISTER – 2 places pour le personnel EPSP -->
     <div class="callout-attendance">
         <div class="callout-text">
             <h3>🦷 Sortie scientifique – Congrès Dentex 2026</h3>
@@ -424,7 +433,7 @@
             Vous êtes intéressé(e) à vous rendre à l’événement (en tant que visiteurs) ? Veuillez déposer une <strong>demande d’autorisation d’absence</strong> auprès de l’administration (bureau du Secrétariat du directeur).<br>
             📌 <strong>Date limite de dépôt : 31 mai 2026</strong> — les dossiers seront étudiés selon l’ordre d’arrivée et les disponibilités du service.</p>
         </div>
-        <div class="limited-badge">🔹Nous avons la capacité de libérer au maximum 2 individus.🔹</div>
+        <div class="limited-badge">🔹 Nous avons la capacité de libérer au maximum 2 individus. 🔹</div>
     </div>
 
     <!-- Tabs per day (programme complet) -->
@@ -509,21 +518,21 @@
             </table>
         </div>
 
-        <!-- CONTACT CARD with QR CODE for registration -->
+        <!-- CONTACT CARD with GO TO WEBSITE button -->
         <div class="contact-card">
             <div class="contact-grid">
                 <div class="admin-info">
                     <h4>📋 Modalités de participation – Demande d’autorisation</h4>
-                    <p><strong>📍 Dépôt des demandes :</strong> Secrétariat du directeur / DSS </p>
+                    <p><strong>📍 Dépôt des demandes :</strong> Secrétariat du directeur / DSS</p>
                     <p><strong>📄 Pièces à fournir :</strong> Lettre de demande d’autorisation d’absence mentionnant les journées souhaitées (02 au 05 juin 2026).</p>
                     <p><strong>🗓️ Date limite impérative :</strong> <strong>31 mai 2026</strong> – <strong>2 places disponibles</strong> (ordre d’arrivée et service).</p>
                     <p><strong>📞 Renseignements :</strong> Secrétariat / 029 24 12 44</p>
                     <div class="position-highlight">🎯 Une fois la demande validée par l’administration, le praticien bénéficie d’une autorisation de sortie pour se rendre au congrès.</div>
                 </div>
-                <div class="qr-wrapper">
-                    <p>📱 Scannez pour vous inscrire</p>
-                    <div id="qrcode"></div>
-                    <p style="font-size:0.7rem;">Inscription gratuite<br>Dentex 2026</p>
+                <div class="button-wrapper">
+                    <p>🌐 Inscription et programme complet</p>
+                    <a href="https://www.dentex.dz/fr/visiter/?utm_source=paid_search&utm_medium=google&utm_campaign=&utm_content=&utm_term=MOF&actioncode=100100&gad_source=1&gad_campaignid=23714569639&gbraid=0AAAABDJ7jjo1ZdGhVneIGBlvfrY0Vj3Zl&gclid=CjwKCAjwidXQBhAZEiwA4egw6LabtUEmphLW7yNNxUo_Ydedk2yERW81lQgSUGxn8FsW6sUZimo85BoCIPgQAvD_BwE" target="_blank" class="web-button">🔗 Go to the official website</a>
+                    <p style="font-size:0.7rem;">Accès libre – Réservation recommandée</p>
                 </div>
             </div>
         </div>
@@ -552,17 +561,6 @@
         event.currentTarget.classList.add('active');
     }
     
-    // Generate QR Code to official registration page (Dentex 2026)
-    const registrationUrl = "https://www.dentex.dz/fr/visiter/?utm_source=paid_search&utm_medium=google&utm_campaign=&utm_content=&utm_term=MOF&actioncode=100100&gad_source=1&gad_campaignid=23714569639&gbraid=0AAAABDJ7jjo1ZdGhVneIGBlvfrY0Vj3Zl&gclid=CjwKCAjwidXQBhAZEiwA4egw6LabtUEmphLW7yNNxUo_Ydedk2yERW81lQgSUGxn8FsW6sUZimo85BoCIPgQAvD_BwE";
-    new QRCode(document.getElementById("qrcode"), {
-        text: registrationUrl,
-        width: 130,
-        height: 130,
-        colorDark: "#1e7e6c",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.M
-    });
-
     (function preventDevTools() {
         document.addEventListener('keydown', function(e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || (e.ctrlKey && e.keyCode === 85)) {
