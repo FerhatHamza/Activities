@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>EPSP Berriane | Sortie scientifique – Dentex 2026</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -15,17 +15,20 @@
         }
 
         :root {
-            --bg-gradient: linear-gradient(145deg, #f4f9ff 0%, #ecf3f8 100%);
+            --bg-gradient: linear-gradient(145deg, #f6fafd 0%, #edf2f7 100%);
             --card-bg: #ffffff;
-            --text-main: #1e2a3e;
-            --text-title: #0b2b3b;
-            --text-muted: #546e7a;
-            --teal-primary: #1e7e6c;
-            --teal-light: #e0f2f0;
-            --amber-bg: #fff8e7;
-            --border-color: #dee4ec;
-            --shadow-lg: 0 20px 30px -12px rgba(0,0,0,0.08);
-            --shadow-md: 0 8px 20px rgba(0,0,0,0.05);
+            --text-main: #1a2c3e;
+            --text-title: #0a2c2a;
+            --text-muted: #5b6e8c;
+            --teal-primary: #1f8a70;
+            --teal-dark: #0e5e4a;
+            --teal-light: #daf4ef;
+            --gold-accent: #c47a2e;
+            --gold-light: #fff1e0;
+            --border-color: #e2edf2;
+            --shadow-lg: 0 20px 35px -12px rgba(0,0,0,0.12);
+            --shadow-md: 0 8px 18px rgba(0,0,0,0.06);
+            --shadow-sm: 0 2px 6px rgba(0,0,0,0.03);
         }
 
         body {
@@ -33,7 +36,7 @@
             font-family: 'Inter', 'Cairo', sans-serif;
             color: var(--text-main);
             min-height: 100vh;
-            padding: 32px 20px;
+            padding: 36px 24px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -43,21 +46,21 @@
             max-width: 1400px;
             width: 100%;
             background: var(--card-bg);
-            border-radius: 32px;
+            border-radius: 36px;
             box-shadow: var(--shadow-lg);
             overflow: hidden;
-            border: 1px solid rgba(255,255,255,0.6);
+            transition: all 0.2s;
         }
 
-        /* Top header with logo.png */
+        /* Top header refined */
         .top-bar {
             background: #ffffff;
-            padding: 24px 40px;
+            padding: 24px 44px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 24px;
             border-bottom: 1px solid var(--border-color);
         }
         .logo-area {
@@ -66,19 +69,10 @@
             gap: 20px;
         }
         .logo-img {
-            height: 70px;
+            height: 72px;
             width: auto;
             object-fit: contain;
-        }
-        .logo-text h2 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--text-title);
-        }
-        .logo-text p {
-            font-size: 0.8rem;
-            color: var(--teal-primary);
-            font-weight: 600;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.05));
         }
         .title-container {
             text-align: right;
@@ -87,48 +81,57 @@
             display: flex;
             align-items: baseline;
             justify-content: flex-end;
-            gap: 12px;
+            gap: 14px;
             flex-wrap: wrap;
         }
         .top-title {
-            font-weight: 600;
+            font-weight: 500;
             font-size: 1rem;
             color: var(--text-muted);
+            letter-spacing: -0.2px;
         }
         .top-title.ar {
             font-family: 'Cairo', sans-serif;
             font-weight: 800;
             color: var(--teal-primary);
-            font-size: 1.2rem;
+            font-size: 1.25rem;
+        }
+        .top-sub {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #7c8ea0;
         }
 
-        /* Event banner */
+        /* Event banner refined */
         .event-banner {
-            background: linear-gradient(105deg, #0f2b2a 0%, #1b6b5e 100%);
+            background: linear-gradient(115deg, #0e3b36 0%, #1b7a64 100%);
             color: white;
-            padding: 28px 40px;
+            padding: 32px 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 20px;
+            gap: 24px;
         }
         .event-details h1 {
-            font-size: 1.7rem;
-            font-weight: 700;
-            letter-spacing: -0.3px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.4px;
             margin-bottom: 8px;
         }
         .event-details p {
-            color: #d9f0ec;
+            color: #cff2ec;
             font-weight: 500;
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
         }
         .register-link {
-            background: rgba(255,255,255,0.15);
-            backdrop-filter: blur(4px);
-            border-radius: 60px;
-            padding: 12px 26px;
-            font-weight: 600;
+            background: rgba(255,255,255,0.18);
+            backdrop-filter: blur(6px);
+            border-radius: 48px;
+            padding: 12px 28px;
+            font-weight: 700;
             font-size: 0.9rem;
             text-decoration: none;
             color: white;
@@ -136,231 +139,251 @@
             transition: 0.2s;
         }
         .register-link:hover {
-            background: #ffffff;
-            color: #1b6b5e;
+            background: white;
+            color: #1b7a64;
         }
 
-        /* Call for attendance EPSP Berriane – only 2 slots */
+        /* Callout section */
         .callout-attendance {
-            background: linear-gradient(120deg, #fef9e6, #fff6e8);
-            border-left: 8px solid #c47a2e;
-            margin: 24px 40px 0 40px;
+            background: var(--gold-light);
+            border-left: 8px solid var(--gold-accent);
+            margin: 28px 44px 0 44px;
             border-radius: 28px;
-            padding: 28px 32px;
+            padding: 28px 36px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 24px;
-            box-shadow: var(--shadow-md);
+            gap: 28px;
+            box-shadow: var(--shadow-sm);
         }
         .callout-text h3 {
             font-weight: 800;
-            color: #a55b1a;
-            font-size: 1.3rem;
+            color: #b45f1b;
+            font-size: 1.35rem;
             display: flex;
             align-items: center;
             gap: 12px;
         }
         .callout-text p {
             margin-top: 10px;
-            color: #4f3a22;
+            color: #674d2c;
             font-weight: 500;
+            line-height: 1.5;
         }
         .limited-badge {
-            background: #c47a2e;
+            background: var(--gold-accent);
             color: white;
-            padding: 8px 22px;
-            border-radius: 40px;
-            font-weight: 700;
+            padding: 10px 28px;
+            border-radius: 60px;
+            font-weight: 800;
             font-size: 0.9rem;
             white-space: nowrap;
+            box-shadow: var(--shadow-sm);
         }
 
-        /* Tabs */
+        /* Tabs navigation - refined modern */
         .tabs-nav {
             display: flex;
             gap: 12px;
-            padding: 28px 40px 0 40px;
+            padding: 32px 44px 0 44px;
             background: white;
-            border-bottom: 1px solid var(--border-color);
             flex-wrap: wrap;
         }
         .tab-btn {
-            padding: 12px 26px;
+            padding: 14px 32px;
             border: none;
-            background: none;
+            background: #f8fbfe;
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
             color: var(--text-muted);
             cursor: pointer;
-            border-radius: 40px;
-            transition: 0.2s;
+            border-radius: 60px;
+            transition: all 0.2s ease;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.2px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid transparent;
         }
         .tab-btn:hover {
             background: var(--teal-light);
-            color: var(--teal-primary);
+            color: var(--teal-dark);
+            transform: translateY(-2px);
         }
         .tab-btn.active {
             background: var(--teal-primary);
             color: white;
-            box-shadow: 0 4px 8px rgba(30,126,108,0.2);
+            box-shadow: 0 6px 14px rgba(31,138,112,0.25);
+            border-color: rgba(255,255,255,0.2);
         }
 
         .main-content {
-            padding: 32px 40px;
+            padding: 32px 44px;
         }
         .tab-panel {
             display: none;
-            animation: fade 0.25s ease;
+            animation: fadeSlide 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
         .tab-panel.active {
             display: block;
         }
-        @keyframes fade {
-            from { opacity: 0; transform: translateY(6px);}
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(12px);}
             to { opacity: 1; transform: translateY(0);}
         }
 
-        /* Table style */
+        /* Elegant schedule table */
         .schedule-table {
             width: 100%;
             border-collapse: collapse;
             background: white;
-            border-radius: 24px;
+            border-radius: 28px;
             overflow: hidden;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-color);
         }
         .schedule-table th {
-            background: #f6fafd;
-            padding: 18px 20px;
+            background: #f9fdfe;
+            padding: 20px 24px;
             font-weight: 700;
             font-size: 0.85rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #2c5a50;
+            letter-spacing: 0.8px;
+            color: #2f6b5e;
             border-bottom: 1px solid var(--border-color);
         }
         .schedule-table td {
-            padding: 18px 20px;
-            border-bottom: 1px solid var(--border-color);
+            padding: 18px 24px;
+            border-bottom: 1px solid #ecf3f6;
             vertical-align: middle;
+            font-size: 0.95rem;
         }
         .schedule-table tr:last-child td {
             border-bottom: none;
         }
         .schedule-table tr:hover td {
-            background: #fefdf7;
+            background: #fafef7;
         }
         .workshop-badge {
-            background: #f1e6d2;
-            color: #b46b1a;
+            background: #faeedc;
+            color: #bd7a2a;
             font-size: 0.7rem;
             font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 30px;
+            padding: 5px 14px;
+            border-radius: 40px;
             display: inline-block;
+            letter-spacing: 0.3px;
         }
         .conf-badge {
             background: var(--teal-light);
             color: var(--teal-primary);
             font-size: 0.7rem;
             font-weight: 800;
-            padding: 4px 12px;
-            border-radius: 30px;
+            padding: 5px 14px;
+            border-radius: 40px;
             display: inline-block;
         }
         .speaker-name {
-            font-weight: 700;
-            color: #0f2e28;
-            line-height: 1.3;
+            font-weight: 800;
+            color: #1c4a41;
+            line-height: 1.35;
+            font-size: 0.95rem;
         }
         .theme-text {
             font-weight: 500;
-            line-height: 1.3;
+            line-height: 1.4;
+            color: #2c4a5e;
         }
         .time-cell {
-            font-weight: 600;
+            font-weight: 700;
             white-space: nowrap;
+            color: var(--teal-dark);
+            font-size: 0.9rem;
         }
 
-        /* Admin contact card for attendance requests + button */
+        /* Contact card + button area */
         .contact-card {
-            margin-top: 48px;
-            background: #f8fafc;
-            border-radius: 28px;
-            padding: 28px 32px;
-            border: 1px solid var(--border-color);
+            margin-top: 56px;
+            background: #fbfefc;
+            border-radius: 32px;
+            padding: 32px 36px;
+            border: 1px solid #e2f0ed;
+            box-shadow: var(--shadow-sm);
         }
         .contact-grid {
             display: flex;
             flex-wrap: wrap;
-            gap: 28px;
+            gap: 32px;
             justify-content: space-between;
             align-items: flex-start;
         }
         .admin-info h4 {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             color: var(--teal-primary);
-            margin-bottom: 16px;
+            margin-bottom: 18px;
+            font-weight: 800;
+        }
+        .admin-info p {
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: #2c4f5e;
         }
         .position-highlight {
-            background: #e9f4f2;
-            padding: 6px 14px;
-            border-radius: 30px;
-            font-weight: 700;
+            background: #e1f3ef;
+            padding: 8px 20px;
+            border-radius: 40px;
+            font-weight: 800;
             display: inline-block;
-            margin: 10px 0;
+            margin: 12px 0 6px 0;
+            color: var(--teal-dark);
         }
         .button-wrapper {
             background: white;
-            border-radius: 24px;
-            padding: 20px;
+            border-radius: 28px;
+            padding: 24px 28px;
             text-align: center;
             border: 1px solid #cbe5e1;
-            min-width: 220px;
+            min-width: 260px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 18px;
+            box-shadow: var(--shadow-sm);
         }
         .button-wrapper p {
-            font-size: 0.85rem;
-            font-weight: 600;
+            font-size: 0.9rem;
+            font-weight: 700;
             color: var(--teal-primary);
         }
         .web-button {
             display: inline-block;
             background: var(--teal-primary);
             color: white;
-            padding: 14px 28px;
-            border-radius: 50px;
-            font-weight: 700;
+            padding: 14px 32px;
+            border-radius: 60px;
+            font-weight: 800;
             text-decoration: none;
             font-size: 1rem;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-            border: none;
-            cursor: pointer;
-            text-align: center;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            letter-spacing: -0.2px;
         }
         .web-button:hover {
-            background: #0f5e50;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+            background: var(--teal-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* Footer EPSP Berriane */
+        /* Footer */
         .footer-wrapper {
-            background: #fbfefd;
+            background: #fafefd;
             border-top: 1px solid var(--border-color);
-            padding: 22px 40px;
+            padding: 24px 44px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
             font-size: 0.85rem;
         }
         .footer-text .ar {
@@ -369,16 +392,18 @@
             color: var(--teal-primary);
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 850px) {
+            body { padding: 20px 12px; }
             .top-bar, .event-banner, .main-content, .tabs-nav, .callout-attendance {
-                padding-left: 20px;
-                padding-right: 20px;
+                padding-left: 24px;
+                padding-right: 24px;
             }
             .schedule-table th, .schedule-table td {
-                padding: 12px 12px;
+                padding: 14px 16px;
             }
+            .tab-btn { padding: 10px 22px; font-size: 0.85rem; }
         }
-        @media (max-width: 650px) {
+        @media (max-width: 680px) {
             .schedule-table {
                 display: block;
                 overflow-x: auto;
@@ -391,21 +416,18 @@
             .contact-grid {
                 flex-direction: column;
             }
-            .button-wrapper {
-                width: 100%;
-            }
+            .button-wrapper { width: 100%; }
+            .event-details h1 { font-size: 1.3rem; }
         }
-        a {
-            text-decoration: none;
-        }
+        a { text-decoration: none; }
     </style>
 </head>
 <body>
 <div class="dashboard-container">
-    <!-- Top bar with logo.png and establishment name -->
+    <!-- Top header with logo -->
     <div class="top-bar">
         <div class="logo-area">
-            <img src="logo.png" alt="EPSP Berriane Logo" class="logo-img" draggable="false">
+            <img src="logo.png" alt="EPSP Berriane" class="logo-img" draggable="false">
         </div>
         <div class="title-container">
             <div class="top-title-row">
@@ -416,27 +438,27 @@
         </div>
     </div>
 
-    <!-- Event banner with registration -->
+    <!-- Event banner -->
     <div class="event-banner">
         <div class="event-details">
-            <h1>🇩🇿 الملتقى العالمي دونتاكس 2026 – Dentex Algeria</h1>
-            <p>📍 SAFEX Alger – Pavillon Palestine  |  📅 2–5 Juin 2026  |  🎟️ Accès libre sur inscription</p>
+            <h1>🇩🇿 Dentex Algeria 2026</h1>
+            <p>📍 SAFEX Alger – Pavillon Palestine  |  📅 2–5 Juin 2026  |  🎟️ Entrée libre sur inscription</p>
         </div>
         <a href="https://register.visitcloud.com/survey/2r84lirzg9l1b?actioncode=102" target="_blank" class="register-link">✨ Inscription gratuite ✨</a>
     </div>
 
-    <!-- Invitation à ASSISTER – 2 places pour le personnel EPSP -->
+    <!-- Sortie scientifique - 2 places -->
     <div class="callout-attendance">
         <div class="callout-text">
             <h3>🦷 Sortie scientifique – Congrès Dentex 2026</h3>
             <p><strong>Seulement 2 places disponibles</strong> pour les chirurgiens-dentistes de l’EPSP Berriane souhaitant assister au congrès.<br>
-            Vous êtes intéressé(e) à vous rendre à l’événement (en tant que visiteurs) ? Veuillez déposer une <strong>demande d’autorisation d’absence</strong> auprès de l’administration (bureau du Secrétariat du directeur).<br>
-            📌 <strong>Date limite de dépôt : 31 mai 2026</strong> — les dossiers seront étudiés selon l’ordre d’arrivée et les disponibilités du service.</p>
+            Vous souhaitez vous rendre à l’événement (en tant que visiteur) ? Déposez une <strong>demande d’autorisation d’absence</strong> au Secrétariat du directeur.<br>
+            📌 <strong>Date limite : 31 mai 2026</strong> — dossiers étudiés par ordre d’arrivée.</p>
         </div>
-        <div class="limited-badge">🔹 Nous avons la capacité de libérer au maximum 2 individus. 🔹</div>
+        <div class="limited-badge">🔹 Libération maximale : 2 praticiens 🔹</div>
     </div>
 
-    <!-- Tabs per day (programme complet) - MASKED / CLICK TO REVEAL -->
+    <!-- Day tabs: program hidden until click -->
     <div class="tabs-nav">
         <button class="tab-btn active" onclick="switchTab(event, 'day-tue')">📆 MARDI 02 JUIN</button>
         <button class="tab-btn" onclick="switchTab(event, 'day-wed')">📆 MERCREDI 03 JUIN</button>
@@ -445,7 +467,7 @@
     </div>
 
     <div class="main-content">
-        <!-- TUESDAY 02 JUNE (full schedule) -->
+        <!-- Tuesday schedule -->
         <div id="day-tue" class="tab-panel active">
             <table class="schedule-table">
                 <thead><tr><th>Horaire</th><th>Intervenant(e)</th><th>Thème</th><th>Type</th></tr></thead>
@@ -458,92 +480,91 @@
                     <tr><td class="time-cell">13:25 – 13:55</td><td class="speaker-name">Dr. KARIM GALAL MOAWED<br><span>Aesthetic dentist</span></td><td class="theme-text">Diastema closure: is it really just closure?</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr style="background:#fef7e8;"><td class="time-cell">13:30 – 14:30</td><td class="speaker-name">Dr. AHMED TAREK FAROUK<br><span>Masterclass composite</span></td><td class="theme-text">CRAFTING ANTERIOR COMPOSITE MASTERCLASS (atelier pratique)</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
                     <tr><td class="time-cell">14:00 – 14:30</td><td class="speaker-name">Dr. WASSILA DJOUDAD<br><span>Chirurgien dentiste</span></td><td class="theme-text">Le succès simplifié en restauration indirecte</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">15:10 – 15:40</td><td class="speaker-name">Dr. RAMZI BELDJAZIA<br><span>Implantologie & parodontologie</span></td><td class="theme-text">Extraction implantation et mise en esthétique immédiate en secteur esthétique : les outils pour simplifier la procédure?</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">15:45 – 16:15</td><td class="speaker-name">Dr. ZOHEIR BELHADJI<br><span>Maître-assistant CHU Tlemcen</span></td><td class="theme-text">Trop tôt pour un cancer... vraiment? Dépistage précoce des lésions précancéreuses buccales</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">15:10 – 15:40</td><td class="speaker-name">Dr. RAMZI BELDJAZIA<br><span>Implantologie & parodontologie</span></td><td class="theme-text">Extraction implantation et mise en esthétique immédiate en secteur esthétique</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">15:45 – 16:15</td><td class="speaker-name">Dr. ZOHEIR BELHADJI<br><span>Maître-assistant CHU Tlemcen</span></td><td class="theme-text">Trop tôt pour un cancer... vraiment? Dépistage précoce des lésions précancéreuses</td><td><span class="conf-badge">Conférence</span></td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- WEDNESDAY 03 JUNE (full schedule) -->
+        <!-- Wednesday schedule -->
         <div id="day-wed" class="tab-panel">
             <table class="schedule-table">
                 <thead><tr><th>Horaire</th><th>Intervenant(e)</th><th>Thème</th><th>Type</th></tr></thead>
                 <tbody>
-                    <tr style="background:#fef7e8;"><td class="time-cell">09:30 – 13:00</td><td class="speaker-name">Dr. NABIL CHIKHI<br><span>Ex-enseignant implantologie</span></td><td class="theme-text">Masterclass : Prothèse implantaire en 2026. Unitaire, partielle et totale. Evidence-based dentistry</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
+                    <tr style="background:#fef7e8;"><td class="time-cell">09:30 – 13:00</td><td class="speaker-name">Dr. NABIL CHIKHI<br><span>Ex-enseignant implantologie</span></td><td class="theme-text">Masterclass : Prothèse implantaire en 2026 (unitaire, partielle, totale) Evidence-based</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
                     <tr><td class="time-cell">09:55 – 10:15</td><td class="speaker-name">Dr. ABDESSAMAD KHELIL<br><span>Fondateur Khelil's Dental</span></td><td class="theme-text">Communication thérapeutique : l'approche DISC appliquée à l'art dentaire</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">10:20 – 10:40</td><td class="speaker-name">Pr. AHMAD ABOELFADL<br><span>Prothèse, Ain Shams Univ</span></td><td class="theme-text">Digital workflow for esthetic functional rehabilitation</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">10:45 – 11:15</td><td class="speaker-name">Pr. TAHA AHMAD AL-ASADI<br><span>Implantologie master</span></td><td class="theme-text">La nouvelle frontière de la dentisterie: les prothèses fixes sur implants sans vis, flux numérique et analogique</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">11:20 – 11:50</td><td class="speaker-name">Dr. MAHMOUD ELFEKY<br><span>Orthodontiste & IA expert</span></td><td class="theme-text">The digital revolution in dentistry: AI, 3D workflows, 3D printing and the future of patient care</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">10:45 – 11:15</td><td class="speaker-name">Pr. TAHA AHMAD AL-ASADI<br><span>Implantologie master</span></td><td class="theme-text">La nouvelle frontière de la dentisterie : prothèses fixes sur implants sans vis</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">11:20 – 11:50</td><td class="speaker-name">Dr. MAHMOUD ELFEKY<br><span>Orthodontiste & IA expert</span></td><td class="theme-text">The digital revolution in dentistry: AI, 3D workflows, 3D printing</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">11:55 – 12:25</td><td class="speaker-name">MRS. EVA ANNA MARIE JALKANEN<br><span>Physiothérapeute, ergonomie</span></td><td class="theme-text">How can you reach retirement age with your health intact?</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">12:30 – 13:00</td><td class="speaker-name">Dr. SAMIR MEHENNAOUI<br><span>Spécialiste prothèse & esthétique</span></td><td class="theme-text">Full-arch digital impressions: precision, limitations, and innovations</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">12:30 – 13:00</td><td class="speaker-name">Dr. SAMIR MEHENNAOUI<br><span>Spécialiste prothèse & esthétique</span></td><td class="theme-text">Full-arch digital impressions: precision, limitations, innovations</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">14:00 – 14:30</td><td class="speaker-name">Dr. ILHAM SADOUKI<br><span>Parodontologie & implantologie</span></td><td class="theme-text">Le design gingival: clé de voûte de l'esthétique pluridisciplinaire</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr style="background:#fef7e8;"><td class="time-cell">14:00 – 17:00</td><td class="speaker-name">Dr. ZOHEIR BELHADJI<br><span>Chirurgie buccale</span></td><td class="theme-text">THE ART OF INCISION & SUTURING – atelier pratique (incisions et sutures)</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
-                    <tr><td class="time-cell">14:35 – 15:05</td><td class="speaker-name">Pr. HANI OUNSI<br><span>Univ. Sienne, endodontologie</span></td><td class="theme-text">Reprise de traitement ou chirurgie orale : à propos d'un cas clinique</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">15:10 – 15:40</td><td class="speaker-name">Dr. OMAR MAROUANE<br><span>Odontologie conservatrice</span></td><td class="theme-text">Protocole ICON actualisé : vers des résultats plus prédictibles</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr style="background:#fef7e8;"><td class="time-cell">14:00 – 17:00</td><td class="speaker-name">Dr. ZOHEIR BELHADJI<br><span>Chirurgie buccale</span></td><td class="theme-text">THE ART OF INCISION & SUTURING – atelier pratique</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
+                    <tr><td class="time-cell">14:35 – 15:05</td><td class="speaker-name">Pr. HANI OUNSI<br><span>Univ. Sienne, endodontologie</span></td><td class="theme-text">Reprise de traitement ou chirurgie orale : cas clinique</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">15:10 – 15:40</td><td class="speaker-name">Dr. OMAR MAROUANE<br><span>Odontologie conservatrice</span></td><td class="theme-text">Protocole ICON actualisé : résultats prédictibles</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">15:45 – 16:15</td><td class="speaker-name">Dr. AHMED SAAD<br><span>Lecteur esthétique international</span></td><td class="theme-text">Laminated veneer preparation steps</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">16:20 – 16:50</td><td class="speaker-name">Dr. AMAMRA IBRAHIM<br><span>Omnipraticien restauratrice</span></td><td class="theme-text">Less is more : the ultimate sophistication in anterior composite</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">16:20 – 16:50</td><td class="speaker-name">Dr. AMAMRA IBRAHIM<br><span>Omnipraticien restauratrice</span></td><td class="theme-text">Less is more : ultimate sophistication in anterior composite</td><td><span class="conf-badge">Conférence</span></td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- THURSDAY 04 JUNE (full schedule) -->
+        <!-- Thursday schedule -->
         <div id="day-thu" class="tab-panel">
             <table class="schedule-table">
                 <thead><tr><th>Horaire</th><th>Intervenant(e)</th><th>Thème</th><th>Type</th></tr></thead>
                 <tbody>
-                    <tr><td class="time-cell">09:30 – 09:50</td><td class="speaker-name">Pr. ORIOL CANTO NAVES<br><span>Directeur médical UIC</span></td><td class="theme-text">Prosthetic design and restorative materials: key factors in preventing peri-implant bone loss</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr style="background:#fef7e8;"><td class="time-cell">10:00 – 11:00</td><td class="speaker-name">Pr. XAVIER GIMENO MEDINA<br><span>Chirurgie maxillo-faciale</span></td><td class="theme-text">Comparing surgical handpiece vs piezoelectric device using chicken eggs – maxillary sinus window approach</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
+                    <tr><td class="time-cell">09:30 – 09:50</td><td class="speaker-name">Pr. ORIOL CANTO NAVES<br><span>Directeur médical UIC</span></td><td class="theme-text">Prosthetic design and restorative materials: preventing peri-implant bone loss</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr style="background:#fef7e8;"><td class="time-cell">10:00 – 11:00</td><td class="speaker-name">Pr. XAVIER GIMENO MEDINA<br><span>Chirurgie maxillo-faciale</span></td><td class="theme-text">Comparing surgical handpiece vs piezoelectric device (sinus window approach)</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
                     <tr><td class="time-cell">10:20 – 10:40</td><td class="speaker-name">Dr. LINA MAIZA<br><span>Parodontologiste</span></td><td class="theme-text">Aménagement tissus durs et mous au service de l'implantologie</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">10:45 – 11:15</td><td class="speaker-name">Dr. CESAR EMMANUEL<br><span>Spécialiste implantologie & esthétique</span></td><td class="theme-text">Du plan virtuel au sourire final : l'implantologie à l'ère du numérique</td><td><span class="conf-badge">Conférence</span></td></tr>
                     <tr><td class="time-cell">11:55 – 12:25</td><td class="speaker-name">Pr. BRUNO LEITAO<br><span>Chirurgie orale & implantologie</span></td><td class="theme-text">Full-arch concepts and solutions</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">12:55 – 13:25</td><td class="speaker-name">Dr. TAREK EL SAAEDI<br><span>Prosthodontist, implantologist</span></td><td class="theme-text">The digital full arch blueprint: achieving precision and efficiency with the TIE scan</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">13:30 – 14:00</td><td class="speaker-name">Dr. HOSSAM HAMDY<br><span>Periodontist & digital implantology</span></td><td class="theme-text">Orchestrating tissue implant interface in immediate implant placement</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">14:00 – 14:30</td><td class="speaker-name">Dr. MOHAMED YEBKA<br><span>Implantologie & chirurgie maxillo-faciale</span></td><td class="theme-text">How to lead with complex cases in implant therapy: from single implant to full arch</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr style="background:#fef7e8;"><td class="time-cell">14:30 – 15:30</td><td class="speaker-name">Dr. REVERIEN BAVUMIRAGIYE<br><span>Chirurgie orale & implantologie</span></td><td class="theme-text">CBCT + AI decoded : lecture, analyse et interprétation clinique en dentisterie moderne</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
-                    <tr><td class="time-cell">14:35 – 15:05</td><td class="speaker-name">Dr. ABDELRAHMAN ALI HAMOUDA<br><span>PhD Endodontics</span></td><td class="theme-text">The secrets to success in non-surgical retreat</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr><td class="time-cell">15:10 – 15:40</td><td class="speaker-name">Dr. MUSTAPHA REGUIEG-YSSAAD<br><span>Parodontologie & implantologie</span></td><td class="theme-text">Repenser l'implantation immédiate : focus sur la stabilisation latérale pour repousser vos indications</td><td><span class="conf-badge">Conférence</span></td></tr>
-                    <tr style="background:#fef7e8;"><td class="time-cell">15:30 – 16:30</td><td class="speaker-name">Dr. INES HAMZA<br><span>Spécialiste parodontologie</span></td><td class="theme-text">Chirurgie parodontale prédictible : design des lambeaux et sutures esthétiques</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
+                    <tr><td class="time-cell">12:55 – 13:25</td><td class="speaker-name">Dr. TAREK EL SAAEDI<br><span>Prosthodontist, implantologist</span></td><td class="theme-text">The digital full arch blueprint: precision with TIE scan</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">13:30 – 14:00</td><td class="speaker-name">Dr. HOSSAM HAMDY<br><span>Periodontist & digital implantology</span></td><td class="theme-text">Orchestrating tissue implant interface in immediate placement</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">14:00 – 14:30</td><td class="speaker-name">Dr. MOHAMED YEBKA<br><span>Implantologie & chir. maxillo-faciale</span></td><td class="theme-text">How to lead with complex cases: from single implant to full arch</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr style="background:#fef7e8;"><td class="time-cell">14:30 – 15:30</td><td class="speaker-name">Dr. REVERIEN BAVUMIRAGIYE<br><span>Chirurgie orale & implantologie</span></td><td class="theme-text">CBCT + AI decoded : lecture, analyse clinique moderne</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
+                    <tr><td class="time-cell">14:35 – 15:05</td><td class="speaker-name">Dr. ABDELRAHMAN ALI HAMOUDA<br><span>PhD Endodontics</span></td><td class="theme-text">Secrets to success in non-surgical retreat</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr><td class="time-cell">15:10 – 15:40</td><td class="speaker-name">Dr. MUSTAPHA REGUIEG-YSSAAD<br><span>Parodontologie & implantologie</span></td><td class="theme-text">Repenser l'implantation immédiate : stabilisation latérale</td><td><span class="conf-badge">Conférence</span></td></tr>
+                    <tr style="background:#fef7e8;"><td class="time-cell">15:30 – 16:30</td><td class="speaker-name">Dr. INES HAMZA<br><span>Spécialiste parodontologie</span></td><td class="theme-text">Chirurgie parodontale prédictible : lambeaux et sutures esthétiques</td><td><span class="workshop-badge">WORKSHOP</span></td></tr>
                     <tr><td class="time-cell">15:45 – 16:15</td><td class="speaker-name">Dr. AYOUB BENHARIGA<br><span>Fondateur Dental Study Club Oran</span></td><td class="theme-text">Sinus up complication down</td><td><span class="conf-badge">Conférence</span></td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- FRIDAY 05 JUNE (full schedule) -->
+        <!-- Friday schedule -->
         <div id="day-fri" class="tab-panel">
             <table class="schedule-table">
                 <thead><tr><th>Horaire</th><th>Intervenant(e)</th><th>Thème</th><th>Type</th></tr></thead>
                 <tbody>
-                    <tr style="background:#fef7e8;"><td class="time-cell">09:30 – 17:00</td><td class="speaker-name">Dr. YOUSRA CHARAOUI<br><span>Formatrice en toxine botulique</span></td><td class="theme-text">Botox en médecine dentaire "Entre fonction et esthétique" – indications curatives (bruxisme, douleurs oro-faciales) et esthétiques (rides, sourire gingival)</td><td><span class="workshop-badge">WORKSHOP INTENSIF</span></td></tr>
+                    <tr style="background:#fef7e8;"><td class="time-cell">09:30 – 17:00</td><td class="speaker-name">Dr. YOUSRA CHARAOUI<br><span>Formatrice en toxine botulique</span></td><td class="theme-text">Botox en médecine dentaire : fonction et esthétique (bruxisme, douleurs, sourire gingival)</td><td><span class="workshop-badge">WORKSHOP INTENSIF</span></td></tr>
                 </tbody>
             </table>
         </div>
 
-        <!-- CONTACT CARD with GO TO WEBSITE button -->
+        <!-- Contact + registration button block -->
         <div class="contact-card">
             <div class="contact-grid">
                 <div class="admin-info">
                     <h4>📋 Modalités de participation – Demande d’autorisation</h4>
-                    <p><strong>📍 Dépôt des demandes :</strong> Secrétariat du directeur / DSS</p>
-                    <p><strong>📄 Pièces à fournir :</strong> Lettre de demande d’autorisation d’absence mentionnant les journées souhaitées (02 au 05 juin 2026).</p>
-                    <p><strong>🗓️ Date limite impérative :</strong> <strong>31 mai 2026</strong> – <strong>2 places disponibles</strong> (ordre d’arrivée et service).</p>
+                    <p><strong>📍 Dépôt :</strong> Secrétariat du directeur / DSS (EPSP Berriane)</p>
+                    <p><strong>📄 Pièces :</strong> Lettre de demande d’autorisation d’absence (jours souhaités : 02-05 juin 2026).</p>
+                    <p><strong>🗓️ Date limite :</strong> <strong>31 mai 2026</strong> – <strong>2 places disponibles</strong> (premier arrivé, premier servi).</p>
                     <p><strong>📞 Renseignements :</strong> Secrétariat / 029 24 12 44</p>
-                    <div class="position-highlight">🎯 Une fois la demande validée par l’administration, le praticien bénéficie d’une autorisation de sortie pour se rendre au congrès.</div>
+                    <div class="position-highlight">🎯 Validation administrative → autorisation de sortie pour assister au congrès.</div>
                 </div>
                 <div class="button-wrapper">
-                    <p>🌐 Inscription et programme complet</p>
+                    <p>🌐 Programme officiel & inscription</p>
                     <a href="https://www.dentex.dz/fr/visiter/?utm_source=paid_search&utm_medium=google&utm_campaign=&utm_content=&utm_term=MOF&actioncode=100100&gad_source=1&gad_campaignid=23714569639&gbraid=0AAAABDJ7jjo1ZdGhVneIGBlvfrY0Vj3Zl&gclid=CjwKCAjwidXQBhAZEiwA4egw6LabtUEmphLW7yNNxUo_Ydedk2yERW81lQgSUGxn8FsW6sUZimo85BoCIPgQAvD_BwE" target="_blank" class="web-button">🔗 Go to the official website</a>
-                    <p style="font-size:0.7rem;">Accès libre – Réservation recommandée</p>
+                    <p style="font-size:0.7rem;">Accès libre – inscription recommandée</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer Établissement EPSP Berriane -->
     <div class="footer-wrapper">
         <div class="footer-text">
             <span class="ar">المؤسسة العمومية للصحة الجوارية ببريان – EPSP Berriane</span>
             <span style="color:#94a3b8; margin:0 8px;">|</span>
-            <span>Direction de la Santé et de la Population – Wilaya de Ghardaïa</span>
+            <span>Direction de la Santé – Wilaya de Ghardaïa</span>
         </div>
         <div class="footer-subline">
             © 2026 • Sortie scientifique – الملتقى العالمي دونتاكس
@@ -560,7 +581,6 @@
         document.getElementById(tabId).classList.add('active');
         event.currentTarget.classList.add('active');
     }
-    
     (function preventDevTools() {
         document.addEventListener('keydown', function(e) {
             if (e.keyCode === 123 || (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) || (e.ctrlKey && e.keyCode === 85)) {
