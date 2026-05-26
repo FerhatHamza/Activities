@@ -374,22 +374,27 @@
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
 
-        /* Footer */
+        /* Footer EPSP Berriane only */
         .footer-wrapper {
             background: #fafefd;
             border-top: 1px solid var(--border-color);
             padding: 24px 44px;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             flex-wrap: wrap;
             gap: 16px;
             font-size: 0.85rem;
+            text-align: center;
         }
         .footer-text .ar {
             font-family: 'Cairo', sans-serif;
             font-weight: 700;
             color: var(--teal-primary);
+        }
+        .footer-subline {
+            font-weight: 500;
+            color: var(--text-muted);
         }
 
         @media (max-width: 850px) {
@@ -458,7 +463,7 @@
         <div class="limited-badge">🔹 Libération maximale : 2 praticiens 🔹</div>
     </div>
 
-    <!-- Day tabs: program hidden until click -->
+    <!-- Day tabs: program hidden until click on date -->
     <div class="tabs-nav">
         <button class="tab-btn active" onclick="switchTab(event, 'day-tue')">📆 MARDI 02 JUIN</button>
         <button class="tab-btn" onclick="switchTab(event, 'day-wed')">📆 MERCREDI 03 JUIN</button>
@@ -467,7 +472,7 @@
     </div>
 
     <div class="main-content">
-        <!-- Tuesday schedule -->
+        <!-- Tuesday schedule (hidden until tab click, but active by default shows it) -->
         <div id="day-tue" class="tab-panel active">
             <table class="schedule-table">
                 <thead><tr><th>Horaire</th><th>Intervenant(e)</th><th>Thème</th><th>Type</th></tr></thead>
@@ -545,7 +550,7 @@
             <div class="contact-grid">
                 <div class="admin-info">
                     <h4>📋 Modalités de participation – Demande d’autorisation</h4>
-                    <p><strong>📍 Dépôt :</strong> Secrétariat du directeur / DSS (EPSP Berriane)</p>
+                    <p><strong>📍 Dépôt :</strong> Secrétariat du directeur / EPSP Berriane</p>
                     <p><strong>📄 Pièces :</strong> Lettre de demande d’autorisation d’absence (jours souhaités : 02-05 juin 2026).</p>
                     <p><strong>🗓️ Date limite :</strong> <strong>31 mai 2026</strong> – <strong>2 places disponibles</strong> (premier arrivé, premier servi).</p>
                     <p><strong>📞 Renseignements :</strong> Secrétariat / 029 24 12 44</p>
@@ -560,11 +565,10 @@
         </div>
     </div>
 
+    <!-- Footer only with EPSP Berriane (Direction de la Santé removed) -->
     <div class="footer-wrapper">
         <div class="footer-text">
             <span class="ar">المؤسسة العمومية للصحة الجوارية ببريان – EPSP Berriane</span>
-            <span style="color:#94a3b8; margin:0 8px;">|</span>
-            <span>Direction de la Santé – Wilaya de Ghardaïa</span>
         </div>
         <div class="footer-subline">
             © 2026 • Sortie scientifique – الملتقى العالمي دونتاكس
