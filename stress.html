@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact du Stress sur la Fonction Cardiovasculaire</title>
+    <style>
+        :root {
+            --bg: #f5f0eb;
+            --surface: #fffefb;
+            --surface-alt: #faf7f2;
+            --text: #2c2416;
+            --text-secondary: #5c4f3a;
+            --accent: #b8463e;
+            --accent-light: #d4746b;
+            --accent-dark: #8b2e28;
+            --blue: #3a6b8c;
+            --blue-light: #5b9cc4;
+            --blue-dark: #1e3f54;
+            --gold: #b8953a;
+            --gold-light: #d4b65b;
+            --border: #e0d5c5;
+            --shadow-sm: 0 1px 3px rgba(44, 36, 22, 0.06);
+            --shadow-md: 0 4px 16px rgba(44, 36, 22, 0.10);
+            --shadow-lg: 0 12px 40px rgba(44, 36, 22, 0.14);
+            --radius-sm: 8px;
+            --radius: 14px;
+            --radius-lg: 20px;
+            --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            --font-body: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            --font-heading: 'Georgia', 'Times New Roman', serif;
+            --font-mono: 'Cascadia Code', 'Fira Code', 'JetBrains Mono', monospace;
+            --sidebar-width: 260px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            display: flex;
+            min-height: 100vh;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* SIDEBAR */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: var(--surface);
+            border-right: 1px solid var(--border);
+            padding: 28px 18px 28px 22px;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            transition: transform var(--transition);
+        }
+        .sidebar-logo {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 16px;
+            letter-spacing: 0.02em;
+            line-height: 1.3;
+        }
+        .sidebar-logo span {
+            display: block;
+            font-size: 0.7rem;
+            font-family: var(--font-body);
+            color: var(--text-secondary);
+            font-weight: 400;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+        .sidebar-nav {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .sidebar-nav a {
+            display: block;
+            padding: 10px 14px;
+            text-decoration: none;
+            color: var(--text-secondary);
+            border-radius: var(--radius-sm);
+            font-size: 0.88rem;
+            transition: all var(--transition);
+            position: relative;
+            font-weight: 500;
+            letter-spacing: 0.01em;
+        }
+        .sidebar-nav a:hover {
+            background: #fdf0ee;
+            color: var(--accent);
+        }
+        .sidebar-nav a.active {
+            background: #fef5f4;
+            color: var(--accent);
+            font-weight: 600;
+            box-shadow: inset 3px 0 0 var(--accent);
+        }
+        .sidebar-nav a.sub {
+            padding-left: 32px;
+            font-size: 0.8rem;
+            color: #6b5e4a;
+        }
+        .sidebar-nav a.sub:hover {
+            color: var(--accent-dark);
+            background: #fdf5f3;
+        }
+        .sidebar-nav a.sub.active {
+            box-shadow: inset 3px 0 0 var(--accent-light);
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        /* MAIN */
+        .main {
+            margin-left: var(--sidebar-width);
+            flex: 1;
+            padding: 40px 48px 80px;
+            max-width: 960px;
+            width: 100%;
+        }
+
+        /* SECTION CARDS */
+        .section {
+            margin-bottom: 40px;
+            scroll-margin-top: 30px;
+        }
+        .card {
+            background: var(--surface);
+            border-radius: var(--radius-lg);
+            padding: 36px 40px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            transition: box-shadow var(--transition);
+            position: relative;
+        }
+        .card:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        .card h2 {
+            font-family: var(--font-heading);
+            font-size: 1.65rem;
+            color: var(--accent-dark);
+            margin-bottom: 8px;
+            letter-spacing: 0.01em;
+        }
+        .card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            color: #3d2e1a;
+            margin: 22px 0 8px;
+            letter-spacing: 0.01em;
+        }
+        .card h4 {
+            font-size: 1rem;
+            color: var(--accent);
+            margin: 16px 0 6px;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+        }
+        .card p,
+        .card li {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.75;
+        }
+        .card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .card ul li {
+            padding: 3px 0 3px 22px;
+            position: relative;
+        }
+        .card ul li::before {
+            content: '';
+            position: absolute;
+            left: 4px;
+            top: 11px;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--accent-light);
+        }
+        .card ol {
+            padding-left: 22px;
+            color: var(--text-secondary);
+        }
+        .card ol li {
+            margin-bottom: 4px;
+        }
+
+        /* FORMULA BOX */
+        .formula-box {
+            background: linear-gradient(135deg, #fdf8f3 0%, #fef9f5 100%);
+            border: 2px solid var(--gold-light);
+            border-radius: var(--radius);
+            padding: 20px 24px;
+            margin: 18px 0;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #3d2e1a;
+            letter-spacing: 0.03em;
+            box-shadow: var(--shadow-sm);
+        }
+        .formula-box .eq {
+            font-size: 1.35rem;
+            color: var(--accent-dark);
+            letter-spacing: 0.04em;
+        }
+        .formula-box .legend {
+            font-size: 0.78rem;
+            color: var(--text-secondary);
+            margin-top: 8px;
+            font-weight: 400;
+            font-family: var(--font-body);
+            letter-spacing: 0.02em;
+        }
+
+        /* CASCADE */
+        .cascade {
+            background: #fdfcfa;
+            border: 1px dashed var(--border);
+            border-radius: var(--radius);
+            padding: 20px 22px;
+            margin: 16px 0;
+            text-align: center;
+            font-family: var(--font-mono);
+            font-size: 0.82rem;
+            color: #3d2e1a;
+            line-height: 2;
+            letter-spacing: 0.02em;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        .cascade .arrow {
+            color: var(--accent);
+            font-weight: 700;
+            margin: 0 6px;
+        }
+        .cascade .node {
+            display: inline-block;
+            background: #fff;
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            padding: 5px 14px;
+            margin: 0 3px;
+            font-weight: 500;
+            color: #3d2e1a;
+            white-space: nowrap;
+        }
+        .cascade .node.highlight {
+            background: #fef5f4;
+            border-color: var(--accent-light);
+            color: var(--accent-dark);
+            font-weight: 600;
+        }
+        .cascade .node.calcium {
+            background: #fff8f0;
+            border-color: #e8b86d;
+            color: #7a4e1b;
+            font-weight: 600;
+        }
+
+        /* HIGHLIGHT BOX */
+        .highlight-box {
+            background: #fef9f5;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+            padding: 14px 20px;
+            margin: 16px 0;
+            font-weight: 500;
+            color: var(--accent-dark);
+            font-size: 0.95rem;
+        }
+        .highlight-box.blue {
+            background: #f4f8fb;
+            border-left-color: var(--blue);
+            color: var(--blue-dark);
+        }
+
+        /* STEP LIST */
+        .step-list {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+        .step-list li {
+            counter-increment: step;
+            padding: 10px 0 10px 44px;
+            position: relative;
+            margin-bottom: 6px;
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+        }
+        .step-list li::before {
+            content: counter(step);
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            font-weight: 700;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-body);
+        }
+
+        /* BADGE */
+        .badge {
+            display: inline-block;
+            background: #fef5f4;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 3px 10px;
+            border-radius: 12px;
+            letter-spacing: 0.03em;
+            margin: 0 4px;
+        }
+        .badge.blue {
+            background: #f0f5f9;
+            color: var(--blue);
+        }
+        .badge.gold {
+            background: #fdf8f0;
+            color: #8b6d2e;
+        }
+
+        /* TWO COLUMN */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 16px 0;
+        }
+        @media (max-width: 700px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* INTRO HERO */
+        .hero {
+            background: linear-gradient(135deg, #fef9f5 0%, #fdf5f0 50%, #fefaf7 100%);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 44px 48px;
+            margin-bottom: 36px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: -60px;
+            right: -60px;
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(184, 70, 62, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+        }
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            color: var(--accent-dark);
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .subtitle {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+        .hero .intro-list {
+            margin-top: 16px;
+            position: relative;
+            z-index: 1;
+            list-style: none;
+        }
+        .hero .intro-list li {
+            padding: 5px 0 5px 24px;
+            position: relative;
+            color: var(--text-secondary);
+            font-size: 0.93rem;
+        }
+        .hero .intro-list li::before {
+            content: '◆';
+            position: absolute;
+            left: 0;
+            top: 5px;
+            color: var(--accent-light);
+            font-size: 0.6rem;
+        }
+
+        /* MOBILE */
+        .mobile-toggle {
+            display: none;
+            position: fixed;
+            top: 14px;
+            left: 14px;
+            z-index: 200;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            box-shadow: var(--shadow-md);
+            align-items: center;
+            justify-content: center;
+        }
+        @media (max-width: 768px) {
+            .sidebar {
+                transform: translateX(-100%);
+                box-shadow: var(--shadow-lg);
+            }
+            .sidebar.open {
+                transform: translateX(0);
+            }
+            .main {
+                margin-left: 0;
+                padding: 24px 16px 60px;
+            }
+            .mobile-toggle {
+                display: flex;
+            }
+            .card {
+                padding: 24px 18px;
+            }
+            .hero {
+                padding: 28px 20px;
+            }
+            .hero h1 {
+                font-size: 1.5rem;
+            }
+            .cascade {
+                font-size: 0.7rem;
+                padding: 14px 10px;
+            }
+        }
+        @media (min-width: 769px) {
+            .sidebar {
+                transform: translateX(0) !important;
+            }
+        }
+
+        /* PRINT */
+        @media print {
+            .sidebar,
+            .mobile-toggle {
+                display: none !important;
+            }
+            .main {
+                margin-left: 0;
+                padding: 0;
+            }
+            .card,
+            .hero {
+                box-shadow: none;
+                break-inside: avoid;
+                page-break-inside: avoid;
+            }
+        }
+
+        /* SCROLLBAR */
+        .sidebar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .sidebar::-webkit-scrollbar-thumb {
+            background: #d5c8b5;
+            border-radius: 4px;
+        }
+
+        /* SVG DIAGRAM INLINE */
+        .diagram-container {
+            text-align: center;
+            margin: 20px 0;
+            overflow-x: auto;
+        }
+        .diagram-container svg {
+            max-width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- MOBILE TOGGLE -->
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu" title="Menu">☰</button>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-logo">
+            Stress & Cardiovasculaire
+            <span>Présentation interactive</span>
+        </div>
+        <ul class="sidebar-nav">
+            <li><a href="#intro" class="active">Introduction</a></li>
+            <li><a href="#dc">I. Débit cardiaque</a></li>
+            <li><a href="#fc" class="sub">II. Fréquence cardiaque</a></li>
+            <li><a href="#ves" class="sub">III. Volume d'éjection</a></li>
+            <li><a href="#contraction">IV. Contraction cardiaque</a></li>
+            <li><a href="#pa-court">V. Pression artérielle (court terme)</a></li>
+            <li><a href="#pa-long">VI. Pression artérielle (long terme)</a></li>
+            <li><a href="#vasomotricite">VII. Vasomotricité</a></li>
+            <li><a href="#conclusion">Conclusion</a></li>
+        </ul>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main class="main" id="mainContent">
+
+        <!-- HERO / INTRODUCTION -->
+        <section class="section" id="intro">
+            <div class="hero">
+                <h1>Impact du stress sur les mécanismes physiologiques et moléculaires de la fonction cardiovasculaire</h1>
+                <p class="subtitle">Une exploration des réponses adaptatives du système cardiovasculaire face au stress aigu et chronique.</p>
+                <ul class="intro-list">
+                    <li>Modulation de la <strong>fréquence cardiaque</strong></li>
+                    <li>Modification du <strong>volume d'éjection systolique</strong></li>
+                    <li>Augmentation du <strong>débit cardiaque</strong></li>
+                    <li>Régulation de la <strong>pression artérielle</strong></li>
+                    <li>Changements du <strong>tonus vasculaire</strong></li>
+                </ul>
+                <p style="margin-top:14px;color:var(--text-secondary);font-size:0.9rem;">
+                    Ces réponses impliquent une coordination entre le <span class="badge">système nerveux autonome</span>, les <span class="badge blue">hormones circulantes</span> et les <span class="badge gold">mécanismes moléculaires intracellulaires</span>.
+                </p>
+            </div>
+        </section>
+
+        <!-- I. DÉBIT CARDIAQUE -->
+        <section class="section" id="dc">
+            <div class="card">
+                <h2>I. Le débit cardiaque : principal mécanisme d'adaptation</h2>
+                <p>Le <strong>débit cardiaque</strong> représente le volume total de sang éjecté par le cœur en une minute. Chez un animal soumis à un stress, son augmentation constitue l'une des réponses physiologiques les plus rapides.</p>
+                <div class="formula-box">
+                    <div class="eq">DC = FC × VES</div>
+                    <div class="legend">
+                        <strong>DC</strong> = débit cardiaque &nbsp;|&nbsp;
+                        <strong>FC</strong> = fréquence cardiaque &nbsp;|&nbsp;
+                        <strong>VES</strong> = volume d'éjection systolique
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- II. FRÉQUENCE CARDIAQUE -->
+        <section class="section" id="fc">
+            <div class="card">
+                <h2>II. Effets du stress sur la fréquence cardiaque</h2>
+                <h3>1. Contrôle physiologique</h3>
+                <p>La fréquence cardiaque est déterminée par l'activité spontanée des <strong>cellules pacemaker du nœud sino-auriculaire</strong>. Ces cellules génèrent spontanément des potentiels d'action grâce à des canaux sodiques spécifiques, des canaux calciques et des courants ioniques de dépolarisation lente.</p>
+
+                <h3>2. Activation sympathique pendant le stress</h3>
+                <p>Le stress active les centres hypothalamiques qui stimulent le système nerveux sympathique. Les fibres sympathiques cardiaques libèrent la <strong>noradrénaline</strong>, tandis que la médullosurrénale libère l'<strong>adrénaline</strong>. Ces catécholamines atteignent les cellules du nœud sino-auriculaire.</p>
+
+                <h3>3. Mécanismes moléculaires</h3>
+                <p>Les catécholamines se fixent sur les <strong>récepteurs β₁-adrénergiques</strong>.</p>
+                <div class="cascade">
+                    <span class="node highlight">Adrénaline</span>
+                    <span class="arrow">→</span>
+                    <span class="node">Récepteur β₁</span>
+                    <span class="arrow">→</span>
+                    <span class="node">Protéine Gs</span>
+                    <span class="arrow">→</span>
+                    <span class="node">Adénylate cyclase</span>
+                    <span class="arrow">→</span>
+                    <span class="node highlight">AMPc</span>
+                    <span class="arrow">→</span>
+                    <span class="node">Protéine kinase A</span>
+                </div>
+                <p style="margin-top:12px;">L'augmentation de l'AMP cyclique accélère l'ouverture des canaux ioniques, augmente la vitesse de dépolarisation spontanée et réduit le temps entre deux potentiels d'action.</p>
+                <div class="highlight-box">
+                    ⚡ <strong>Conséquence : Tachycardie</strong> — La fréquence cardiaque augmente rapidement afin d'élever le débit cardiaque.
+                </div>
+            </div>
+        </section>
+
+        <!-- III. VOLUME D'ÉJECTION SYSTOLIQUE -->
+        <section class="section" id="ves">
+            <div class="card">
+                <h2>III. Effets du stress sur le volume d'éjection systolique (VES)</h2>
+                <p>Le <strong>volume d'éjection systolique</strong> correspond à la quantité de sang expulsée par le ventricule lors de chaque contraction. Il dépend de la <strong>contractilité myocardique</strong>, de la <strong>précharge</strong> et de la <strong>postcharge</strong>.</p>
+
+                <h3>1. Augmentation de la contractilité</h3>
+                <p>Sous l'effet du stress, les récepteurs β₁ cardiaques sont activés, l'AMP cyclique augmente et la protéine kinase A phosphoryle plusieurs protéines intracellulaires.</p>
+
+                <h3>2. Rôle central du calcium</h3>
+                <p>Le calcium est l'élément central de la contraction cardiaque. L'activation sympathique provoque :</p>
+                <ul>
+                    <li>Une ouverture accrue des <strong>canaux calciques de type L</strong></li>
+                    <li>Une entrée plus importante de calcium</li>
+                    <li>Une libération massive de calcium par le <strong>réticulum sarcoplasmique</strong></li>
+                </ul>
+                <p>La concentration intracellulaire en calcium augmente fortement.</p>
+
+                <div class="highlight-box">
+                    💪 <strong>Conséquence :</strong> L'augmentation du calcium renforce la contraction ventriculaire, augmente la force d'éjection et accroît le volume d'éjection systolique.
+                </div>
+            </div>
+        </section>
+
+        <!-- IV. CONTRACTION CARDIAQUE -->
+        <section class="section" id="contraction">
+            <div class="card">
+                <h2>IV. Mécanismes de la contraction du muscle cardiaque</h2>
+                <h3>Couplage excitation-contraction</h3>
+                <p>La contraction cardiaque repose sur le couplage entre l'activité électrique et l'activité mécanique.</p>
+                <ol class="step-list">
+                    <li><strong>Dépolarisation membranaire</strong> — Le potentiel d'action atteint le cardiomyocyte ; les canaux calciques voltage-dépendants s'ouvrent.</li>
+                    <li><strong>Entrée du calcium</strong> — Une petite quantité de calcium pénètre dans la cellule.</li>
+                    <li><strong>Libération induite du calcium</strong> — Ce calcium active les récepteurs à ryanodine du réticulum sarcoplasmique ; une grande quantité de calcium est libérée dans le cytoplasme.</li>
+                    <li><strong>Interaction actine-myosine</strong> — Le calcium se fixe sur la troponine C, déplace la tropomyosine, expose les sites actifs de l'actine et permet la formation des ponts actine-myosine. <em>La contraction se produit.</em></li>
+                    <li><strong>Relaxation</strong> — Le calcium est recapté par le réticulum sarcoplasmique et expulsé hors de la cellule. La concentration cytoplasmique diminue. <em>Le muscle se relâche.</em></li>
+                </ol>
+                <div class="highlight-box blue">
+                    🔬 <strong>Effets du stress :</strong> L'activation sympathique augmente l'entrée du calcium, augmente sa libération et accélère sa recapture. Le cœur se contracte <strong>plus fortement et plus rapidement</strong>.
+                </div>
+
+                <!-- SVG Diagramme du couplage excitation-contraction -->
+                <div class="diagram-container">
+                    <svg viewBox="0 0 700 280" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;">
+                        <defs>
+                            <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+                                <polygon points="0 0, 8 3, 0 6" fill="#b8463e" />
+                            </marker>
+                            <linearGradient id="gradCa" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" stop-color="#fdf0e8" />
+                                <stop offset="100%" stop-color="#fef5f0" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Membrane -->
+                        <rect x="30" y="20" width="640" height="200" rx="16" fill="none" stroke="#d5c8b5" stroke-width="2.5" stroke-dasharray="8,4" />
+                        <text x="350" y="14" text-anchor="middle" fill="#8b7355" font-size="11" font-family="'Segoe UI',sans-serif">Membrane du cardiomyocyte</text>
+
+                        <!-- Canal Ca L-type -->
+                        <rect x="100" y="30" width="90" height="34" rx="17" fill="#fff" stroke="#b8463e" stroke-width="2" />
+                        <text x="145" y="52" text-anchor="middle" fill="#b8463e" font-size="10" font-weight="600">Ca²⁺ L-type</text>
+                        <!-- Flèche entrée Ca -->
+                        <line x1="145" y1="64" x2="145" y2="100" stroke="#e8b86d" stroke-width="2.5" marker-end="url(#arrowhead)" />
+                        <text x="155" y="88" fill="#b8953a" font-size="9">Ca²⁺</text>
+
+                        <!-- Réticulum sarcoplasmique -->
+                        <rect x="220" y="100" width="180" height="80" rx="12" fill="url(#gradCa)" stroke="#e8b86d" stroke-width="2" />
+                        <text x="310" y="135" text-anchor="middle" fill="#7a4e1b" font-size="11" font-weight="600">Réticulum</text>
+                        <text x="310" y="152" text-anchor="middle" fill="#7a4e1b" font-size="11" font-weight="600">Sarcoplasmique</text>
+                        <!-- RyR -->
+                        <rect x="320" y="168" width="55" height="20" rx="10" fill="#fef5f0" stroke="#e8b86d" stroke-width="1.5" />
+                        <text x="347" y="182" text-anchor="middle" fill="#8b5e2b" font-size="8" font-weight="600">RyR</text>
+
+                        <!-- Flèche libération massive Ca -->
+                        <line x1="347" y1="180" x2="400" y2="210" stroke="#e8b86d" stroke-width="3" marker-end="url(#arrowhead)" />
+                        <text x="380" y="202" fill="#b8953a" font-size="9">Ca²⁺ massif</text>
+
+                        <!-- Troponine / Actine-Myosine -->
+                        <rect x="440" y="185" width="160" height="55" rx="10" fill="#fef9f5" stroke="#b8463e" stroke-width="1.5" />
+                        <text x="520" y="208" text-anchor="middle" fill="#8b2e28" font-size="10" font-weight="600">Troponine C</text>
+                        <text x="520" y="225" text-anchor="middle" fill="#8b2e28" font-size="9">Actine–Myosine</text>
+
+                        <!-- Flèche Ca vers troponine -->
+                        <line x1="420" y1="212" x2="438" y2="212" stroke="#e8b86d" stroke-width="2" marker-end="url(#arrowhead)" />
+
+                        <!-- SERCA / recapture -->
+                        <rect x="250" y="200" width="70" height="22" rx="11" fill="#f4f8fb" stroke="#3a6b8c" stroke-width="1.5" />
+                        <text x="285" y="215" text-anchor="middle" fill="#1e3f54" font-size="8" font-weight="600">SERCA</text>
+                        <line x1="285" y1="200" x2="285" y2="182" stroke="#3a6b8c" stroke-width="1.8" marker-end="url(#arrowhead)" />
+                        <text x="270" y="194" fill="#3a6b8c" font-size="8">recapture</text>
+
+                        <!-- Légende stress -->
+                        <rect x="480" y="30" width="160" height="50" rx="10" fill="#fef5f4" stroke="#d4746b" stroke-width="1" />
+                        <text x="560" y="50" text-anchor="middle" fill="#8b2e28" font-size="9" font-weight="600">Stress → SNS</text>
+                        <text x="560" y="66" text-anchor="middle" fill="#8b2e28" font-size="8">↑ entrée Ca²⁺, ↑ libération</text>
+                        <line x1="480" y1="55" x2="192" y2="48" stroke="#d4746b" stroke-width="1.2" stroke-dasharray="5,3" />
+                    </svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- V. PRESSION ARTÉRIELLE COURT TERME -->
+        <section class="section" id="pa-court">
+            <div class="card">
+                <h2>V. Régulation de la pression artérielle à court terme</h2>
+                <p>La pression artérielle dépend principalement de deux paramètres :</p>
+                <div class="formula-box">
+                    <div class="eq">PA = DC × RPT</div>
+                    <div class="legend">
+                        <strong>PA</strong> = pression artérielle &nbsp;|&nbsp;
+                        <strong>DC</strong> = débit cardiaque &nbsp;|&nbsp;
+                        <strong>RPT</strong> = résistance périphérique totale
+                    </div>
+                </div>
+                <div class="two-col">
+                    <div>
+                        <h4>Contrôle nerveux rapide</h4>
+                        <p>La régulation à court terme est dominée par le <strong>système nerveux sympathique</strong> et le <strong>système nerveux parasympathique</strong>.</p>
+                    </div>
+                    <div>
+                        <h4>Réflexe barorécepteur</h4>
+                        <p>Les barorécepteurs situés dans le <strong>sinus carotidien</strong> et la <strong>crosse aortique</strong> détectent les variations de pression artérielle.</p>
+                    </div>
+                </div>
+                <div class="highlight-box">
+                    🚀 <strong>Réponse au stress :</strong> Le centre cardiovasculaire bulbaire augmente l'activité sympathique et la libération de catécholamines → tachycardie, ↑ VES, vasoconstriction. La pression artérielle augmente rapidement <em>(en quelques secondes)</em>.
+                </div>
+            </div>
+        </section>
+
+        <!-- VI. PRESSION ARTÉRIELLE LONG TERME -->
+        <section class="section" id="pa-long">
+            <div class="card">
+                <h2>VI. Régulation de la pression artérielle à long terme</h2>
+                <p>La régulation à long terme dépend principalement du <strong>rein</strong> et du système rénine-angiotensine-aldostérone.</p>
+                <h3>Cascade hormonale</h3>
+                <div class="cascade">
+                    <span class="node">Angiotensinogène</span>
+                    <span class="arrow">→</span>
+                    <span class="node">Angiotensine I</span>
+                    <span class="arrow">→</span>
+                    <span class="node highlight">Angiotensine II</span>
+                </div>
+                <h4>Actions de l'angiotensine II</h4>
+                <ul>
+                    <li>Augmente la <strong>vasoconstriction</strong></li>
+                    <li>Stimule la sécrétion d'<strong>aldostérone</strong></li>
+                    <li>Augmente la <strong>rétention de sodium</strong></li>
+                    <li>Favorise la <strong>rétention d'eau</strong></li>
+                </ul>
+                <div class="highlight-box blue">
+                    🕐 <strong>Conséquence :</strong> Augmentation du volume sanguin, du retour veineux, du VES, du débit cardiaque et de la pression artérielle. Cette régulation agit sur <strong>plusieurs heures ou plusieurs jours</strong>.
+                </div>
+            </div>
+        </section>
+
+        <!-- VII. VASOMOTRICITÉ -->
+        <section class="section" id="vasomotricite">
+            <div class="card">
+                <h2>VII. Effets du stress sur la vasomotricité</h2>
+                <p>La <strong>vasomotricité</strong> correspond à la capacité des vaisseaux sanguins à modifier leur diamètre. Elle dépend de l'activité des cellules musculaires lisses de la média vasculaire.</p>
+
+                <div class="two-col">
+                    <div>
+                        <h3>Vasoconstriction</h3>
+                        <p>Les fibres sympathiques libèrent la <strong>noradrénaline</strong> qui se fixe sur les <strong>récepteurs α₁-adrénergiques</strong>.</p>
+                        <div class="cascade" style="font-size:0.75rem;">
+                            <span class="node">Récepteur α₁</span>
+                            <span class="arrow">→</span>
+                            <span class="node">Protéine Gq</span>
+                            <span class="arrow">→</span>
+                            <span class="node">Phospholipase C</span>
+                        </div>
+                        <p style="margin-top:8px;">La phospholipase C produit l'<strong>IP₃</strong> et le <strong>DAG</strong>. L'IP₃ libère le calcium intracellulaire → activation calmoduline → kinase des chaînes légères de la myosine → contraction.</p>
+                        <p><strong>→ Vasoconstriction, ↑ RPT, ↑ PA</strong></p>
+                    </div>
+                    <div>
+                        <h3>Vasodilatation</h3>
+                        <p>Dans les muscles squelettiques et le cœur, l'adrénaline active les <strong>récepteurs β₂</strong>.</p>
+                        <div class="cascade" style="font-size:0.75rem;">
+                            <span class="node">Récepteur β₂</span>
+                            <span class="arrow">→</span>
+                            <span class="node">Protéine Gs</span>
+                            <span class="arrow">→</span>
+                            <span class="node highlight">AMPc</span>
+                        </div>
+                        <p style="margin-top:8px;">L'AMP cyclique inhibe l'activité contractile du muscle lisse. La concentration fonctionnelle du calcium diminue → relaxation.</p>
+                        <p><strong>→ Vasodilatation, ↑ débit local, ↑ O₂</strong></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCLUSION -->
+        <section class="section" id="conclusion">
+            <div class="card" style="background:linear-gradient(135deg,#fef9f5 0%,#fdf6f1 100%);border:2px solid var(--accent-light);">
+                <h2>Conclusion générale</h2>
+                <p>Face au stress, l'organisme mobilise rapidement plusieurs mécanismes physiologiques et moléculaires afin d'augmenter les performances cardiovasculaires.</p>
+                <ul>
+                    <li>L'<strong>activation sympathique</strong> et la libération de <strong>catécholamines</strong> augmentent la fréquence cardiaque, le volume d'éjection systolique et donc le débit cardiaque.</li>
+                    <li>La <strong>modulation de la vasomotricité artérielle</strong> et l'activation du <strong>système rénine-angiotensine-aldostérone</strong> permettent de maintenir la pression artérielle et d'assurer une perfusion optimale des tissus.</li>
+                </ul>
+                <p style="margin-top:14px;">Au niveau cellulaire, ces réponses reposent essentiellement sur :</p>
+                <div class="cascade" style="background:#fffefb;">
+                    <span class="node">Récepteurs adrénergiques</span>
+                    <span class="arrow">→</span>
+                    <span class="node highlight">AMP cyclique</span>
+                    <span class="arrow">→</span>
+                    <span class="node">Protéines kinases</span>
+                    <span class="arrow">→</span>
+                    <span class="node calcium">Calcium intracellulaire</span>
+                </div>
+                <p style="text-align:center;margin-top:16px;font-weight:600;color:var(--accent-dark);">
+                    Le calcium est le véritable messager central de l'adaptation cardiovasculaire au stress.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <script>
+        (function() {
+            const sidebar = document.getElementById('sidebar');
+            const mobileToggle = document.getElementById('mobileToggle');
+            const navLinks = sidebar.querySelectorAll('a');
+            const sections = document.querySelectorAll('.section');
+            const mainContent = document.getElementById('mainContent');
+
+            // Mobile toggle
+            mobileToggle.addEventListener('click', () => {
+                sidebar.classList.toggle('open');
+            });
+
+            // Close sidebar on mobile when clicking a link
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth <= 768) {
+                        sidebar.classList.remove('open');
+                    }
+                });
+            });
+
+            // Close sidebar when clicking outside on mobile
+            document.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768 &&
+                    !sidebar.contains(e.target) &&
+                    !mobileToggle.contains(e.target) &&
+                    sidebar.classList.contains('open')) {
+                    sidebar.classList.remove('open');
+                }
+            });
+
+            // Highlight active nav link based on scroll position
+            function updateActiveLink() {
+                let currentId = '';
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    if (rect.top <= 160) {
+                        currentId = section.id;
+                    }
+                });
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentId) {
+                        link.classList.add('active');
+                    }
+                });
+                // If no section is at top, highlight first
+                if (!currentId && navLinks.length > 0) {
+                    navLinks[0].classList.add('active');
+                }
+            }
+
+            window.addEventListener('scroll', updateActiveLink, { passive: true });
+            updateActiveLink();
+
+            // Smooth scroll for all sidebar links (in case of hash navigation)
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const href = this.getAttribute('href');
+                    if (href && href.startsWith('#')) {
+                        e.preventDefault();
+                        const target = document.querySelector(href);
+                        if (target) {
+                            const offset = 30;
+                            const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                            window.scrollTo({ top, behavior: 'smooth' });
+                        }
+                    }
+                });
+            });
+
+            // Handle initial hash in URL
+            if (window.location.hash) {
+                setTimeout(() => {
+                    const target = document.querySelector(window.location.hash);
+                    if (target) {
+                        const offset = 30;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                }, 300);
+            }
+        })();
+    </script>
+</body>
+</html>
