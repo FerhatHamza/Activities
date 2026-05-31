@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
-    <title>برنامج الفحوصات والمناورات | EPSP بريان</title>
-    <!-- Google Fonts + Cairo -->
+    <title>برنامج الفحوصات المتخصصة والمناوبة | EPSP بريان - جوان 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -16,9 +15,9 @@
 
         body {
             font-family: 'Cairo', sans-serif;
-            background: linear-gradient(135deg, #f2f7f2 0%, #e6ede5 100%);
-            padding: 1.8rem 1rem;
-            color: #1e3a2f;
+            background: linear-gradient(145deg, #f4f9f0 0%, #e2eadc 100%);
+            padding: 2rem 1.2rem;
+            color: #1d3e31;
         }
 
         .container {
@@ -26,22 +25,25 @@
             margin: 0 auto;
         }
 
-        /* card principal */
-        .schedule-card {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(2px);
+        /* بطاقات أنيقة */
+        .card-schedule {
+            background: rgba(255, 255, 255, 0.97);
             border-radius: 2rem;
-            box-shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(190, 190, 140, 0.2);
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.12), 0 0 0 1px #e3e9dd;
             overflow: hidden;
-            transition: all 0.2s ease;
             margin-bottom: 2rem;
+            transition: transform 0.2s;
         }
 
-        /* entête institutionnelle */
-        .header-clinic {
-            background: #ffffff;
-            padding: 1.5rem 1.8rem;
-            border-bottom: 3px solid #e3c86e;
+        .card-schedule:hover {
+            transform: translateY(-3px);
+        }
+
+        /* رأس البطاقة */
+        .card-header-custom {
+            background: linear-gradient(112deg, #ffffff 0%, #fef7e8 100%);
+            padding: 1.2rem 2rem;
+            border-bottom: 3px solid #e2bc6b;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-between;
@@ -57,227 +59,279 @@
 
         .logo-icon {
             background: #2a6e4b;
-            width: 58px;
-            height: 58px;
+            width: 56px;
+            height: 56px;
             border-radius: 28px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.9rem;
-            box-shadow: 0 5px 12px rgba(0,0,0,0.1);
+            font-size: 1.8rem;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
         }
 
-        .etab-info h2 {
-            font-size: 1.4rem;
+        .etab-title h2 {
+            font-size: 1.35rem;
             font-weight: 800;
-            color: #1f543e;
+            color: #1b543d;
         }
-        .etab-info p {
-            font-size: 0.75rem;
-            color: #5f7d6b;
+        .etab-title p {
+            font-size: 0.7rem;
+            color: #5d7b68;
         }
 
-        .title-badge {
-            background: #fcf6e3;
-            padding: 0.5rem 1.2rem;
-            border-radius: 60px;
+        .badge-date {
+            background: #f9f2e0;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
             font-weight: 600;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
-        .title-badge i {
-            margin-left: 6px;
-            color: #c69c2e;
-        }
-
-        /* titre principal */
-        .main-title {
+        /* عنوان رئيسي */
+        .page-title {
             text-align: center;
-            padding: 1.2rem 1rem 0.5rem;
+            padding: 1.2rem 1rem 0.2rem;
         }
-        .main-title h1 {
-            font-size: 1.9rem;
+        .page-title h1 {
+            font-size: 1.8rem;
             font-weight: 800;
-            background: linear-gradient(120deg, #266e48, #caa73a);
+            background: linear-gradient(120deg, #236d48, #dba938);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
-            letter-spacing: -0.3px;
         }
-        .main-title p {
-            font-size: 0.85rem;
-            color: #527a66;
-            margin-top: 5px;
-            border-bottom: 2px dashed #e5d3a0;
-            display: inline-block;
-            padding-bottom: 5px;
+        .page-title p {
+            font-size: 0.8rem;
+            color: #446653;
+            margin-top: 6px;
         }
 
-        /* table wrapper responsive */
-        .table-responsive {
+        /* حاوية الجدول المتجاوب */
+        .table-wrapper {
             overflow-x: auto;
-            margin: 1.5rem 1.2rem 1.5rem 1.2rem;
-            border-radius: 1.5rem;
-            scrollbar-width: thin;
+            margin: 1.5rem 1.2rem;
+            border-radius: 1.2rem;
         }
 
         .doctor-table {
             width: 100%;
             border-collapse: collapse;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.9rem;
-            min-width: 600px;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+            font-size: 0.85rem;
+            min-width: 580px;
+            background: white;
+            border-radius: 1rem;
         }
 
         .doctor-table th {
-            background: #f2f9ef;
-            padding: 1rem 0.8rem;
+            background: #edf5e8;
+            padding: 1rem 0.7rem;
             font-weight: 800;
-            font-size: 0.9rem;
-            color: #1d573f;
-            border-bottom: 2px solid #ddebd3;
+            font-size: 0.85rem;
+            color: #1c5f41;
+            border-bottom: 2px solid #d9e6ce;
             text-align: center;
-            letter-spacing: -0.2px;
         }
 
         .doctor-table td {
-            padding: 1rem 0.8rem;
-            border-bottom: 1px solid #eef3e8;
+            padding: 0.9rem 0.6rem;
+            border-bottom: 1px solid #eff2e9;
             vertical-align: middle;
-            background-color: #ffffff;
-            transition: background 0.1s;
             text-align: center;
+            background-color: #fff;
         }
 
-        .doctor-table tr:hover td {
-            background-color: #fefcf4;
+        /* تمييز الأطباء */
+        .highlight-doctor {
+            background: #fef9e6 !important;
+            font-weight: 800;
+            color: #a6681a;
+            box-shadow: inset 0 0 0 1px #f9e5b3;
+            border-radius: 12px;
         }
-
-        .specialty-badge {
-            background: #eef2e9;
-            padding: 4px 12px;
-            border-radius: 30px;
-            font-weight: 600;
-            font-size: 0.8rem;
-            display: inline-block;
-            color: #2c744f;
-        }
-
         .doctor-name {
             font-weight: 800;
             color: #195e40;
             font-size: 1rem;
+            position: relative;
+        }
+        .doctor-name i {
+            color: #dba234;
+            margin-left: 5px;
         }
 
-        .date-list {
+        /* قائمة التواريخ والعيادات */
+        .date-badge, .clinic-badge {
+            background: #f4faf0;
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            display: inline-block;
+            margin: 2px;
+            white-space: nowrap;
+        }
+        .date-badge i, .clinic-badge i {
+            margin-left: 5px;
+            font-size: 0.7rem;
+            color: #c48c2c;
+        }
+
+        .footer-info {
+            background: #fefbf2;
+            padding: 0.8rem 1.5rem;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px;
-        }
-        .date-item {
-            background: #f6faf2;
-            padding: 4px 8px;
-            border-radius: 28px;
-            font-size: 0.8rem;
-            display: inline-block;
-        }
-
-        /* footer notes */
-        .footer-note {
-            background: #fcf9ef;
-            margin-top: 0.5rem;
-            padding: 1rem 1.5rem;
-            display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-            border-top: 1px solid #efe3bd;
+            gap: 0.6rem;
             font-size: 0.7rem;
-            color: #5e806b;
+            border-top: 1px solid #f0e3c2;
+            color: #567b64;
+        }
+
+        .developer-credit {
+            text-align: center;
+            margin-top: 1rem;
+            font-size: 0.65rem;
+            opacity: 0.7;
         }
 
         @media (max-width: 700px) {
             body {
                 padding: 0.8rem;
             }
-            .header-clinic {
+            .card-header-custom {
                 flex-direction: column;
                 align-items: flex-start;
             }
-            .main-title h1 {
-                font-size: 1.4rem;
+            .page-title h1 {
+                font-size: 1.3rem;
             }
             .doctor-table th, .doctor-table td {
-                padding: 0.7rem 0.4rem;
-                font-size: 0.8rem;
+                font-size: 0.7rem;
+                padding: 0.6rem 0.2rem;
             }
             .doctor-name {
-                font-size: 0.85rem;
-            }
-            .specialty-badge {
-                font-size: 0.7rem;
+                font-size: 0.8rem;
             }
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <!-- بطاقة الجدول الأولى (التفصيلية السابقة) -->
-    <div class="schedule-card">
-        <div class="header-clinic">
+    <!-- بطاقة الجدول الأول: الفحوصات المتخصصة التفصيلية -->
+    <div class="card-schedule">
+        <div class="card-header-custom">
             <div class="logo-area">
                 <div class="logo-icon">
                     <i class="fas fa-stethoscope"></i>
-                    <i class="fas fa-calendar-check" style="font-size: 1rem; margin-right: -8px;"></i>
+                    <i class="fas fa-calendar-week" style="font-size: 1rem;"></i>
                 </div>
-                <div class="etab-info">
+                <div class="etab-title">
                     <h2>المؤسسة العمومية للصحة الجوارية - بريان</h2>
-                    <p><i class="fas fa-phone-alt"></i> 029 241 244 · <i class="fas fa-envelope"></i> epsp.berriane@dsghardaia.dz</p>
-                    <p><i class="fas fa-map-marker-alt"></i> ولاية غرداية · مصلحة الفحوصات المتخصصة</p>
+                    <p><i class="fas fa-phone-alt"></i> 029 241 244 · <i class="fas fa-envelope"></i> 05juillet.ballouh@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> ولاية غرداية · المديرية الفرعية للمصالح الصحية</p>
                 </div>
             </div>
-            <div class="title-badge">
-                <i class="fas fa-hand-holding-heart"></i> برنامج الفحوصات الطبية · ماي - جوان 2026
+            <div class="badge-date">
+                <i class="fas fa-calendar-alt"></i> جوان 2026 · الفحوصات من 08:00 إلى 14:00
             </div>
         </div>
 
-        <div class="main-title">
-            <h1>📋 جدول الفحوصات التخصصية (الأطباء المقيمون) 📋</h1>
-            <p>عيادات القصر القديم & عيادة بعيليش مازوز · برنامج دوري للأطباء المختصين</p>
+        <div class="page-title">
+            <h1>📋 جدول الفحوصات المتخصصة 📋</h1>
+            <p>برنامج الفحوصات الطبية المتخصصة · جوان 2026 · العيادات: المؤسسة العمومية الاستشفائية ببريان</p>
         </div>
 
-        <div class="table-responsive">
+        <div class="table-wrapper">
             <table class="doctor-table">
                 <thead>
-                <tr><th>الرقم</th><th>إسم و لقب الطبيب</th><th>التخصص</th><th>العيادة</th><th>تاريخ الفحص</th></tr>
+                    <tr>
+                        <th>الرقم</th>
+                        <th>إسم و لقب الطبيب</th>
+                        <th>التخصص</th>
+                        <th>العيادة</th>
+                        <th>تاريخ الفحص</th>
+                    </tr>
                 </thead>
                 <tbody>
-                    <tr><td>01</td><td class="doctor-name">د. زريطات ع.ق.</td><td><span class="specialty-badge"><i class="fas fa-child"></i> طب الأطفال</span></td><td><div class="date-list"><span class="date-item">عيادة القصر القديم</span><span class="date-item">عيادة بعيليش مازوز</span></div></td><td><div class="date-list"><span class="date-item">02 و 07 جوان 2026</span><span class="date-item">04 و 09 جوان 2026</span></div></td></tr>
-                    <tr><td>02</td><td class="doctor-name">د. دهال م.</td><td><span class="specialty-badge"><i class="fas fa-scalpel"></i> الجراحة العامة</span></td><td><div class="date-list"><span class="date-item">عيادة القصر القديم</span><span class="date-item">عيادة بعيليش مازوز</span></div></td><td><div class="date-list"><span class="date-item">09 جوان 2026</span><span class="date-item">02 جوان 2026</span></div></td></tr>
-                    <tr><td>03</td><td class="doctor-name">د. عصمان م.</td><td><span class="specialty-badge"><i class="fas fa-scalpel"></i> الجراحة العامة</span></td><td><div class="date-list"><span class="date-item">عيادة القصر القديم</span><span class="date-item">عيادة بعيليش مازوز</span></div></td><td><div class="date-list"><span class="date-item">23 جوان 2026</span><span class="date-item">30 جوان 2026</span></div></td></tr>
-                    <tr><td>04</td><td class="doctor-name">د. إمدوشن ك.</td><td><span class="specialty-badge"><i class="fas fa-lungs"></i> التخدير و الإنعاش</span></td><td><div class="date-list"><span class="date-item">عيادة القصر القديم</span><span class="date-item">عيادة بعيليش مازوز</span></div></td><td><div class="date-list"><span class="date-item">02 جوان 2026</span><span class="date-item">09 جوان 2026</span></div></td></tr>
-                    <tr><td>05</td><td class="doctor-name">د. أحمان أ.</td><td><span class="specialty-badge"><i class="fas fa-heartbeat"></i> التخدير و الإنعاش</span></td><td><div class="date-list"><span class="date-item">عيادة بعيليش مازوز</span></div></td><td><div class="date-list"><span class="date-item">16 جوان 2026</span></div></td></tr>
-                    <tr><td>06</td><td class="doctor-name">د. عداتي ح.</td><td><span class="specialty-badge"><i class="fas fa-procedures"></i> التخدير و الإنعاش</span></td><td><div class="date-list"><span class="date-item">عيادة القصر القديم</span><span class="date-item">عيادة بعيليش مازوز</span></div></td><td><div class="date-list"><span class="date-item">30 جوان 2026</span><span class="date-item">23 جوان 2026</span></div></td></tr>
+                    <!-- 01 - د. زريطات (مميز) -->
+                    <tr class="highlight-doctor">
+                        <td>01</td>
+                        <td class="doctor-name"><i class="fas fa-star-of-life"></i> د. زريطات ع.ق.</td>
+                        <td><span class="date-badge"><i class="fas fa-child"></i> طب الأطفال</span></td>
+                        <td><div><span class="clinic-badge"><i class="fas fa-building"></i> المؤسسة العمومية الاستشفائية ببريان</span></div></td>
+                        <td><div><span class="date-badge"><i class="far fa-calendar-alt"></i> 02 و 07 جوان 2026</span> <span class="date-badge"><i class="far fa-calendar-alt"></i> 04 و 09 جوان 2026</span></div></td>
+                    </tr>
+                    <!-- 02 - د. دهال -->
+                    <tr>
+                        <td>02</td>
+                        <td class="doctor-name">د. دهال م.</td>
+                        <td><span class="date-badge"><i class="fas fa-scalpel"></i> الجراحة العامة</span></td>
+                        <td><div><span class="clinic-badge"><i class="fas fa-building"></i> المؤسسة العمومية الاستشفائية ببريان</span></div></td>
+                        <td><div><span class="date-badge">09 جوان 2026</span> <span class="date-badge">02 جوان 2026</span></div></td>
+                    </tr>
+                    <!-- 03 - د. عصمان -->
+                    <tr>
+                        <td>03</td>
+                        <td class="doctor-name">د. عصمان م.</td>
+                        <td><span class="date-badge"><i class="fas fa-scalpel"></i> الجراحة العامة</span></td>
+                        <td><div><span class="clinic-badge"><i class="fas fa-building"></i> المؤسسة العمومية الاستشفائية ببريان</span></div></td>
+                        <td><div><span class="date-badge">23 جوان 2026</span> <span class="date-badge">30 جوان 2026</span></div></td>
+                    </tr>
+                    <!-- 04 - د. إمدوشن -->
+                    <tr class="highlight-doctor">
+                        <td>04</td>
+                        <td class="doctor-name"><i class="fas fa-star-of-life"></i> د. إمدوشن ك.</td>
+                        <td><span class="date-badge"><i class="fas fa-lungs"></i> التخدير و الإنعاش</span></td>
+                        <td><div><span class="clinic-badge"><i class="fas fa-building"></i> المؤسسة العمومية الاستشفائية ببريان</span></div></td>
+                        <td><div><span class="date-badge">02 جوان 2026</span> <span class="date-badge">09 جوان 2026</span></div></td>
+                    </tr>
+                    <!-- 05 - د. أحمان -->
+                    <tr>
+                        <td>05</td>
+                        <td class="doctor-name">د. أحمان أ.</td>
+                        <td><span class="date-badge"><i class="fas fa-heartbeat"></i> التخدير و الإنعاش</span></td>
+                        <td><div><span class="clinic-badge"><i class="fas fa-building"></i> المؤسسة العمومية الاستشفائية ببريان</span></div></td>
+                        <td><div><span class="date-badge">16 جوان 2026</span></div></td>
+                    </tr>
+                    <!-- 06 - د. عداتي -->
+                    <tr class="highlight-doctor">
+                        <td>06</td>
+                        <td class="doctor-name"><i class="fas fa-star-of-life"></i> د. عداتي ح.</td>
+                        <td><span class="date-badge"><i class="fas fa-procedures"></i> التخدير و الإنعاش</span></td>
+                        <td><div><span class="clinic-badge"><i class="fas fa-building"></i> المؤسسة العمومية الاستشفائية ببريان</span></div></td>
+                        <td><div><span class="date-badge">30 جوان 2026</span> <span class="date-badge">23 جوان 2026</span></div></td>
+                    </tr>
                 </tbody>
             </table>
         </div>
-        <div class="footer-note">
-            <div><i class="fas fa-info-circle"></i> الفحوصات تجرى من 09:00 إلى 15:00. يرجى إحضار الملف الطبي.</div>
-            <div><i class="fas fa-phone-alt"></i> للاستعلام: 029 241 244 (تحويلة 145)</div>
+
+        <div class="footer-info">
+            <div><i class="fas fa-clock"></i> الفحوصات تجرى من 08:00 إلى 14:00. يرجى إحضار الملف الطبي.</div>
+            <div><i class="fas fa-phone-alt"></i> للاستعلام: 029 241 244</div>
+            <div><i class="fas fa-envelope"></i> 05juillet.ballouh@gmail.com</div>
         </div>
     </div>
 
-    <!-- الجدول الجديد: جدول المناوبة الخاص بالأطباء الأخصائيين -->
-    <div class="schedule-card">
-        <div class="main-title" style="padding-top: 1rem;">
-            <h1>📅 جدول المناوبة الخاص بالأطباء الأخصائيين 📅</h1>
-            <p>تنظيم الفحوصات حسب التخصص · الفترة من 02 إلى 30 جوان 2026</p>
+    <!-- بطاقة الجدول الثاني: جدول المناوبة الخاص بالأطباء الأخصائيين -->
+    <div class="card-schedule">
+        <div class="card-header-custom" style="border-bottom-color: #c2a158;">
+            <div class="logo-area">
+                <div class="logo-icon" style="background: #b2721a;">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <div class="etab-title">
+                    <h2>مناوبات الأطباء الأخصائيين</h2>
+                    <p>تنظيم الفحوصات حسب التخصص · جوان 2026</p>
+                </div>
+            </div>
+            <div class="badge-date">
+                <i class="fas fa-hand-holding-medical"></i> المداومة الموسعة
+            </div>
         </div>
-        <div class="table-responsive">
+        <div class="table-wrapper">
             <table class="doctor-table">
                 <thead>
                     <tr>
@@ -289,62 +343,55 @@
                 </thead>
                 <tbody>
                     <!-- طب الأطفال -->
-                    <tr>
-                        <td rowspan="1"><span class="specialty-badge"><i class="fas fa-child"></i> طب الأطفال</span></td>
-                        <td class="doctor-name">د. زريطلات ع.ق.</td>
-                        <td><div class="date-list"><span class="date-item">02-04-07-09 جوان 2026</span></div></td>
+                    <tr class="highlight-doctor">
+                        <td><span class="date-badge"><i class="fas fa-child"></i> طب الأطفال</span></td>
+                        <td class="doctor-name"><i class="fas fa-star-of-life"></i> د. زريطلات ع.ق.</td>
+                        <td><span class="date-badge">02-04-07-09 جوان 2026</span></td>
                         <td>—</td>
                     </tr>
-                    <!-- الجراحة العامة: طبيبين -->
+                    <!-- الجراحة العامة - طبيبين -->
                     <tr>
-                        <td rowspan="2"><span class="specialty-badge"><i class="fas fa-scalpel"></i> الجراحة العامة</span></td>
+                        <td rowspan="2"><span class="date-badge"><i class="fas fa-scalpel"></i> الجراحة العامة</span></td>
                         <td class="doctor-name">د. دهال م.</td>
-                        <td><div class="date-list"><span class="date-item">02-09 جوان 2026</span></div></td>
+                        <td><span class="date-badge">02-09 جوان 2026</span></td>
                         <td>—</td>
                     </tr>
                     <tr>
                         <td class="doctor-name">د. عصمان م.</td>
-                        <td><div class="date-list"><span class="date-item">23-30 جوان 2026</span></div></td>
+                        <td><span class="date-badge">23-30 جوان 2026</span></td>
                         <td>—</td>
                     </tr>
-                    <!-- التخدير و الإنعاش: ثلاثة أطباء -->
-                    <tr>
-                        <td rowspan="3"><span class="specialty-badge"><i class="fas fa-lungs"></i> التخدير و الإنعاش</span></td>
-                        <td class="doctor-name">د. إمدوشن ك.</td>
-                        <td><div class="date-list"><span class="date-item">02-09 جوان 2026</span></div></td>
+                    <!-- التخدير و الإنعاش - ثلاثة أطباء مع تمييز اثنين -->
+                    <tr class="highlight-doctor">
+                        <td rowspan="3"><span class="date-badge"><i class="fas fa-lungs"></i> التخدير و الإنعاش</span></td>
+                        <td class="doctor-name"><i class="fas fa-star-of-life"></i> د. إمدوشن ك.</td>
+                        <td><span class="date-badge">02-09 جوان 2026</span></td>
                         <td>—</td>
                     </tr>
                     <tr>
                         <td class="doctor-name">د. أحمان أ.</td>
-                        <td><div class="date-list"><span class="date-item">16 جوان 2026</span></div></td>
+                        <td><span class="date-badge">16 جوان 2026</span></td>
                         <td>—</td>
                     </tr>
-                    <tr>
-                        <td class="doctor-name">د. عداتي ح.</td>
-                        <td><div class="date-list"><span class="date-item">23-30 جوان 2026</span></div></td>
+                    <tr class="highlight-doctor">
+                        <td class="doctor-name"><i class="fas fa-star-of-life"></i> د. عداتي ح.</td>
+                        <td><span class="date-badge">23-30 جوان 2026</span></td>
                         <td>—</td>
                     </tr>
                 </tbody>
             </table>
         </div>
-        <div class="footer-note">
-            <div><i class="fas fa-stethoscope"></i> المناوبات تشمل الفحص والاستشارة المتخصصة</div>
-            <div><i class="fas fa-clock"></i> أيام الثلاثاء والخميس من كل أسبوع</div>
-            <div><i class="fas fa-map-marker-alt"></i> العيادات: القصر القديم + بعيليش مازوز</div>
+        <div class="footer-info">
+            <div><i class="fas fa-building"></i> المؤسسة العمومية الاستشفائية ببريان · جميع العيادات</div>
+            <div><i class="fas fa-hourglass-half"></i> التوقيت: 08:00 – 14:00</div>
+            <div><i class="fas fa-notes-medical"></i> التنسيق مع مصلحة الاستقبال</div>
         </div>
     </div>
 
-    <!-- عناصر إضافية للتواصل -->
-    <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 0.5rem;">
-        <div style="background: white; border-radius: 30px; padding: 6px 20px; font-size: 0.75rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-            <i class="fas fa-building"></i> عيادة القصر القديم · بريان
-        </div>
-        <div style="background: white; border-radius: 30px; padding: 6px 20px; font-size: 0.75rem; box-shadow: 0 2px 6px rgba(0,0,0,0.05);">
-            <i class="fas fa-clinic-medical"></i> عيادة بعيليش مازوز · بريان
-        </div>
-        <div style="background: #f3f5ef; border-radius: 30px; padding: 6px 20px; font-size: 0.75rem;">
-            <i class="fas fa-calendar-week"></i> جوان 2026 · إدارة الصحة لولاية غرداية
-        </div>
+    <!-- تذييل إداري وتقني -->
+    <div class="developer-credit">
+        <i class="fas fa-laptop-code"></i> جوان 2026 · مكتب أنظمة الإعلام الآلي والمعلوماتية · Dev. Ferhat H.
+        <br><span style="font-size: 0.65rem;">المؤسسة العمومية للصحة الجوارية بريان · برنامج الفحوصات المتخصصة والمناوبة</span>
     </div>
 </div>
 </body>
