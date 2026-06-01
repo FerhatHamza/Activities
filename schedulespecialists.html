@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>جدول توزيع الأطباء الأخصائيين - جوان 2026</title>
+    <!-- Google Fonts & simple icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(145deg, #f4f7f6 0%, #e8f0eb 100%);
+            color: #1a2e2c;
+            padding: 2rem 1.5rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* header & emblem style */
+        .header-card {
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(2px);
+            border-radius: 2.5rem;
+            padding: 2rem 2.5rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(42, 127, 78, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header-card::before {
+            content: "✨";
+            font-size: 140px;
+            position: absolute;
+            bottom: -20px;
+            left: -20px; /* Adjusted for RTL */
+            opacity: 0.06;
+            pointer-events: none;
+            transform: scaleX(-1);
+        }
+
+        .republic {
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+            color: #2b6e4f;
+            border-right: 4px solid #c29b2e; /* Changed to border-right for RTL */
+            padding-right: 15px;
+            margin-bottom: 0.8rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #1c5a3a, #c7a23b);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            margin: 0.8rem 0 0.5rem;
+        }
+
+        .subhead {
+            font-weight: 600;
+            color: #2d5a48;
+            border-bottom: 2px dashed #c5b358;
+            display: inline-block;
+            padding-bottom: 5px;
+            margin-top: 8px;
+            font-size: 1.1rem;
+        }
+
+        .date-badge {
+            background: #fef7e0;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.6rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 700;
+            font-size: 1rem;
+            margin-top: 1.5rem;
+            color: #946b2b;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        /* grid cards */
+        .grid-sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.8rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.96);
+            border-radius: 2rem;
+            padding: 1.5rem 0;
+            box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.08);
+            transition: all 0.2s ease;
+            border: 1px solid #e9f0e6;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 25px 35px -14px rgba(0, 0, 0, 0.15);
+            border-color: #cfdeb9;
+        }
+
+        .card-header {
+            padding: 0 1.5rem 1rem 1.5rem;
+            border-bottom: 2px solid #e2e8da;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .card-header i {
+            font-size: 1.8rem;
+            color: #2a7f4e;
+            background: #e0f0e6;
+            padding: 10px;
+            border-radius: 18px;
+        }
+
+        .card-header h2 {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #1d452f;
+        }
+
+        .card-sub {
+            font-size: 0.9rem;
+            color: #6b7c6f;
+            padding: 0 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 0 1.5rem;
+            border-radius: 1.2rem;
+            border: 1px solid #dde5d6;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            min-width: 300px;
+        }
+
+        .schedule-table th {
+            background: #f3f9f2;
+            padding: 14px 12px;
+            font-weight: 700;
+            color: #21573e;
+            font-size: 0.9rem;
+            text-align: right;
+            border-bottom: 2px solid #dde5d6;
+        }
+
+        .schedule-table td {
+            padding: 12px;
+            border-bottom: 1px solid #ecf3e8;
+            color: #2b4238;
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .schedule-table tr:hover {
+            background-color: #fafdfa;
+        }
+
+        .highlight-name {
+            font-weight: 700;
+            color: #1c6e49;
+            font-size: 1.05rem;
+        }
+
+        .clinic-name {
+            color: #b58024;
+            font-weight: 700;
+        }
+
+        .date-cell {
+            direction: ltr; /* Keeps dates formatted nicely if they have numbers/symbols */
+            text-align: right;
+            font-weight: 700;
+        }
+
+        @media (max-width: 760px) {
+            body {
+                padding: 1rem;
+            }
+            .header-card {
+                padding: 1.5rem;
+            }
+            h1 { font-size: 1.5rem; }
+            .card-header h2 { font-size: 1.3rem; }
+            .schedule-table th, .schedule-table td {
+                font-size: 0.85rem;
+                padding: 10px 8px;
+            }
+            .grid-sections {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <!-- Header Officiel -->
+    <div class="header-card">
+        <div class="republic">
+            <i class="fas fa-flag-checkered" style="margin-left: 8px;"></i> الجمهورية الجزائرية الديمقراطية الشعبية<br>
+            وزارة الصحة - العيادات المتعددة الخدمات
+        </div>
+        <h1>جدول توزيع الأطباء الأخصائيين</h1>
+        <div class="subhead">من أجل الفحوصات الطبية المتخصصة على العيادات</div>
+        <br>
+        <div class="date-badge"><i class="far fa-calendar-check"></i> برنامج شهر جوان 2026</div>
+    </div>
+
+    <!-- Sections des Spécialités -->
+    <div class="grid-sections">
+        
+        <!-- CARD 1 : طب الأطفال -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-baby"></i>
+                <h2>طب الأطفال</h2>
+            </div>
+            <div class="card-sub">فحوصات طب الأطفال التخصصية</div>
+            <div class="table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>الطبيب</th>
+                            <th>العيادة</th>
+                            <th>تاريخ الفحص</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="highlight-name">د/ زريطلات عبد القادر</td>
+                            <td class="clinic-name">عيادة القصر القديم</td>
+                            <td class="date-cell">02 و 07 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="clinic-name">عيادة بعيليش مازوز</td>
+                            <td class="date-cell">04 و 09 جوان 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CARD 2 : الجراحة العامة -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-procedures"></i>
+                <h2>الجراحة العامة</h2>
+            </div>
+            <div class="card-sub">استشارات الجراحة العامة</div>
+            <div class="table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>الطبيب</th>
+                            <th>العيادة</th>
+                            <th>تاريخ الفحص</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="highlight-name">د/ دهال</td>
+                            <td class="clinic-name">عيادة القصر القديم</td>
+                            <td class="date-cell">09 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="clinic-name">عيادة بعيليش مازوز</td>
+                            <td class="date-cell">02 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="highlight-name" style="border-top: 2px solid #dde5d6;">د/ عصمان محمد</td>
+                            <td class="clinic-name" style="border-top: 2px solid #dde5d6;">عيادة القصر القديم</td>
+                            <td class="date-cell" style="border-top: 2px solid #dde5d6;">23 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="clinic-name">عيادة بعيليش مازوز</td>
+                            <td class="date-cell">30 جوان 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CARD 3 : التخدير و الإنعاش -->
+        <div class="card" style="grid-column: 1 / -1;">
+            <div class="card-header">
+                <i class="fas fa-heartbeat"></i>
+                <h2>التخدير و الإنعاش</h2>
+            </div>
+            <div class="card-sub">توزيع أطباء التخدير والإنعاش على العيادات</div>
+            <div class="table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>الطبيب</th>
+                            <th>العيادة</th>
+                            <th>تاريخ الفحص</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="highlight-name">د/ إمادوشن كاتيا</td>
+                            <td class="clinic-name">عيادة القصر القديم</td>
+                            <td class="date-cell">02 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="clinic-name">عيادة بعيليش مازوز</td>
+                            <td class="date-cell">09 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="highlight-name" style="border-top: 2px solid #dde5d6;">د/ أحمان أمينة</td>
+                            <td class="clinic-name" style="border-top: 2px solid #dde5d6;">عيادة بعيليش مازوز</td>
+                            <td class="date-cell" style="border-top: 2px solid #dde5d6;">16 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="highlight-name" style="border-top: 2px solid #dde5d6;">د/ عداتي حسين</td>
+                            <td class="clinic-name" style="border-top: 2px solid #dde5d6;">عيادة القصر القديم</td>
+                            <td class="date-cell" style="border-top: 2px solid #dde5d6;">30 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="clinic-name">عيادة بعيليش مازوز</td>
+                            <td class="date-cell">23 جوان 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div style="text-align: center; margin-top: 2rem; font-size: 0.85rem; opacity: 0.7; padding: 0.5rem; font-weight: 600;">
+        <i class="fas fa-hospital"></i> تم إعداد الجدول لتنظيم الفحوصات المتخصصة · شهر جوان 2026
+    </div>
+</div>
+</body>
+</html>
