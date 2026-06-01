@@ -3,228 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Invitation à la Sagesse - Dr. Imdouchen K.</title>
+    <title>Invitation à la Formation - Dr. Imdouchen K.</title>
+    <!-- Utilizing a utility-first approach for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Importing majestic and symphonic fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    <!-- A serene, modern serif and a highly legible sans-serif -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['"Inter"', 'sans-serif'],
+                    },
+                    colors: {
+                        clinical: {
+                            50: '#f4f7f6',
+                            100: '#e5edeb',
+                            600: '#5c7c73',
+                            900: '#1b2a26',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        :root {
-            --color-midnight: #0b132b;
-            --color-parchment: #fdfbf7;
-            --color-gold: #d4af37;
-            --color-gold-dim: #aa8c2c;
-            --color-text-dark: #1c2331;
-            
-            --font-title: 'Cinzel', serif;
-            --font-text: 'Cormorant Garamond', serif;
+        .fade-in-up {
+            animation: fadeInUp 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
         }
-
-        body, html {
-            margin: 0;
-            padding: 0;
-            background-color: var(--color-midnight);
-            color: var(--color-parchment);
-            font-family: var(--font-text);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* Symphonic Fade-in Animation */
-        @keyframes crescendo {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse-gold {
-            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
-            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
-            100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
-        }
-
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 4rem 2rem;
-            animation: crescendo 2s ease-out forwards;
-        }
-
-        .card {
-            background-color: var(--color-parchment);
-            color: var(--color-text-dark);
-            padding: 4rem;
-            border-radius: 4px;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
-            border: 1px solid var(--color-gold);
-            position: relative;
-        }
-
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 15px; left: 15px; right: 15px; bottom: 15px;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            pointer-events: none;
-        }
-
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-        }
-
-        h1 {
-            font-family: var(--font-title);
-            color: var(--color-gold);
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-        }
-
-        h2 {
-            font-family: var(--font-title);
-            color: var(--color-text-dark);
-            font-size: 1.2rem;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            font-weight: 400;
-            margin-top: 0;
-            opacity: 0.8;
-        }
-
-        .emblem {
-            font-size: 3rem;
-            color: var(--color-gold);
-            margin-bottom: 1rem;
-        }
-
-        .sage-text {
-            font-size: 1.35rem;
-            text-align: justify;
-            text-align-last: center;
-            margin-bottom: 2rem;
-        }
-
-        .sage-text.english {
-            font-style: italic;
-            color: #333;
-        }
-
-        .details-box {
-            border-top: 1px solid var(--color-gold);
-            border-bottom: 1px solid var(--color-gold);
-            padding: 2rem 0;
-            margin: 3rem 0;
-            text-align: center;
-        }
-
-        .detail-item {
-            margin: 1rem 0;
-            font-size: 1.2rem;
-        }
-
-        .detail-item strong {
-            font-family: var(--font-title);
-            color: var(--color-gold-dim);
-            letter-spacing: 1px;
-            display: block;
-            font-size: 1rem;
-            margin-bottom: 0.2rem;
-        }
-
-        .divider {
-            text-align: center;
-            margin: 3rem 0;
+        .delay-1 { animation-delay: 0.3s; }
+        .delay-2 { animation-delay: 0.6s; }
+        
+        @keyframes fadeInUp {
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        .divider::after {
-            content: '❦';
-            font-size: 2rem;
-            color: var(--color-gold);
-        }
-
-        .btn-accept {
-            display: block;
-            width: fit-content;
-            margin: 3rem auto 0;
-            padding: 1rem 3rem;
-            background-color: var(--color-midnight);
-            color: var(--color-gold);
-            font-family: var(--font-title);
-            font-size: 1.2rem;
-            text-decoration: none;
-            letter-spacing: 2px;
-            border: 1px solid var(--color-gold);
-            transition: all 0.4s ease;
-            animation: pulse-gold 4s infinite;
-            cursor: pointer;
-        }
-
-        .btn-accept:hover {
-            background-color: var(--color-gold);
-            color: var(--color-midnight);
-            transform: translateY(-3px);
-        }
-
-        @media (max-width: 768px) {
-            .card { padding: 2rem; }
-            h1 { font-size: 1.8rem; }
-            .sage-text { font-size: 1.1rem; text-align: left; text-align-last: left; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
         }
     </style>
 </head>
-<body>
+<body class="bg-clinical-50 text-clinical-900 font-sans min-h-screen flex items-center justify-center p-4 sm:p-8 relative overflow-hidden">
+    
+    <!-- Subtle Background Elements -->
+    <div class="absolute top-0 left-0 w-full h-96 bg-clinical-100 rounded-b-full transform -translate-y-1/2 opacity-60 pointer-events-none"></div>
+    <div class="absolute bottom-0 right-0 w-64 h-64 bg-clinical-100 rounded-full transform translate-x-1/3 translate-y-1/3 opacity-60 pointer-events-none"></div>
+    
+    <main class="glass-panel max-w-3xl w-full rounded-2xl shadow-[0_8px_30px_rgb(0,0,0,0.04)] p-8 md:p-14 relative z-10 fade-in-up">
+        
+        <header class="text-center mb-10 fade-in-up delay-1">
+            <span class="inline-block text-clinical-600 mb-4">
+                <svg class="w-8 h-8 mx-auto" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            </span>
+            <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-semibold text-clinical-900 mb-3">Docteure Imdouchen K.</h1>
+            <p class="text-sm md:text-sm tracking-[0.3em] text-clinical-600 uppercase font-medium">Anesthésie & Réanimation</p>
+        </header>
 
-    <div class="container">
-        <div class="card">
+        <section class="space-y-8 fade-in-up delay-2">
             
-            <header>
-                <div class="emblem">⚕</div>
-                <h1>Docteure Imdouchen K.</h1>
-                <h2>Anesthésie & Réanimation</h2>
-            </header>
-
-            <main>
-                <!-- French Section -->
-                <div class="sage-text">
-                    Honorée Docteure, Maîtresse des souffles et gardienne des équilibres fragiles.<br><br>
-                    Tel un phare robuste guidant les navires à travers les tempêtes les plus féroces, votre expertise se dresse comme une lueur pour ceux qui naviguent sur le précipice de la vie. Nous sollicitons humblement l'honneur de votre présence afin de partager votre profonde sagesse avec nos médecins généralistes. Le savoir que vous détenez n'est pas qu'une simple leçon, c'est le fil même qui retient l'existence.
+            <div class="text-center px-4 md:px-12">
+                <p class="font-serif italic text-xl md:text-2xl text-gray-800 mb-6">
+                    "Là où le souffle hésite et l'ombre s'étend, votre savoir est la lumière qui ramène à la vie."
+                </p>
+                
+                <div class="space-y-4 text-gray-600 font-light text-base leading-relaxed text-justify">
+                    <p>
+                        Nous avons l'insigne honneur de requérir votre présence afin d'éclairer nos médecins généralistes. Dans les instants critiques d'un état de choc, chaque seconde pèse son poids d'éternité, et seule l'expérience d'un maître permet d'agir avec la justesse exigée par la vie.
+                    </p>
+                    <p class="italic text-sm text-gray-500">
+                        We have the immense honor to request your presence to enlighten our general practitioners. In the critical moments of shock, every second holds the weight of eternity, and only the experience of a master allows one to act with the precision that life demands.
+                    </p>
                 </div>
+            </div>
 
-                <!-- Meeting Details -->
-                <div class="details-box">
-                    <div class="detail-item">
-                        <strong>Le Thème / The Subject</strong>
-                        Conduite à tenir devant un état de choc<br>
-                        <em>(Management of Shock)</em>
-                    </div>
-                    <div class="detail-item">
-                        <strong>Le Lieu / The Sanctuary</strong>
-                        Bibliothèque de l’EPSP Berriane
-                    </div>
-                    <div class="detail-item">
-                        <strong>Le Temps / The Hour</strong>
-                        Nous proposons 13h00, lorsque la lumière du jour est la plus résolue.<br>
-                        <em>Toutefois, le temps se pliant aux besoins de la guérisseuse, nous nous en remettons à la date de votre convenance.</em>
-                    </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 bg-white/60 rounded-xl p-6 border border-clinical-50 mt-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-[10px] font-bold text-clinical-600 uppercase tracking-widest mb-1">Le Sujet / Subject</h3>
+                    <p class="font-medium text-clinical-900 text-sm">Conduite à tenir devant un état de choc</p>
                 </div>
-
-                <div class="divider"></div>
-
-                <!-- English Section -->
-                <div class="sage-text english">
-                    Honored Doctor, Master of breath and guardian of fragile balances.<br><br>
-                    Like a sturdy lighthouse guiding ships through the fiercest storms, your expertise stands as a beacon for those navigating the precipice of life. We humbly request the honor of your presence to share your profound wisdom with our general practitioners. The knowledge you hold is not merely a lesson; it is the very thread that sustains existence. We await the day and hour of your choosing with our deepest reverence.
+                <div class="text-center md:text-left">
+                    <h3 class="text-[10px] font-bold text-clinical-600 uppercase tracking-widest mb-1">Le Lieu / Location</h3>
+                    <p class="font-medium text-clinical-900 text-sm">Bibliothèque de l’EPSP Berriane</p>
                 </div>
+                <div class="text-center md:text-left">
+                    <h3 class="text-[10px] font-bold text-clinical-600 uppercase tracking-widest mb-1">L'Heure / Time</h3>
+                    <p class="font-medium text-clinical-900 text-sm">13h00<br><span class="text-xs font-normal text-gray-500 block mt-1">(Ou selon votre grâce / At your convenience)</span></p>
+                </div>
+            </div>
 
-                <a href="mailto:?subject=Réponse%20à%20l'invitation%20-%20Formation%20État%20de%20Choc" class="btn-accept">
-                    Accorder cette formation <br> <span style="font-size: 0.8rem;">(Grant this request)</span>
+            <div class="pt-8 text-center">
+                <a href="mailto:?subject=Confirmation%20-%20Formation%20EPSP%20Berriane" class="inline-flex items-center justify-center px-10 py-4 text-xs font-semibold tracking-widest text-white transition-all duration-300 bg-clinical-900 rounded-full hover:bg-clinical-600 hover:shadow-lg hover:-translate-y-1">
+                    ACCORDER CETTE FORMATION
                 </a>
-
-            </main>
-        </div>
-    </div>
-
+            </div>
+            
+        </section>
+    </main>
 </body>
 </html>
