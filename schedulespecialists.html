@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>جدول توزيع الأطباء الأخصائيين - جوان 2026</title>
     
-    <!-- استدعاء الخطوط والأيقونات -->
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -13,15 +12,14 @@
         :root {
             --primary-teal: #008f6b;
             --secondary-navy: #002b49;
-            /* ألوان نص داكنة جداً لضمان وضوح القراءة الصارمة */
             --text-dark: #0f172a; 
-            --text-muted: #334155;
+            --text-muted: #475569;
             --bg-main: #f1f5f9;
             --card-bg: #ffffff;
             --border-color: #cbd5e1;
         }
 
-        /* --- نظام حماية الواجهة ومنع تحديد النصوص --- */
+        /* --- نظام حماية الواجهة ومنع النسخ والتحديد --- */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
@@ -41,10 +39,9 @@
             font-family: 'Tajawal', sans-serif;
             background-color: var(--bg-main);
             color: var(--text-dark);
-            padding: 2rem;
-            line-height: 1.7;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
         }
 
         .container {
@@ -52,12 +49,12 @@
             margin: 0 auto;
         }
 
-        /* --- الهيدر الرئيسي: اللوغو على اليمين والنص متناسق ممركز --- */
+        /* --- الهيدر الرئيسي: اللوغو على اليمين تماماً في نظام RTL --- */
         .official-header {
             background: var(--card-bg);
             border-radius: 16px;
-            padding: 2.5rem;
-            margin-bottom: 2rem;
+            padding: 2.5rem 2rem;
+            margin-bottom: 1.5rem;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
             border: 2px solid var(--border-color);
             display: flex;
@@ -75,13 +72,8 @@
             width: 100%;
         }
 
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-        }
-
         .logo-wrapper img {
-            height: 100px;
+            height: 95px;
             width: auto;
             object-fit: contain;
         }
@@ -93,14 +85,14 @@
         }
 
         .ministry-text h3 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             color: var(--secondary-navy);
             font-weight: 900;
-            margin-bottom: 0.4rem;
+            margin-bottom: 0.3rem;
         }
 
         .ministry-text p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-dark);
             font-weight: 700;
         }
@@ -111,71 +103,151 @@
         }
 
         .main-title {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 900;
             color: var(--secondary-navy);
-            line-height: 1.4;
         }
 
         .french-title {
             display: block;
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: var(--text-muted);
             font-weight: 700;
-            margin-top: 0.4rem;
+            margin-top: 0.3rem;
             direction: ltr;
         }
 
         .sub-title {
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text-dark);
             font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
             flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1.5rem;
+            gap: 0.5rem;
+            margin-top: 1.2rem;
         }
 
         .sub-title p {
             background: #d1fae5;
-            padding: 0.4rem 1.2rem;
+            padding: 0.3rem 1rem;
             border-radius: 30px;
             font-weight: 900;
             color: #065f46;
             border: 1px solid #10b981;
         }
 
-        /* --- شريط الاتصال السريع (مقروء وواضح) --- */
+        /* شريط الاتصال */
         .contact-bar {
             display: flex;
             justify-content: center;
             align-items: center;
-            gap: 2.5rem;
+            gap: 2rem;
             flex-wrap: wrap;
             margin-top: 1rem;
-            padding-top: 1.5rem;
+            padding-top: 1.2rem;
             border-top: 2px solid #e2e8f0;
             width: 100%;
         }
 
         .contact-item {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--secondary-navy);
             display: flex;
             align-items: center;
-            gap: 0.6rem;
+            gap: 0.5rem;
             font-weight: 700;
             text-decoration: none;
         }
 
         .contact-item i {
             color: var(--primary-teal);
-            font-size: 1.3rem;
         }
 
-        /* --- شبكة الجداول الحاكمة --- */
+        /* --- قسم الفلاتر الجديد والذكي (Filters Section) --- */
+        .filter-wrapper {
+            background: var(--card-bg);
+            border: 2px solid var(--border-color);
+            border-radius: 16px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .filter-title {
+            font-size: 1.1rem;
+            font-weight: 800;
+            color: var(--secondary-navy);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .filter-controls {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            flex: 1;
+        }
+
+        .search-input-group, .select-input-group {
+            position: relative;
+            flex: 1;
+            min-width: 240px;
+        }
+
+        .filter-wrapper input, .filter-wrapper select {
+            width: 100%;
+            padding: 0.8rem 2.8rem 0.8rem 1rem;
+            font-family: 'Tajawal', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            background-color: #f8fafc;
+            border: 2px solid var(--border-color);
+            border-radius: 10px;
+            outline: none;
+            transition: all 0.2s ease;
+            appearance: none;
+            -webkit-appearance: none;
+        }
+
+        .filter-wrapper input:focus, .filter-wrapper select:focus {
+            border-color: var(--primary-teal);
+            background-color: #ffffff;
+            box-shadow: 0 0 0 4px rgba(0, 143, 107, 0.1);
+        }
+
+        .input-icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            pointer-events: none;
+        }
+
+        /* تأثير إشعار عدم وجود نتائج */
+        #no-results-message {
+            background: var(--card-bg);
+            border: 2px dashed var(--border-color);
+            border-radius: 16px;
+            padding: 3rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: none;
+            margin-bottom: 2rem;
+        }
+
+        /* --- شبكة الجداول المتجاوبة --- */
         .grid-sections {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
@@ -187,13 +259,13 @@
             grid-column: span 2;
         }
 
-        /* --- تصميم الكروت والجداول المحسنة للقراءة --- */
         .card {
             background: var(--card-bg);
             border-radius: 16px;
             border: 2px solid var(--border-color);
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
             overflow: hidden;
+            transition: transform 0.2s ease;
         }
 
         .card-header {
@@ -206,7 +278,7 @@
         }
 
         .card-header i {
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             color: #065f46;
             background: #d1fae5;
             padding: 10px;
@@ -215,20 +287,19 @@
         }
 
         .card-header h2 {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             font-weight: 800;
             color: var(--secondary-navy);
         }
 
         .table-wrapper {
             overflow-x: auto;
-            padding: 1.2rem;
+            padding: 0.5rem;
         }
 
         .schedule-table {
             width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
+            border-collapse: collapse;
         }
 
         .schedule-table th {
@@ -236,9 +307,10 @@
             padding: 1.2rem 1rem;
             font-weight: 800;
             color: var(--secondary-navy);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             text-align: right;
             border-bottom: 3px solid var(--border-color);
+            white-space: nowrap;
         }
 
         .schedule-table td {
@@ -254,29 +326,27 @@
             border-bottom: none;
         }
 
-        /* تمييز الأسماء والتواريخ لسهولة الفحص */
         .doctor-name {
             font-weight: 900;
             color: #0f172a;
-            font-size: 1.15rem;
-            background-color: #fafafa;
+            font-size: 1.1rem;
         }
 
         .clinic-badge {
             display: inline-block;
             background: #f0fdf4;
             color: #166534;
-            padding: 0.4rem 1rem;
+            padding: 0.4rem 0.9rem;
             border-radius: 8px;
             font-weight: 800;
-            font-size: 1.05rem;
+            font-size: 1rem;
             border: 2px solid #bbf7d0;
+            white-space: nowrap;
         }
 
         .date-text {
             font-weight: 800;
             color: #1e293b;
-            font-variant-numeric: tabular-nums;
         }
 
         /* --- الفوتر السفلي المتناسق --- */
@@ -293,7 +363,7 @@
 
         .footer-note {
             color: var(--secondary-navy);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 800;
         }
 
@@ -309,10 +379,13 @@
             font-weight: 900;
         }
 
-        /* --- الشاشات الصغيرة والمتوسطة --- */
+        /* ==========================================================================
+           شاشات الهواتف والأجهزة اللوحية (Responsive System Optimization)
+           ========================================================================== */
+        
         @media (max-width: 1024px) {
             .grid-sections {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr; /* تحويل الشبكة لعمود واحد عند الأجهزة اللوحية */
             }
             .full-width {
                 grid-column: span 1;
@@ -321,42 +394,118 @@
 
         @media (max-width: 768px) {
             body {
-                padding: 1rem;
+                padding: 1rem 0.75rem;
             }
+            
+            .official-header {
+                padding: 1.5rem 1rem;
+                gap: 1.5rem;
+            }
+
             .header-meta {
                 flex-direction: column;
                 gap: 1rem;
             }
+
+            .logo-wrapper img {
+                height: 80px;
+            }
+
             .ministry-text {
                 border-right: none;
                 border-bottom: 4px solid var(--primary-teal);
                 padding-right: 0;
                 padding-bottom: 1rem;
                 text-align: center;
+                width: 100%;
             }
-            .main-title {
-                font-size: 1.8rem;
-            }
-            .french-title {
+
+            .ministry-text h3 {
                 font-size: 1.2rem;
             }
-            .contact-bar {
-                flex-direction: column;
-                gap: 1rem;
+
+            .main-title {
+                font-size: 1.6rem;
             }
+
+            .french-title {
+                font-size: 1.1rem;
+            }
+
+            .sub-title {
+                font-size: 1rem;
+            }
+
+            .filter-wrapper {
+                padding: 1rem;
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .filter-controls {
+                flex-direction: column;
+            }
+
+            .search-input-group, .select-input-group {
+                min-width: 100%;
+            }
+
+            /* تحويل الجدول إلى كروت سهلة القراءة ومثالية للموبايل لمنع التمرير الأفقي المزعج */
+            .schedule-table, .schedule-table thead, .schedule-table tbody, .schedule-table th, .schedule-table td, .schedule-table tr {
+                display: block;
+            }
+
+            .schedule-table thead {
+                display: none; /* إخفاء عناوين الجدول التقليدية */
+            }
+
+            .schedule-table tr {
+                margin-bottom: 1rem;
+                border: 2px solid var(--border-color);
+                border-radius: 12px;
+                padding: 0.75rem;
+                background: #f8fafc;
+            }
+
+            .schedule-table td {
+                text-align: right;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 0.6rem 0.5rem;
+                border-bottom: 1px dashed var(--border-color);
+                font-size: 1rem;
+            }
+
+            .schedule-table td:last-child {
+                border-bottom: none;
+            }
+
+            /* إضافة ملصقات توضيحية بديلة لعناوين الجدول في وضع الهاتف */
+            .schedule-table td::before {
+                content: attr(data-label);
+                font-weight: 800;
+                color: var(--secondary-navy);
+                font-size: 0.95rem;
+            }
+
+            .doctor-name {
+                background-color: transparent;
+            }
+
             .footer-container {
                 flex-direction: column;
                 text-align: center;
+                gap: 1.5rem;
+                margin-top: 2.5rem;
             }
         }
     </style>
 </head>
-<!-- منع القوائم المنسدلة والتحديد مباشرة من جذور عناصر الصفحة -->
 <body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
 
 <div class="container">
     
-    <!-- الهيدر الموحد والمرتب -->
     <header class="official-header">
         <div class="header-meta">
             <div class="logo-wrapper">
@@ -393,10 +542,35 @@
         </div>
     </header>
 
-    <!-- أقسام الجداول الطبية -->
-    <div class="grid-sections">
+    <div class="filter-wrapper">
+        <div class="filter-title">
+            <i class="fa-solid fa-filter" style="color: var(--primary-teal);"></i>
+            <span>تصفية البحث الطبية:</span>
+        </div>
+        <div class="filter-controls">
+            <div class="search-input-group">
+                <i class="fa-solid fa-user-doctor input-icon"></i>
+                <input type="text" id="searchDoctor" placeholder="ابحث باسم الطبيب الأخصائي..." onkeyup="filterData()">
+            </div>
+            <div class="select-input-group">
+                <i class="fa-solid fa-hospital input-icon"></i>
+                <select id="filterClinic" onchange="filterData()">
+                    <option value="all">كل العيادات المستقبلة</option>
+                    <option value="القصر القديم">عيادة القصر القديم</option>
+                    <option value="بعيليش">عيادة بعيليش مازوز</option>
+                </select>
+                <i class="fa-solid fa-chevron-down" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--text-muted);"></i>
+            </div>
+        </div>
+    </div>
+
+    <div id="no-results-message">
+        <i class="fa-solid fa-user-slash" style="font-size: 2.5rem; color: #ef4444; margin-bottom: 1rem; display: block;"></i>
+        لم يتم العثور على أي طبيب أو عيادة تطابق خيارات البحث الحالية.
+    </div>
+
+    <div class="grid-sections" id="cardsGrid">
         
-        <!-- القسم الأول: طب الأطفال -->
         <section class="card">
             <div class="card-header">
                 <i class="fa-solid fa-baby-carriage"></i>
@@ -413,20 +587,20 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td rowspan="2" class="doctor-name">د/ زريطلات عبد القادر</td>
-                            <td><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td class="date-text">02 و 07 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ زريطلات عبد القادر</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td data-label="التاريخ:" class="date-text">02 و 07 جوان 2026</td>
                         </tr>
                         <tr>
-                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td class="date-text">04 و 09 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ زريطلات عبد القادر</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td data-label="التاريخ:" class="date-text">04 و 09 جوان 2026</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- القسم الثاني: الجراحة العامة -->
         <section class="card">
             <div class="card-header">
                 <i class="fa-solid fa-scalpel"></i>
@@ -443,29 +617,30 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td rowspan="2" class="doctor-name">د/ دهال</td>
-                            <td><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td class="date-text">09 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ دهال</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td data-label="التاريخ:" class="date-text">09 جوان 2026</td>
                         </tr>
                         <tr>
-                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td class="date-text">02 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ دهال</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td data-label="التاريخ:" class="date-text">02 جوان 2026</td>
                         </tr>
                         <tr>
-                            <td rowspan="2" class="doctor-name" style="border-top: 2px solid var(--border-color);">د/ عصمان محمد</td>
-                            <td style="border-top: 2px solid var(--border-color);"><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td class="date-text" style="border-top: 2px solid var(--border-color);">23 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ عصمان محمد</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td data-label="التاريخ:" class="date-text">23 جوان 2026</td>
                         </tr>
                         <tr>
-                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td class="date-text">30 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ عصمان محمد</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td data-label="التاريخ:" class="date-text">30 جوان 2026</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </section>
 
-        <!-- القسم الثالث: التخدير و الإنعاش -->
         <section class="card full-width">
             <div class="card-header">
                 <i class="fa-solid fa-kit-medical"></i>
@@ -482,27 +657,29 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td rowspan="2" class="doctor-name">د/ إمادوشن كاتيا</td>
-                            <td><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td class="date-text">02 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ إمادوشن كاتيا</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td data-label="التاريخ:" class="date-text">02 جوان 2026</td>
                         </tr>
                         <tr>
-                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td class="date-text">09 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ إمادوشن كاتيا</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td data-label="التاريخ:" class="date-text">09 جوان 2026</td>
                         </tr>
                         <tr>
-                            <td class="doctor-name" style="border-top: 2px solid var(--border-color);">د/ أحمان أمينة</td>
-                            <td style="border-top: 2px solid var(--border-color);"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td class="date-text" style="border-top: 2px solid var(--border-color);">16 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ أحمان أمينة</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td data-label="التاريخ:" class="date-text">16 جوان 2026</td>
                         </tr>
                         <tr>
-                            <td rowspan="2" class="doctor-name" style="border-top: 2px solid var(--border-color);">د/ عداتي حسين</td>
-                            <td style="border-top: 2px solid var(--border-color);"><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td class="date-text" style="border-top: 2px solid var(--border-color);">30 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ عداتي حسين</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td data-label="التاريخ:" class="date-text">30 جوان 2026</td>
                         </tr>
                         <tr>
-                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td class="date-text">23 جوان 2026</td>
+                            <td data-label="إسم الطبيب:" class="doctor-name">د/ عداتي حسين</td>
+                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td data-label="التاريخ:" class="date-text">23 جوان 2026</td>
                         </tr>
                     </tbody>
                 </table>
@@ -511,7 +688,6 @@
 
     </div>
 
-    <!-- التوقيع والحقوق السفلى -->
     <footer class="footer-container">
         <div class="footer-note">
             CIES EPSP Berriane
@@ -522,40 +698,73 @@
     </footer>
 </div>
 
-<!-- البرمجة النصية لغلق أدوات المطورين والنسخ تماماً -->
 <script>
-    // إلغاء النقر الأيمن نهائياً
-    document.addEventListener('contextmenu', e => e.preventDefault());
+    // 1. محرك البحث والتصفية المزدوج (فوري وسلس بدون تعليق)
+    function filterData() {
+        const searchInput = document.getElementById('searchDoctor').value.toLowerCase().trim();
+        const clinicSelect = document.getElementById('filterClinic').value;
+        const rows = document.querySelectorAll('.schedule-table tbody tr');
+        const cards = document.querySelectorAll('.card');
+        let totalVisibleRows = 0;
 
-    // منع عمليات النسخ والقص وسحب العناصر
+        rows.forEach(row => {
+            const doctorName = row.querySelector('.doctor-name').textContent.toLowerCase();
+            const clinicName = row.querySelector('.clinic-badge').textContent;
+
+            const matchesSearch = doctorName.includes(searchInput);
+            const matchesClinic = (clinicSelect === 'all') || clinicName.includes(clinicSelect);
+
+            if (matchesSearch && matchesClinic) {
+                row.style.display = '';
+                totalVisibleRows++;
+            } else {
+                row.style.display = 'none';
+            }
+        });
+
+        // إخفاء الكارت أو القسم بالكامل إذا لم يحتوي على أي سطر يطابق الفلتر
+        cards.forEach(card => {
+            const visibleRowsInCard = card.querySelectorAll('.schedule-table tbody tr:not([style*="display: none"])');
+            if (visibleRowsInCard.length === 0) {
+                card.style.display = 'none';
+            } else {
+                card.style.display = '';
+            }
+        });
+
+        // إظهار رسالة تنبيهية إذا لم تكن هناك أي نتائج مطابقة
+        const noResultsMessage = document.getElementById('no-results-message');
+        if (totalVisibleRows === 0) {
+            noResultsMessage.style.display = 'block';
+        } else {
+            noResultsMessage.style.display = 'none';
+        }
+    }
+
+    // 2. ترسانة الحماية الأمنية من الفحص والنسخ
+    document.addEventListener('contextmenu', e => e.preventDefault());
     document.addEventListener('copy', e => e.preventDefault());
     document.addEventListener('cut', e => e.preventDefault());
     document.addEventListener('dragstart', e => e.preventDefault());
 
-    // كبح اختصارات لوحة المفاتيح المتقدمة للفحص والحفظ والتحديد
     document.addEventListener('keydown', function(e) {
-        // منع مفتاح F12
-        if (e.keyCode === 123) {
+        if (e.keyCode === 123) { // F12
             e.preventDefault();
             return false;
         }
-        // منع فتح أدوات الفحص (Ctrl+Shift+I / J / C)
-        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) { // Ctrl+Shift+I/J/C
             e.preventDefault();
             return false;
         }
-        // منع عرض السورس كود (Ctrl+U)
-        if (e.ctrlKey && e.keyCode === 85) {
+        if (e.ctrlKey && e.keyCode === 85) { // Ctrl+U
             e.preventDefault();
             return false;
         }
-        // منع حفظ الصفحة أوفلاين (Ctrl+S)
-        if (e.ctrlKey && e.keyCode === 83) {
+        if (e.ctrlKey && e.keyCode === 83) { // Ctrl+S
             e.preventDefault();
             return false;
         }
-        // منع التحديد الكلي للنصوص (Ctrl+A)
-        if (e.ctrlKey && e.keyCode === 65) {
+        if (e.ctrlKey && e.keyCode === 65) { // Ctrl+A
             e.preventDefault();
             return false;
         }
