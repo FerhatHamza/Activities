@@ -187,4 +187,367 @@
         /* --- CARD STYLING --- */
         .card {
             background: var(--card-bg);
-            border-radius
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-header {
+            padding: 1.25rem 1.5rem;
+            background: #fafafa;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .card-header i {
+            font-size: 1.25rem;
+            color: var(--primary-teal);
+            background: #e6f4f0;
+            padding: 8px;
+            border-radius: 10px;
+        }
+
+        .card-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary-navy);
+        }
+
+        /* --- TABLES --- */
+        .table-wrapper {
+            overflow-x: auto;
+            padding: 1rem 1.5rem 1.5rem 1.5rem;
+        }
+
+        .schedule-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            font-size: 0.95rem;
+        }
+
+        .schedule-table th {
+            background: #f8fafc;
+            padding: 1rem;
+            font-weight: 700;
+            color: var(--secondary-navy);
+            font-size: 0.9rem;
+            text-align: right;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .schedule-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #f1f5f9;
+            color: var(--text-dark);
+            font-weight: 500;
+            vertical-align: middle;
+        }
+
+        .schedule-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .doctor-name {
+            font-weight: 700;
+            color: var(--secondary-navy);
+            font-size: 1rem;
+        }
+
+        .clinic-badge {
+            display: inline-block;
+            background: #f0fdf4;
+            color: var(--primary-teal);
+            padding: 0.25rem 0.75rem;
+            border-radius: 6px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid #dcfce7;
+        }
+
+        .date-text {
+            font-weight: 700;
+            color: #475569;
+            font-variant-numeric: tabular-nums;
+        }
+
+        /* --- FOOTER CREDIT WITH DEV SIGNATURE --- */
+        .footer-container {
+            margin-top: 4rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-note {
+            color: var(--secondary-navy);
+            font-size: 1.1rem;
+            font-weight: 700;
+        }
+
+        .dev-signature {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+            direction: ltr;
+        }
+
+        .dev-signature span {
+            color: var(--primary-teal);
+            font-weight: 700;
+        }
+
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        @media (max-width: 1024px) {
+            .grid-sections {
+                grid-template-columns: 1fr;
+            }
+            .full-width {
+                grid-column: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            .header-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .ministry-text {
+                border-right: none;
+                border-bottom: 3px solid var(--primary-teal);
+                padding-right: 0;
+                padding-bottom: 0.8rem;
+                text-align: center;
+            }
+            .main-title {
+                font-size: 1.6rem;
+            }
+            .french-title {
+                font-size: 1.1rem;
+            }
+            .contact-bar {
+                flex-direction: column;
+                gap: 0.8rem;
+                align-items: center;
+            }
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body oncontextmenu="return false;"> <div class="container">
+    
+    <header class="official-header">
+        <div class="header-meta">
+            <div class="logo-wrapper">
+                <img src="logo.png" alt="شعارات الصحة والجمهورية">
+            </div>
+            <div class="ministry-text">
+                <h3>الجمهورية الجزائرية الديمقراطية الشعبية</h3>
+                <p>وزارة الصحة • مديرية الصحة والسكان لولاية غرداية</p>
+                <p style="font-weight: 500; font-size: 0.85rem; margin-top: 3px;">المؤسسة العمومية للصحة الجوارية ببريان (EPSP Berriane)</p>
+            </div>
+        </div>
+        
+        <div class="header-title-area">
+            <h1 class="main-title">
+                مخطط توزيع الأطباء الأخصائيين
+                <span class="french-title">Planning de Répartition des Médecins Spécialistes</span>
+            </h1>
+            <div class="sub-title">
+                <span>توزيع الأطباء الأخصائيين الخاص بالفحوصات الطبية المتخصصة لشهر:</span>
+                <p>جوان 2026</p>
+            </div>
+        </div>
+
+        <div class="contact-bar">
+            <a href="tel:029241244" class="contact-item" dir="ltr">
+                <i class="fa-solid fa-phone"></i> 029 24 12 44
+            </a>
+            <a href="mailto:05juillet.ballouh@gmail.com" class="contact-item">
+                <i class="fa-solid fa-envelope"></i> 05juillet.ballouh@gmail.com
+            </a>
+            <a href="https://facebook.com/EPSP.Berriane" target="_blank" class="contact-item">
+                <i class="fa-brands fa-facebook"></i> EPSP.Berriane
+            </a>
+        </div>
+    </header>
+
+    <div class="grid-sections">
+        
+        <section class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-baby-carriage"></i>
+                <h2>طب الأطفال</h2>
+            </div>
+            <div class="table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>إسم و لقب الطبيب</th>
+                            <th>العيادة المستقبلة</th>
+                            <th>تاريخ الفحص</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="doctor-name">د/ زريطلات عبد القادر</td>
+                            <td><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td class="date-text">02 و 07 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td class="date-text">04 و 09 جوان 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card">
+            <div class="card-header">
+                <i class="fa-solid fa-scalpel"></i>
+                <h2>الجراحة العامة</h2>
+            </div>
+            <div class="table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>إسم و لقب الطبيب</th>
+                            <th>العيادة المستقبلة</th>
+                            <th>تاريخ الفحص</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="doctor-name">د/ دهال</td>
+                            <td><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td class="date-text">09 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td class="date-text">02 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="doctor-name" style="border-top: 1px solid var(--border-color);">د/ عصمان محمد</td>
+                            <td style="border-top: 1px solid var(--border-color);"><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td class="date-text" style="border-top: 1px solid var(--border-color);">23 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td class="date-text">30 جوان 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="card full-width">
+            <div class="card-header">
+                <i class="fa-solid fa-kit-medical"></i>
+                <h2>التخدير و الإنعاش</h2>
+            </div>
+            <div class="table-wrapper">
+                <table class="schedule-table">
+                    <thead>
+                        <tr>
+                            <th>إسم و لقب الطبيب</th>
+                            <th>العيادة المستقبلة</th>
+                            <th>تاريخ الفحص</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td rowspan="2" class="doctor-name">د/ إمادوشن كاتيا</td>
+                            <td><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td class="date-text">02 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td class="date-text">09 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td class="doctor-name" style="border-top: 1px solid var(--border-color);">د/ أحمان أمينة</td>
+                            <td style="border-top: 1px solid var(--border-color);"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td class="date-text" style="border-top: 1px solid var(--border-color);">16 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2" class="doctor-name" style="border-top: 1px solid var(--border-color);">د/ عداتي حسين</td>
+                            <td style="border-top: 1px solid var(--border-color);"><span class="clinic-badge">عيادة القصر القديم</span></td>
+                            <td class="date-text" style="border-top: 1px solid var(--border-color);">30 جوان 2026</td>
+                        </tr>
+                        <tr>
+                            <td><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
+                            <td class="date-text">23 جوان 2026</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+    </div>
+
+    <footer class="footer-container">
+        <div class="footer-note">
+            CIES EPSP Berriane
+        </div>
+        <div class="dev-signature">
+            Developed by <span>Dev. Ferhat H.</span>
+        </div>
+    </footer>
+</div>
+
+<script>
+    // 1. Hard block on right-clicking anywhere on the page
+    document.addEventListener('contextmenu', event => event.preventDefault());
+
+    // 2. Hard block on copying, cutting, or dragging elements
+    document.addEventListener('copy', event => event.preventDefault());
+    document.addEventListener('cut', event => event.preventDefault());
+    document.addEventListener('dragstart', event => event.preventDefault());
+
+    // 3. Absolute block on key combinations (Inspect Element, View Source, Save Page, Select All)
+    document.addEventListener('keydown', function(e) {
+        // Stop F12 (Dev Tools)
+        if (e.keyCode === 123) {
+            e.preventDefault();
+            return false;
+        }
+        // Stop Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C (Inspect Panel, Console, Element Selectors)
+        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) {
+            e.preventDefault();
+            return false;
+        }
+        // Stop Ctrl+U (View HTML Source Code)
+        if (e.ctrlKey && e.keyCode === 85) {
+            e.preventDefault();
+            return false;
+        }
+        // Stop Ctrl+S (Saving Page Source Assets Locally)
+        if (e.ctrlKey && e.keyCode === 83) {
+            e.preventDefault();
+            return false;
+        }
+        // Stop Ctrl+A (Selecting All Text To Copy)
+        if (e.ctrlKey && e.keyCode === 65) {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
+</body>
+</html>
