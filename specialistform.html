@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitation à la Sagesse - Dr. Imdouchen K.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importing majestic and symphonic fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --color-midnight: #0b132b;
+            --color-parchment: #fdfbf7;
+            --color-gold: #d4af37;
+            --color-gold-dim: #aa8c2c;
+            --color-text-dark: #1c2331;
+            
+            --font-title: 'Cinzel', serif;
+            --font-text: 'Cormorant Garamond', serif;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-midnight);
+            color: var(--color-parchment);
+            font-family: var(--font-text);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* Symphonic Fade-in Animation */
+        @keyframes crescendo {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+            50% { box-shadow: 0 0 30px rgba(212, 175, 55, 0.5); }
+            100% { box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+            animation: crescendo 2s ease-out forwards;
+        }
+
+        .card {
+            background-color: var(--color-parchment);
+            color: var(--color-text-dark);
+            padding: 4rem;
+            border-radius: 4px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid var(--color-gold);
+            position: relative;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 15px; left: 15px; right: 15px; bottom: 15px;
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            pointer-events: none;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        h1 {
+            font-family: var(--font-title);
+            color: var(--color-gold);
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        h2 {
+            font-family: var(--font-title);
+            color: var(--color-text-dark);
+            font-size: 1.2rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 400;
+            margin-top: 0;
+            opacity: 0.8;
+        }
+
+        .emblem {
+            font-size: 3rem;
+            color: var(--color-gold);
+            margin-bottom: 1rem;
+        }
+
+        .sage-text {
+            font-size: 1.35rem;
+            text-align: justify;
+            text-align-last: center;
+            margin-bottom: 2rem;
+        }
+
+        .sage-text.english {
+            font-style: italic;
+            color: #333;
+        }
+
+        .details-box {
+            border-top: 1px solid var(--color-gold);
+            border-bottom: 1px solid var(--color-gold);
+            padding: 2rem 0;
+            margin: 3rem 0;
+            text-align: center;
+        }
+
+        .detail-item {
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+        .detail-item strong {
+            font-family: var(--font-title);
+            color: var(--color-gold-dim);
+            letter-spacing: 1px;
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .divider {
+            text-align: center;
+            margin: 3rem 0;
+        }
+        
+        .divider::after {
+            content: '❦';
+            font-size: 2rem;
+            color: var(--color-gold);
+        }
+
+        .btn-accept {
+            display: block;
+            width: fit-content;
+            margin: 3rem auto 0;
+            padding: 1rem 3rem;
+            background-color: var(--color-midnight);
+            color: var(--color-gold);
+            font-family: var(--font-title);
+            font-size: 1.2rem;
+            text-decoration: none;
+            letter-spacing: 2px;
+            border: 1px solid var(--color-gold);
+            transition: all 0.4s ease;
+            animation: pulse-gold 4s infinite;
+            cursor: pointer;
+        }
+
+        .btn-accept:hover {
+            background-color: var(--color-gold);
+            color: var(--color-midnight);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .card { padding: 2rem; }
+            h1 { font-size: 1.8rem; }
+            .sage-text { font-size: 1.1rem; text-align: left; text-align-last: left; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="card">
+            
+            <header>
+                <div class="emblem">⚕</div>
+                <h1>Docteure Imdouchen K.</h1>
+                <h2>Anesthésie & Réanimation</h2>
+            </header>
+
+            <main>
+                <!-- French Section -->
+                <div class="sage-text">
+                    Honorée Docteure, Maîtresse des souffles et gardienne des équilibres fragiles.<br><br>
+                    Tel un phare robuste guidant les navires à travers les tempêtes les plus féroces, votre expertise se dresse comme une lueur pour ceux qui naviguent sur le précipice de la vie. Nous sollicitons humblement l'honneur de votre présence afin de partager votre profonde sagesse avec nos médecins généralistes. Le savoir que vous détenez n'est pas qu'une simple leçon, c'est le fil même qui retient l'existence.
+                </div>
+
+                <!-- Meeting Details -->
+                <div class="details-box">
+                    <div class="detail-item">
+                        <strong>Le Thème / The Subject</strong>
+                        Conduite à tenir devant un état de choc<br>
+                        <em>(Management of Shock)</em>
+                    </div>
+                    <div class="detail-item">
+                        <strong>Le Lieu / The Sanctuary</strong>
+                        Bibliothèque de l’EPSP Berriane
+                    </div>
+                    <div class="detail-item">
+                        <strong>Le Temps / The Hour</strong>
+                        Nous proposons 13h00, lorsque la lumière du jour est la plus résolue.<br>
+                        <em>Toutefois, le temps se pliant aux besoins de la guérisseuse, nous nous en remettons à la date de votre convenance.</em>
+                    </div>
+                </div>
+
+                <div class="divider"></div>
+
+                <!-- English Section -->
+                <div class="sage-text english">
+                    Honored Doctor, Master of breath and guardian of fragile balances.<br><br>
+                    Like a sturdy lighthouse guiding ships through the fiercest storms, your expertise stands as a beacon for those navigating the precipice of life. We humbly request the honor of your presence to share your profound wisdom with our general practitioners. The knowledge you hold is not merely a lesson; it is the very thread that sustains existence. We await the day and hour of your choosing with our deepest reverence.
+                </div>
+
+                <a href="mailto:?subject=Réponse%20à%20l'invitation%20-%20Formation%20État%20de%20Choc" class="btn-accept">
+                    Accorder cette formation <br> <span style="font-size: 0.8rem;">(Grant this request)</span>
+                </a>
+
+            </main>
+        </div>
+    </div>
+
+</body>
+</html>
