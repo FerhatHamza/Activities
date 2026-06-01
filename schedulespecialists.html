@@ -19,6 +19,14 @@
             --accent-gold: #c29b2e;
         }
 
+        /* منع اختيار النصوص كجزء من حماية الواجهة */
+        body.protected {
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -36,29 +44,153 @@
         .container {
             max-width: 1300px;
             margin: 0 auto;
+            opacity: 0; /* مخفي حتى يتم التحقق من رمز الدخول */
+            transition: opacity 0.4s ease;
+            pointer-events: none;
         }
 
-        /* --- OFFICIAL CENTERED HEADER --- */
+        .container.unlocked {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        /* --- FRONTEND PROTECTION SCREEN --- */
+        #protection-gate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #002b49 0%, #001524 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        #protection-gate.passed {
+            opacity: 0;
+            visibility: hidden;
+            transform: scale(1.05);
+        }
+
+        .gate-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 24px;
+            padding: 3rem 2rem;
+            width: 100%;
+            max-width: 450px;
+            text-align: center;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .gate-icon {
+            font-size: 3rem;
+            color: var(--primary-teal);
+            background: #e6f4f0;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50px;
+            margin: 0 auto 1.5rem auto;
+            box-shadow: 0 10px 15px -3px rgba(0, 143, 107, 0.2);
+        }
+
+        .gate-card h2 {
+            color: var(--secondary-navy);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+
+        .gate-card p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 1.5rem;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            font-family: inherit;
+            font-size: 1.1rem;
+            text-align: center;
+            font-weight: 700;
+            letter-spacing: 4px;
+            color: var(--secondary-navy);
+            transition: all 0.3s ease;
+            outline: none;
+        }
+
+        .input-group input:focus {
+            border-color: var(--primary-teal);
+            box-shadow: 0 0 0 4px rgba(0, 143, 107, 0.15);
+        }
+
+        .gate-btn {
+            width: 100%;
+            background: var(--primary-teal);
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 143, 107, 0.3);
+        }
+
+        .gate-btn:hover {
+            background: #007558;
+            transform: translateY(-1px);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        /* --- OFFICIAL RIGHT-ALIGNED LOGO HEADER --- */
         .official-header {
             background: var(--card-bg);
             border-radius: 16px;
             padding: 2.5rem 2rem;
             margin-bottom: 2.5rem;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            gap: 1.5rem;
-            position: relative;
+            gap: 2rem;
         }
 
         .header-meta {
             display: flex;
-            flex-direction: column;
+            flex-direction: row; /* الشعار أولاً على اليمين في نظام RTL */
             align-items: center;
-            gap: 1rem;
+            justify-content: center;
+            gap: 1.5rem;
+            width: 100%;
         }
 
         .logo-wrapper img {
@@ -67,17 +199,23 @@
             object-fit: contain;
         }
 
+        .ministry-text {
+            text-align: right;
+            border-right: 4px solid var(--primary-teal);
+            padding-right: 1.2rem;
+        }
+
         .ministry-text h3 {
-            font-size: 1.2rem;
-            color: var(--primary-teal);
-            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--secondary-navy);
+            font-weight: 800;
             margin-bottom: 0.3rem;
         }
 
         .ministry-text p {
             font-size: 0.95rem;
-            color: var(--text-light);
-            font-weight: 500;
+            color: var(--text-dark);
+            font-weight: 700;
         }
 
         .header-title-area {
@@ -110,7 +248,7 @@
             justify-content: center;
             flex-wrap: wrap;
             gap: 0.5rem;
-            margin-top: 1rem;
+            margin-top: 1.2rem;
         }
 
         .sub-title p {
@@ -128,7 +266,7 @@
             align-items: center;
             gap: 2rem;
             flex-wrap: wrap;
-            margin-top: 1.5rem;
+            margin-top: 1rem;
             padding-top: 1.2rem;
             border-top: 1px solid var(--border-color);
             width: 100%;
@@ -170,12 +308,6 @@
             overflow: hidden;
             display: flex;
             flex-direction: column;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
         }
 
         .card-header {
@@ -236,10 +368,6 @@
             border-bottom: none;
         }
 
-        .schedule-table tr:hover td {
-            background-color: #f8fafc;
-        }
-
         .doctor-name {
             font-weight: 700;
             color: var(--secondary-navy);
@@ -263,16 +391,34 @@
             font-variant-numeric: tabular-nums;
         }
 
-        /* --- FOOTER --- */
-        .footer-note {
-            text-align: center;
-            margin-top: 3rem;
+        /* --- FOOTER CREDIT WITH DEV SIGNATURE --- */
+        .footer-container {
+            margin-top: 4rem;
             padding-top: 1.5rem;
             border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .footer-note {
             color: var(--secondary-navy);
             font-size: 1.1rem;
             font-weight: 700;
-            letter-spacing: 0.5px;
+        }
+
+        .dev-signature {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+            direction: ltr;
+        }
+
+        .dev-signature span {
+            color: var(--primary-teal);
+            font-weight: 700;
         }
 
         /* --- RESPONSIVE MEDIA QUERIES --- */
@@ -289,6 +435,17 @@
             body {
                 padding: 1rem;
             }
+            .header-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .ministry-text {
+                border-right: none;
+                border-bottom: 3px solid var(--primary-teal);
+                padding-right: 0;
+                padding-bottom: 0.8rem;
+                text-align: center;
+            }
             .main-title {
                 font-size: 1.6rem;
             }
@@ -300,23 +457,44 @@
                 gap: 0.8rem;
                 align-items: center;
             }
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
-<body>
+<body class="protected">
 
-<div class="container">
+<!-- UI Gate Protection (حماية الواجهة الأمامية) -->
+<div id="protection-gate">
+    <div class="gate-card">
+        <div class="gate-icon">
+            <i class="fa-solid fa-shield-halved"></i>
+        </div>
+        <h2>نظام حماية البيانات المتزامنة</h2>
+        <p>يرجى إدخال الرمز السري المعتمد للمؤسسة لفك تشفير وعرض المخطط الطبي</p>
+        <div class="input-group">
+            <input type="password" id="gateCode" placeholder="••••" maxlength="6" onkeydown="if(event.key==='Enter') verifyGateCode()">
+        </div>
+        <button class="gate-btn" onclick="verifyGateCode()">تحقق والولوج للنظام</button>
+        <div class="error-message" id="gateError">رمز الوصول غير صحيح، يرجى المحاولة مرة أخرى.</div>
+    </div>
+</div>
+
+<!-- Main Application Grid Dashboard -->
+<div class="container" id="appContainer">
     
-    <!-- Centered Official Header -->
+    <!-- Centered Header Area with Right-Side Logo Layout -->
     <header class="official-header">
         <div class="header-meta">
             <div class="logo-wrapper">
-                <img src="logo.png" alt="وزارة الصحة">
+                <img src="logo.png" alt="شعارات الصحة والجمهورية">
             </div>
             <div class="ministry-text">
                 <h3>الجمهورية الجزائرية الديمقراطية الشعبية</h3>
                 <p>وزارة الصحة • مديرية الصحة والسكان لولاية غرداية</p>
-                <p style="font-size: 0.85rem; margin-top: 2px;">المؤسسة العمومية للصحة الجوارية ببريان (EPSP Berriane)</p>
+                <p style="font-weight: 500; font-size: 0.85rem; margin-top: 3px;">المؤسسة العمومية للصحة الجوارية ببريان (EPSP Berriane)</p>
             </div>
         </div>
         
@@ -331,7 +509,7 @@
             </div>
         </div>
 
-        <!-- Contact Information Strip -->
+        <!-- Dynamic Integrated Contact Info Strip -->
         <div class="contact-bar">
             <a href="tel:029241244" class="contact-item" dir="ltr">
                 <i class="fa-solid fa-phone"></i> 029 24 12 44
@@ -345,7 +523,7 @@
         </div>
     </header>
 
-    <!-- Main Schedule Content Grid -->
+    <!-- Main Schedule Tables -->
     <div class="grid-sections">
         
         <!-- CARD 1: طب الأطفال -->
@@ -463,11 +641,50 @@
 
     </div>
 
-    <!-- Updated Footer -->
-    <footer class="footer-note">
-        <p>CIES EPSP Berriane</p>
-    </footer>
+    <!-- Updated Modern Clean Footer Layout -->
+    <div class="footer-container">
+        <div class="footer-note">
+            CIES EPSP Berriane
+        </div>
+        <div class="dev-signature">
+            Developed by <span>Dev. Ferhat H.</span>
+        </div>
+    </div>
 </div>
 
+<script>
+    // إعدادات كود الحماية (يمكنك استبدال '2026' بأي رمز تريده للوحة)
+    const ACCESS_PIN = "2026"; 
+
+    function verifyGateCode() {
+        const inputVal = document.getElementById('gateCode').value;
+        const gateError = document.getElementById('gateError');
+        const protectionGate = document.getElementById('protection-gate');
+        const appContainer = document.getElementById('appContainer');
+
+        if(inputVal === ACCESS_PIN) {
+            gateError.style.display = "none";
+            protectionGate.classList.add('passed');
+            appContainer.classList.add('unlocked');
+        } else {
+            gateError.style.display = "block";
+            document.getElementById('gateCode').value = "";
+            document.getElementById('gateCode').focus();
+        }
+    }
+
+    // آليات حماية الـ Frontend لتعطيل الفحص والنسخ المباشر
+    document.addEventListener('contextmenu', event => event.preventDefault()); // تعطيل الكليك الأيمن
+    
+    document.addEventListener('keydown', function(e) {
+        // تعطيل الإختصارات الشهيرة للفحص (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+        if (e.keyCode === 123 || 
+            (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74)) || 
+            (e.ctrlKey && e.keyCode === 85)) {
+            e.preventDefault();
+            return false;
+        }
+    });
+</script>
 </body>
 </html>
