@@ -15,21 +15,24 @@
             --bg-main: #f8fafc;
             --card-bg: #ffffff;
             --border-color: #e2e8f0;
-            --accent-gold: #c29b2e;
         }
 
-        /* --- FRONTEND PROTECTION CSS --- */
-        html, body {
-            user-select: none;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-        }
-
-        * {
+        /* --- STRICT FRONTEND PROTECTION CSS --- */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            /* Prevents text selection globally across all browsers */
+            -webkit-user-select: none !important;
+            -moz-user-select: none !important;
+            -ms-user-select: none !important;
+            user-select: none !important;
+            /* Prevents ghost element dragging (images, links, text blocks) */
+            -webkit-user-drag: none !important;
+        }
+
+        img {
+            pointer-events: none !important; /* Disables right-click save options on images */
         }
 
         body {
@@ -45,7 +48,7 @@
             margin: 0 auto;
         }
 
-        /* --- OFFICIAL CENTERED HEADER (Logo on the Right) --- */
+        /* --- PERFECTED CENTERED HEADER (Logo Anchored Right) --- */
         .official-header {
             background: var(--card-bg);
             border-radius: 16px;
@@ -62,11 +65,17 @@
 
         .header-meta {
             display: flex;
-            flex-direction: row; /* Aligns Logo on the right naturally in RTL */
+            flex-direction: row; /* In RTL, row naturally places the first item on the far right */
             align-items: center;
             justify-content: center;
             gap: 1.5rem;
             width: 100%;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .logo-wrapper img {
@@ -144,4 +153,38 @@
             flex-wrap: wrap;
             margin-top: 1rem;
             padding-top: 1.2rem;
-            border-top: 1
+            border-top: 1px solid var(--border-color);
+            width: 100%;
+        }
+
+        .contact-item {
+            font-size: 0.95rem;
+            color: var(--secondary-navy);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .contact-item i {
+            color: var(--primary-teal);
+            font-size: 1.1rem;
+        }
+
+        /* --- DASHBOARD GRID --- */
+        .grid-sections {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        /* --- CARD STYLING --- */
+        .card {
+            background: var(--card-bg);
+            border-radius
