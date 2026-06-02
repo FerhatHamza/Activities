@@ -4,18 +4,19 @@
     <meta charset="UTF-8">
     <title>إعلان فحص طبي متخصص - جراحة الشرايين والصدر</title>
     
-    <!-- استدعاء خط التاجوال والأيقونات -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         :root {
-            --primary-teal: #008f6b;
-            --secondary-navy: #002b49;
+            --primary-teal: #00a877;
+            --primary-dark: #008f6b;
+            --secondary-navy: #0a2540;
             --text-dark: #0f172a; 
             --text-muted: #64748b;
-            --accent-red: #be123c;
-            --bg-card: #f8fafc;
+            --accent-red: #e11d48;
+            --bg-light: #f8fafc;
+            --card-shadow: 0 20px 40px rgba(10, 37, 64, 0.05);
         }
 
         /* حماية ومنع النسخ */
@@ -37,13 +38,16 @@
             padding: 20px;
         }
 
-        /* اللوحة الإعلانية المربعة الثابتة والأبعاد المطلوبة بدقة */
+        /* اللوحة الإعلانية المربع الاحترافي */
         .square-poster {
             width: 1200px;
             height: 1200px;
             background-color: #ffffff;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            padding: 80px 90px;
+            background-image: 
+                radial-gradient(circle at 100% 0%, rgba(0, 168, 119, 0.05) 0%, transparent 40%),
+                radial-gradient(circle at 0% 100%, rgba(10, 37, 64, 0.03) 0%, transparent 40%);
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.3);
+            padding: 90px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -52,145 +56,216 @@
             overflow: hidden;
         }
 
-        /* الهوية البصرية العلوية */
-        .top-stripe {
+        /* لمسة جمالية خلفية */
+        .square-poster::before {
+            content: '';
             position: absolute;
             top: 0;
             right: 0;
             left: 0;
-            height: 12px;
+            height: 10px;
             background: linear-gradient(90deg, var(--primary-teal), var(--secondary-navy));
         }
 
-        .institution-name {
-            font-size: 1.5rem;
-            font-weight: 800;
-            color: var(--text-muted);
-            letter-spacing: 0.5px;
+        /* الهيدر العلوي */
+        .header-area {
             text-align: center;
-            margin-top: 10px;
-        }
-
-        /* شارة إعلان رئيسية */
-        .announcement-badge {
-            background-color: var(--accent-red);
-            color: #ffffff;
-            font-size: 2.2rem;
-            font-weight: 900;
-            padding: 6px 50px;
-            border-radius: 12px;
-            margin-top: 20px;
-            letter-spacing: 1px;
-        }
-
-        /* محتوى نص الإعلان المباشر */
-        .announcement-text {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--secondary-navy);
-            text-align: center;
-            line-height: 1.4;
-            max-width: 950px;
-        }
-
-        .doctor-highlight {
-            color: var(--primary-teal);
-            font-weight: 900;
-            border-bottom: 4px double var(--primary-teal);
-            padding-bottom: 2px;
-        }
-
-        /* صندوق الاختصاصات الطبيّة النظيف */
-        .specialties-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
             width: 100%;
-            max-width: 750px;
-            margin: 10px 0;
         }
 
-        .specialty-item {
-            background: var(--bg-card);
-            border-right: 8px solid var(--secondary-navy);
-            padding: 22px 35px;
-            border-radius: 12px;
-            font-size: 2.3rem;
+        .institution-tag {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .institution-tag::before, .institution-tag::after {
+            content: '';
+            width: 40px;
+            height: 2px;
+            background-color: #cbd5e1;
+        }
+
+        /* شارة إعلان متموجة وراقية */
+        .announcement-title {
+            font-size: 4rem;
             font-weight: 900;
             color: var(--secondary-navy);
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+            position: relative;
+            display: inline-block;
+            margin-bottom: 10px;
         }
 
-        .specialty-item i {
+        .announcement-title span {
             color: var(--primary-teal);
-            font-size: 2rem;
         }
 
-        /* توقيت الموعد المبرز */
-        .time-badge {
-            background: #fffbeb;
-            border: 3px solid #f59e0b;
-            padding: 20px 60px;
-            border-radius: 20px;
+        /* نص الدعوة الأساسي */
+        .intro-text {
             font-size: 2.1rem;
-            font-weight: 900;
-            color: #92400e;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        /* ملاحظة المرضى المهمة في الأسفل */
-        .notice-box {
-            background-color: #f1f5f9;
-            border: 2px dashed #cbd5e1;
-            padding: 25px 40px;
-            border-radius: 16px;
-            max-width: 900px;
-            text-align: center;
-            font-size: 1.6rem;
             font-weight: 700;
             color: var(--text-dark);
+            margin-top: 25px;
+            max-width: 900px;
             line-height: 1.5;
         }
 
-        .notice-box strong {
-            color: var(--accent-red);
-            font-weight: 900;
-            display: block;
-            margin-bottom: 5px;
-            font-size: 1.7rem;
+        .doctor-card {
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            padding: 15px 45px;
+            border-radius: 50px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
         }
 
-        /* الفوتر الهادئ */
+        .doctor-card h2 {
+            font-size: 2.3rem;
+            font-weight: 900;
+            color: var(--secondary-navy);
+        }
+
+        .doctor-card h2 span {
+            color: var(--primary-dark);
+        }
+
+        /* شبكة الاختصاصات بتصميم الكروت الحديثة */
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            width: 100%;
+            margin: 40px 0;
+        }
+
+        .specialty-card {
+            background: var(--bg-light);
+            border: 1px solid #e2e8f0;
+            border-top: 6px solid var(--secondary-navy);
+            padding: 35px 25px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: var(--card-shadow);
+        }
+
+        .specialty-card:nth-child(2) {
+            border-top-color: var(--primary-teal);
+        }
+
+        .specialty-card i {
+            font-size: 2.8rem;
+            color: var(--secondary-navy);
+            margin-bottom: 20px;
+            background: #ffffff;
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+
+        .specialty-card:nth-child(2) i {
+            color: var(--primary-teal);
+        }
+
+        .specialty-card h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary-navy);
+        }
+
+        /* توقيت الموعد - شريط عريض فخم */
+        .schedule-bar {
+            background: linear-gradient(135deg, var(--secondary-navy) 0%, #1e3a8a 100%);
+            color: #ffffff;
+            width: 100%;
+            padding: 25px 50px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            font-size: 2.2rem;
+            font-weight: 800;
+            box-shadow: 0 15px 30px rgba(10, 37, 64, 0.15);
+        }
+
+        .schedule-bar i {
+            color: var(--primary-teal);
+            font-size: 2.5rem;
+        }
+
+        /* صندوق التنبيه الملاحظة السفلي */
+        .info-notice {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            background-color: #fff1f2;
+            border-right: 8px solid var(--accent-red);
+            padding: 25px 40px;
+            border-radius: 16px;
+            width: 100%;
+            box-shadow: 0 4px 15px rgba(225, 29, 72, 0.04);
+        }
+
+        .info-notice i {
+            font-size: 3rem;
+            color: var(--accent-red);
+        }
+
+        .info-notice-text {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #9f1239;
+            line-height: 1.5;
+        }
+
+        .info-notice-text strong {
+            font-weight: 900;
+            display: block;
+            font-size: 1.75rem;
+            margin-bottom: 2px;
+        }
+
+        /* الفوتر المتناسق النظيف */
         .footer-area {
             width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-top: 2px solid #f1f5f9;
-            padding-top: 25px;
+            padding-top: 30px;
         }
 
         .footer-tag {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             font-weight: 800;
             color: var(--secondary-navy);
+            letter-spacing: 0.5px;
         }
 
         .signature-tag {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--text-muted);
             font-weight: 700;
             direction: ltr;
         }
 
         .signature-tag span {
-            color: var(--primary-teal);
+            color: var(--primary-dark);
             font-weight: 900;
         }
     </style>
@@ -198,57 +273,53 @@
 <body>
 
     <div class="square-poster">
-        <div class="top-stripe"></div>
         
-        <!-- الجهة المستضيفة -->
-        <div class="institution-name">المؤسسة العمومية الاستشفائية بريان • EPH Berriane</div>
-        
-        <!-- شارة الإعلان -->
-        <div class="announcement-badge">إعـلان للمواطنيـن</div>
-
-        <!-- نص الإعلان الرئيسي -->
-        <div class="announcement-text">
-            تعلن المؤسسة عن تنظيم يوم للفحوصات الطبية المتخصصة تحت إشراف الطبيب الجراح: 
-            <span class="doctor-highlight">دبوز ع.</span>
+        <div class="header-area">
+            <div class="institution-tag">المؤسسة العمومية الاستشفائية بريان • EPH Berriane</div>
+            <h1 class="announcement-title">إعـلان <span>عـام</span></h1>
+            <p class="intro-text">نهيب بالسادة المواطنين الكرام أن المؤسسة تفتح أبوابها لإجراء فحوصات طبية متخصصة تحت إشراف السيد الطبيب الجراح:</p>
+            <div class="doctor-card">
+                <h2>السيد الدكتور: <span>دبوز ع.</span></h2>
+            </div>
         </div>
 
-        <!-- قائمة التخصصات الجراحية المستهدفة -->
-        <div class="specialties-container">
-            <div class="specialty-item">
+        <div class="specialties-grid">
+            <div class="specialty-card">
                 <i class="fa-solid fa-lungs"></i>
-                <span>الجراحة الصدرية</span>
+                <h3>الجراحة الصدرية</h3>
             </div>
-            <div class="specialty-item">
-                <i class="fa-solid fa-stethoscope"></i>
-                <span>دوالي الساقين</span>
+            <div class="specialty-card">
+                <i class="fa-solid fa-heart-pulse"></i>
+                <h3>دوالي الساقين</h3>
             </div>
-            <div class="specialty-item">
-                <i class="fa-solid fa-wave-square"></i>
-                <span>ناسور شرياني وريدي</span>
+            <div class="specialty-card">
+                <i class="fa-solid fa-code-fork"></i>
+                <h3>ناسور شرياني وريدي</h3>
             </div>
         </div>
 
-        <!-- موعد وتوقيت الفحص الطّبي -->
-        <div class="time-badge">
-            <i class="fa-solid fa-calendar-days"></i>
-            <span>يوم الأربعاء 03 جوان 2026 • بداية من الساعة 08:30 صباحاً</span>
+        <div class="schedule-bar">
+            <i class="fa-solid fa-clock"></i>
+            <span>يوم الأربعاء 03 جوان 2026 • ابتداءً من الساعة 08:30 صباحاً</span>
         </div>
 
-        <!-- توجيهات هامة للمواطنين -->
-        <div class="notice-box">
-            <strong><i class="fa-solid fa-triangle-exclamation"></i> ملاحظة هامة جداً:</strong>
-            على المرضى المعنيين التقدم مصحوبين بملفهم الطبي الكامل أو رسالة توجيهية رسمية صادرة من طرف طبيب عام.
+        <div class="info-notice">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <div class="info-notice-text">
+                <strong>ملاحظة هامة للمرتادين:</strong>
+                يتوجب على جميع المرضى التقدم مصحوبين بملفهم الطبي المتاح أو رسالة توجيهية مسبقة من طرف طبيب عام.
+            </div>
         </div>
 
-        <!-- الفوتر السفلي للتوثيق -->
         <div class="footer-area">
             <div class="footer-tag">
-                EPH Berriane
+                EPH BERRIANE
             </div>
             <div class="signature-tag">
                 Dev. <span>Ferhat H.</span>
             </div>
         </div>
+        
     </div>
 
 </body>
