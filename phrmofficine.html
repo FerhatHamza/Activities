@@ -3,18 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>جدول المناوبة الليلية للصيادلة الخواص</title>
+    <title>إعلان: جدول المناوبة الليلية للصيادلة الخواص</title>
     <style>
-        :root {
-            --primary-color: #0f766e; /* أخضر صيدلاني مريح */
-            --primary-light: #ccfbf1;
-            --accent-color: #e11d48; /* لون التنبيهات والملاحظات */
-            --bg-color: #f8fafc;
-            --text-main: #0f172a;
-            --text-muted: #475569;
-            --card-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
-        }
-
         * {
             box-sizing: border-box;
             margin: 0;
@@ -23,308 +13,213 @@
         }
 
         body {
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            padding: 20px;
+            background-color: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-        }
-
-        .app-container {
-            width: 100%;
-            max-width: 1100px;
-            background: #ffffff;
-            border-radius: 24px;
-            box-shadow: var(--card-shadow);
-            overflow: hidden;
-            display: grid;
-            grid-template-columns: 1fr 320px;
-        }
-
-        /* القسم الرئيسي (البحث والجدول) */
-        .main-content {
-            padding: 40px;
-        }
-
-        .app-header h1 {
-            color: var(--primary-color);
-            font-size: 1.8rem;
-            margin-bottom: 25px;
-            font-weight: 800;
-            border-right: 5px solid var(--primary-color);
-            padding-right: 15px;
-        }
-
-        /* قسم الملاحظة العامة */
-        .notice-box {
-            background-color: #fff1f2;
-            border-right: 4px solid var(--accent-color);
-            padding: 15px 20px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            font-size: 0.95rem;
-            line-height: 1.6;
-            color: #9f1239;
-        }
-
-        .notice-box strong {
-            color: var(--accent-color);
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        /* أدوات البحث */
-        .search-section {
-            background: #f1f5f9;
             padding: 20px;
-            border-radius: 16px;
-            margin-bottom: 30px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
         }
 
-        .form-group {
+        /* حاوية الإعلان المربعة بنسبة 1:1 لتطابق مقاس 1200x1200px بشكل متجاوب */
+        .annonce-poster {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            aspect-ratio: 1 / 1; /* يضمن بقاء التصميم مربعاً دائماً */
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             display: flex;
             flex-direction: column;
-            gap: 8px;
+            justify-content: space-between;
+            overflow: hidden;
+            position: relative;
+            border: 1px solid #e1e8ed;
         }
 
-        .form-group label {
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--text-muted);
+        /* الهيدر العلوي */
+        .poster-header {
+            padding: 40px 40px 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        .form-group input {
-            padding: 12px 16px;
-            border: 1px solid #cbd5e1;
-            border-radius: 10px;
-            font-size: 1rem;
-            outline: none;
-            transition: all 0.2s;
+        .logo-area img {
+            max-height: 45px;
+            object-fit: contain;
         }
 
-        .form-group input:focus {
-            border-color: var(--primary-color);
-            box-shadow: 0 0 0 3px var(--primary-light);
-        }
-
-        /* جدول النتائج */
-        .results-container {
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            text-align: right;
-        }
-
-        th {
-            background-color: var(--primary-color);
+        .badge-dss {
+            background-color: #a81136;
             color: white;
-            padding: 14px;
-            font-weight: 600;
-            font-size: 0.95rem;
+            padding: 8px 24px;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
         }
 
-        th:first-child { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
-        th:last-child { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
-
-        td {
-            padding: 14px;
-            border-bottom: 1px solid #e2e8f0;
-            font-size: 0.95rem;
-            color: var(--text-main);
+        /* المحتوى الأوسط: مقسم لجزأين (النص والـ QR كود) */
+        .poster-body {
+            display: flex;
+            flex: 1;
+            padding: 0 40px;
+            align-items: center;
+            gap: 40px;
         }
 
-        tr:hover td {
-            background-color: #f8fafc;
+        .text-side {
+            flex: 1.3;
         }
 
-        .no-results {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            font-style: italic;
+        .subtitle {
+            color: #a81136;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
-        /* القسم الجانبي (مشاركة الـ QR كود) */
-        .sidebar {
-            background-color: #f8fafc;
-            border-right: 1px solid #e2e8f0;
-            padding: 40px 20px;
+        .main-title {
+            color: #111827;
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .description {
+            color: #4b5563;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        /* جانب الـ QR كود المطور */
+        .qr-side {
+            flex: 0.9;
             display: flex;
             flex-direction: column;
             align-items: center;
-            text-align: center;
             justify-content: center;
+            background: #fafafa;
+            border: 2px dashed #e5e7eb;
+            border-radius: 20px;
+            padding: 30px 20px;
+            text-align: center;
         }
 
-        .qr-card {
-            background: white;
-            padding: 20px;
-            border-radius: 20px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            max-width: 240px;
+        .qr-wrapper {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .qr-image {
             width: 100%;
-            height: auto;
-            border-radius: 12px;
-            margin-bottom: 15px;
+            height: 100%;
+            object-fit: contain;
         }
 
-        .qr-title {
-            font-size: 1rem;
+        .qr-instruction {
+            color: #1f2937;
+            font-size: 1.05rem;
             font-weight: 700;
-            color: var(--primary-color);
-            margin-bottom: 8px;
         }
 
-        .qr-desc {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            line-height: 1.4;
+        /* الجزء السفلي: الملاحظة العامة بالتوقيت */
+        .poster-footer {
+            background-color: #a81136;
+            color: #ffffff;
+            padding: 25px 40px;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
         }
 
-        /* التوافق مع الهواتف الذكية */
-        @media (max-width: 850px) {
-            .app-container {
-                grid-template-columns: 1fr;
+        .notice-icon {
+            font-size: 1.5rem;
+            margin-top: -2px;
+        }
+
+        .notice-text {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            font-weight: 500;
+        }
+
+        .notice-title {
+            font-weight: 700;
+            color: #ffcbd4;
+            margin-left: 5px;
+        }
+
+        /* التوافق مع الشاشات الصغيرة جداً للتصفح الهاتفي الهجين */
+        @media (max-width: 600px) {
+            .annonce-poster {
+                aspect-ratio: auto; /* إلغاء المربع الكامل على الهواتف لسهولة القراءة */
             }
-            .sidebar {
-                border-right: none;
-                border-top: 1px solid #e2e8f0;
-                order: -1; /* يرفع الـ QR كود للأعلى في الهواتف لسهولة المسح */
-                padding: 30px;
+            .poster-body {
+                flex-direction: column;
+                padding: 20px;
+                gap: 25px;
             }
-            .search-section {
-                grid-template-columns: 1fr;
+            .main-title {
+                font-size: 1.8rem;
+            }
+            .qr-side {
+                width: 100%;
             }
         }
     </style>
 </head>
 <body>
 
-    <div class="app-container">
+    <div class="annonce-poster">
         
-        <!-- المحتوى الرئيسي للمنصة -->
-        <main class="main-content">
-            <header class="app-header">
-                <h1>جدول المناوبة الليلية للصيادلة الخواص</h1>
-            </header>
+        <!-- الهيدر العلوي -->
+        <header class="poster-header">
+            <div class="logo-area">
+                <!-- عرض النص البديل للملف في حال عدم وجود الصورة مؤقتاً -->
+                <img src="logo.png" alt="logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <span style="display:none; font-weight:800; font-size:1.2rem; color:#a81136;">[logo.png]</span>
+            </div>
+            <div class="badge-dss">DSS</div>
+        </header>
 
-            <!-- الملاحظة العامة المطلوبة -->
-            <div class="notice-box">
-                <strong>💡 ملاحظة عامة حول التوقيت:</strong>
+        <!-- محتوى الإعلان الأساسي -->
+        <div class="poster-body">
+            
+            <!-- النصوص التعريفية -->
+            <div class="text-side">
+                <div class="subtitle">منصة الخدمة الرقمية</div>
+                <h1 class="main-title">جدول المناوبة الليلية للصيادلة الخواص</h1>
+                <p class="description">الآن بكل سهولة، يمكنك البحث الفوري عن الصيدليات المناوبة وتصفيتها حسب <strong>الاسم</strong> أو <strong>التاريخ</strong> مباشرة عبر منصتنا.</p>
+            </div>
+
+            <!-- مربع الـ QR كود الموجه للمنصة الخاصة بك -->
+            <div class="qr-side">
+                <div class="qr-wrapper">
+                    <img src="pharmaciedofficine.png" alt="pharmaciedofficine.png" class="qr-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; text-align:center; color:#6b7280; font-weight:bold; font-size:0.9rem;">[pharmaciedofficine.png]</div>
+                </div>
+                <div class="qr-instruction">امسح الرمز للوصول إلى الجدول الحالي</div>
+            </div>
+
+        </div>
+
+        <!-- فوتر الملاحظة الزمنية المطلوبة -->
+        <footer class="poster-footer">
+            <span class="notice-icon">💡</span>
+            <div class="notice-text">
+                <span class="notice-title">ملاحظة عامة حول التوقيت:</span>
                 المناوبة العادية تكون من الساعة 19:00 مساءً إلى 08:00 صباحاً، باستثناء أيام الجمعة حيث يتم تقسيم المناوبة إلى فترتين (نهارية من 08:00 إلى 19:00 وليلية من 19:00 إلى 08:00).
             </div>
-
-            <!-- فلاتر البحث -->
-            <section class="search-section">
-                <div class="form-group">
-                    <label for="searchName">البحث باسم الصيدلية أو الصيدلي</label>
-                    <input type="text" id="searchName" placeholder="اكتب الاسم هنا...">
-                </div>
-                <div class="form-group">
-                    <label for="searchDate">تصفية حسب التاريخ</label>
-                    <input type="date" id="searchDate">
-                </div>
-            </section>
-
-            <!-- جدول عرض البيانات -->
-            <section class="results-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>اسم الصيدلية</th>
-                            <th>التاريخ</th>
-                            <th>العنوان / الموقع</th>
-                            <th>رقم الهاتف</th>
-                        </tr>
-                    </thead>
-                    <tbody id="tableBody">
-                        <!-- البيانات يتم توليدها ديناميكياً عبر الجافاسكربت -->
-                    </tbody>
-                </table>
-                <div id="noResults" class="no-results" style="display: none;">لم يتم العثور على أي صيدلية مناوبة تطابق خيارات البحث.</div>
-            </section>
-        </main>
-
-        <!-- القسم الجانبي الخاص بالـ QR Code ومشاركته -->
-        <aside class="sidebar">
-            <div class="qr-card">
-                <!-- في حال عدم توفر الصورة يظهر نص بديل منسق -->
-                <img src="pharmaciedofficine.png" alt="QR Code المنصة" class="qr-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <div style="display:none; padding: 40px 10px; background: #e2e8f0; border-radius:10px; margin-bottom:15px; font-weight:bold; color:#64748b;">[pharmaciedofficine.png]</div>
-                
-                <h2 class="qr-title">انشر المنصة</h2>
-                <p class="qr-desc">يمكن للمواطنين مسح هذا الرمز للوصول الفوري إلى جدول المناوبات والبحث المباشر.</p>
-            </div>
-        </aside>
+        </footer>
 
     </div>
 
-    <!-- الجزء التفاعلي الخاص بالبحث (JavaScript) -->
-    <script>
-        // بيانات تجريبية لمحاكاة النظام (يمكنك تعديلها أو ربطها بقاعدة بياناتك لاحقاً)
-        const mockData = [
-            { name: "صيدلية الشفاء (د. أحمد)", date: "2026-06-14", address: "شارع الاستقلال، وسط المدينة", phone: "029.XX.XX.XX" },
-            { name: "صيدلية ابن سينا", date: "2026-06-14", address: "حي المستقبل، مقابل العيادة المتعددة الخدمات", phone: "029.YY.YY.YY" },
-            { name: "صيدلية الياسمين", date: "2026-06-15", address: "الشارع الرئيسي رقم 5", phone: "029.ZZ.ZZ.ZZ" },
-            { name: "صيدلية المركز", date: "2026-06-19", address: "ساحة أول نوفمبر", phone: "029.AA.AA.AA" } // مثال ليوم جمعة مثلاً
-        ];
-
-        const tableBody = document.getElementById('tableBody');
-        const noResults = document.getElementById('noResults');
-        const searchName = document.getElementById('searchName');
-        const searchDate = document.getElementById('searchDate');
-
-        // دالة لعرض البيانات بناءً على الفلاتر
-        function renderTable() {
-            const nameQuery = searchName.value.toLowerCase().trim();
-            const dateQuery = searchDate.value;
-
-            // تصفية المصفوفة بناءً على المدخلات
-            const filteredData = mockData.filter(item => {
-                const matchesName = item.name.toLowerCase().includes(nameQuery);
-                const matchesDate = dateQuery === "" || item.date === dateQuery;
-                return matchesName && matchesDate;
-            });
-
-            // تفريغ الجدول
-            tableBody.innerHTML = "";
-
-            if (filteredData.length === 0) {
-                noResults.style.display = "block";
-            } else {
-                noResults.style.display = "none";
-                filteredData.forEach(item => {
-                    // تحويل صيغة التاريخ لعرض محلي أفضل إن أردت
-                    const row = `
-                        <tr>
-                            <td style="font-weight: 600; color: var(--primary-color);">${item.name}</td>
-                            <td>${item.date.split('-').reverse().join('/')}</td>
-                            <td>${item.address}</td>
-                            <td dir="ltr">${item.phone}</td>
-                        </tr>
-                    `;
-                    tableBody.innerHTML += row;
-                });
-            }
-        }
-
-        // الاستماع لمدخلات المستخدم لتحديث النتائج فورياً
-        searchName.addEventListener('input', renderTable);
-        searchDate.addEventListener('change', renderTable);
-
-        // العرض الأولي عند فتح الصفحة
-        renderTable();
-    </script>
 </body>
 </html>
