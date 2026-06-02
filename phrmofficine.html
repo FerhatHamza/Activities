@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وزارة الصحة - جدول المناوبة الليلية للصيادلة الخواص ببريان</title>
     
+    <!-- استدعاء خط التجوّل من جوجل -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
     
+    <!-- استدعاء مكتبة FontAwesome للأيقونات -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -45,7 +47,7 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* الهيدر العلوي المحدث بالتوسيط */
+        /* الهيدر العلوي المتمركز */
         .official-header {
             background-color: #fafbfc;
             border-bottom: 1px solid #edf2f7;
@@ -57,13 +59,13 @@
             gap: 15px;
         }
 
-        /* الشعار أصبح أكبر مرتين (تمت مضاعفة الطول الأقصى) */
+        /* تم إعادة الشعار لحجم متناسق وممتاز */
         .logo-box img {
-            max-height: 100px;
+            max-height: 50px;
             object-fit: contain;
         }
 
-        /* تنسيق لتوسيط نصوص الوزارة */
+        /* توسيط نصوص الوزارة */
         .ministry-titles {
             text-align: center;
             display: flex;
@@ -100,7 +102,6 @@
             flex: 1.4;
         }
 
-        /* تعديل مسمى البوابة الرقمية الجوارية ببريان */
         .platform-badge {
             color: #a81136;
             font-size: 1.05rem;
@@ -186,7 +187,7 @@
             color: #ffd1d9;
         }
 
-        /* التوقيع المؤسساتي وإضافة المطور المحدث بـ FontAwesome */
+        /* التوقيع المؤسساتي والمطورين */
         .epsp-footer {
             background-color: #1a202c;
             color: #a0aec0;
@@ -203,7 +204,7 @@
         .dev-credit {
             color: #718096;
             font-size: 0.8rem;
-            direction: ltr; /* لعرض السطر الانجليزي بشكل سليم ومستقيم */
+            direction: ltr;
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -214,7 +215,7 @@
             color: #4a5568;
         }
 
-        /* متوافق مع الهواتف */
+        /* التوافق مع الهواتف */
         @media (max-width: 768px) {
             .announcement-body {
                 flex-direction: column;
@@ -234,6 +235,7 @@
 
     <div class="annonce-container">
         
+        <!-- الهيدر الرسمي لوزارة الصحة بالشعار المتناسق الجديد -->
         <header class="official-header">
             <div class="logo-box">
                 <img src="logo.png" alt="logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -245,6 +247,7 @@
             </div>
         </header>
 
+        <!-- المحتوى المركزي -->
         <div class="announcement-body">
             
             <div class="text-content">
@@ -253,6 +256,7 @@
                 <p class="subtext">تابعوا مباشرة وبشكل فوري مواقع وأسماء الصيدليات المناومة؛ حيث يمكنكم المسح والبحث السريع عبر المنصة حسب <strong>الاسم</strong> أو <strong>التاريخ</strong>.</p>
             </div>
 
+            <!-- مربع الـ QR كود -->
             <div class="qr-section">
                 <div class="qr-box">
                     <img src="pharmaciedofficine.png" alt="pharmaciedofficine.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
@@ -263,6 +267,7 @@
 
         </div>
 
+        <!-- شريط الملاحظة العامة حول توقيت العمل -->
         <footer class="time-notice-footer">
             <span class="info-bulb">💡</span>
             <div class="notice-paragraph">
@@ -271,6 +276,7 @@
             </div>
         </footer>
 
+        <!-- التوقيع الرسمي للمؤسسة وخط المطور الفني المعين -->
         <div class="epsp-footer">
             <div>المؤسسة العمومية للصحة الجوارية ببريان – EPSP Berriane © 2026</div>
             <div class="dev-credit">
@@ -280,35 +286,31 @@
 
     </div>
 
+    <!-- كود حماية الواجهة الأمامية من الفحص واختصارات المطورين -->
     <script>
-        // 1. تعطيل القائمة المنبثقة عند النقر بزر الفأرة الأيمن (Disable Right Click)
+        // تعطيل القائمة المنبثقة عند النقر بزر الفأرة الأيمن
         document.addEventListener('contextmenu', function(e) {
             e.preventDefault();
         });
 
-        // 2. تعطيل اختصارات لوحة المفاتيح الخاصة بالمطورين (F12, Ctrl+Shift+I, U, etc.)
+        // تعطيل اختصارات لوحة المفاتيح الخاصة بالفحص (F12, Ctrl+Shift+I, U, etc.)
         document.addEventListener('keydown', function(e) {
-            // تعطيل F12
             if (e.key === "F12") {
                 e.preventDefault();
                 return false;
             }
-            // تعطيل Ctrl + Shift + I (فتح الفحص)
             if (e.ctrlKey && e.shiftKey && e.key === "I") {
                 e.preventDefault();
                 return false;
             }
-            // تعطيل Ctrl + Shift + J (فتح الكونسول)
             if (e.ctrlKey && e.shiftKey && e.key === "J") {
                 e.preventDefault();
                 return false;
             }
-            // تعطيل Ctrl + U (عرض السورس كود)
             if (e.ctrlKey && e.key === "u") {
                 e.preventDefault();
                 return false;
             }
-            // تعطيل Ctrl + S (حفظ الصفحة)
             if (e.ctrlKey && e.key === "s") {
                 e.preventDefault();
                 return false;
