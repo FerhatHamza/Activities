@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>وزارة الصحة - جدول المناوبة الليلية للصيادلة الخواص ببريان</title>
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
         * {
@@ -14,6 +17,11 @@
             margin: 0;
             padding: 0;
             font-family: 'Tajawal', sans-serif;
+            /* منع تحديد النصوص كخطوة حماية إضافية */
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
         }
 
         body {
@@ -25,7 +33,6 @@
             padding: 20px;
         }
 
-        /* حاوية الإعلان: تم تعديل الأبعاد لتصبح أقل ارتفاعاً وأكثر عرضاً */
         .annonce-container {
             background-color: #ffffff;
             width: 100%;
@@ -38,48 +45,52 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* الهيدر الوزاري الرسمي المحدث */
+        /* الهيدر العلوي المحدث بالتوسيط */
         .official-header {
             background-color: #fafbfc;
             border-bottom: 1px solid #edf2f7;
-            padding: 20px 30px;
+            padding: 25px 30px;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
+            justify-content: center;
+            gap: 15px;
         }
 
+        /* الشعار أصبح أكبر مرتين (تمت مضاعفة الطول الأقصى) */
         .logo-box img {
-            max-height: 50px;
+            max-height: 100px;
             object-fit: contain;
         }
 
+        /* تنسيق لتوسيط نصوص الوزارة */
         .ministry-titles {
-            text-align: left; /* لتوحيد اتجاه النصوص الرسمية المختلطة */
+            text-align: center;
             display: flex;
             flex-direction: column;
-            gap: 2px;
+            gap: 4px;
+            width: 100%;
         }
 
         .ministry-ar {
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             font-weight: 700;
             color: #1a202c;
-            text-align: right;
+            text-align: center;
         }
 
         .ministry-fr {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: #718096;
-            text-align: right;
-            font-family: sans-serif; /* لجمالية الخط الفرنسي الافتراضي */
+            text-align: center;
+            font-family: sans-serif;
         }
 
-        /* محتوى الإعلان الأوسط المتناسق وبحجم عمودي أصغر */
+        /* محتوى الإعلان */
         .announcement-body {
             display: flex;
-            padding: 30px;
+            padding: 35px 30px;
             align-items: center;
             gap: 35px;
             background: linear-gradient(135deg, #ffffff 60%, #fcfdfd 100%);
@@ -89,12 +100,16 @@
             flex: 1.4;
         }
 
+        /* تعديل مسمى البوابة الرقمية الجوارية ببريان */
         .platform-badge {
             color: #a81136;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 700;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             display: inline-block;
+            background-color: #fff1f2;
+            padding: 4px 12px;
+            border-radius: 6px;
         }
 
         .headline {
@@ -111,7 +126,7 @@
             line-height: 1.5;
         }
 
-        /* الرمز الشريطي QR المتناسق */
+        /* الرمز الشريطي QR */
         .qr-section {
             flex: 0.8;
             display: flex;
@@ -145,7 +160,7 @@
             font-weight: 700;
         }
 
-        /* فوتر التوقيت الزمني */
+        /* فوتر التوقيت */
         .time-notice-footer {
             background-color: #a81136;
             color: #ffffff;
@@ -171,32 +186,40 @@
             color: #ffd1d9;
         }
 
-        /* التوقيع المؤسساتي السفلي ببريان */
+        /* التوقيع المؤسساتي وإضافة المطور المحدث بـ FontAwesome */
         .epsp-footer {
             background-color: #1a202c;
             color: #a0aec0;
             text-align: center;
-            padding: 12px;
+            padding: 15px 20px;
             font-size: 0.85rem;
             font-weight: 500;
             border-top: 1px solid #2d3748;
-            letter-spacing: 0.3px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
         }
 
-        /* ريسبونسيف للهواتف المحمولة */
+        .dev-credit {
+            color: #718096;
+            font-size: 0.8rem;
+            direction: ltr; /* لعرض السطر الانجليزي بشكل سليم ومستقيم */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+        }
+
+        .dev-credit i {
+            color: #4a5568;
+        }
+
+        /* متوافق مع الهواتف */
         @media (max-width: 768px) {
-            .official-header {
-                flex-direction: column;
-                text-align: center;
-                padding: 15px;
-            }
-            .ministry-ar, .ministry-fr {
-                text-align: center;
-            }
             .announcement-body {
                 flex-direction: column;
                 padding: 20px;
-                gap: 20px;
+                gap: 25px;
             }
             .headline {
                 font-size: 1.6rem;
@@ -225,7 +248,7 @@
         <div class="announcement-body">
             
             <div class="text-content">
-                <span class="platform-badge">بوابة الخدمات الرقمية لقطاع الصحة</span>
+                <span class="platform-badge">بوابة الخدمات الرقمية للمؤسسة العمومية للصحة الجوارية ببريان</span>
                 <h1 class="headline">جدول المناوبة الليلية للصيادلة الخواص</h1>
                 <p class="subtext">تابعوا مباشرة وبشكل فوري مواقع وأسماء الصيدليات المناومة؛ حيث يمكنكم المسح والبحث السريع عبر المنصة حسب <strong>الاسم</strong> أو <strong>التاريخ</strong>.</p>
             </div>
@@ -249,10 +272,48 @@
         </footer>
 
         <div class="epsp-footer">
-            المؤسسة العمومية للصحة الجوارية ببريان – EPSP Berriane © 2026
+            <div>المؤسسة العمومية للصحة الجوارية ببريان – EPSP Berriane © 2026</div>
+            <div class="dev-credit">
+                <i class="fas fa-laptop-code"></i> correspondants informatique epsp berriane - Ferhat H.
+            </div>
         </div>
 
     </div>
 
+    <script>
+        // 1. تعطيل القائمة المنبثقة عند النقر بزر الفأرة الأيمن (Disable Right Click)
+        document.addEventListener('contextmenu', function(e) {
+            e.preventDefault();
+        });
+
+        // 2. تعطيل اختصارات لوحة المفاتيح الخاصة بالمطورين (F12, Ctrl+Shift+I, U, etc.)
+        document.addEventListener('keydown', function(e) {
+            // تعطيل F12
+            if (e.key === "F12") {
+                e.preventDefault();
+                return false;
+            }
+            // تعطيل Ctrl + Shift + I (فتح الفحص)
+            if (e.ctrlKey && e.shiftKey && e.key === "I") {
+                e.preventDefault();
+                return false;
+            }
+            // تعطيل Ctrl + Shift + J (فتح الكونسول)
+            if (e.ctrlKey && e.shiftKey && e.key === "J") {
+                e.preventDefault();
+                return false;
+            }
+            // تعطيل Ctrl + U (عرض السورس كود)
+            if (e.ctrlKey && e.key === "u") {
+                e.preventDefault();
+                return false;
+            }
+            // تعطيل Ctrl + S (حفظ الصفحة)
+            if (e.ctrlKey && e.key === "s") {
+                e.preventDefault();
+                return false;
+            }
+        });
+    </script>
 </body>
 </html>
