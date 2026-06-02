@@ -29,7 +29,7 @@
             overflow: hidden;
             margin-bottom: 1.5rem;
         }
-        /* header with logo - improved responsiveness */
+        /* header with logo - bigger logo */
         .header-pharmacy {
             background: linear-gradient(112deg, #ffffff 0%, #eef3fc 100%);
             padding: 1rem 1.5rem;
@@ -46,27 +46,25 @@
             gap: 0.8rem;
             flex-wrap: wrap;
         }
+        /* make logo 3 times bigger */
         .logo-area img {
-            height: auto;
             width: auto;
-            max-width: 140px;
-            max-height: 65px;
+            height: auto;
+            max-width: 420px;   /* originally 140px => 3x */
+            max-height: 195px;  /* originally 65px => 3x */
             object-fit: contain;
         }
         /* fallback if logo missing */
         .logo-placeholder {
             background: #2a6e4b;
-            width: 55px;
-            height: 55px;
-            border-radius: 30px;
+            width: 120px;
+            height: 120px;
+            border-radius: 60px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
-            font-size: 1.8rem;
-        }
-        .etab-title {
-            display: none; /* hidden to keep only logo and badge - cleaner */
+            font-size: 3rem;
         }
         .month-badge {
             background: #e6f0fa;
@@ -239,11 +237,15 @@
             padding-top: 0.5rem;
             margin-top: 0.2rem;
         }
+        /* Responsive: scale down logo on smaller screens */
         @media (max-width: 700px) {
             body { padding: 0.5rem; }
             .header-pharmacy { flex-direction: column; align-items: stretch; text-align: center; }
             .logo-area { justify-content: center; }
-            .logo-area img { max-width: 120px; max-height: 55px; }
+            .logo-area img { 
+                max-width: 280px; 
+                max-height: 130px; 
+            }
             .title-section h1 { font-size: 1.4rem; }
             .duty-table th, .duty-table td { font-size: 0.7rem; padding: 0.5rem 0.2rem; }
             .pharmacist-name { font-size: 0.8rem; }
@@ -255,6 +257,10 @@
         @media (max-width: 480px) {
             .duty-table { font-size: 0.65rem; }
             .address-text { font-size: 0.7rem; }
+            .logo-area img { 
+                max-width: 220px; 
+                max-height: 100px; 
+            }
         }
     </style>
 </head>
@@ -263,7 +269,7 @@
     <div class="main-card">
         <div class="header-pharmacy">
             <div class="logo-area">
-                <!-- Logo.png - responsive image -->
+                <!-- Logo.png - now 3 times bigger -->
                 <img src="logo.png" alt="شعار المؤسسة" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=logo-placeholder><i class=fas fa-prescription-bottle-alt></i></div>'+this.parentElement.innerHTML;">
             </div>
             <div class="month-badge">
@@ -330,7 +336,7 @@
 </div>
 
 <script>
-    // complete june 2026 duty data
+    // complete june 2026 duty data (same as before)
     const dutiesRaw = [
         { date: "الإثنين 01 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "من 19:00 إلى 08:00", phone: "" },
         { date: "الإثنين 01 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "من 19:00 إلى 08:00", phone: "" },
