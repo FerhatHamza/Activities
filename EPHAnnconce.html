@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>إعلان فحص طبي متخصص - جراحة الشرايين والصدر</title>
+    
+    <!-- استدعاء خط التاجوال والأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary-teal: #008f6b;
+            --secondary-navy: #002b49;
+            --text-dark: #0f172a; 
+            --text-muted: #64748b;
+            --accent-red: #be123c;
+            --bg-card: #f8fafc;
+        }
+
+        /* حماية ومنع النسخ */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+        }
+
+        body {
+            font-family: 'Tajawal', sans-serif;
+            background-color: #cbd5e1; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* اللوحة الإعلانية المربعة الثابتة والأبعاد المطلوبة بدقة */
+        .square-poster {
+            width: 1200px;
+            height: 1200px;
+            background-color: #ffffff;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 80px 90px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* الهوية البصرية العلوية */
+        .top-stripe {
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: 0;
+            height: 12px;
+            background: linear-gradient(90deg, var(--primary-teal), var(--secondary-navy));
+        }
+
+        .institution-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-muted);
+            letter-spacing: 0.5px;
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* شارة إعلان رئيسية */
+        .announcement-badge {
+            background-color: var(--accent-red);
+            color: #ffffff;
+            font-size: 2.2rem;
+            font-weight: 900;
+            padding: 6px 50px;
+            border-radius: 12px;
+            margin-top: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* محتوى نص الإعلان المباشر */
+        .announcement-text {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary-navy);
+            text-align: center;
+            line-height: 1.4;
+            max-width: 950px;
+        }
+
+        .doctor-highlight {
+            color: var(--primary-teal);
+            font-weight: 900;
+            border-bottom: 4px double var(--primary-teal);
+            padding-bottom: 2px;
+        }
+
+        /* صندوق الاختصاصات الطبيّة النظيف */
+        .specialties-container {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+            max-width: 750px;
+            margin: 10px 0;
+        }
+
+        .specialty-item {
+            background: var(--bg-card);
+            border-right: 8px solid var(--secondary-navy);
+            padding: 22px 35px;
+            border-radius: 12px;
+            font-size: 2.3rem;
+            font-weight: 900;
+            color: var(--secondary-navy);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .specialty-item i {
+            color: var(--primary-teal);
+            font-size: 2rem;
+        }
+
+        /* توقيت الموعد المبرز */
+        .time-badge {
+            background: #fffbeb;
+            border: 3px solid #f59e0b;
+            padding: 20px 60px;
+            border-radius: 20px;
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: #92400e;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* ملاحظة المرضى المهمة في الأسفل */
+        .notice-box {
+            background-color: #f1f5f9;
+            border: 2px dashed #cbd5e1;
+            padding: 25px 40px;
+            border-radius: 16px;
+            max-width: 900px;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-dark);
+            line-height: 1.5;
+        }
+
+        .notice-box strong {
+            color: var(--accent-red);
+            font-weight: 900;
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.7rem;
+        }
+
+        /* الفوتر الهادئ */
+        .footer-area {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid #f1f5f9;
+            padding-top: 25px;
+        }
+
+        .footer-tag {
+            font-size: 1.2rem;
+            font-weight: 800;
+            color: var(--secondary-navy);
+        }
+
+        .signature-tag {
+            font-size: 1rem;
+            color: var(--text-muted);
+            font-weight: 700;
+            direction: ltr;
+        }
+
+        .signature-tag span {
+            color: var(--primary-teal);
+            font-weight: 900;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="square-poster">
+        <div class="top-stripe"></div>
+        
+        <!-- الجهة المستضيفة -->
+        <div class="institution-name">المؤسسة العمومية الاستشفائية بريان • EPH Berriane</div>
+        
+        <!-- شارة الإعلان -->
+        <div class="announcement-badge">إعـلان للمواطنيـن</div>
+
+        <!-- نص الإعلان الرئيسي -->
+        <div class="announcement-text">
+            تعلن المؤسسة عن تنظيم يوم للفحوصات الطبية المتخصصة تحت إشراف الطبيب الجراح: 
+            <span class="doctor-highlight">دبوز ع.</span>
+        </div>
+
+        <!-- قائمة التخصصات الجراحية المستهدفة -->
+        <div class="specialties-container">
+            <div class="specialty-item">
+                <i class="fa-solid fa-lungs"></i>
+                <span>الجراحة الصدرية</span>
+            </div>
+            <div class="specialty-item">
+                <i class="fa-solid fa-stethoscope"></i>
+                <span>دوالي الساقين</span>
+            </div>
+            <div class="specialty-item">
+                <i class="fa-solid fa-wave-square"></i>
+                <span>ناسور شرياني وريدي</span>
+            </div>
+        </div>
+
+        <!-- موعد وتوقيت الفحص الطّبي -->
+        <div class="time-badge">
+            <i class="fa-solid fa-calendar-days"></i>
+            <span>يوم الأربعاء 03 جوان 2026 • بداية من الساعة 08:30 صباحاً</span>
+        </div>
+
+        <!-- توجيهات هامة للمواطنين -->
+        <div class="notice-box">
+            <strong><i class="fa-solid fa-triangle-exclamation"></i> ملاحظة هامة جداً:</strong>
+            على المرضى المعنيين التقدم مصحوبين بملفهم الطبي الكامل أو رسالة توجيهية رسمية صادرة من طرف طبيب عام.
+        </div>
+
+        <!-- الفوتر السفلي للتوثيق -->
+        <div class="footer-area">
+            <div class="footer-tag">
+                EPH Berriane
+            </div>
+            <div class="signature-tag">
+                Dev. <span>Ferhat H.</span>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
