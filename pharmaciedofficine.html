@@ -50,8 +50,8 @@
         .logo-area img {
             width: auto;
             height: auto;
-            max-width: 420px;   /* originally 140px => 3x */
-            max-height: 195px;  /* originally 65px => 3x */
+            max-width: 420px;
+            max-height: 195px;
             object-fit: contain;
         }
         /* fallback if logo missing */
@@ -211,7 +211,7 @@
             white-space: nowrap;
             color: #b64926;
         }
-        /* Premium responsive footer with new colors */
+        /* Premium responsive footer */
         .premium-footer {
             background: #1e4663;
             color: #f5f2e0;
@@ -237,7 +237,12 @@
             padding-top: 0.5rem;
             margin-top: 0.2rem;
         }
-        /* Responsive: scale down logo on smaller screens */
+        /* Left align French text inside RTL container */
+        .footer-credits .credit-left {
+            direction: ltr;
+            text-align: left;
+            font-family: 'Cairo', monospace;
+        }
         @media (max-width: 700px) {
             body { padding: 0.5rem; }
             .header-pharmacy { flex-direction: column; align-items: stretch; text-align: center; }
@@ -253,6 +258,7 @@
             .filter-bar { flex-direction: column; align-items: stretch; }
             .premium-footer { padding: 0.8rem; }
             .footer-credits { flex-direction: column; align-items: center; gap: 0.3rem; }
+            .footer-credits .credit-left { text-align: center; }
         }
         @media (max-width: 480px) {
             .duty-table { font-size: 0.65rem; }
@@ -269,7 +275,7 @@
     <div class="main-card">
         <div class="header-pharmacy">
             <div class="logo-area">
-                <!-- Logo.png - now 3 times bigger -->
+                <!-- Logo.png - 3x larger -->
                 <img src="logo.png" alt="شعار المؤسسة" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=logo-placeholder><i class=fas fa-prescription-bottle-alt></i></div>'+this.parentElement.innerHTML;">
             </div>
             <div class="month-badge">
@@ -319,7 +325,7 @@
             </table>
         </div>
 
-        <!-- premium footer with new color harmony -->
+        <!-- premium footer with left-aligned French credit -->
         <div class="premium-footer">
             <div class="footer-ministry">
                 وزارة الصحة - الجمهورية الجزائرية الديمقراطية الشعبية
@@ -329,14 +335,16 @@
                 المؤسسة العمومية للصحة الجوارية ببريان – EPSP Berriane © 2026
             </div>
             <div class="footer-credits">
-                <span><i class="fas fa-laptop-code"></i> correspondants informatique epsp berriane - Ferhat H.</span>
+                <!-- Empty span to keep balance, then French text on left -->
+                <span></span>
+                <span class="credit-left"><i class="fas fa-laptop-code"></i> correspondants informatique epsp berriane - Ferhat H.</span>
             </div>
         </div>
     </div>
 </div>
 
 <script>
-    // complete june 2026 duty data (same as before)
+    // complete june 2026 duty data
     const dutiesRaw = [
         { date: "الإثنين 01 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "من 19:00 إلى 08:00", phone: "" },
         { date: "الإثنين 01 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "من 19:00 إلى 08:00", phone: "" },
