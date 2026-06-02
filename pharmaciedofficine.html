@@ -29,6 +29,7 @@
             overflow: hidden;
             margin-bottom: 1.5rem;
         }
+        /* header with logo */
         .header-pharmacy {
             background: linear-gradient(112deg, #ffffff 0%, #fef3e0 100%);
             padding: 1.5rem 2rem;
@@ -44,7 +45,14 @@
             align-items: center;
             gap: 0.8rem;
         }
-        .logo-icon {
+        .logo-area img {
+            height: 65px;
+            width: auto;
+            max-width: 160px;
+            object-fit: contain;
+        }
+        /* fallback if logo missing */
+        .logo-placeholder {
             background: #2a6e4b;
             width: 55px;
             height: 55px;
@@ -61,35 +69,41 @@
             color: #1c573e;
         }
         .etab-title p {
-            font-size: 0.7rem;
+            font-size: 0.75rem;
             color: #6d8a78;
         }
         .month-badge {
             background: #f6eddb;
             padding: 0.5rem 1.2rem;
             border-radius: 40px;
-            font-weight: 600;
-            font-size: 0.8rem;
+            font-weight: 700;
+            font-size: 0.9rem;
         }
         .title-section {
             text-align: center;
-            padding: 1rem 1rem 0.2rem;
+            padding: 1.2rem 1rem 0.2rem;
         }
         .title-section h1 {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 800;
             background: linear-gradient(120deg, #1d6743, #daa943);
             background-clip: text;
             -webkit-background-clip: text;
             color: transparent;
         }
+        .title-section p {
+            font-size: 1rem;
+            color: #446653;
+            margin-top: 6px;
+        }
         .note-time {
             background: #fef7e2;
             margin: 1rem 1.5rem;
-            padding: 0.8rem 1rem;
+            padding: 1rem 1.2rem;
             border-radius: 1.2rem;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             border-right: 5px solid #dc9e2c;
+            font-weight: 500;
         }
         .filter-bar {
             display: flex;
@@ -105,19 +119,19 @@
         }
         .filter-item label {
             display: block;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             font-weight: 600;
             margin-bottom: 4px;
             color: #4c7762;
         }
         .filter-item select, .filter-item input {
             width: 100%;
-            padding: 8px 12px;
+            padding: 10px 14px;
             border-radius: 40px;
             border: 1px solid #e2ecd9;
             background: white;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             outline: none;
             transition: 0.2s;
         }
@@ -128,12 +142,12 @@
         .reset-btn {
             background: #e7f0e3;
             border: none;
-            padding: 8px 18px;
+            padding: 10px 20px;
             border-radius: 40px;
-            font-weight: 600;
+            font-weight: 700;
             cursor: pointer;
             font-family: 'Cairo', sans-serif;
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: #2b664a;
             margin-top: 1.2rem;
         }
@@ -145,7 +159,7 @@
         .duty-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 0.85rem;
+            font-size: 0.95rem;
             min-width: 680px;
             background: white;
         }
@@ -153,56 +167,77 @@
             background: #eef5e9;
             padding: 1rem 0.6rem;
             font-weight: 800;
+            font-size: 0.9rem;
             color: #255f44;
             border-bottom: 2px solid #d7e4ce;
             text-align: center;
         }
         .duty-table td {
-            padding: 0.85rem 0.5rem;
+            padding: 1rem 0.5rem;
             border-bottom: 1px solid #ecf3e6;
             text-align: center;
             vertical-align: middle;
+            font-size: 0.9rem;
         }
         .pharmacist-name {
-            font-weight: 700;
+            font-weight: 800;
             color: #1c6946;
+            font-size: 1rem;
         }
         .phone-number {
             direction: ltr;
             display: inline-block;
             background: #ecf3e7;
-            padding: 4px 10px;
+            padding: 6px 12px;
             border-radius: 40px;
-            font-size: 0.7rem;
+            font-size: 0.8rem;
             font-family: monospace;
         }
         .address-text {
-            font-size: 0.75rem;
-            line-height: 1.3;
+            font-size: 0.85rem;
+            line-height: 1.4;
         }
         .badge-time {
             background: #f0e2c0;
-            padding: 4px 8px;
+            padding: 6px 10px;
             border-radius: 20px;
-            font-weight: 600;
-            font-size: 0.7rem;
+            font-weight: 700;
+            font-size: 0.8rem;
             white-space: nowrap;
         }
-        .footer-note {
-            background: #fefbf2;
-            padding: 0.8rem 1.5rem;
+        /* Premium footer */
+        .premium-footer {
+            background: #1a3a2c;
+            color: #f5f2e0;
+            padding: 1.5rem 1.8rem;
+            border-top: 2px solid #e9bc6b;
             display: flex;
-            flex-wrap: wrap;
+            flex-direction: column;
+            gap: 0.8rem;
+            text-align: center;
+            font-size: 0.8rem;
+        }
+        .footer-ministry {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        .footer-credits {
+            display: flex;
             justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.5rem;
             font-size: 0.7rem;
-            border-top: 1px solid #f0e3c6;
-            color: #5f7f68;
+            border-top: 1px dashed #5f7f68;
+            padding-top: 0.8rem;
+            margin-top: 0.3rem;
         }
         @media (max-width: 700px) {
             body { padding: 0.8rem; }
             .header-pharmacy { flex-direction: column; align-items: flex-start; }
-            .title-section h1 { font-size: 1.3rem; }
-            .duty-table th, .duty-table td { font-size: 0.7rem; padding: 0.5rem 0.3rem; }
+            .title-section h1 { font-size: 1.5rem; }
+            .duty-table th, .duty-table td { font-size: 0.75rem; padding: 0.6rem 0.2rem; }
+            .pharmacist-name { font-size: 0.85rem; }
+            .badge-time { font-size: 0.7rem; white-space: normal; }
             .filter-bar { flex-direction: column; align-items: stretch; }
         }
     </style>
@@ -212,25 +247,26 @@
     <div class="main-card">
         <div class="header-pharmacy">
             <div class="logo-area">
-                <div class="logo-icon"><i class="fas fa-prescription-bottle-alt"></i></div>
+                <!-- صورة الشعار: Logo.png -->
+                <img src="Logo.png" alt="شعار المؤسسة" onerror="this.onerror=null; this.parentElement.innerHTML='<div class=logo-placeholder><i class=fas fa-prescription-bottle-alt></i></div>+this.parentElement.innerHTML';">
                 <div class="etab-title">
-                    <h2>مديرية الصحة لولاية غرداية</h2>
-                    <p>مصلحة الصيدلة · بلدية بريان</p>
+                    <h2>المؤسسة العمومية للصحة الجوارية - بريان</h2>
+                    <p>EPSP Berriane · قطاع الصحة</p>
                 </div>
             </div>
             <div class="month-badge">
-                <i class="fas fa-calendar-alt"></i> جوان 2026 · المناوبة الليلية للصيادلة الخواص
+                <i class="fas fa-calendar-alt"></i> جوان 2026 · المناوبة الليلية للصيادلة الخواص ببلدية بريان
             </div>
         </div>
         <div class="title-section">
             <h1>📋 جدول المناوبة الليلية للصيادلة الخواص 📋</h1>
-            <p>بلدية بريان · شهر جوان 2026 · حراسة صيدليات الليل</p>
+            <p>بلدية بريان · شهر جوان 2026</p>
         </div>
         <div class="note-time">
             <i class="fas fa-info-circle"></i> <strong>ملاحظة عامة حول التوقيت:</strong> المناوبة العادية تكون من الساعة <strong>19:00 مساءً إلى 08:00 صباحاً</strong>، باستثناء أيام الجمعة حيث يتم تقسيم المناوبة إلى فترتين (نهارية من 08:00 إلى 19:00 وليلية من 19:00 إلى 08:00) كما هو موضح في الجدول.
         </div>
 
-        <!-- منطقة الفلترة المتقدمة -->
+        <!-- فلترة متقدمة -->
         <div class="filter-bar">
             <div class="filter-item">
                 <label><i class="fas fa-calendar-day"></i> التصفية حسب اليوم / التاريخ</label>
@@ -260,20 +296,30 @@
                     <tr><th>التاريخ / اليوم</th><th>الصيدلي/ة</th><th>العنوان</th><th>التوقيت</th><th>رقم الهاتف</th></tr>
                 </thead>
                 <tbody id="tableBody">
-                    <!-- مليئة بالجافاسكربت -->
+                    <!-- يتم تعبئتها بواسطة JS -->
                 </tbody>
             </table>
         </div>
-        <div class="footer-note">
-            <div><i class="fas fa-phone-alt"></i> في الحالات العاجلة الاتصال برقم النجدة الطبية: 029 241 244</div>
-            <div><i class="fas fa-clock"></i> المداومة تشمل جميع أيام الأسبوع</div>
-            <div><i class="fas fa-building"></i> صيدليات ليلية معتمدة من مديرية الصحة</div>
+
+        <!-- FOOTER PREMIUM HARMONIEUX -->
+        <div class="premium-footer">
+            <div class="footer-ministry">
+                وزارة الصحة - الجمهورية الجزائرية الديمقراطية الشعبية
+                <span style="display:block; font-size:0.7rem; margin-top:3px;">Ministère de la Santé - République Algérienne Démocratique et Populaire</span>
+            </div>
+            <div style="font-weight: 600;">
+                المؤسسة العمومية للصحة الجوارية ببريان – EPSP Berriane © 2026
+            </div>
+            <div class="footer-credits">
+                <span><i class="fas fa-laptop-code"></i> correspondants informatique epsp berriane - Ferhat H.</span>
+                <span><i class="fas fa-phone-alt"></i> رقم النجدة: 029 241 244</span>
+            </div>
         </div>
     </div>
 </div>
 
 <script>
-    // بيانات المناوبة (نفس البيانات السابقة لكن مع تنسيق وقت صحيح)
+    // ----- بيانات المناوبة كاملة (جوان 2026) مع التوقيت الصحيح -----
     const dutiesRaw = [
         { date: "الإثنين 01 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "من 19:00 إلى 08:00", phone: "" },
         { date: "الإثنين 01 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "من 19:00 إلى 08:00", phone: "" },
@@ -346,7 +392,6 @@
 
     let currentData = [...dutiesRaw];
 
-    // استخراج القيم الفريدة للقوائم المنسدلة
     function populateFilters() {
         const dateSet = new Set();
         const pharmacistSet = new Set();
@@ -356,7 +401,6 @@
         });
         const dateSelect = document.getElementById('dateFilter');
         const pharmacistSelect = document.getElementById('pharmacistFilter');
-        // تفريغ باستثناء الخيار الأول
         while(dateSelect.options.length > 1) dateSelect.remove(1);
         while(pharmacistSelect.options.length > 1) pharmacistSelect.remove(1);
         Array.from(dateSet).sort().forEach(d => {
@@ -373,7 +417,6 @@
         });
     }
 
-    // دالة التصفية المتكاملة
     function applyFilters() {
         const selectedDate = document.getElementById('dateFilter').value;
         const selectedPharmacist = document.getElementById('pharmacistFilter').value;
@@ -410,7 +453,7 @@
             row.insertCell(1).innerHTML = `<span class="pharmacist-name">${item.pharmacist}</span>`;
             row.insertCell(2).innerHTML = `<span class="address-text">${item.address}</span>`;
             row.insertCell(3).innerHTML = `<span class="badge-time">${item.timeSlot}</span>`;
-            const phoneHtml = item.phone ? `<span class="phone-number"><i class="fas fa-phone-alt"></i> ${item.phone}</span>` : '<span style="opacity:0.5;">—</span>';
+            const phoneHtml = item.phone ? `<span class="phone-number"><i class="fas fa-phone-alt"></i> ${item.phone}</span>` : '<span style="opacity:0.6;">—</span>';
             row.insertCell(4).innerHTML = phoneHtml;
         });
     }
@@ -422,7 +465,6 @@
         applyFilters();
     }
 
-    // ربط الأحداث
     document.getElementById('dateFilter').addEventListener('change', applyFilters);
     document.getElementById('pharmacistFilter').addEventListener('change', applyFilters);
     document.getElementById('searchInput').addEventListener('input', applyFilters);
