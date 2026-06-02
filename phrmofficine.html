@@ -3,17 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>إعلان: جدول المناوبة الليلية للصيادلة الخواص</title>
+    <title>وزارة الصحة - جدول المناوبة الليلية للصيادلة الخواص ببريان</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Tajawal', sans-serif;
         }
 
         body {
-            background-color: #f0f2f5;
+            background-color: #f4f6f9;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -21,155 +25,183 @@
             padding: 20px;
         }
 
-        /* حاوية الإعلان المربعة بنسبة 1:1 لتطابق مقاس 1200x1200px بشكل متجاوب */
-        .annonce-poster {
+        /* حاوية الإعلان: تم تعديل الأبعاد لتصبح أقل ارتفاعاً وأكثر عرضاً */
+        .annonce-container {
             background-color: #ffffff;
             width: 100%;
-            max-width: 800px;
-            aspect-ratio: 1 / 1; /* يضمن بقاء التصميم مربعاً دائماً */
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            max-width: 950px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
             overflow: hidden;
-            position: relative;
-            border: 1px solid #e1e8ed;
+            border: 1px solid #e2e8f0;
         }
 
-        /* الهيدر العلوي */
-        .poster-header {
-            padding: 40px 40px 20px 40px;
+        /* الهيدر الوزاري الرسمي المحدث */
+        .official-header {
+            background-color: #fafbfc;
+            border-bottom: 1px solid #edf2f7;
+            padding: 20px 30px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            gap: 20px;
         }
 
-        .logo-area img {
-            max-height: 45px;
+        .logo-box img {
+            max-height: 50px;
             object-fit: contain;
         }
 
-        .badge-dss {
-            background-color: #a81136;
-            color: white;
-            padding: 8px 24px;
-            border-radius: 30px;
+        .ministry-titles {
+            text-align: left; /* لتوحيد اتجاه النصوص الرسمية المختلطة */
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .ministry-ar {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #1a202c;
+            text-align: right;
+        }
+
+        .ministry-fr {
+            font-size: 0.8rem;
+            font-weight: 500;
+            color: #718096;
+            text-align: right;
+            font-family: sans-serif; /* لجمالية الخط الفرنسي الافتراضي */
+        }
+
+        /* محتوى الإعلان الأوسط المتناسق وبحجم عمودي أصغر */
+        .announcement-body {
+            display: flex;
+            padding: 30px;
+            align-items: center;
+            gap: 35px;
+            background: linear-gradient(135deg, #ffffff 60%, #fcfdfd 100%);
+        }
+
+        .text-content {
+            flex: 1.4;
+        }
+
+        .platform-badge {
+            color: #a81136;
             font-size: 1.1rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            margin-bottom: 8px;
+            display: inline-block;
         }
 
-        /* المحتوى الأوسط: مقسم لجزأين (النص والـ QR كود) */
-        .poster-body {
-            display: flex;
-            flex: 1;
-            padding: 0 40px;
-            align-items: center;
-            gap: 40px;
-        }
-
-        .text-side {
-            flex: 1.3;
-        }
-
-        .subtitle {
-            color: #a81136;
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-        }
-
-        .main-title {
+        .headline {
             color: #111827;
-            font-size: 2.4rem;
+            font-size: 2.1rem;
             font-weight: 800;
             line-height: 1.3;
-            margin-bottom: 20px;
+            margin-bottom: 12px;
         }
 
-        .description {
-            color: #4b5563;
-            font-size: 1.2rem;
-            line-height: 1.6;
+        .subtext {
+            color: #4a5568;
+            font-size: 1.1rem;
+            line-height: 1.5;
         }
 
-        /* جانب الـ QR كود المطور */
-        .qr-side {
-            flex: 0.9;
+        /* الرمز الشريطي QR المتناسق */
+        .qr-section {
+            flex: 0.8;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            background: #fafafa;
-            border: 2px dashed #e5e7eb;
-            border-radius: 20px;
-            padding: 30px 20px;
-            text-align: center;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
-        .qr-wrapper {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 15px;
+        .qr-box {
+            width: 140px;
+            height: 140px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .qr-image {
+        .qr-box img {
             width: 100%;
             height: 100%;
             object-fit: contain;
         }
 
-        .qr-instruction {
-            color: #1f2937;
-            font-size: 1.05rem;
+        .qr-caption {
+            color: #2d3748;
+            font-size: 0.95rem;
             font-weight: 700;
         }
 
-        /* الجزء السفلي: الملاحظة العامة بالتوقيت */
-        .poster-footer {
+        /* فوتر التوقيت الزمني */
+        .time-notice-footer {
             background-color: #a81136;
             color: #ffffff;
-            padding: 25px 40px;
+            padding: 18px 30px;
             display: flex;
             align-items: flex-start;
-            gap: 15px;
+            gap: 12px;
         }
 
-        .notice-icon {
-            font-size: 1.5rem;
-            margin-top: -2px;
+        .info-bulb {
+            font-size: 1.3rem;
+            line-height: 1;
         }
 
-        .notice-text {
+        .notice-paragraph {
             font-size: 0.95rem;
-            line-height: 1.6;
+            line-height: 1.5;
             font-weight: 500;
         }
 
-        .notice-title {
+        .notice-bold {
             font-weight: 700;
-            color: #ffcbd4;
-            margin-left: 5px;
+            color: #ffd1d9;
         }
 
-        /* التوافق مع الشاشات الصغيرة جداً للتصفح الهاتفي الهجين */
-        @media (max-width: 600px) {
-            .annonce-poster {
-                aspect-ratio: auto; /* إلغاء المربع الكامل على الهواتف لسهولة القراءة */
+        /* التوقيع المؤسساتي السفلي ببريان */
+        .epsp-footer {
+            background-color: #1a202c;
+            color: #a0aec0;
+            text-align: center;
+            padding: 12px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border-top: 1px solid #2d3748;
+            letter-spacing: 0.3px;
+        }
+
+        /* ريسبونسيف للهواتف المحمولة */
+        @media (max-width: 768px) {
+            .official-header {
+                flex-direction: column;
+                text-align: center;
+                padding: 15px;
             }
-            .poster-body {
+            .ministry-ar, .ministry-fr {
+                text-align: center;
+            }
+            .announcement-body {
                 flex-direction: column;
                 padding: 20px;
-                gap: 25px;
+                gap: 20px;
             }
-            .main-title {
-                font-size: 1.8rem;
+            .headline {
+                font-size: 1.6rem;
             }
-            .qr-side {
+            .qr-section {
                 width: 100%;
             }
         }
@@ -177,47 +209,48 @@
 </head>
 <body>
 
-    <div class="annonce-poster">
+    <div class="annonce-container">
         
-        <!-- الهيدر العلوي -->
-        <header class="poster-header">
-            <div class="logo-area">
-                <!-- عرض النص البديل للملف في حال عدم وجود الصورة مؤقتاً -->
+        <header class="official-header">
+            <div class="logo-box">
                 <img src="logo.png" alt="logo.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                <span style="display:none; font-weight:800; font-size:1.2rem; color:#a81136;">[logo.png]</span>
+                <span style="display:none; font-weight:800; font-size:1.1rem; color:#0f766e;">[logo.png]</span>
             </div>
-            <div class="badge-dss">DSS</div>
+            <div class="ministry-titles">
+                <div class="ministry-ar">وزارة الصحة - الجمهورية الجزائرية الديمقراطية الشعبية</div>
+                <div class="ministry-fr">Ministère de la Santé - République Algérienne Démocratique et Populaire</div>
+            </div>
         </header>
 
-        <!-- محتوى الإعلان الأساسي -->
-        <div class="poster-body">
+        <div class="announcement-body">
             
-            <!-- النصوص التعريفية -->
-            <div class="text-side">
-                <div class="subtitle">منصة الخدمة الرقمية</div>
-                <h1 class="main-title">جدول المناوبة الليلية للصيادلة الخواص</h1>
-                <p class="description">الآن بكل سهولة، يمكنك البحث الفوري عن الصيدليات المناوبة وتصفيتها حسب <strong>الاسم</strong> أو <strong>التاريخ</strong> مباشرة عبر منصتنا.</p>
+            <div class="text-content">
+                <span class="platform-badge">بوابة الخدمات الرقمية لقطاع الصحة</span>
+                <h1 class="headline">جدول المناوبة الليلية للصيادلة الخواص</h1>
+                <p class="subtext">تابعوا مباشرة وبشكل فوري مواقع وأسماء الصيدليات المناومة؛ حيث يمكنكم المسح والبحث السريع عبر المنصة حسب <strong>الاسم</strong> أو <strong>التاريخ</strong>.</p>
             </div>
 
-            <!-- مربع الـ QR كود الموجه للمنصة الخاصة بك -->
-            <div class="qr-side">
-                <div class="qr-wrapper">
-                    <img src="pharmaciedofficine.png" alt="pharmaciedofficine.png" class="qr-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
-                    <div style="display:none; text-align:center; color:#6b7280; font-weight:bold; font-size:0.9rem;">[pharmaciedofficine.png]</div>
+            <div class="qr-section">
+                <div class="qr-box">
+                    <img src="pharmaciedofficine.png" alt="pharmaciedofficine.png" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                    <div style="display:none; text-align:center; color:#a0aec0; font-weight:bold; font-size:0.8rem; border:1px dashed #cbd5e0; padding:20px; border-radius:8px;">[pharmaciedofficine.png]</div>
                 </div>
-                <div class="qr-instruction">امسح الرمز للوصول إلى الجدول الحالي</div>
+                <div class="qr-caption">امسح الرمز للاطلاع على الجدول</div>
             </div>
 
         </div>
 
-        <!-- فوتر الملاحظة الزمنية المطلوبة -->
-        <footer class="poster-footer">
-            <span class="notice-icon">💡</span>
-            <div class="notice-text">
-                <span class="notice-title">ملاحظة عامة حول التوقيت:</span>
+        <footer class="time-notice-footer">
+            <span class="info-bulb">💡</span>
+            <div class="notice-paragraph">
+                <span class="notice-bold">ملاحظة عامة حول التوقيت:</span>
                 المناوبة العادية تكون من الساعة 19:00 مساءً إلى 08:00 صباحاً، باستثناء أيام الجمعة حيث يتم تقسيم المناوبة إلى فترتين (نهارية من 08:00 إلى 19:00 وليلية من 19:00 إلى 08:00).
             </div>
         </footer>
+
+        <div class="epsp-footer">
+            المؤسسة العمومية للصحة الجوارية ببريان – EPSP Berriane © 2026
+        </div>
 
     </div>
 
