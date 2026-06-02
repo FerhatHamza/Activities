@@ -2,11 +2,10 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>إعلان للمواطنين: مخطط توزيع الأطباء الأخصائيين - جوان 2026</title>
+    <title>مخطط الأطباء الأخصائيين - جوان 2026</title>
     
-    <!-- استدعاء الخطوط والأيقونات -->
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+    <!-- استدعاء خط التاجوال المعتمد -->
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@500;700;800;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -14,566 +13,209 @@
             --primary-teal: #008f6b;
             --secondary-navy: #002b49;
             --text-dark: #0f172a; 
-            --text-muted: #475569;
-            --bg-main: #f8fafc;
-            --card-bg: #ffffff;
-            --border-color: #cbd5e1;
-            --accent-orange: #f59e0b;
+            --text-muted: #64748b;
+            --bg-canvas: #f8fafc;
         }
 
-        /* --- حماية المحتوى والواجهة --- */
+        /* حماية ومنع النسخ */
         *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             -webkit-user-select: none !important;
-            -moz-user-select: none !important;
-            -ms-user-select: none !important;
             user-select: none !important;
-            -webkit-user-drag: none !important;
         }
 
         body {
             font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-dark);
-            padding: 2rem 1.5rem;
-            line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
+            background-color: #cbd5e1; /* خلفية رمادية لإبراز اللوحة المربعة */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
-        .container {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        /* --- الهيدر الرسمي مستوحى مباشرة من image_f0dac7.png --- */
-        .official-header {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 2.5rem 2rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            border: 2px solid var(--border-color);
+        /* اللوحة الإعلانية المربعة الثابتة والأبعاد المطلوبة بدقة */
+        .square-poster {
+            width: 1200px;
+            height: 1200px;
+            background-color: #ffffff;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            padding: 90px;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
             align-items: center;
-            gap: 2rem;
             position: relative;
             overflow: hidden;
         }
 
-        .official-header::before {
-            content: '';
+        /* شريط علوي بسيط يمثل الهوية البصرية للمؤسسة */
+        .top-stripe {
             position: absolute;
             top: 0;
             right: 0;
             left: 0;
-            height: 6px;
+            height: 12px;
             background: linear-gradient(90deg, var(--primary-teal), var(--secondary-navy));
         }
 
-        .header-meta {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 2rem;
-            width: 100%;
-        }
-
-        .logo-wrapper img {
-            height: 100px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .ministry-text {
-            text-align: right;
-            border-right: 5px solid var(--primary-teal);
-            padding-right: 1.5rem;
-        }
-
-        .ministry-text h3 {
-            font-size: 1.4rem;
-            color: var(--secondary-navy);
-            font-weight: 900;
-            margin-bottom: 0.3rem;
-        }
-
-        .ministry-text p {
-            font-size: 1.1rem;
-            color: var(--text-dark);
-            font-weight: 700;
-        }
-
-        .header-title-area {
-            width: 100%;
+        /* العناوين الرئيسية - تركيز كامل واختصار بالتفاصيل */
+        .header-content {
             text-align: center;
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .institution-name {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-teal);
+            letter-spacing: 0.5px;
+            margin-bottom: 25px;
         }
 
         .main-title {
-            font-size: 2.4rem;
+            font-size: 3.4rem;
             font-weight: 900;
             color: var(--secondary-navy);
-            letter-spacing: -0.5px;
-        }
-
-        .french-title {
-            display: block;
-            font-size: 1.25rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            margin-top: 0.4rem;
-            direction: ltr;
+            line-height: 1.2;
         }
 
         .sub-title {
-            font-size: 1.2rem;
-            color: var(--text-dark);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.6rem;
-            margin-top: 1.5rem;
-        }
-
-        .date-badge {
-            background: #e6f7f3;
-            padding: 0.4rem 1.2rem;
-            border-radius: 30px;
-            font-weight: 900;
-            color: #00664d;
-            border: 2px solid var(--primary-teal);
-        }
-
-        /* شريط الاتصال الهيدر السفلي بالصورة */
-        .contact-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2.5rem;
-            flex-wrap: wrap;
-            margin-top: 0.5rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid #edf2f7;
-            width: 100%;
-        }
-
-        .contact-item {
-            font-size: 1.1rem;
-            color: var(--secondary-navy);
-            display: flex;
-            align-items: center;
-            gap: 0.6rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .contact-item i {
-            color: var(--primary-teal);
-        }
-
-        /* --- قسم المحتوى الإعلاني الموجه للجمهور --- */
-        .announcement-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            border: 2px solid var(--border-color);
-            padding: 2.5rem;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03);
-            margin-bottom: 2rem;
-        }
-
-        .welcome-notice {
-            text-align: center;
-            margin-bottom: 2rem;
-            background: #fffbeb;
-            border: 2px dashed var(--accent-orange);
-            padding: 1.2rem;
-            border-radius: 14px;
-        }
-
-        .welcome-notice p {
-            font-size: 1.2rem;
-            font-weight: 800;
-            color: #92400e;
-        }
-
-        .notice-heading {
-            font-size: 1.5rem;
-            color: var(--secondary-navy);
-            font-weight: 900;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.8rem;
-            border-bottom: 3px solid #f1f5f9;
-            padding-bottom: 0.75rem;
-        }
-
-        /* دليل الخطوات المبسط للمواطن */
-        .steps-list {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 1.25rem;
-            margin-bottom: 2.5rem;
-        }
-
-        .step-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 1rem;
-            background: #f8fafc;
-            padding: 1.2rem;
-            border-radius: 12px;
-            border-right: 5px solid var(--secondary-navy);
-        }
-
-        .step-item.highlight {
-            border-right-color: var(--primary-teal);
-            background: #f0fdf4;
-        }
-
-        .step-number {
-            background: var(--secondary-navy);
-            color: #ffffff;
-            width: 32px;
-            height: 32px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-radius: 50%;
-            font-weight: 900;
-            font-size: 1.1rem;
-            flex-shrink: 0;
-        }
-
-        .step-item.highlight .step-number {
-            background: var(--primary-teal);
-        }
-
-        .step-content h4 {
-            font-size: 1.15rem;
-            color: var(--secondary-navy);
-            font-weight: 800;
-            margin-bottom: 0.2rem;
-        }
-
-        .step-content p {
-            font-size: 1.05rem;
+            font-size: 1.8rem;
             color: var(--text-muted);
             font-weight: 700;
+            margin-top: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
         }
 
-        /* --- قسم رمز الاستجابة السريعة QR Code --- */
+        .date-highlight {
+            background-color: #e6f7f3;
+            color: #00664d;
+            padding: 4px 20px;
+            border-radius: 50px;
+            border: 2px solid var(--primary-teal);
+            font-weight: 900;
+        }
+
+        /* قسم الـ QR Code - نظيف ومميز بمركز اللوحة */
         .qr-section {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            text-align: center;
-            background: #f1f5f9;
-            padding: 2.5rem 1.5rem;
-            border-radius: 16px;
-            border: 2px solid var(--border-color);
+            margin-top: -30px;
         }
 
-        .qr-instruction {
-            font-size: 1.3rem;
-            font-weight: 900;
-            color: var(--secondary-navy);
-            margin-bottom: 0.5rem;
-        }
-
-        .qr-sub-instruction {
-            font-size: 1.05rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-        }
-
-        /* حاوية الـ QR Code التفاعلية */
-        .qr-container {
+        .qr-frame {
             background: #ffffff;
-            padding: 1.5rem;
-            border-radius: 16px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+            padding: 35px;
+            border-radius: 30px;
+            border: 4px solid #f1f5f9;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.04);
             display: inline-block;
-            border: 3px solid var(--primary-teal);
             transition: transform 0.3s ease;
-            cursor: pointer;
-            position: relative;
         }
 
-        .qr-container:hover {
-            transform: scale(1.03);
-        }
-
-        /* توليد شكل الـ QR الأصلي المتواجد في الصورة برمجياً أو استدعائه كصورة */
-        .qr-image-placeholder {
-            width: 220px;
-            height: 220px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .qr-image-placeholder img {
-            width: 100%;
-            height: 100%;
+        .qr-frame img {
+            width: 420px; /* حجم مثالي وواضح جداً للمسح من مسافة */
+            height: 420px;
             object-fit: contain;
-            pointer-events: none;
+            display: block;
         }
 
-        .scan-badge {
-            margin-top: 1rem;
-            background: var(--primary-teal);
-            color: white;
-            padding: 0.5rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.95rem;
+        /* رسالة الحث على اتخاذ إجراء (Call to Action) */
+        .cta-message {
+            margin-top: 40px;
+            font-size: 1.8rem;
             font-weight: 800;
+            color: var(--secondary-navy);
             display: flex;
             align-items: center;
-            gap: 0.5rem;
-            animation: pulse 2s infinite;
+            gap: 15px;
+            background: #f8fafc;
+            padding: 15px 40px;
+            border-radius: 20px;
+            border: 2px dashed #cbd5e1;
         }
 
-        @keyframes pulse {
-            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 143, 107, 0.4); }
-            70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(0, 143, 107, 0); }
-            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(0, 143, 107, 0); }
+        .cta-message i {
+            color: var(--primary-teal);
+            font-size: 2rem;
         }
 
-        /* --- الفوتر السفلي --- */
-        .footer-container {
-            margin-top: 3rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--border-color);
+        /* الفوتر السفلي البسيط */
+        .footer-area {
+            width: 100%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            border-top: 2px solid #f1f5f9;
+            padding-top: 30px;
         }
 
-        .footer-note {
-            color: var(--secondary-navy);
-            font-size: 1.1rem;
+        .footer-tag {
+            font-size: 1.3rem;
             font-weight: 800;
+            color: var(--secondary-navy);
         }
 
-        .dev-signature {
-            font-size: 0.95rem;
+        .signature-tag {
+            font-size: 1.1rem;
             color: var(--text-muted);
             font-weight: 700;
             direction: ltr;
         }
 
-        .dev-signature span {
+        .signature-tag span {
             color: var(--primary-teal);
             font-weight: 900;
         }
-
-        /* ==========================================================================
-           ملائمة شاشات الهواتف الذكية (Mobile Responsive Layout)
-           ========================================================================== */
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem 0.75rem;
-            }
-
-            .official-header {
-                padding: 1.5rem 1rem;
-                gap: 1.5rem;
-            }
-
-            .header-meta {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .logo-wrapper img {
-                height: 85px;
-            }
-
-            .ministry-text {
-                border-right: none;
-                border-bottom: 4px solid var(--primary-teal);
-                padding-right: 0;
-                padding-bottom: 1.2rem;
-                text-align: center;
-                width: 100%;
-            }
-
-            .ministry-text h3 {
-                font-size: 1.2rem;
-            }
-
-            .main-title {
-                font-size: 1.65rem;
-            }
-
-            .french-title {
-                font-size: 1rem;
-            }
-
-            .sub-title {
-                font-size: 1.05rem;
-                line-height: 1.5;
-            }
-
-            .contact-bar {
-                flex-direction: column;
-                gap: 0.8rem;
-                align-items: flex-start;
-                padding-right: 1rem;
-            }
-
-            .announcement-card {
-                padding: 1.5rem 1rem;
-            }
-
-            .notice-heading {
-                font-size: 1.3rem;
-            }
-
-            .qr-instruction {
-                font-size: 1.15rem;
-            }
-            
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 1rem;
-            }
-        }
     </style>
 </head>
-<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
+<body>
 
-<div class="container">
-    
-    <!-- الهيدر المقتبس بصرياً من شعار image_f0dac7.png -->
-    <header class="official-header">
-        <div class="header-meta">
-            <div class="logo-wrapper">
-                <!-- يمكنك استبدال logo.png بملف الشعار الرسمي المتاح لديك -->
-                <img src="logo.png" alt="وزارة الصحة - الجمهورية الجزائرية الديمقراطية الشعبية">
-            </div>
-            <div class="ministry-text">
-                <h3>الجمهورية الجزائرية الديمقراطية الشعبية</h3>
-                <p>وزارة الصحة • مديرية الصحة والسكان لولاية غرداية</p>
-                <p style="font-weight: 700; font-size: 1rem; margin-top: 4px; color: var(--primary-teal);">المؤسسة العمومية للصحة الجوارية ببريان (EPSP Berriane)</p>
-            </div>
-        </div>
+    <!-- اللوحة الإعلانية المربعة الثابتة -->
+    <div class="square-poster">
+        <div class="top-stripe"></div>
         
-        <div class="header-title-area">
-            <h1 class="main-title">
-                مخطط توزيع الأطباء الأخصائيين
-                <span class="french-title">Planning de Répartition des Médecins Spécialistes</span>
-            </h1>
+        <!-- الهيدر والعناوين الأساسية -->
+        <div class="header-content">
+            <div class="institution-name">المؤسسة العمومية للصحة الجوارية ببريان • EPSP Berriane</div>
+            <h1 class="main-title">مخطط توزيع الأطباء الأخصائيين</h1>
             <div class="sub-title">
-                <span>توزيع الأطباء الأخصائيين الخاص بالفحوصات الطبية المتخصصة لشهر:</span>
-                <span class="date-badge">جوان 2026</span>
+                <span>برنامج الفحوصات الطبية المتخصصة لشهر:</span>
+                <span class="date-highlight">جوان 2026</span>
             </div>
         </div>
 
-        <div class="contact-bar">
-            <a href="tel:029241244" class="contact-item" dir="ltr">
-                <i class="fa-solid fa-phone"></i> 029 24 12 44
-            </a>
-            <a href="mailto:05juillet.ballouh@gmail.com" class="contact-item">
-                <i class="fa-solid fa-envelope"></i> 05juillet.ballouh@gmail.com
-            </a>
-            <a href="https://facebook.com/EPSP.Berriane" target="_blank" class="contact-item">
-                <i class="fa-brands fa-facebook"></i> EPSP.Berriane
-            </a>
-        </div>
-    </header>
-
-    <!-- بطاقة الإعلان الإرشادية للمواطنين -->
-    <main class="announcement-card">
-        <div class="welcome-notice">
-            <p>إلى علم كافة مواطني ومرتادي عيادات المؤسسة العمومية للصحة الجوارية ببريان</p>
-        </div>
-
-        <h2 class="notice-heading">
-            <i class="fa-solid fa-circle-info" style="color: var(--secondary-navy);"></i>
-            إرشادات ومواعيد الفحوصات الطبية:
-        </h2>
-
-        <ul class="steps-list">
-            <li class="step-item">
-                <div class="step-number">1</div>
-                <div class="step-content">
-                    <h4>التحقق من اسم الطبيب المعني والفترة الزمنيّة</h4>
-                    <p>يرجى مراجعة الجدول لمعرفة أيام تواجد الأطباء الأخصائيين (طب الأطفال، الجراحة العامة، التخدير والإنعاش).</p>
-                </div>
-            </li>
-            <li class="step-item">
-                <div class="step-number">2</div>
-                <div class="step-content">
-                    <h4>تحديد العيادة الطبية المستضيفة للفحص</h4>
-                    <p>تأكد من العيادة المحددة للطبيب المستهدف سواء كانت (عيادة القصر القديم) أو (عيادة بعيليش مازوز).</p>
-                </div>
-            </li>
-            <li class="step-item highlight">
-                <div class="step-number">3</div>
-                <div class="step-content">
-                    <h4>استخدم رمز الاستجابة السريعة (QR-Code) للمزيد</h4>
-                    <p>يمكنكم تفحص الجدول الديناميكي المحدث كلياً عبر مسح الرمز الإلكتروني المرفق أدناه بواسطة كاميرا الهاتف.</p>
-                </div>
-            </li>
-        </ul>
-
-        <!-- القسم التفاعلي المخصص لرمز الـ QR المأخوذ من صورة image_f0dac7.png -->
-        <section class="qr-section">
-            <h3 class="qr-instruction">يرجى مسح رمز الـ QR Code التالي للوصول الفوري</h3>
-            <p class="qr-sub-instruction">سيتم تحويلكم مباشرة إلى منصة الفحص والبحث الذكية الخاصة بالمخطط</p>
-            
-            <!-- عند النقر على الكود في المتصفح يقوم بتحويله مباشرة كخيار إضافي للمستخدم -->
-            <div class="qr-container" onclick="window.location.href='#';">
-                <div class="qr-image-placeholder">
-                    <!-- تم ربط مسار الصورة بـ image_f0dac7.png لعرض محتوى الكود مباشرة للمواطن -->
-                    <img src="image_f0dac7.png" alt="رمز QR Code لمخطط توزيع الأطباء الأخصائيين">
-                </div>
+        <!-- مركز التصميم: الـ QR الكود والحث على المسح -->
+        <div class="qr-section">
+            <div class="qr-frame">
+                <!-- تم ربط الصورة البرمجية بملف الـ QR المرفق مباشرة للظهور بشكل نظيف -->
+                <img src="image_f0dac7.png" alt="QR Code Planning">
             </div>
-
-            <div class="scan-badge">
-                <i class="fa-solid fa-qrcode"></i>
-                <span>اضغط أو امسح الرمز ضوئياً</span>
+            <div class="cta-message">
+                <i class="fa-solid fa-camera"></i>
+                <span>امسح الرمز ضوئياً (Scan) للإطلاع على قائمة المواعيد كاملة</span>
             </div>
-        </section>
-    </main>
-
-    <!-- الفوتر المعتمد للمؤسسة والمطور -->
-    <footer class="footer-container">
-        <div class="footer-note">
-            CIES EPSP Berriane
         </div>
-        <div class="dev-signature">
-            Developed by <span>Dev. Ferhat H.</span>
+
+        <!-- الفوتر البسيط جداً للهوية والتوثيق -->
+        <div class="footer-area">
+            <div class="footer-tag">
+                CIES EPSP Berriane
+            </div>
+            <div class="signature-tag">
+                Dev. <span>Ferhat H.</span>
+            </div>
         </div>
-    </footer>
-</div>
+    </div>
 
-<script>
-    // ترسانة الحماية الأمنية لمنع التلاعب بالمحتوى الإعلاني الرسمي أو نسخه
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('copy', e => e.preventDefault());
-    document.addEventListener('cut', e => e.preventDefault());
-    document.addEventListener('dragstart', e => e.preventDefault());
-
-    document.addEventListener('keydown', function(e) {
-        if (e.keyCode === 123) return false;
-        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) return false;
-        if (e.ctrlKey && e.keyCode === 85) return false;
-        if (e.ctrlKey && e.keyCode === 83) return false;
-    });
-</script>
 </body>
 </html>
