@@ -11,12 +11,14 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
         body {
             font-family: 'Cairo', sans-serif;
             background: linear-gradient(145deg, #eef2fb 0%, #e0e9f0 100%);
             padding: 1rem;
             color: #1a2f3b;
+            user-select: none; /* prevent text selection globally */
         }
         .container {
             max-width: 1400px;
@@ -508,6 +510,72 @@
     
     populateFilters();
     applyFilters();
+
+    // ---------- PROTECTION AGAINST INSPECT ELEMENT ----------
+    // Disable right-click
+    document.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        return false;
+    });
+
+    // Disable F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U, Ctrl+S
+    document.addEventListener('keydown', function(e) {
+        // F12
+        if (e.key === 'F12') {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+I (Windows/Linux) or Cmd+Option+I (Mac)
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'I' || e.key === 'i')) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+J (console)
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'J' || e.key === 'j')) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+U (view source)
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'U' || e.key === 'u')) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+S (save)
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'S' || e.key === 's')) {
+            e.preventDefault();
+            return false;
+        }
+        // Ctrl+Shift+C (inspect element)
+        if ((e.ctrlKey || e.metaKey) && e.shiftKey && (e.key === 'C' || e.key === 'c')) {
+            e.preventDefault();
+            return false;
+        }
+    });
+
+    // Detect devtools opening (simple interval)
+    (function() {
+        const element = new Image();
+        Object.defineProperty(element, 'id', {
+            get: function() {
+                // If devtools is open, this getter will be triggered
+                console.clear();
+                window.location.href = 'about:blank';
+            }
+        });
+        console.log(element);
+    })();
+
+    // Additional protection: disable debugger breakpoints
+    setInterval(function() {
+        debugger;
+    }, 50);
+    // Override console methods to prevent easy logging (optional)
+    if (window.console && window.console.log) {
+        window.console.log = function() {};
+        window.console.warn = function() {};
+        window.console.error = function() {};
+        window.console.info = function() {};
+    }
 </script>
 </body>
 </html>
