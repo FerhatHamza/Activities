@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>جدول المناوبة الليلية للصيادلة الخواص - بريان | جوان 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(145deg, #f0f6ef 0%, #e3eadd 100%);
+            padding: 1.5rem;
+            color: #1c3e30;
+        }
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        /* بطاقة رئيسية */
+        .main-card {
+            background: white;
+            border-radius: 2rem;
+            box-shadow: 0 20px 35px -12px rgba(0,0,0,0.12);
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+        }
+        /* الهيدر */
+        .header-pharmacy {
+            background: linear-gradient(112deg, #ffffff 0%, #fef3e0 100%);
+            padding: 1.5rem 2rem;
+            border-bottom: 3px solid #e9bc6b;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .logo-icon {
+            background: #2a6e4b;
+            width: 55px;
+            height: 55px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.8rem;
+        }
+        .etab-title h2 {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #1c573e;
+        }
+        .etab-title p {
+            font-size: 0.7rem;
+            color: #6d8a78;
+        }
+        .month-badge {
+            background: #f6eddb;
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+        /* عنوان الجدول */
+        .title-section {
+            text-align: center;
+            padding: 1rem 1rem 0.2rem;
+        }
+        .title-section h1 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(120deg, #1d6743, #daa943);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .note-time {
+            background: #fef7e2;
+            margin: 1rem 1.5rem;
+            padding: 0.8rem 1rem;
+            border-radius: 1.2rem;
+            font-size: 0.8rem;
+            border-right: 5px solid #dc9e2c;
+        }
+        /* شريط البحث */
+        .search-bar {
+            margin: 0.5rem 1.5rem 1rem 1.5rem;
+            display: flex;
+            justify-content: center;
+        }
+        .search-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 450px;
+        }
+        .search-wrapper i {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #9bbf8b;
+            font-size: 1rem;
+        }
+        #searchInput {
+            width: 100%;
+            padding: 12px 40px 12px 20px;
+            border-radius: 50px;
+            border: 1px solid #e0eada;
+            background: white;
+            font-family: 'Cairo', sans-serif;
+            font-size: 0.9rem;
+            outline: none;
+            transition: 0.2s;
+            text-align: right;
+        }
+        #searchInput:focus {
+            border-color: #c5aa62;
+            box-shadow: 0 0 0 2px rgba(197,170,98,0.2);
+        }
+        /* حاوية الجدول */
+        .table-responsive {
+            overflow-x: auto;
+            margin: 0.5rem 1.2rem 1.5rem 1.2rem;
+            border-radius: 1.2rem;
+        }
+        .duty-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 680px;
+            background: white;
+        }
+        .duty-table th {
+            background: #eef5e9;
+            padding: 1rem 0.6rem;
+            font-weight: 800;
+            color: #255f44;
+            border-bottom: 2px solid #d7e4ce;
+            text-align: center;
+        }
+        .duty-table td {
+            padding: 0.85rem 0.5rem;
+            border-bottom: 1px solid #ecf3e6;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .pharmacist-name {
+            font-weight: 700;
+            color: #1c6946;
+        }
+        .phone-number {
+            direction: ltr;
+            display: inline-block;
+            background: #ecf3e7;
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-family: monospace;
+        }
+        .address-text {
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+        .badge-time {
+            background: #f0e2c0;
+            padding: 4px 8px;
+            border-radius: 20px;
+            font-weight: 600;
+            font-size: 0.7rem;
+            white-space: nowrap;
+        }
+        .footer-note {
+            background: #fefbf2;
+            padding: 0.8rem 1.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            border-top: 1px solid #f0e3c6;
+            color: #5f7f68;
+        }
+        @media (max-width: 700px) {
+            body { padding: 0.8rem; }
+            .header-pharmacy { flex-direction: column; align-items: flex-start; }
+            .title-section h1 { font-size: 1.3rem; }
+            .duty-table th, .duty-table td { font-size: 0.7rem; padding: 0.5rem 0.3rem; }
+        }
+        .highlight-search {
+            background-color: #f9efb2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="main-card">
+        <div class="header-pharmacy">
+            <div class="logo-area">
+                <div class="logo-icon"><i class="fas fa-prescription-bottle-alt"></i></div>
+                <div class="etab-title">
+                    <h2>مديرية الصحة لولاية غرداية</h2>
+                    <p>مصلحة الصيدلة · بلدية بريان</p>
+                </div>
+            </div>
+            <div class="month-badge">
+                <i class="fas fa-calendar-alt"></i> جوان 2026 · المناوبة الليلية للصيادلة الخواص
+            </div>
+        </div>
+        <div class="title-section">
+            <h1>📋 جدول المناوبة الليلية للصيادلة الخواص 📋</h1>
+            <p>بلدية بريان · شهر جوان 2026 · حراسة صيدليات الليل</p>
+        </div>
+        <div class="note-time">
+            <i class="fas fa-info-circle"></i> <strong>ملاحظة عامة حول التوقيت:</strong> المناوبة العادية تكون من الساعة <strong>19:00 مساءً إلى 08:00 صباحاً</strong>، باستثناء أيام الجمعة حيث يتم تقسيم المناوبة إلى فترتين (نهارية من 08:00 إلى 19:00 وليلية من 19:00 إلى 08:00) كما هو موضح في الجدول.
+        </div>
+        <!-- مربع البحث -->
+        <div class="search-bar">
+            <div class="search-wrapper">
+                <i class="fas fa-search"></i>
+                <input type="text" id="searchInput" placeholder="🔍 بحث باليوم، اسم الصيدلي، العنوان، رقم الهاتف ...">
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="duty-table" id="dutyTable">
+                <thead>
+                    <tr><th>التاريخ / اليوم</th><th>الصيدلي/ة</th><th>العنوان</th><th>التوقيت</th><th>رقم الهاتف</th></tr>
+                </thead>
+                <tbody id="tableBody">
+                    <!-- سيتم ملء البيانات عبر الجافاسكربت -->
+                </tbody>
+            </table>
+        </div>
+        <div class="footer-note">
+            <div><i class="fas fa-phone-alt"></i> في الحالات العاجلة الاتصال برقم النجدة الطبية: 029 241 244</div>
+            <div><i class="fas fa-clock"></i> المداومة تشمل جميع أيام الأسبوع</div>
+            <div><i class="fas fa-building"></i> صيدليات ليلية معتمدة من مديرية الصحة</div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // بناء بيانات جدول المناوبة بناءً على المعلومات المقدمة (جوان 2026)
+    const duties = [
+        // الإثنين 01 جوان
+        { date: "الإثنين 01 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الإثنين 01 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        // الثلاثاء 02 جوان
+        { date: "الثلاثاء 02 جوان 2026", pharmacist: "سلامي سايح", address: "شارع عبد الرحمان بحبح - حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الثلاثاء 02 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "19:00 → 08:00", phone: "" },
+        // الأربعاء 03 جوان
+        { date: "الأربعاء 03 جوان 2026", pharmacist: "باسليمان نور الدين", address: "شارع سماحي العربي - وسط المدينة", timeSlot: "19:00 → 08:00", phone: "029246826" },
+        { date: "الأربعاء 03 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "19:00 → 08:00", phone: "" },
+        // الخميس 04 جوان
+        { date: "الخميس 04 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الخميس 04 جوان 2026", pharmacist: "الطالب باحمد نذير", address: "تجزئة كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الخميس 04 جوان 2026", pharmacist: "الدغور عائشة", address: "شارع الاستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        // الجمعة 05 جوان (فترتان)
+        { date: "الجمعة 05 جوان 2026", pharmacist: "كروشي عزيزة", address: "تجزئة الشيخ عامر 02", timeSlot: "08:00 → 19:00 (نهاري)", phone: "" },
+        { date: "الجمعة 05 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "19:00 → 08:00 (ليلي)", phone: "" },
+        // السبت 06 جوان
+        { date: "السبت 06 جوان 2026", pharmacist: "قربوعي محمد", address: "حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "029245185" },
+        { date: "السبت 06 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "السبت 06 جوان 2026", pharmacist: "سلامي سايح", address: "شارع عبد الرحمان بحبح حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        // الأحد 07 جوان
+        { date: "الأحد 07 جوان 2026", pharmacist: "الدغور عائشة", address: "شارع الاستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الأحد 07 جوان 2026", pharmacist: "فتان خدوجة سارة", address: "منطقة السودان قطب المصالحة", timeSlot: "19:00 → 08:00", phone: "029245185" },
+        { date: "الأحد 07 جوان 2026", pharmacist: "باسليمان نور الدين", address: "شارع سماحي العربي - وسط المدينة", timeSlot: "19:00 → 08:00", phone: "029246826" },
+        // الإثنين 08 جوان
+        { date: "الإثنين 08 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الإثنين 08 جوان 2026", pharmacist: "لعساكر عبد الصمد", address: "بحي المداغ (TECHNICUM)", timeSlot: "19:00 → 08:00", phone: "" },
+        // الثلاثاء 09 جوان
+        { date: "الثلاثاء 09 جوان 2026", pharmacist: "الدغور عائشة", address: "شارع الاستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الثلاثاء 09 جوان 2026", pharmacist: "قربوعي محمد", address: "حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "029245989" },
+        // الأربعاء 10 جوان
+        { date: "الأربعاء 10 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الأربعاء 10 جوان 2026", pharmacist: "كروشي عزيزة", address: "تجزئة الشيخ عامر 02", timeSlot: "19:00 → 08:00", phone: "" },
+        // الخميس 11 جوان
+        { date: "الخميس 11 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الخميس 11 جوان 2026", pharmacist: "باسليمان نور الدين", address: "شارع سماحي العربي - وسط المدينة", timeSlot: "19:00 → 08:00", phone: "029246826" },
+        // الجمعة 12 جوان (نوبتان)
+        { date: "الجمعة 12 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "08:00 → 19:00 (نهاري)", phone: "" },
+        { date: "الجمعة 12 جوان 2026", pharmacist: "الدغور عائشة", address: "شارع الاستقلال", timeSlot: "19:00 → 08:00 (ليلي)", phone: "" },
+        // السبت 13 جوان
+        { date: "السبت 13 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "السبت 13 جوان 2026", pharmacist: "فتان خدوجة سارة", address: "منطقة السودان قطب المصالحة", timeSlot: "19:00 → 08:00", phone: "029245185" },
+        { date: "السبت 13 جوان 2026", pharmacist: "سلامي سايح", address: "شارع عبد الرحمان بحبح حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        // الأحد 14 جوان
+        { date: "الأحد 14 جوان 2026", pharmacist: "الطالب باحمد نذير", address: "تجزئة كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الأحد 14 جوان 2026", pharmacist: "قربوعي محمد", address: "حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "029245989" },
+        { date: "الأحد 14 جوان 2026", pharmacist: "كروشي عزيزة", address: "تجزئة الشيخ عامر 02", timeSlot: "19:00 → 08:00", phone: "" },
+        // الإثنين 15 جوان
+        { date: "الإثنين 15 جوان 2026", pharmacist: "سلامي سايح", address: "شارع عبد الرحمان بحبح حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الإثنين 15 جوان 2026", pharmacist: "فتان خدوجة سارة", address: "منطقة السودان قطب المصالحة", timeSlot: "19:00 → 08:00", phone: "029245185" },
+        // الثلاثاء 16 جوان
+        { date: "الثلاثاء 16 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الثلاثاء 16 جوان 2026", pharmacist: "باسليمان نور الدين", address: "شارع سماحي العربي - وسط المدينة", timeSlot: "19:00 → 08:00", phone: "029246826" },
+        // الأربعاء 17 جوان
+        { date: "الأربعاء 17 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الأربعاء 17 جوان 2026", pharmacist: "الطالب باحمد نذير", address: "تجزئة كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        // الخميس 18 جوان
+        { date: "الخميس 18 جوان 2026", pharmacist: "قربوعي محمد", address: "حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "029245989" },
+        { date: "الخميس 18 جوان 2026", pharmacist: "فتان خدوجة سارة", address: "منطقة السودان قطب المصالحة", timeSlot: "19:00 → 08:00", phone: "" },
+        // الجمعة 19 جوان (نوبتان)
+        { date: "الجمعة 19 جوان 2026", pharmacist: "كروشي عزيزة", address: "تجزئة الشيخ عامر 02", timeSlot: "08:00 → 19:00 (نهاري)", phone: "" },
+        { date: "الجمعة 19 جوان 2026", pharmacist: "قربوعي محمد", address: "حي كاف حمودة", timeSlot: "19:00 → 08:00 (ليلي)", phone: "029245989" },
+        // السبت 20 جوان
+        { date: "السبت 20 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "السبت 20 جوان 2026", pharmacist: "لعساكر عبد الصمد", address: "بحي المداغ (TECHNICUM)", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "السبت 20 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "19:00 → 08:00", phone: "" },
+        // الأحد 21 جوان
+        { date: "الأحد 21 جوان 2026", pharmacist: "سلامي سايح", address: "شارع عبد الرحمان بحبح حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الأحد 21 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "19:00 → 08:00", phone: "" },
+        // الإثنين 22 جوان
+        { date: "الإثنين 22 جوان 2026", pharmacist: "باسليمان نور الدين", address: "شارع سماحي العربي - وسط المدينة", timeSlot: "19:00 → 08:00", phone: "029246826" },
+        { date: "الإثنين 22 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "19:00 → 08:00", phone: "" },
+        // الثلاثاء 23 جوان
+        { date: "الثلاثاء 23 جوان 2026", pharmacist: "فتان خدوجة سارة", address: "منطقة السودان قطب المصالحة", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الثلاثاء 23 جوان 2026", pharmacist: "الطالب باحمد نذير", address: "تجزئة كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        // الأربعاء 24 جوان
+        { date: "الأربعاء 24 جوان 2026", pharmacist: "الدغور عائشة", address: "شارع الاستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الأربعاء 24 جوان 2026", pharmacist: "قربوعي محمد", address: "حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        // الخميس 25 جوان
+        { date: "الخميس 25 جوان 2026", pharmacist: "باسليمان نور الدين", address: "شارع سماحي العربي - وسط المدينة", timeSlot: "19:00 → 08:00", phone: "029246826" },
+        { date: "الخميس 25 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "19:00 → 08:00", phone: "" },
+        // الجمعة 26 جوان (نوبتان)
+        { date: "الجمعة 26 جوان 2026", pharmacist: "فتان خدوجة سارة", address: "منطقة السودان قطب المصالحة", timeSlot: "08:00 → 19:00 (نهاري)", phone: "" },
+        { date: "الجمعة 26 جوان 2026", pharmacist: "لعساكر عبد الصمد", address: "بحي المداغ (TECHNICUM)", timeSlot: "19:00 → 08:00 (ليلي)", phone: "" },
+        // السبت 27 جوان
+        { date: "السبت 27 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "السبت 27 جوان 2026", pharmacist: "فتان خدوجة سارة", address: "منطقة السودان قطب المصالحة", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "السبت 27 جوان 2026", pharmacist: "سلامي سايح", address: "شارع عبد الرحمان بحبح حي كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        // الأحد 28 جوان
+        { date: "الأحد 28 جوان 2026", pharmacist: "الدغور عائشة", address: "شارع الاستقلال", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الأحد 28 جوان 2026", pharmacist: "كاسي اوصالح صبرينة", address: "قارة الطين", timeSlot: "19:00 → 08:00", phone: "029246826" },
+        // الإثنين 29 جوان
+        { date: "الإثنين 29 جوان 2026", pharmacist: "الطالب باحمد نذير", address: "تجزئة كاف حمودة", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الإثنين 29 جوان 2026", pharmacist: "فتان خدوجة سارة", address: "منطقة السودان قطب المصالحة", timeSlot: "19:00 → 08:00", phone: "" },
+        // الثلاثاء 30 جوان
+        { date: "الثلاثاء 30 جوان 2026", pharmacist: "بوتاسونة عائشة", address: "حي المداغ", timeSlot: "19:00 → 08:00", phone: "" },
+        { date: "الثلاثاء 30 جوان 2026", pharmacist: "بعوشي حاج موسى", address: "شارع الإستقلال", timeSlot: "19:00 → 08:00", phone: "" }
+    ];
+
+    function renderTable(filterText = "") {
+        const tbody = document.getElementById("tableBody");
+        tbody.innerHTML = "";
+        const lowerFilter = filterText.toLowerCase();
+        duties.forEach(item => {
+            const searchable = `${item.date} ${item.pharmacist} ${item.address} ${item.timeSlot} ${item.phone}`.toLowerCase();
+            if (filterText !== "" && !searchable.includes(lowerFilter)) return;
+            const row = tbody.insertRow();
+            // التاريخ
+            const cellDate = row.insertCell(0);
+            cellDate.textContent = item.date;
+            // الصيدلي
+            const cellName = row.insertCell(1);
+            cellName.innerHTML = `<span class="pharmacist-name">${item.pharmacist}</span>`;
+            // العنوان
+            const cellAddr = row.insertCell(2);
+            cellAddr.innerHTML = `<span class="address-text">${item.address}</span>`;
+            // التوقيت
+            const cellTime = row.insertCell(3);
+            let timeClass = "badge-time";
+            if (item.timeSlot.includes("نهاري")) timeClass += " highlight-search";
+            cellTime.innerHTML = `<span class="${timeClass}">${item.timeSlot}</span>`;
+            // الهاتف
+            const cellPhone = row.insertCell(4);
+            if (item.phone && item.phone !== "") {
+                cellPhone.innerHTML = `<span class="phone-number"><i class="fas fa-phone-alt"></i> ${item.phone}</span>`;
+            } else {
+                cellPhone.innerHTML = "<span style='opacity:0.5;'>—</span>";
+            }
+        });
+        if (tbody.rows.length === 0) {
+            const emptyRow = tbody.insertRow();
+            const emptyCell = emptyRow.insertCell(0);
+            emptyCell.colSpan = 5;
+            emptyCell.textContent = "🚫 لا توجد نتائج مطابقة للبحث";
+            emptyCell.style.textAlign = "center";
+            emptyCell.style.padding = "2rem";
+        }
+    }
+
+    // البحث المباشر
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", function(e) {
+        renderTable(e.target.value);
+    });
+    // العرض الأولي
+    renderTable();
+</script>
+</body>
+</html>
