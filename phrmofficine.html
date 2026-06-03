@@ -47,48 +47,42 @@
             border: 1px solid #e2e8f0;
         }
 
-        /* الهيدر العلوي المتمركز */
-        .official-header {
-            background-color: #fafbfc;
-            border-bottom: 1px solid #edf2f7;
-            padding: 25px 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 15px;
-        }
+.official-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+    padding: 1rem 2rem;
+    flex-direction: row;
+}
 
-        /* تم إعادة الشعار لحجم متناسق وممتاز */
-        .logo-box img {
-            max-height: 50px;
-            object-fit: contain;
-        }
+.logo-box {
+    flex-shrink: 0;
+}
 
-        /* توسيط نصوص الوزارة */
-        .ministry-titles {
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            width: 100%;
-        }
+.logo-box img {
+    width: 120px;        /* adjust this value to make logo bigger/smaller */
+    height: auto;
+    display: block;
+}
 
-        .ministry-ar {
-            font-size: 1.05rem;
-            font-weight: 700;
-            color: #1a202c;
-            text-align: center;
-        }
+.ministry-titles {
+    text-align: right;
+    flex: 1;
+}
 
-        .ministry-fr {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: #718096;
-            text-align: center;
-            font-family: sans-serif;
-        }
+.ministry-ar {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #0f766e;
+    margin-bottom: 0.3rem;
+}
 
+.ministry-fr {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #0f766e;
+}
         /* محتوى الإعلان */
         .announcement-body {
             display: flex;
@@ -242,8 +236,8 @@
                 <span style="display:none; font-weight:800; font-size:1.1rem; color:#0f766e;">[logo.png]</span>
             </div>
             <div class="ministry-titles">
-                <div class="ministry-ar">وزارة الصحة - الجمهورية الجزائرية الديمقراطية الشعبية</div>
-                <div class="ministry-fr">Ministère de la Santé - République Algérienne Démocratique et Populaire</div>
+                <div class="ministry-ar">الجمهورية الجزائرية الديمقراطية الشعبية - وزارة الصحة </div>
+                <div class="ministry-fr">République Algérienne Démocratique et Populaire - Ministère de la Santé</div>
             </div>
         </header>
 
