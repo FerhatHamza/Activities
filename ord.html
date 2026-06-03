@@ -1,944 +1,339 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>وصفة طبية | Ordonnance Médicale - EPSP Berriane</title>
-    <style>
-        :root {
-            --page-width: 210mm;
-            --page-height: 297mm;
-            --header-height: 4cm;
-            --primary: #1a5c4a;
-            --primary-light: #e8f4f0;
-            --gold: #b8943a;
-            --gold-light: #fdf6e8;
-            --text-dark: #1a1a1a;
-            --text-mid: #3d3d3d;
-            --text-light: #5a5a5a;
-            --border-subtle: #d4d9d6;
-            --white: #ffffff;
-            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
-            --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.10);
-            --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.14);
-            --radius-sm: 6px;
-            --radius-md: 10px;
-            --radius-lg: 16px;
-            --font-ar: 'Noto Naskh Arabic', 'Traditional Arabic', 'Scheherazade New', 'Amiri', serif;
-            --font-fr: 'Cormorant Garamond', 'EB Garamond', 'Georgia', 'Times New Roman', serif;
-            --font-sans: 'Inter', 'Segoe UI', system-ui, sans-serif;
-            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>وصفة طبية A5 | Ordonnance A5 – EPSP Berriane</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+    body {
+      background: #e8edf0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 2rem 1rem;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+    }
 
-        body {
-            font-family: var(--font-sans);
-            background: #eef2f0;
-            background-image:
-                radial-gradient(ellipse at 20% 10%, rgba(26, 92, 74, 0.04) 0%, transparent 60%),
-                radial-gradient(ellipse at 80% 90%, rgba(184, 148, 58, 0.05) 0%, transparent 60%);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 24px 16px 60px;
-            -webkit-font-smoothing: antialiased;
-        }
+    /* ---- A5 page container ---- */
+    .a5-page {
+      width: 148mm;
+      max-width: 100%;
+      background: white;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.12), 0 4px 10px rgba(0,0,0,0.08);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      margin-bottom: 24px;
+      /* A5 ratio: 148 x 210 mm */
+      aspect-ratio: 148 / 210;
+      display: flex;
+      flex-direction: column;
+    }
 
-        /* ── Toolbar ─────────────────────── */
-        .toolbar {
-            position: sticky;
-            top: 16px;
-            z-index: 100;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            align-items: center;
-            justify-content: center;
-            background: var(--white);
-            border-radius: 50px;
-            padding: 8px 10px;
-            box-shadow: var(--shadow-lg);
-            margin-bottom: 28px;
-            border: 1px solid #e8ece9;
-            backdrop-filter: blur(10px);
-        }
-        .toolbar button {
-            display: inline-flex;
-            align-items: center;
-            gap: 7px;
-            padding: 10px 20px;
-            border-radius: 40px;
-            border: none;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: var(--font-sans);
-            letter-spacing: 0.01em;
-            white-space: nowrap;
-        }
-        .btn-print {
-            background: var(--primary);
-            color: #fff;
-            box-shadow: 0 2px 8px rgba(26, 92, 74, 0.3);
-        }
-        .btn-print:hover {
-            background: #14503f;
-            box-shadow: 0 4px 16px rgba(26, 92, 74, 0.4);
-            transform: translateY(-1px);
-        }
-        .btn-print:active {
-            transform: scale(0.96);
-        }
-        .btn-add {
-            background: var(--gold-light);
-            color: #7a5f20;
-            border: 1.5px solid #dcc88a;
-        }
-        .btn-add:hover {
-            background: #f8ecce;
-            border-color: #c4a84a;
-        }
-        .btn-reset {
-            background: #f9f9f9;
-            color: #666;
-            border: 1.5px solid #e0e0e0;
-        }
-        .btn-reset:hover {
-            background: #f0f0f0;
-            border-color: #c0c0c0;
-        }
-        .btn-icon {
-            font-size: 17px;
-        }
+    /* ---- HEADER exactly 4cm tall, two columns ---- */
+    .rx-header {
+      height: 4cm;
+      min-height: 4cm;
+      max-height: 4cm;
+      display: flex;
+      flex-direction: row;
+      background: #ffffff;
+      border-bottom: 2px solid #2c5e4f; /* subtle separation line */
+      flex-shrink: 0;
+      width: 100%;
+    }
 
-        /* ── Page Container ─────────────── */
-        .page-wrapper {
-            width: var(--page-width);
-            max-width: 100%;
-            flex-shrink: 0;
-        }
-        .page {
-            background: var(--white);
-            width: 100%;
-            min-height: var(--page-height);
-            box-shadow: var(--shadow-md);
-            border-radius: var(--radius-sm);
-            position: relative;
-            overflow: hidden;
-            print-color-adjust: exact;
-            -webkit-print-color-adjust: exact;
-        }
+    /* left column (Arabic) */
+    .col-ar {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-end; /* right alignment for Arabic */
+      padding: 0 10px 0 14px;
+      text-align: right;
+      direction: rtl;
+      border-left: 1px dashed #b0bfb5; /* soft column separator */
+    }
 
-        /* ── Decorative Border ─────────── */
-        .page::before {
-            content: '';
-            position: absolute;
-            inset: 10px;
-            border: 2px solid #e0e5e2;
-            border-radius: 3px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.55;
-        }
-        .page::after {
-            content: '';
-            position: absolute;
-            inset: 14px;
-            border: 0.5px solid #d8ddd9;
-            border-radius: 2px;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.4;
-        }
+    /* right column (French) */
+    .col-fr {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 0 14px 0 10px;
+      text-align: left;
+      direction: ltr;
+    }
 
-        /* ── Inner Content ─────────────── */
-        .page-inner {
-            position: relative;
-            z-index: 1;
-            padding: 20px 36px 30px;
-            display: flex;
-            flex-direction: column;
-            min-height: var(--page-height);
-        }
+    /* Arabic text styles */
+    .arabic-institution {
+      font-family: 'Noto Naskh Arabic', 'Amiri', 'Traditional Arabic', serif;
+      font-size: 10.5pt;
+      font-weight: 700;
+      color: #1b4d3e;
+      line-height: 1.4;
+      margin-bottom: 2px;
+      letter-spacing: 0.02em;
+    }
 
-        /* ── HEADER: Exactly 4cm ──────── */
-        .prescription-header {
-            height: var(--header-height);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: linear-gradient(175deg, #f9fbfa 0%, #f1f6f3 40%, #eaf2ed 100%);
-            border-bottom: 3px double var(--primary);
-            border-top: 3px double var(--primary);
-            margin: 0 -36px;
-            padding: 0 36px;
-            position: relative;
-            flex-shrink: 0;
-            gap: 18px;
-        }
-        .header-embellishment-left,
-        .header-embellishment-right {
-            flex-shrink: 0;
-            width: 48px;
-            height: 48px;
-            opacity: 0.7;
-        }
-        .header-embellishment-left svg,
-        .header-embellishment-right svg {
-            width: 100%;
-            height: 100%;
-        }
-        .header-embellishment-right {
-            transform: scaleX(-1);
-        }
-        .header-text-block {
-            text-align: center;
-            flex: 1;
-        }
-        .header-ar {
-            font-family: var(--font-ar);
-            font-size: 1.35rem;
-            font-weight: 700;
-            color: var(--primary);
-            line-height: 1.5;
-            letter-spacing: 0.02em;
-            direction: rtl;
-        }
-        .header-fr {
-            font-family: var(--font-fr);
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: #3d5a4e;
-            line-height: 1.4;
-            letter-spacing: 0.03em;
-            text-transform: uppercase;
-            direction: ltr;
-            margin-top: 1px;
-        }
-        .header-separator {
-            width: 40px;
-            height: 1px;
-            background: var(--gold);
-            margin: 3px auto;
-            opacity: 0.6;
-        }
+    .arabic-doctor {
+      font-family: 'Noto Naskh Arabic', 'Amiri', 'Traditional Arabic', serif;
+      font-size: 9pt;
+      font-weight: 500;
+      color: #2d4a3b;
+      margin-top: 1px;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
 
-        /* ── Doctor Section ────────────── */
-        .doctor-section {
-            margin-top: 14px;
-            padding: 10px 0;
-            border-bottom: 1px dashed var(--border-subtle);
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 12px;
-        }
-        .doctor-label-group {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-        }
-        .doctor-label-ar {
-            font-family: var(--font-ar);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            direction: rtl;
-        }
-        .doctor-label-fr {
-            font-family: var(--font-fr);
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: var(--text-mid);
-            direction: ltr;
-            font-style: italic;
-        }
-        .doctor-input-row {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            flex: 1;
-            justify-content: flex-end;
-        }
-        .doctor-input-group {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-            min-width: 140px;
-        }
-        .doctor-input-group label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-light);
-            font-weight: 600;
-            font-family: var(--font-sans);
-            direction: ltr;
-            text-align: left;
-        }
-        .doctor-input-group input {
-            border: none;
-            border-bottom: 1.5px solid #c8cfcb;
-            padding: 7px 4px;
-            font-size: 0.9rem;
-            font-family: var(--font-sans);
-            background: transparent;
-            transition: var(--transition);
-            direction: ltr;
-            text-align: left;
-            width: 100%;
-            color: var(--text-dark);
-            border-radius: 0;
-        }
-        .doctor-input-group input:focus {
-            outline: none;
-            border-bottom-color: var(--primary);
-            border-bottom-width: 2px;
-            background: #f9fcfa;
-        }
+    .arabic-title {
+      font-family: 'Noto Naskh Arabic', 'Amiri', 'Traditional Arabic', serif;
+      font-size: 14pt;
+      font-weight: 800;
+      color: #0a3328;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
 
-        /* ── Ordonnance Title ──────────── */
-        .ordonnance-title-section {
-            text-align: center;
-            margin: 16px 0 8px;
-            position: relative;
-        }
-        .ordonnance-title-ar {
-            font-family: var(--font-ar);
-            font-size: 2rem;
-            font-weight: 700;
-            color: var(--primary);
-            letter-spacing: 0.04em;
-            direction: rtl;
-        }
-        .ordonnance-title-fr {
-            font-family: var(--font-fr);
-            font-size: 1.3rem;
-            font-weight: 600;
-            color: #3d5a4e;
-            letter-spacing: 0.06em;
-            text-transform: uppercase;
-            direction: ltr;
-            margin-top: -2px;
-        }
-        .ordonnance-ornament {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            margin: 6px 0;
-            color: var(--gold);
-            font-size: 0.6rem;
-            letter-spacing: 0.3em;
-            opacity: 0.7;
-            direction: ltr;
-        }
-        .ordonnance-ornament .line {
-            width: 50px;
-            height: 1px;
-            background: var(--gold);
-            opacity: 0.5;
-        }
+    /* French text styles */
+    .french-institution {
+      font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+      font-size: 8.5pt;
+      font-weight: 700;
+      color: #1b4d3e;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      line-height: 1.3;
+      margin-bottom: 2px;
+    }
 
-        /* ── Rp Symbol ─────────────────── */
-        .rp-symbol {
-            font-family: 'Times New Roman', serif;
-            font-size: 1.6rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            margin: 4px 0 8px;
-            direction: ltr;
-            text-align: left;
-            letter-spacing: 0.02em;
-            padding-left: 4px;
-        }
+    .french-doctor {
+      font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+      font-size: 8pt;
+      font-weight: 600;
+      color: #2d4a3b;
+      font-style: italic;
+      margin-top: 1px;
+      margin-bottom: 4px;
+      letter-spacing: 0.02em;
+    }
 
-        /* ── Prescription Lines ────────── */
-        .prescription-lines {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            margin: 6px 0 14px;
-            min-height: 180px;
-        }
-        .rx-line {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            animation: fadeSlideIn 0.35s ease-out;
-        }
-        @keyframes fadeSlideIn {
-            from {
-                opacity: 0;
-                transform: translateY(-8px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        .rx-number {
-            font-family: var(--font-fr);
-            font-weight: 600;
-            color: var(--text-light);
-            font-size: 0.85rem;
-            min-width: 22px;
-            text-align: right;
-            direction: ltr;
-            flex-shrink: 0;
-        }
-        .rx-input {
-            flex: 1;
-            border: none;
-            border-bottom: 1.5px dotted #c0c8c3;
-            padding: 10px 6px;
-            font-size: 0.95rem;
-            font-family: var(--font-sans);
-            background: transparent;
-            transition: var(--transition);
-            direction: ltr;
-            text-align: left;
-            color: var(--text-dark);
-            border-radius: 0;
-        }
-        .rx-input:focus {
-            outline: none;
-            border-bottom-style: solid;
-            border-bottom-color: var(--primary);
-            border-bottom-width: 2px;
-            background: #fafdfb;
-        }
-        .rx-input::placeholder {
-            color: #b0b8b3;
-            font-style: italic;
-            font-size: 0.82rem;
-        }
-        .rx-delete {
-            flex-shrink: 0;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            border: 1.5px solid #e0d5d5;
-            background: #fff;
-            color: #c0392b;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0.5;
-            direction: ltr;
-        }
-        .rx-delete:hover {
-            opacity: 1;
-            background: #fef5f5;
-            border-color: #d4a0a0;
-            box-shadow: 0 2px 6px rgba(192, 57, 43, 0.15);
-        }
+    .french-title {
+      font-family: 'Cormorant Garamond', 'Georgia', 'Times New Roman', serif;
+      font-size: 13pt;
+      font-weight: 800;
+      color: #0a3328;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-top: 2px;
+    }
 
-        /* ── Footer ────────────────────── */
-        .prescription-footer {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            flex-wrap: wrap;
-            gap: 16px;
-            margin-top: auto;
-            padding-top: 16px;
-            border-top: 1px solid var(--border-subtle);
-        }
-        .footer-date {
-            display: flex;
-            flex-direction: column;
-            gap: 3px;
-        }
-        .footer-date label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-light);
-            font-weight: 600;
-            font-family: var(--font-sans);
-            direction: ltr;
-            text-align: left;
-        }
-        .footer-date input {
-            border: none;
-            border-bottom: 1.5px solid #c8cfcb;
-            padding: 7px 4px;
-            font-size: 0.9rem;
-            font-family: var(--font-sans);
-            background: transparent;
-            direction: ltr;
-            text-align: left;
-            color: var(--text-dark);
-            border-radius: 0;
-            width: 160px;
-            transition: var(--transition);
-        }
-        .footer-date input:focus {
-            outline: none;
-            border-bottom-color: var(--primary);
-            border-bottom-width: 2px;
-        }
-        .footer-signature {
-            text-align: right;
-            direction: ltr;
-        }
-        .footer-signature-label {
-            font-size: 0.7rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            color: var(--text-light);
-            font-weight: 600;
-            font-family: var(--font-sans);
-            margin-bottom: 4px;
-            direction: ltr;
-            text-align: right;
-        }
-        .signature-area {
-            width: 180px;
-            height: 70px;
-            border: 1.5px dashed #c8cfcb;
-            border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #b8bfba;
-            font-size: 0.75rem;
-            font-style: italic;
-            direction: ltr;
-            transition: var(--transition);
-            cursor: default;
-            background: #fafbfa;
-        }
-        .footer-stamp {
-            width: 80px;
-            height: 80px;
-            border: 2px dashed #d4cfc0;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #c5bfa8;
-            font-size: 0.65rem;
-            text-align: center;
-            direction: ltr;
-            background: #fefdf9;
-            flex-shrink: 0;
-        }
+    /* ---- Rest of the page (minimal prescription body) ---- */
+    .rx-body {
+      flex: 1;
+      padding: 14px 18px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: #fdfdfd;
+      direction: ltr;
+    }
 
-        /* ── Patient Info Quick Bar ────── */
-        .patient-quick-bar {
-            display: flex;
-            gap: 14px;
-            flex-wrap: wrap;
-            margin: 8px 0 4px;
-            padding: 8px 0;
-            border-bottom: 1px dotted #e0e5e1;
-            direction: ltr;
-        }
-        .patient-quick-field {
-            display: flex;
-            flex-direction: column;
-            gap: 2px;
-            flex: 1;
-            min-width: 100px;
-        }
-        .patient-quick-field label {
-            font-size: 0.68rem;
-            text-transform: uppercase;
-            letter-spacing: 0.04em;
-            color: var(--text-light);
-            font-weight: 600;
-            font-family: var(--font-sans);
-            direction: ltr;
-            text-align: left;
-        }
-        .patient-quick-field input {
-            border: none;
-            border-bottom: 1.3px solid #d5dbd7;
-            padding: 6px 2px;
-            font-size: 0.85rem;
-            font-family: var(--font-sans);
-            background: transparent;
-            direction: ltr;
-            text-align: left;
-            color: var(--text-dark);
-            border-radius: 0;
-            transition: var(--transition);
-            width: 100%;
-        }
-        .patient-quick-field input:focus {
-            outline: none;
-            border-bottom-color: var(--primary);
-            background: #fafdfb;
-        }
+    .patient-line {
+      font-size: 9pt;
+      color: #2b2b2b;
+      border-bottom: 1px dotted #aaa;
+      padding-bottom: 4px;
+      margin-bottom: 6px;
+      display: flex;
+      gap: 12px;
+      align-items: baseline;
+      flex-wrap: wrap;
+    }
 
-        /* ── Print Styles ──────────────── */
-        @media print {
-            body {
-                background: #fff;
-                padding: 0;
-                margin: 0;
-            }
-            .toolbar {
-                display: none !important;
-            }
-            .page-wrapper {
-                width: 100%;
-                max-width: 100%;
-                box-shadow: none;
-                margin: 0;
-            }
-            .page {
-                width: 100%;
-                min-height: auto;
-                height: auto;
-                box-shadow: none;
-                border-radius: 0;
-                page-break-after: always;
-            }
-            .page::before,
-            .page::after {
-                display: none;
-            }
-            .page-inner {
-                padding: 15px 28px 22px;
-                min-height: auto;
-            }
-            .prescription-header {
-                height: 4cm;
-                margin: 0 -28px;
-                padding: 0 28px;
-                -webkit-print-color-adjust: exact;
-                print-color-adjust: exact;
-            }
-            .rx-delete {
-                display: none !important;
-            }
-            .rx-input,
-            .doctor-input-group input,
-            .footer-date input,
-            .patient-quick-field input {
-                border-bottom-style: dotted;
-                border-bottom-color: #ccc !important;
-                background: transparent !important;
-            }
-            .signature-area {
-                border-style: dashed;
-                border-color: #ccc !important;
-                background: transparent !important;
-            }
-            @page {
-                size: A4;
-                margin: 0;
-            }
-        }
+    .patient-line span {
+      font-weight: 600;
+      color: #1e4a3b;
+    }
 
-        /* ── Responsive ────────────────── */
-        @media (max-width: 800px) {
-            .page-wrapper {
-                width: 100%;
-            }
-            .page-inner {
-                padding: 14px 16px 20px;
-            }
-            .prescription-header {
-                margin: 0 -16px;
-                padding: 0 16px;
-                height: auto;
-                min-height: 3.2cm;
-                gap: 8px;
-            }
-            .header-ar {
-                font-size: 1.1rem;
-            }
-            .header-fr {
-                font-size: 0.75rem;
-            }
-            .header-embellishment-left,
-            .header-embellishment-right {
-                width: 32px;
-                height: 32px;
-            }
-            .ordonnance-title-ar {
-                font-size: 1.5rem;
-            }
-            .ordonnance-title-fr {
-                font-size: 1rem;
-            }
-            .doctor-section {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .doctor-input-row {
-                justify-content: flex-start;
-            }
-            .prescription-footer {
-                flex-direction: column;
-                align-items: stretch;
-            }
-            .footer-signature {
-                text-align: left;
-            }
-            .signature-area {
-                width: 100%;
-            }
-        }
-    </style>
+    .rx-symbol {
+      font-size: 18pt;
+      font-weight: bold;
+      color: #1b4d3e;
+      margin: 2px 0 4px;
+    }
+
+    .rx-lines {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rx-line {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .rx-line-num {
+      font-weight: 600;
+      font-size: 9pt;
+      color: #3a5a4c;
+      min-width: 18px;
+    }
+
+    .rx-line-content {
+      flex: 1;
+      border-bottom: 1px dotted #b0b8b2;
+      padding: 4px 2px;
+      font-size: 9pt;
+      color: #1a1a1a;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .footer-note {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 12px;
+      font-size: 8pt;
+      color: #444;
+      border-top: 1px solid #d0d7d2;
+      padding-top: 8px;
+    }
+
+    .signature-box {
+      width: 100px;
+      height: 40px;
+      border: 1px dashed #9aa89e;
+      border-radius: 3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 7pt;
+      color: #8a9a8f;
+      font-style: italic;
+      text-transform: uppercase;
+    }
+
+    .print-button {
+      background: #1b4d3e;
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 30px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      letter-spacing: 0.03em;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(27,77,62,0.3);
+      transition: all 0.2s;
+      margin-bottom: 8px;
+      border: 1px solid #164234;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .print-button:hover {
+      background: #0f3d2f;
+      box-shadow: 0 6px 16px rgba(27,77,62,0.45);
+      transform: translateY(-1px);
+    }
+
+    .print-button:active {
+      transform: scale(0.97);
+    }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+        margin: 0;
+      }
+      .print-button {
+        display: none;
+      }
+      .a5-page {
+        box-shadow: none;
+        width: 148mm;
+        max-width: 148mm;
+        aspect-ratio: auto;
+        height: auto;
+        min-height: 210mm;
+        border-radius: 0;
+        page-break-after: always;
+      }
+      .rx-header {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      @page {
+        size: A5;
+        margin: 0;
+      }
+    }
+  </style>
 </head>
 <body>
+  <button class="print-button" onclick="window.print()">
+    <span>🖨️</span> Imprimer l'ordonnance (A5)
+  </button>
 
-    <!-- ── Toolbar ─────────────────────── -->
-    <div class="toolbar" id="toolbar">
-        <button class="btn-add" onclick="addRxLine()" title="Ajouter une ligne de prescription">
-            <span class="btn-icon">＋</span> Ajouter ligne
-        </button>
-        <button class="btn-print" onclick="window.print()" title="Imprimer l'ordonnance">
-            <span class="btn-icon">🖨️</span> Imprimer
-        </button>
-        <button class="btn-reset" onclick="resetForm()" title="Réinitialiser le formulaire">
-            <span class="btn-icon">↺</span> Réinitialiser
-        </button>
+  <div class="a5-page">
+    <!-- HEADER : 4cm, split in two columns -->
+    <div class="rx-header">
+      <!-- Left column (Arabic) -->
+      <div class="col-ar">
+        <div class="arabic-institution">المؤسسة العمومية للصحة الجوارية ببريان</div>
+        <div class="arabic-doctor">الطبيب المعاين</div>
+        <div class="arabic-title">وصفة</div>
+      </div>
+      <!-- Right column (French) -->
+      <div class="col-fr">
+        <div class="french-institution">ÉTABLISSEMENT PUBLIC DE SANTÉ<br>DE PROXIMITÉ DE BERRIANE</div>
+        <div class="french-doctor">Médecin examinateur</div>
+        <div class="french-title">ORDONNANCE</div>
+      </div>
     </div>
 
-    <!-- ── Prescription Page ──────────── -->
-    <div class="page-wrapper">
-        <div class="page" id="prescriptionPage">
-            <div class="page-inner">
+    <!-- Prescription body (light example) -->
+    <div class="rx-body">
+      <div class="patient-line">
+        <span>Patient(e) :</span> __________________________________
+        <span>Âge :</span> _________
+      </div>
+      <div class="rx-symbol">℞</div>
+      <div class="rx-lines">
+        <div class="rx-line"><span class="rx-line-num">1.</span><span class="rx-line-content">_________________________________________</span></div>
+        <div class="rx-line"><span class="rx-line-num">2.</span><span class="rx-line-content">_________________________________________</span></div>
+        <div class="rx-line"><span class="rx-line-num">3.</span><span class="rx-line-content">_________________________________________</span></div>
+        <div class="rx-line"><span class="rx-line-num">4.</span><span class="rx-line-content">_________________________________________</span></div>
+      </div>
+      <div class="footer-note">
+        <span>Date : _______________</span>
+        <div class="signature-box">Signature<br>& Cachet</div>
+      </div>
+    </div>
+  </div>
 
-                <!-- HEADER: 4cm -->
-                <div class="prescription-header">
-                    <!-- Left emblem -->
-                    <div class="header-embellishment-left">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="24" cy="24" r="22" stroke="#1a5c4a" stroke-width="2.5" fill="none"/>
-                            <path d="M14 28 L24 12 L34 28" stroke="#1a5c4a" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
-                            <line x1="18" y1="28" x2="30" y2="28" stroke="#1a5c4a" stroke-width="2"/>
-                            <circle cx="24" cy="32" r="2.5" fill="#b8943a"/>
-                            <line x1="24" y1="34.5" x2="24" y2="40" stroke="#1a5c4a" stroke-width="2"/>
-                            <line x1="18" y1="40" x2="30" y2="40" stroke="#1a5c4a" stroke-width="2"/>
-                        </svg>
-                    </div>
-                    <!-- Text block -->
-                    <div class="header-text-block">
-                        <div class="header-ar">المؤسسة العمومية للصحة الجوارية ببريان</div>
-                        <div class="header-separator"></div>
-                        <div class="header-fr">Établissement Public de Santé de Proximité de Berriane</div>
-                    </div>
-                    <!-- Right emblem (mirrored) -->
-                    <div class="header-embellishment-right">
-                        <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                            <circle cx="24" cy="24" r="22" stroke="#1a5c4a" stroke-width="2.5" fill="none"/>
-                            <path d="M14 28 L24 12 L34 28" stroke="#1a5c4a" stroke-width="2.2" fill="none" stroke-linejoin="round"/>
-                            <line x1="18" y1="28" x2="30" y2="28" stroke="#1a5c4a" stroke-width="2"/>
-                            <circle cx="24" cy="32" r="2.5" fill="#b8943a"/>
-                            <line x1="24" y1="34.5" x2="24" y2="40" stroke="#1a5c4a" stroke-width="2"/>
-                            <line x1="18" y1="40" x2="30" y2="40" stroke="#1a5c4a" stroke-width="2"/>
-                        </svg>
-                    </div>
-                </div>
-
-                <!-- Doctor Section -->
-                <div class="doctor-section">
-                    <div class="doctor-label-group">
-                        <span class="doctor-label-ar">الطبيب المعاين</span>
-                        <span class="doctor-label-fr">Médecin examinateur</span>
-                    </div>
-                    <div class="doctor-input-row">
-                        <div class="doctor-input-group">
-                            <label>Nom & Prénom</label>
-                            <input type="text" id="doctorName" placeholder="Dr. ...">
-                        </div>
-                        <div class="doctor-input-group">
-                            <label>Spécialité</label>
-                            <input type="text" id="doctorSpecialty" placeholder="Ex: Médecine générale">
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Patient Quick Bar -->
-                <div class="patient-quick-bar">
-                    <div class="patient-quick-field">
-                        <label>Patient(e) / المريض(ة)</label>
-                        <input type="text" id="patientName" placeholder="Nom et prénom du patient">
-                    </div>
-                    <div class="patient-quick-field" style="max-width:100px;">
-                        <label>Âge / العمر</label>
-                        <input type="text" id="patientAge" placeholder="—">
-                    </div>
-                </div>
-
-                <!-- Ordonnance Title -->
-                <div class="ordonnance-title-section">
-                    <div class="ordonnance-title-ar">وصفة</div>
-                    <div class="ordonnance-title-fr">Ordonnance</div>
-                    <div class="ordonnance-ornament">
-                        <span class="line"></span> ✦ <span class="line"></span>
-                    </div>
-                </div>
-
-                <!-- Rp Symbol -->
-                <div class="rp-symbol">℞</div>
-
-                <!-- Prescription Lines -->
-                <div class="prescription-lines" id="rxLines">
-                    <!-- Dynamic lines injected here -->
-                </div>
-
-                <!-- Footer -->
-                <div class="prescription-footer">
-                    <div class="footer-date">
-                        <label>Date / التاريخ</label>
-                        <input type="text" id="rxDate" placeholder="Ex: 03 Juin 2026 / 03 يونيو 2026">
-                    </div>
-                    <div class="footer-stamp" title="Cachet / ختم">
-                        Cachet<br>ختم
-                    </div>
-                    <div class="footer-signature">
-                        <div class="footer-signature-label">Signature / إمضاء</div>
-                        <div class="signature-area">Signature du médecin</div>
-                    </div>
-                </div>
-
-            </div><!-- /page-inner -->
-        </div><!-- /page -->
-    </div><!-- /page-wrapper -->
-
-    <script>
-        // ── Initialize prescription lines ──
-        const rxLinesContainer = document.getElementById('rxLines');
-        let lineCounter = 0;
-
-        function createRxLine(number) {
-            const div = document.createElement('div');
-            div.className = 'rx-line';
-            div.innerHTML = `
-                        <span class="rx-number">${number}.</span>
-                        <input type="text" class="rx-input" placeholder="Médicament, dosage, posologie… / الدواء، الجرعة، طريقة الاستعمال…">
-                        <button class="rx-delete" title="Supprimer cette ligne" onclick="removeRxLine(this)">×</button>
-                    `;
-            return div;
-        }
-
-        function addRxLine() {
-            lineCounter++;
-            const line = createRxLine(lineCounter);
-            rxLinesContainer.appendChild(line);
-            // Focus the new input
-            setTimeout(() => {
-                const input = line.querySelector('.rx-input');
-                if (input) input.focus();
-            }, 100);
-            updateLineNumbers();
-        }
-
-        function removeRxLine(button) {
-            const line = button.closest('.rx-line');
-            if (line) {
-                // Don't remove if it's the last line
-                const allLines = rxLinesContainer.querySelectorAll('.rx-line');
-                if (allLines.length <= 1) {
-                    // Clear the input instead
-                    const input = line.querySelector('.rx-input');
-                    if (input) input.value = '';
-                    return;
-                }
-                line.style.opacity = '0';
-                line.style.transform = 'translateX(20px)';
-                line.style.transition = '0.25s ease-in';
-                setTimeout(() => {
-                    line.remove();
-                    updateLineNumbers();
-                }, 250);
-            }
-        }
-
-        function updateLineNumbers() {
-            const allLines = rxLinesContainer.querySelectorAll('.rx-line');
-            allLines.forEach((line, index) => {
-                const numSpan = line.querySelector('.rx-number');
-                if (numSpan) numSpan.textContent = (index + 1) + '.';
-            });
-            lineCounter = allLines.length;
-        }
-
-        function resetForm() {
-            // Clear all inputs
-            document.getElementById('doctorName').value = '';
-            document.getElementById('doctorSpecialty').value = '';
-            document.getElementById('patientName').value = '';
-            document.getElementById('patientAge').value = '';
-            document.getElementById('rxDate').value = '';
-            // Reset prescription lines to 3 default ones
-            rxLinesContainer.innerHTML = '';
-            lineCounter = 0;
-            for (let i = 0; i < 4; i++) {
-                addRxLine();
-            }
-            // Scroll to top of page
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Brief visual feedback
-            const page = document.getElementById('prescriptionPage');
-            page.style.transition = '0.15s ease';
-            page.style.boxShadow = '0 0 0 4px rgba(26,92,74,0.3), 0 8px 32px rgba(0,0,0,0.14)';
-            setTimeout(() => {
-                page.style.boxShadow = '';
-            }, 400);
-        }
-
-        // ── Initialize with 4 default lines ──
-        function initDefaultLines() {
-            for (let i = 0; i < 4; i++) {
-                addRxLine();
-            }
-        }
-
-        // ── Keyboard shortcut: Ctrl+Enter to add line ──
-        document.addEventListener('keydown', function(e) {
-            if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
-                e.preventDefault();
-                addRxLine();
-            }
-        });
-
-        // ── Run on load ──
-        initDefaultLines();
-
-        // ── Set today's date as placeholder hint ──
-        (function() {
-            const today = new Date();
-            const day = today.getDate().toString().padStart(2, '0');
-            const monthNamesFr = [
-                'Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin',
-                'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'
-            ];
-            const monthNamesAr = [
-                'جانفي', 'فيفري', 'مارس', 'أفريل', 'ماي', 'جوان',
-                'جويلية', 'أوت', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'
-            ];
-            const monthFr = monthNamesFr[today.getMonth()];
-            const monthAr = monthNamesAr[today.getMonth()];
-            const year = today.getFullYear();
-            const dateInput = document.getElementById('rxDate');
-            dateInput.placeholder = `${day} ${monthFr} ${year} / ${day} ${monthAr} ${year}`;
-        })();
-
-        console.log('✅ Ordonnance EPSP Berriane — Prête à l\'emploi');
-        console.log('   المؤسسة العمومية للصحة الجوارية ببريان');
-        console.log('   💡 Conseil : Ctrl+Entrée pour ajouter une ligne');
-        console.log('   🖨️  Utilisez le bouton Imprimer pour une sortie A4 parfaite');
-    </script>
+  <!-- small note about exact size -->
+  <p style="font-size:0.7rem; color:#4b5e54; margin-top:6px; max-width:148mm; text-align:center;">
+    Format A5 (148 × 210 mm) • En‑tête 4 cm • Deux colonnes Arabe/Français
+  </p>
 </body>
 </html>
