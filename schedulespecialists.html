@@ -2,773 +2,432 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>جدول توزيع الأطباء الأخصائيين - جوان 2026</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>توزيع الأطباء الأخصائيين | المؤسسة العمومية للصحة الجوارية – بريان | جوان 2026</title>
+
+    <!-- Google Fonts: Cairo for beautiful Arabic typography & Readex Pro for numbers -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800;900&family=Readex+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --primary-teal: #008f6b;
-            --secondary-navy: #002b49;
-            --text-dark: #0f172a; 
-            --text-muted: #475569;
-            --bg-main: #f1f5f9;
-            --card-bg: #ffffff;
-            --border-color: #cbd5e1;
+            --emerald-50: #ecfdf5;
+            --emerald-100: #d1fae5;
+            --emerald-200: #a7f3d0;
+            --emerald-300: #6ee7b7;
+            --emerald-400: #34d399;
+            --emerald-500: #10b981;
+            --emerald-600: #059669;
+            --emerald-700: #047857;
+            --emerald-800: #065f46;
+            --teal-400: #2dd4bf;
+            --teal-500: #14b8a6;
+            --teal-600: #0d9488;
+            --sky-400: #38bdf8;
+            --sky-500: #0ea5e9;
+            --violet-400: #a78bfa;
+            --violet-500: #8b5cf6;
+            --rose-400: #fb7185;
+            --rose-500: #f43f5e;
+            --amber-400: #fbbf24;
+            --amber-500: #f59e0b;
+            --slate-50: #f8fafc;
+            --slate-100: #f1f5f9;
+            --slate-200: #e2e8f0;
+            --slate-300: #cbd5e1;
+            --slate-400: #94a3b8;
+            --slate-500: #64748b;
+            --slate-600: #475569;
+            --slate-700: #334155;
+            --slate-800: #1e293b;
+            --slate-900: #0f172a;
+            --white: #ffffff;
+            --shadow-sm: 0 1px 2px rgba(0,0,0,0.05);
+            --shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);
+            --shadow-md: 0 4px 6px rgba(0,0,0,0.05), 0 2px 4px rgba(0,0,0,0.05);
+            --shadow-lg: 0 10px 30px rgba(0,0,0,0.08), 0 4px 10px rgba(0,0,0,0.04);
+            --shadow-xl: 0 20px 40px rgba(0,0,0,0.1);
+            --radius-sm: 0.5rem;
+            --radius: 0.75rem;
+            --radius-lg: 1rem;
+            --radius-xl: 1.25rem;
+            --radius-2xl: 1.5rem;
+            --transition: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        /* --- نظام حماية الواجهة ومنع النسخ والتحديد --- */
-        *, *::before, *::after {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            -webkit-user-select: none !important;
-            -moz-user-select: none !important;
-            -ms-user-select: none !important;
-            user-select: none !important;
-            -webkit-user-drag: none !important;
-        }
-
-        img {
-            pointer-events: none !important;
-        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior:smooth; font-size:16px; }
 
         body {
-            font-family: 'Tajawal', sans-serif;
-            background-color: var(--bg-main);
-            color: var(--text-dark);
-            padding: 2rem 1.5rem;
-            line-height: 1.6;
+            font-family: 'Cairo', sans-serif;
+            background: linear-gradient(165deg, #f0fdfa 0%, #e6fffa 10%, #fefce8 45%, #fdf2f8 85%, #f0fdfa 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            color: var(--slate-800);
+            line-height: 1.75;
             -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 1300px;
-            margin: 0 auto;
-        }
-
-        /* --- الهيدر الرئيسي: اللوغو على اليمين تماماً في نظام RTL --- */
-        .official-header {
-            background: var(--card-bg);
-            border-radius: 16px;
-            padding: 2.5rem 2rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border: 2px solid var(--border-color);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2rem;
-        }
-
-        .header-meta {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 1.5rem;
-            width: 100%;
-        }
-
-        .logo-wrapper img {
-            height: 95px;
-            width: auto;
-            object-fit: contain;
-        }
-
-        .ministry-text {
-            text-align: right;
-            border-right: 5px solid var(--primary-teal);
-            padding-right: 1.5rem;
-        }
-
-        .ministry-text h3 {
-            font-size: 1.35rem;
-            color: var(--secondary-navy);
-            font-weight: 900;
-            margin-bottom: 0.3rem;
-        }
-
-        .ministry-text p {
-            font-size: 1.05rem;
-            color: var(--text-dark);
-            font-weight: 700;
-        }
-
-        .header-title-area {
-            width: 100%;
-            text-align: center;
-        }
-
-        .main-title {
-            font-size: 2.2rem;
-            font-weight: 900;
-            color: var(--secondary-navy);
-        }
-
-        .french-title {
-            display: block;
-            font-size: 1.3rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            margin-top: 0.3rem;
-            direction: ltr;
-        }
-
-        .sub-title {
-            font-size: 1.15rem;
-            color: var(--text-dark);
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1.2rem;
-        }
-
-        .sub-title p {
-            background: #d1fae5;
-            padding: 0.3rem 1rem;
-            border-radius: 30px;
-            font-weight: 900;
-            color: #065f46;
-            border: 1px solid #10b981;
-        }
-
-        /* شريط الاتصال */
-        .contact-bar {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 2rem;
-            flex-wrap: wrap;
-            margin-top: 1rem;
-            padding-top: 1.2rem;
-            border-top: 2px solid #e2e8f0;
-            width: 100%;
-        }
-
-        .contact-item {
-            font-size: 1.05rem;
-            color: var(--secondary-navy);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            font-weight: 700;
-            text-decoration: none;
-        }
-
-        .contact-item i {
-            color: var(--primary-teal);
-        }
-
-        /* --- قسم الفلاتر الجديد والذكي (Filters Section) --- */
-        .filter-wrapper {
-            background: var(--card-bg);
-            border: 2px solid var(--border-color);
-            border-radius: 16px;
-            padding: 1.5rem;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .filter-title {
-            font-size: 1.1rem;
-            font-weight: 800;
-            color: var(--secondary-navy);
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filter-controls {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            flex: 1;
-        }
-
-        .search-input-group, .select-input-group {
             position: relative;
-            flex: 1;
-            min-width: 240px;
+            overflow-x: hidden;
         }
 
-        .filter-wrapper input, .filter-wrapper select {
-            width: 100%;
-            padding: 0.8rem 2.8rem 0.8rem 1rem;
-            font-family: 'Tajawal', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            color: var(--text-dark);
-            background-color: #f8fafc;
-            border: 2px solid var(--border-color);
-            border-radius: 10px;
-            outline: none;
-            transition: all 0.2s ease;
-            appearance: none;
-            -webkit-appearance: none;
+        /* decorative blobs */
+        body::before {
+            content:''; position:fixed; top:-10%; left:-8%; width:50vw; height:50vw; max-width:600px; max-height:600px;
+            background:radial-gradient(circle, rgba(16,185,129,0.08) 0%, transparent 70%); border-radius:50%;
+            pointer-events:none; z-index:0; animation:floatBlob 22s ease-in-out infinite;
+        }
+        body::after {
+            content:''; position:fixed; bottom:-12%; right:-6%; width:45vw; height:45vw; max-width:500px; max-height:500px;
+            background:radial-gradient(circle, rgba(245,158,11,0.07) 0%, transparent 70%); border-radius:50%;
+            pointer-events:none; z-index:0; animation:floatBlob 26s ease-in-out infinite reverse;
+        }
+        @keyframes floatBlob {
+            0%,100%{ transform:translate(0,0) scale(1); }
+            25%{ transform:translate(2%,-2%) scale(1.04); }
+            50%{ transform:translate(-1.5%,-2.5%) scale(0.96); }
+            75%{ transform:translate(-2%,1%) scale(1.03); }
         }
 
-        .filter-wrapper input:focus, .filter-wrapper select:focus {
-            border-color: var(--primary-teal);
-            background-color: #ffffff;
-            box-shadow: 0 0 0 4px rgba(0, 143, 107, 0.1);
+        .page-wrapper { position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:1rem; }
+
+        /* OFFICIAL HEADER */
+        .official-header {
+            background: var(--white); border:1px solid var(--slate-200); border-radius:var(--radius-2xl);
+            padding:1.5rem 1.25rem; margin-bottom:1.5rem; box-shadow:var(--shadow-lg); text-align:center;
+            position:relative; overflow:hidden;
+        }
+        .official-header::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:5px;
+            background:linear-gradient(90deg, #059669, #10b981, #f59e0b, #f43f5e, #059669);
+            border-radius:var(--radius-2xl) var(--radius-2xl) 0 0;
+        }
+        .emblem-row { display:flex; align-items:center; justify-content:center; gap:0.6rem; flex-wrap:wrap; margin-bottom:0.2rem; }
+        .emblem-icon {
+            width:46px; height:46px; background:linear-gradient(135deg, #059669, #10b981);
+            border-radius:50%; display:flex; align-items:center; justify-content:center;
+            font-size:1.4rem; color:white; box-shadow:0 4px 15px rgba(5,150,105,0.3); flex-shrink:0;
+        }
+        .official-header .republic { font-size:0.82rem; font-weight:700; color:var(--emerald-700); letter-spacing:0.02em; }
+        .official-header .ministry { font-size:0.78rem; font-weight:600; color:var(--slate-600); }
+        .official-header .direction { font-size:0.74rem; font-weight:500; color:var(--slate-500); }
+        .official-header .institution { font-size:0.88rem; font-weight:700; color:var(--emerald-600); margin-top:0.1rem; }
+        .header-divider { width:50px; height:3px; background:var(--amber-400); border-radius:50px; margin:0.4rem auto; }
+
+        /* HERO */
+        .hero-section {
+            background:linear-gradient(135deg, #047857 0%, #059669 35%, #065f46 100%);
+            border-radius:var(--radius-2xl); padding:2rem 1.5rem; margin-bottom:1.5rem;
+            text-align:center; color:white; position:relative; overflow:hidden; box-shadow:var(--shadow-xl);
+        }
+        .hero-section::after {
+            content:''; position:absolute; top:-35%; left:-15%; width:75%; height:160%;
+            background:radial-gradient(ellipse, rgba(255,255,255,0.07) 0%, transparent 70%); pointer-events:none; border-radius:50%;
+        }
+        .hero-badge {
+            display:inline-block; background:rgba(255,255,255,0.2); backdrop-filter:blur(8px);
+            border:1px solid rgba(255,255,255,0.3); border-radius:50px; padding:0.35rem 1.2rem;
+            font-size:0.8rem; font-weight:600; margin-bottom:0.8rem; position:relative; z-index:1;
+        }
+        .hero-section h1 { font-size:clamp(1.3rem, 3.5vw, 1.9rem); font-weight:800; position:relative; z-index:1; }
+        .hero-section .hero-subtitle { font-size:0.9rem; opacity:0.9; position:relative; z-index:1; margin-top:0.3rem; }
+        .hero-dots { display:flex; gap:0.35rem; justify-content:center; margin-top:1rem; position:relative; z-index:1; }
+        .hero-dots span { width:7px; height:7px; border-radius:50%; background:rgba(255,255,255,0.5); animation:pulseDot 2s ease-in-out infinite; }
+        .hero-dots span:nth-child(2){animation-delay:0.3s;} .hero-dots span:nth-child(3){animation-delay:0.6s;} .hero-dots span:nth-child(4){animation-delay:0.9s;}
+        @keyframes pulseDot{0%,100%{transform:scale(1);opacity:0.5;}50%{transform:scale(1.8);opacity:1;}}
+
+        /* FILTER BAR */
+        .filter-bar {
+            background:var(--white); border-radius:var(--radius-xl); padding:1rem 1rem;
+            margin-bottom:1.5rem; box-shadow:var(--shadow-md); border:1px solid var(--slate-200);
+            display:flex; flex-wrap:wrap; gap:0.6rem; align-items:flex-end;
+            position:sticky; top:0.75rem; z-index:50; transition:var(--transition);
+        }
+        .filter-bar.scrolled { box-shadow:var(--shadow-xl); border-color:var(--emerald-200); }
+        .filter-group { display:flex; flex-direction:column; gap:0.15rem; flex:1; min-width:130px; }
+        .filter-group label { font-size:0.68rem; font-weight:700; color:var(--slate-500); text-transform:uppercase; letter-spacing:0.04em; }
+        .filter-group select, .filter-group input {
+            font-family:'Cairo',sans-serif; font-size:0.85rem; padding:0.55rem 0.8rem;
+            border:2px solid var(--slate-200); border-radius:var(--radius); background:var(--slate-50);
+            color:var(--slate-800); transition:var(--transition); outline:none; width:100%;
+            appearance:none; -webkit-appearance:none; cursor:pointer;
+        }
+        .filter-group select {
+            background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2.5'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat:no-repeat; background-position:left 0.7rem center; padding-left:2rem;
+        }
+        .filter-group select:focus, .filter-group input:focus { border-color:var(--emerald-400); box-shadow:0 0 0 3px rgba(16,185,129,0.12); background:white; }
+        .filter-group input { cursor:text; }
+        .filter-group input::placeholder { color:var(--slate-400); font-weight:300; }
+        .btn-reset {
+            font-family:'Cairo',sans-serif; background:linear-gradient(135deg, #f43f5e, #e11d48);
+            color:white; border:none; padding:0.6rem 1.1rem; border-radius:50px; font-weight:700;
+            font-size:0.8rem; cursor:pointer; transition:var(--transition); white-space:nowrap;
+            display:flex; align-items:center; gap:0.35rem; box-shadow:0 4px 12px rgba(244,63,94,0.3);
+            align-self:flex-end; margin-top:auto;
+        }
+        .btn-reset:hover { background:linear-gradient(135deg, #e11d48, #be123c); transform:translateY(-1px); }
+        .results-count {
+            font-size:0.78rem; font-weight:600; color:var(--slate-500); white-space:nowrap;
+            align-self:center; background:var(--slate-100); padding:0.4rem 0.8rem; border-radius:50px;
+        }
+        .results-count strong { color:var(--emerald-600); }
+
+        /* CARDS GRID */
+        .schedule-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:1rem; margin-bottom:1.5rem; }
+        .doctor-card {
+            background:var(--white); border-radius:var(--radius-lg); padding:1.2rem;
+            box-shadow:var(--shadow-md); border:1px solid var(--slate-100); transition:var(--transition);
+            display:flex; flex-direction:column; gap:0.55rem; position:relative; overflow:hidden;
+            animation:fadeInUp 0.45s ease forwards; border-right:5px solid var(--slate-200);
+        }
+        .doctor-card:hover { transform:translateY(-4px); box-shadow:var(--shadow-xl); }
+        .doctor-card .doctor-name { font-size:1.05rem; font-weight:800; color:var(--slate-900); }
+        .doctor-card .badge {
+            display:inline-block; font-size:0.7rem; font-weight:700; padding:0.25rem 0.7rem;
+            border-radius:50px; width:fit-content; letter-spacing:0.02em;
+        }
+        /* specialty colors */
+        .specialty-pediatrics { border-right-color:#10b981; } .badge-pediatrics { background:#ecfdf5; color:#047857; }
+        .specialty-general-surgery { border-right-color:#3b82f6; } .badge-general-surgery { background:#eff6ff; color:#1d4ed8; }
+        .specialty-anesthesia { border-right-color:#f43f5e; } .badge-anesthesia { background:#fff1f2; color:#be123c; }
+        .specialty-thoracic { border-right-color:#8b5cf6; } .badge-thoracic { background:#f5f3ff; color:#6d28d9; }
+        .specialty-internal { border-right-color:#14b8a6; } .badge-internal { background:#f0fdfa; color:#0f766e; }
+        .clinic-block {
+            background:var(--slate-50); border-radius:var(--radius-sm); padding:0.5rem 0.7rem;
+            margin-top:0.2rem; border:1px dashed var(--slate-200);
+        }
+        .clinic-block .clinic-name { font-weight:700; color:var(--slate-700); font-size:0.82rem; }
+        .clinic-block .clinic-dates { color:var(--emerald-700); font-weight:700; font-size:0.8rem; margin-top:0.15rem; }
+        .info-row { display:flex; align-items:center; gap:0.4rem; font-size:0.78rem; color:var(--slate-600); }
+        .no-results { text-align:center; padding:3rem 1rem; color:var(--slate-400); display:none; }
+        .no-results.visible { display:block; }
+        .no-results-icon { font-size:4rem; opacity:0.5; margin-bottom:1rem; }
+
+        /* FOOTER */
+        .page-footer {
+            background:var(--white); border-radius:var(--radius-xl); padding:1.5rem;
+            text-align:center; box-shadow:var(--shadow-md); border:1px solid var(--slate-200);
+            display:flex; flex-direction:column; gap:0.6rem;
+        }
+        .footer-signature { display:flex; justify-content:space-between; align-items:flex-end; flex-wrap:wrap; gap:1rem; margin-top:0.8rem; }
+        .footer-left, .footer-right { font-weight:700; color:var(--slate-700); }
+        .footer-stamp {
+            border:3px double var(--slate-300); padding:0.5rem 1.5rem; border-radius:var(--radius);
+            color:var(--slate-400); font-weight:600; font-size:0.8rem; transform:rotate(-2deg); opacity:0.7;
         }
 
-        .input-icon {
-            position: absolute;
-            right: 1rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            pointer-events: none;
+        @media(max-width:768px){
+            .page-wrapper{padding:0.5rem;}
+            .filter-bar{flex-direction:column; gap:0.5rem; position:relative; top:0;}
+            .filter-group{width:100%; min-width:100%;}
+            .btn-reset{width:100%; justify-content:center;}
+            .results-count{width:100%; text-align:center;}
+            .schedule-grid{grid-template-columns:1fr;}
+            .hero-section h1{font-size:1.2rem;}
         }
-
-        /* تأثير إشعار عدم وجود نتائج */
-        #no-results-message {
-            background: var(--card-bg);
-            border: 2px dashed var(--border-color);
-            border-radius: 16px;
-            padding: 3rem;
-            text-align: center;
-            color: var(--text-muted);
-            font-size: 1.3rem;
-            font-weight: 700;
-            display: none;
-            margin-bottom: 2rem;
-        }
-
-        /* --- شبكة الجداول المتجاوبة --- */
-        .grid-sections {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .full-width {
-            grid-column: span 2;
-        }
-
-        .card {
-            background: var(--card-bg);
-            border-radius: 16px;
-            border: 2px solid var(--border-color);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
-            overflow: hidden;
-            transition: transform 0.2s ease;
-        }
-
-        .card-header {
-            padding: 1.5rem;
-            background: #f8fafc;
-            border-bottom: 2px solid var(--border-color);
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .card-header i {
-            font-size: 1.3rem;
-            color: #065f46;
-            background: #d1fae5;
-            padding: 10px;
-            border-radius: 12px;
-            border: 1px solid #10b981;
-        }
-
-        .card-header h2 {
-            font-size: 1.4rem;
-            font-weight: 800;
-            color: var(--secondary-navy);
-        }
-
-        .table-wrapper {
-            overflow-x: auto;
-            padding: 0.5rem;
-        }
-
-        .schedule-table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        .schedule-table th {
-            background: #edf2f7;
-            padding: 1.2rem 1rem;
-            font-weight: 800;
-            color: var(--secondary-navy);
-            font-size: 1.05rem;
-            text-align: right;
-            border-bottom: 3px solid var(--border-color);
-            white-space: nowrap;
-        }
-
-        .schedule-table td {
-            padding: 1.2rem 1rem;
-            border-bottom: 2px solid #e2e8f0;
-            color: var(--text-dark);
-            font-size: 1.1rem;
-            font-weight: 700;
-            vertical-align: middle;
-        }
-
-        .schedule-table tr:last-child td {
-            border-bottom: none;
-        }
-
-        .doctor-name {
-            font-weight: 900;
-            color: #0f172a;
-            font-size: 1.1rem;
-        }
-
-        .clinic-badge {
-            display: inline-block;
-            background: #f0fdf4;
-            color: #166534;
-            padding: 0.4rem 0.9rem;
-            border-radius: 8px;
-            font-weight: 800;
-            font-size: 1rem;
-            border: 2px solid #bbf7d0;
-            white-space: nowrap;
-        }
-
-        .date-text {
-            font-weight: 800;
-            color: #1e293b;
-        }
-
-        /* --- الفوتر السفلي المتناسق --- */
-        .footer-container {
-            margin-top: 4rem;
-            padding-top: 1.5rem;
-            border-top: 2px solid var(--border-color);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .footer-note {
-            color: var(--secondary-navy);
-            font-size: 1.15rem;
-            font-weight: 800;
-        }
-
-        .dev-signature {
-            font-size: 1rem;
-            color: var(--text-muted);
-            font-weight: 700;
-            direction: ltr;
-        }
-
-        .dev-signature span {
-            color: var(--primary-teal);
-            font-weight: 900;
-        }
-
-        /* ==========================================================================
-           شاشات الهواتف والأجهزة اللوحية (Responsive System Optimization)
-           ========================================================================== */
-        
-        @media (max-width: 1024px) {
-            .grid-sections {
-                grid-template-columns: 1fr; /* تحويل الشبكة لعمود واحد عند الأجهزة اللوحية */
-            }
-            .full-width {
-                grid-column: span 1;
-            }
-        }
-
-        @media (max-width: 768px) {
-            body {
-                padding: 1rem 0.75rem;
-            }
-            
-            .official-header {
-                padding: 1.5rem 1rem;
-                gap: 1.5rem;
-            }
-
-            .header-meta {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            .logo-wrapper img {
-                height: 80px;
-            }
-
-            .ministry-text {
-                border-right: none;
-                border-bottom: 4px solid var(--primary-teal);
-                padding-right: 0;
-                padding-bottom: 1rem;
-                text-align: center;
-                width: 100%;
-            }
-
-            .ministry-text h3 {
-                font-size: 1.2rem;
-            }
-
-            .main-title {
-                font-size: 1.6rem;
-            }
-
-            .french-title {
-                font-size: 1.1rem;
-            }
-
-            .sub-title {
-                font-size: 1rem;
-            }
-
-            .filter-wrapper {
-                padding: 1rem;
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            .filter-controls {
-                flex-direction: column;
-            }
-
-            .search-input-group, .select-input-group {
-                min-width: 100%;
-            }
-
-            /* تحويل الجدول إلى كروت سهلة القراءة ومثالية للموبايل لمنع التمرير الأفقي المزعج */
-            .schedule-table, .schedule-table thead, .schedule-table tbody, .schedule-table th, .schedule-table td, .schedule-table tr {
-                display: block;
-            }
-
-            .schedule-table thead {
-                display: none; /* إخفاء عناوين الجدول التقليدية */
-            }
-
-            .schedule-table tr {
-                margin-bottom: 1rem;
-                border: 2px solid var(--border-color);
-                border-radius: 12px;
-                padding: 0.75rem;
-                background: #f8fafc;
-            }
-
-            .schedule-table td {
-                text-align: right;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                padding: 0.6rem 0.5rem;
-                border-bottom: 1px dashed var(--border-color);
-                font-size: 1rem;
-            }
-
-            .schedule-table td:last-child {
-                border-bottom: none;
-            }
-
-            /* إضافة ملصقات توضيحية بديلة لعناوين الجدول في وضع الهاتف */
-            .schedule-table td::before {
-                content: attr(data-label);
-                font-weight: 800;
-                color: var(--secondary-navy);
-                font-size: 0.95rem;
-            }
-
-            .doctor-name {
-                background-color: transparent;
-            }
-
-            .footer-container {
-                flex-direction: column;
-                text-align: center;
-                gap: 1.5rem;
-                margin-top: 2.5rem;
-            }
-        }
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
     </style>
 </head>
-<body oncontextmenu="return false;" onselectstart="return false;" ondragstart="return false;">
-
-<div class="container">
-    
+<body>
+<div class="page-wrapper">
+    <!-- OFFICIAL HEADER -->
     <header class="official-header">
-        <div class="header-meta">
-            <div class="logo-wrapper">
-                <img src="logo.png" alt="شعار وزارة الصحة">
-            </div>
-            <div class="ministry-text">
-                <h3>الجمهورية الجزائرية الديمقراطية الشعبية</h3>
-                <p>وزارة الصحة • مديرية الصحة والسكان لولاية غرداية</p>
-                <p style="font-weight: 700; font-size: 1rem; margin-top: 4px; color: var(--primary-teal);">المؤسسة العمومية للصحة الجوارية ببريان (EPSP Berriane)</p>
+        <div class="emblem-row">
+            <div class="emblem-icon">⚕️</div>
+            <div>
+                <div class="republic">الجمهورية الجزائرية الديمقراطية الشعبية</div>
+                <div class="ministry">وزارة الصحة</div>
             </div>
         </div>
-        
-        <div class="header-title-area">
-            <h1 class="main-title">
-                مخطط توزيع الأطباء الأخصائيين
-                <span class="french-title">Planning de Répartition des Médecins Spécialistes</span>
-            </h1>
-            <div class="sub-title">
-                <span>توزيع الأطباء الأخصائيين الخاص بالفحوصات الطبية المتخصصة لشهر:</span>
-                <p>جوان 2026</p>
-            </div>
-        </div>
-
-        <div class="contact-bar">
-            <a href="tel:029241244" class="contact-item" dir="ltr">
-                <i class="fa-solid fa-phone"></i> 029 24 12 44
-            </a>
-            <a href="mailto:05juillet.ballouh@gmail.com" class="contact-item">
-                <i class="fa-solid fa-envelope"></i> 05juillet.ballouh@gmail.com
-            </a>
-            <a href="https://facebook.com/EPSP.Berriane" target="_blank" class="contact-item">
-                <i class="fa-brands fa-facebook"></i> EPSP.Berriane
-            </a>
-        </div>
+        <div class="direction">مديرية الصحة لولاية غرداية</div>
+        <div class="institution">المؤسسة العمومية للصحة الجوارية – بريان</div>
+        <div class="direction" style="margin-top:0.1rem;">المديرية الفرعية للمصالح الصحية</div>
+        <div class="header-divider"></div>
     </header>
 
-    <div class="filter-wrapper">
-        <div class="filter-title">
-            <i class="fa-solid fa-filter" style="color: var(--primary-teal);"></i>
-            <span>تصفية البحث الطبية:</span>
+    <!-- HERO -->
+    <section class="hero-section">
+        <span class="hero-badge">🗓️ جوان 2026</span>
+        <h1>جدول توزيع الأطباء الأخصائيين<br>على العيادات المتعددة الخدمات</h1>
+        <p class="hero-subtitle">الفحوصات الطبية المتخصصة – المؤسسة العمومية للصحة الجوارية بريان</p>
+        <div class="hero-dots"><span></span><span></span><span></span><span></span></div>
+    </section>
+
+    <!-- FILTER BAR -->
+    <div class="filter-bar" id="filterBar">
+        <div class="filter-group">
+            <label>🔍 اسم الطبيب</label>
+            <input type="text" id="searchName" placeholder="اكتب الاسم...">
         </div>
-        <div class="filter-controls">
-            <div class="search-input-group">
-                <i class="fa-solid fa-user-doctor input-icon"></i>
-                <input type="text" id="searchDoctor" placeholder="ابحث باسم الطبيب الأخصائي..." onkeyup="filterData()">
-            </div>
-            <div class="select-input-group">
-                <i class="fa-solid fa-hospital input-icon"></i>
-                <select id="filterClinic" onchange="filterData()">
-                    <option value="all">كل العيادات المستقبلة</option>
-                    <option value="القصر القديم">عيادة القصر القديم</option>
-                    <option value="بعيليش">عيادة بعيليش مازوز</option>
-                </select>
-                <i class="fa-solid fa-chevron-down" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--text-muted);"></i>
-            </div>
+        <div class="filter-group">
+            <label>🩺 التخصص</label>
+            <select id="filterSpecialty">
+                <option value="">الكل</option>
+                <option value="طب الأطفال">طب الأطفال</option>
+                <option value="الجراحة العامة">الجراحة العامة</option>
+                <option value="التخدير والإنعاش">التخدير والإنعاش</option>
+                <option value="الجراحة الصدرية">الجراحة الصدرية</option>
+                <option value="الطب الداخلي">الطب الداخلي</option>
+            </select>
         </div>
+        <div class="filter-group">
+            <label>📍 العيادة</label>
+            <select id="filterClinic">
+                <option value="">الكل</option>
+                <option value="عيادة القصر القديم">عيادة القصر القديم</option>
+                <option value="عيادة بعيش مازوز">عيادة بعيش مازوز</option>
+            </select>
+        </div>
+        <span class="results-count" id="resultsCount">العدد: <strong>9</strong></span>
+        <button class="btn-reset" id="btnReset">🔄 إعادة تعيين</button>
     </div>
 
-    <div id="no-results-message">
-        <i class="fa-solid fa-user-slash" style="font-size: 2.5rem; color: #ef4444; margin-bottom: 1rem; display: block;"></i>
-        لم يتم العثور على أي طبيب أو عيادة تطابق خيارات البحث الحالية.
+    <!-- CARDS GRID -->
+    <div class="schedule-grid" id="scheduleGrid"></div>
+    <div class="no-results" id="noResults">
+        <div class="no-results-icon">📭</div>
+        <p>لا توجد نتائج مطابقة</p>
     </div>
 
-    <div class="grid-sections" id="cardsGrid">
-        
-        <section class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-baby-carriage"></i>
-                <h2>طب الأطفال</h2>
-            </div>
-            <div class="table-wrapper">
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>إسم و لقب الطبيب</th>
-                            <th>العيادة المستقبلة</th>
-                            <th>تاريخ الفحص</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. زريطلات ع.ق</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td data-label="التاريخ:" class="date-text">02 و 07 جوان 2026</td>
-                        </tr>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. زريطلات ع.ق</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td data-label="التاريخ:" class="date-text">04 و 09 جوان 2026</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="card">
-            <div class="card-header">
-                <i class="fa-solid fa-scalpel"></i>
-                <h2>الجراحة العامة</h2>
-            </div>
-            <div class="table-wrapper">
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>إسم و لقب الطبيب</th>
-                            <th>العيادة المستقبلة</th>
-                            <th>تاريخ الفحص</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name"> د. دهال م.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td data-label="التاريخ:" class="date-text">09 جوان 2026</td>
-                        </tr>
-                        <tr>
-                              <td data-label="إسم الطبيب:" class="doctor-name"> د. دهال م.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td data-label="التاريخ:" class="date-text">02 جوان 2026</td>
-                        </tr>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. عصمان م.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td data-label="التاريخ:" class="date-text">23 جوان 2026</td>
-                        </tr>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. عصمان م.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td data-label="التاريخ:" class="date-text">30 جوان 2026</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <section class="card full-width">
-            <div class="card-header">
-                <i class="fa-solid fa-kit-medical"></i>
-                <h2>التخدير و الإنعاش</h2>
-            </div>
-            <div class="table-wrapper">
-                <table class="schedule-table">
-                    <thead>
-                        <tr>
-                            <th>إسم و لقب الطبيب</th>
-                            <th>العيادة المستقبلة</th>
-                            <th>تاريخ الفحص</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. إمادوشن ك.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td data-label="التاريخ:" class="date-text">02 جوان 2026</td>
-                        </tr>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. إمادوشن ك.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td data-label="التاريخ:" class="date-text">09 جوان 2026</td>
-                        </tr>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. أحمان أ.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td data-label="التاريخ:" class="date-text">16 جوان 2026</td>
-                        </tr>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. عداتي ح.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة القصر القديم</span></td>
-                            <td data-label="التاريخ:" class="date-text">30 جوان 2026</td>
-                        </tr>
-                        <tr>
-                            <td data-label="إسم الطبيب:" class="doctor-name">د. عداتي ح.</td>
-                            <td data-label="العيادة:"><span class="clinic-badge">عيادة بعيليش مازوز</span></td>
-                            <td data-label="التاريخ:" class="date-text">23 جوان 2026</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-    </div>
-
-    <footer class="footer-container">
-        <div class="footer-note">
-            CIES EPSP Berriane
-        </div>
-        <div class="dev-signature">
-            Developed by <span>Dev. Ferhat H.</span>
+    <!-- FOOTER -->
+    <footer class="page-footer">
+        <div style="font-weight:600; color:var(--slate-700);">📆 بريان في: .................</div>
+        <div class="footer-signature">
+            <div class="footer-left">المديرة الفرعية للمصالح الصحية</div>
+            <div class="footer-stamp">توقيع وختم الإدارة</div>
+            <div class="footer-right">مدير المؤسسة</div>
         </div>
     </footer>
 </div>
 
 <script>
-    // 1. محرك البحث والتصفية المزدوج (فوري وسلس بدون تعليق)
-    function filterData() {
-        const searchInput = document.getElementById('searchDoctor').value.toLowerCase().trim();
-        const clinicSelect = document.getElementById('filterClinic').value;
-        const rows = document.querySelectorAll('.schedule-table tbody tr');
-        const cards = document.querySelectorAll('.card');
-        let totalVisibleRows = 0;
+    (function() {
+        // Doctors data with multiple clinics
+        const doctors = [
+            { id:1, name:'د. زربيلات ع. القادر', specialty:'طب الأطفال', specialtyClass:'specialty-pediatrics', badgeClass:'badge-pediatrics',
+              clinics:[
+                {clinic:'عيادة القصر القديم', dates:'02 و 07 و 16 جوان 2026'},
+                {clinic:'عيادة بعيش مازوز', dates:'04 و 09 جوان 2026'}
+              ]},
+            { id:2, name:'د. مقري خالد', specialty:'طب الأطفال', specialtyClass:'specialty-pediatrics', badgeClass:'badge-pediatrics',
+              clinics:[
+                {clinic:'عيادة بعيش مازوز', dates:'16 جوان 2026'}
+              ]},
+            { id:3, name:'د. دهمال', specialty:'الجراحة العامة', specialtyClass:'specialty-general-surgery', badgeClass:'badge-general-surgery',
+              clinics:[
+                {clinic:'عيادة القصر القديم', dates:'09 و 16 جوان 2026'},
+                {clinic:'عيادة بعيش مازوز', dates:'02 جوان 2026'}
+              ]},
+            { id:4, name:'د. عصمان محمد', specialty:'الجراحة العامة', specialtyClass:'specialty-general-surgery', badgeClass:'badge-general-surgery',
+              clinics:[
+                {clinic:'عيادة القصر القديم', dates:'23 جوان 2026'},
+                {clinic:'عيادة بعيش مازوز', dates:'16 و 30 جوان 2026'}
+              ]},
+            { id:5, name:'د. مادوش كاتيا', specialty:'التخدير والإنعاش', specialtyClass:'specialty-anesthesia', badgeClass:'badge-anesthesia',
+              clinics:[
+                {clinic:'عيادة القصر القديم', dates:'09 و 16 جوان 2026'}
+              ]},
+            { id:6, name:'د. أحمان أمينة', specialty:'التخدير والإنعاش', specialtyClass:'specialty-anesthesia', badgeClass:'badge-anesthesia',
+              clinics:[
+                {clinic:'عيادة بعيش مازوز', dates:'16 جوان 2026'}
+              ]},
+            { id:7, name:'د. عداتي حسين', specialty:'التخدير والإنعاش', specialtyClass:'specialty-anesthesia', badgeClass:'badge-anesthesia',
+              clinics:[
+                {clinic:'عيادة القصر القديم', dates:'30 جوان 2026'},
+                {clinic:'عيادة بعيش مازوز', dates:'16 و 23 جوان 2026'}
+              ]},
+            { id:8, name:'د. الدبوز عبد الحميد', specialty:'الجراحة الصدرية', specialtyClass:'specialty-thoracic', badgeClass:'badge-thoracic',
+              clinics:[
+                {clinic:'عيادة بعيش مازوز', dates:'10 جوان 2026'}
+              ]},
+            { id:9, name:'د. خير الدين كهيبة', specialty:'الطب الداخلي', specialtyClass:'specialty-internal', badgeClass:'badge-internal',
+              clinics:[
+                {clinic:'عيادة القصر القديم', dates:'16 جوان 2026'}
+              ]}
+        ];
 
-        rows.forEach(row => {
-            const doctorName = row.querySelector('.doctor-name').textContent.toLowerCase();
-            const clinicName = row.querySelector('.clinic-badge').textContent;
+        const scheduleGrid = document.getElementById('scheduleGrid');
+        const noResults = document.getElementById('noResults');
+        const resultsCount = document.getElementById('resultsCount');
+        const searchName = document.getElementById('searchName');
+        const filterSpecialty = document.getElementById('filterSpecialty');
+        const filterClinic = document.getElementById('filterClinic');
+        const btnReset = document.getElementById('btnReset');
+        const filterBar = document.getElementById('filterBar');
 
-            const matchesSearch = doctorName.includes(searchInput);
-            const matchesClinic = (clinicSelect === 'all') || clinicName.includes(clinicSelect);
-
-            if (matchesSearch && matchesClinic) {
-                row.style.display = '';
-                totalVisibleRows++;
+        function renderCards(data) {
+            scheduleGrid.innerHTML = '';
+            if(data.length === 0) {
+                noResults.classList.add('visible');
+                scheduleGrid.style.display = 'none';
             } else {
-                row.style.display = 'none';
+                noResults.classList.remove('visible');
+                scheduleGrid.style.display = '';
+                data.forEach((doc, index) => {
+                    const card = document.createElement('div');
+                    card.className = `doctor-card ${doc.specialtyClass}`;
+                    card.style.animationDelay = `${index * 0.03}s`;
+
+                    let clinicsHTML = '';
+                    doc.clinics.forEach(c => {
+                        clinicsHTML += `
+                            <div class="clinic-block">
+                                <div class="clinic-name">📍 ${c.clinic}</div>
+                                <div class="clinic-dates">📅 ${c.dates}</div>
+                            </div>
+                        `;
+                    });
+
+                    card.innerHTML = `
+                        <div class="doctor-name">${doc.name}</div>
+                        <span class="badge ${doc.badgeClass}">${doc.specialty}</span>
+                        ${clinicsHTML}
+                    `;
+                    scheduleGrid.appendChild(card);
+                });
             }
+            resultsCount.innerHTML = `العدد: <strong>${data.length}</strong>`;
+        }
+
+        function filterData() {
+            const nameQ = searchName.value.trim().toLowerCase();
+            const specQ = filterSpecialty.value;
+            const clinicQ = filterClinic.value;
+
+            return doctors.filter(doc => {
+                if(nameQ && !doc.name.toLowerCase().includes(nameQ)) return false;
+                if(specQ && doc.specialty !== specQ) return false;
+                if(clinicQ) {
+                    const hasClinic = doc.clinics.some(c => c.clinic === clinicQ);
+                    if(!hasClinic) return false;
+                }
+                return true;
+            });
+        }
+
+        function applyFilters() {
+            renderCards(filterData());
+        }
+
+        searchName.addEventListener('input', applyFilters);
+        filterSpecialty.addEventListener('change', applyFilters);
+        filterClinic.addEventListener('change', applyFilters);
+        btnReset.addEventListener('click', ()=>{
+            searchName.value=''; filterSpecialty.value=''; filterClinic.value='';
+            applyFilters();
         });
 
-        // إخفاء الكارت أو القسم بالكامل إذا لم يحتوي على أي سطر يطابق الفلتر
-        cards.forEach(card => {
-            const visibleRowsInCard = card.querySelectorAll('.schedule-table tbody tr:not([style*="display: none"])');
-            if (visibleRowsInCard.length === 0) {
-                card.style.display = 'none';
-            } else {
-                card.style.display = '';
-            }
+        window.addEventListener('scroll', ()=>{
+            if(window.scrollY>10) filterBar.classList.add('scrolled');
+            else filterBar.classList.remove('scrolled');
         });
 
-        // إظهار رسالة تنبيهية إذا لم تكن هناك أي نتائج مطابقة
-        const noResultsMessage = document.getElementById('no-results-message');
-        if (totalVisibleRows === 0) {
-            noResultsMessage.style.display = 'block';
-        } else {
-            noResultsMessage.style.display = 'none';
-        }
-    }
+        document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ btnReset.click(); } });
 
-    // 2. ترسانة الحماية الأمنية من الفحص والنسخ
-    document.addEventListener('contextmenu', e => e.preventDefault());
-    document.addEventListener('copy', e => e.preventDefault());
-    document.addEventListener('cut', e => e.preventDefault());
-    document.addEventListener('dragstart', e => e.preventDefault());
-
-    document.addEventListener('keydown', function(e) {
-        if (e.keyCode === 123) { // F12
-            e.preventDefault();
-            return false;
-        }
-        if (e.ctrlKey && e.shiftKey && (e.keyCode === 73 || e.keyCode === 74 || e.keyCode === 67)) { // Ctrl+Shift+I/J/C
-            e.preventDefault();
-            return false;
-        }
-        if (e.ctrlKey && e.keyCode === 85) { // Ctrl+U
-            e.preventDefault();
-            return false;
-        }
-        if (e.ctrlKey && e.keyCode === 83) { // Ctrl+S
-            e.preventDefault();
-            return false;
-        }
-        if (e.ctrlKey && e.keyCode === 65) { // Ctrl+A
-            e.preventDefault();
-            return false;
-        }
-    });
+        // initial render
+        renderCards(doctors);
+    })();
 </script>
 </body>
 </html>
